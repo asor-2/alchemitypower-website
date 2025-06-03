@@ -182,7 +182,7 @@ function ContactForm() {
           <textarea 
             id="message" 
             name="message" 
-            placeholder="Type your message here (max 250 words!)"
+            placeholder="Type your message here (max 250 words)"
             value={formData.message} 
             onChange={handleChange} 
             required 
