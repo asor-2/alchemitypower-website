@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import styles from './ProblemOpportunitySection.module.css';
+import styles from './OurSolutionSection.module.css';
 import staticskid from './images/staticskid.png';
 
 const OurSolutionSection = () => {
