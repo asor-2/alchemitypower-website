@@ -39,7 +39,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 130%;
+  width: 100%;
   height: 100%;
   display: flex;
   animation: slide 40s linear infinite;
@@ -63,9 +63,49 @@
 }
 
 /* Specific style for Markets page */
+
+.aboutHeroSection[data-page="markets"] {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  padding: 0 !important;
+  position: relative !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
 .aboutHeroSection[data-page="markets"] .backgroundImage {
-  background-position: center 70%;
-  width: 65%;
+  width: 100vw !important;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+  clip-path: none;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Ensure the background video also covers full width */
+.aboutHeroSection[data-page="markets"] .backgroundVideo {
+  width: 100vw !important;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+  clip-path: none;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+/* Make sure the overlay covers everything */
+.aboutHeroSection[data-page="markets"] .overlay {
+  width: 100vw !important;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 /* Specific style for Technology page */
@@ -95,35 +135,143 @@
   right: 5%;
 }
 
+
+.aboutHeroSection[data-page="news"] {
+  width: 100%;
+  overflow: hidden; /* Prevent any overflow */
+  padding-left: 0; /* Remove any padding that might affect width */
+}
+
 /* Specific style for News page video */
 .aboutHeroSection[data-page="news"] .backgroundVideo {
-  width: 65%;
+  width: 100% !important; /* Force 100% width with !important */
   clip-path: none;
-  top: -20%;
-  height: 140%;
-  object-fit: cover;
-  right: 0;
+  top: 0;
+  /* left: 0;
+  right: 0; */
+  height: 100%;
+  object-fit: fill; /* Change from cover to fill to stretch the video */
+  position: absolute;
+  transform: scale(1.01); /* Slightly scale up to avoid any small gaps */
+  min-width: 100%; /* Ensure minimum width is full container */
+  max-width: none; /* Remove any max-width restrictions */
 }
 
+/* Add overlay for better text visibility on News page */
+.aboutHeroSection[data-page="news"] .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Center the title text for News page */
+.aboutHeroSection[data-page="news"] .title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 350;
+}
+
+@media (max-width: 768px) {
+  .aboutHeroSection[data-page="news"] .title {
+    font-size: 3rem; /* Increase from default */
+  }
+}
+
+
+/* CAREERS PAGE */
 /* Specific style for Careers page video */
 .aboutHeroSection[data-page="careers"] .backgroundVideo {
-  width: 65%;
+  width: 100%;
   clip-path: none;
-  top: -20%;
-  height: 140%;
+  top: 0;
+  height: 100%;
   object-fit: cover;
   right: 0;
+  left: 0;
+  z-index: 0;
 }
 
+/* Add overlay for better text visibility on Careers page */
+.aboutHeroSection[data-page="careers"] .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Center the title text for Careers page */
+.aboutHeroSection[data-page="careers"] .title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 350;
+}
+
+@media (max-width: 768px) {
+  .aboutHeroSection[data-page="careers"] .title {
+    font-size: 3rem; /* Increase from default */
+  }
+}
+
+
+
+/* CONTACT US PAGE */
 /* Specific style for Contact Us page video */
 .aboutHeroSection[data-page="contact"] .backgroundVideo {
-  width: 65%;
+  width: 100%;
   clip-path: none;
-  top: -20%;
-  height: 140%;
+  top: 0;
+  height: 100%;
   object-fit: cover;
   right: 0;
+  left: 0;
+  z-index: 0;
 }
+
+/* Add overlay for better text visibility on Contact page */
+.aboutHeroSection[data-page="contact"] .overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Center the title text for Contact page */
+.aboutHeroSection[data-page="contact"] .title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 350;
+}
+
+@media (max-width: 768px) {
+  .aboutHeroSection[data-page="contact"] .title {
+    font-size: 3rem; /* Increase from default */
+  }
+}
+
+
+
 
 /* Specific style for Technology page video */
 .aboutHeroSection[data-page="technology"] .backgroundVideo {
@@ -143,6 +291,124 @@
   top: 0;
   right: 0;
 }
+
+/* MARKETS PAGE - Match to Careers page styling */
+/* Specific style for Markets page video/image */
+.aboutHeroSection[data-page="markets"] .backgroundVideo {
+  width: 100vw !important;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+  clip-path: none;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Add overlay for better text visibility on Markets page */
+.aboutHeroSection[data-page="markets"] .overlay {
+  width: 100vw !important;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Center the title text for Markets page */
+.aboutHeroSection[data-page="markets"] .title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 350;
+}
+
+@media (max-width: 768px) {
+  .aboutHeroSection[data-page="markets"] .title {
+    font-size: 3rem; /* Increase from default */
+  }
+}
+
+
+/* ABOUT US PAGE*/
+.aboutHeroSection[data-page="about"] .overlay{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 110% !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+  z-index: 5 !important;
+}
+
+/* Ensure the carousel uses full width */
+.aboutHeroSection[data-page="about"] + div {
+  width: 100vw !important;
+  clip-path: none !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Fix the image carousel to match markets page */
+.aboutHeroSection[data-page="about"] ~ div[style*="position: absolute"] {
+  width: 100% !important;
+  clip-path: none !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  top: -30px !important; 
+}
+
+/* Center the title text */
+.aboutHeroSection[data-page="about"] .title {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  z-index: 10 !important; /* Higher z-index to appear above carousel */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+  font-weight: 350 !important;
+  color: white !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .aboutHeroSection[data-page="about"] .title {
+    font-size: 3rem !important; /* Increase from default */
+  }
+}
+
+/* ABOUT US PAGE ANIMATIONS-—CONFIGURED SEPARATELY*/
+.aboutHeroSection[data-page="about"] ~ div[style*="animation: slide"] {
+  animation: slide 40s linear infinite !important;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%); /* Move exactly half the width of the original+duplicated */
+  }
+}
+
+
+
 
 .overlay {
   position: absolute;
@@ -164,10 +430,10 @@
   background-color: transparent;
 }
 
-/* Remove overlay for Markets page */
+/* Remove overlay for Markets page
 .aboutHeroSection[data-page="markets"] .overlay {
   background-color: transparent;
-}
+} */
 
 .title {
   position: relative;

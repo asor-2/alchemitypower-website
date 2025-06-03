@@ -51,9 +51,9 @@ function App() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  if (isScreenTooSmall) {
-    return <ScreenSizeWarning />;
-  }
+  // if (isScreenTooSmall) {
+  //   return <ScreenSizeWarning />;
+  // }
 
   return (
     <Router>

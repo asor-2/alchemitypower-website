@@ -44,7 +44,7 @@ function Contact() {
               color: '#25abe0',
               fontWeight: '500'
             }}>
-              Contact Us
+              We would love to hear from you! 
             </h2>
             <p style={{ 
               color: '#ffffff',
@@ -53,7 +53,9 @@ function Contact() {
               marginBottom: '1.5rem',
               maxWidth: '800px'
             }}>
-              Interested to invest? <br/> Have questions about pre-ordering our system or a general inquiry about our technology, products or interested in learning more? <br/> We would love to hear from you.
+              Interested to invest? <br/> 
+              Have questions about pre-ordering our system or a general inquiry about our technology, products or interested in learning more? <br/> 
+              Fill out the form below. 
             </p>
 
             <div className={styles.infoBlock}>
