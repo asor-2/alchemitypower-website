@@ -57,7 +57,7 @@ const PlantInfoSection = () => {
       icon: <FaCloud />,
       value: "> 400%",
       label: "Lower CO₂ Emission",
-      description: "Reduced emissions by at least 400% on today's grid. The process is carbon-negative with renewables."
+      description: "Reduces emissions by at least 400% on today's grid. The process is carbon-negative with renewables."
     },
     {
       icon: <FaDollarSign />,
