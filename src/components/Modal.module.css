@@ -179,4 +179,68 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (max-width: 1150px) {
+  .modalContent {
+    width: 90%;
+    max-width: 500px;
+    min-width: 300px;
+    padding: 1.5rem;
+  }
+
+  .modalContentLarge {
+    max-width: 700px;
+    min-width: 400px;
+  }
+
+  .modalContentXLarge {
+    max-width: 750px;
+    min-width: 400px;
+  }
+
+  .modalContentXXLarge {
+    max-width: 900px;
+    min-width: 500px;
+  }
+
+  .modalTitle {
+    font-size: 1.3rem;
+  }
+
+  .modalBody {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95%;
+    max-width: 400px;
+    min-width: 280px;
+    padding: 1.2rem;
+  }
+
+  .modalContentLarge {
+    max-width: 500px;
+    min-width: 300px;
+  }
+
+  .modalContentXLarge {
+    max-width: 550px;
+    min-width: 300px;
+  }
+
+  .modalContentXXLarge {
+    max-width: 600px;
+    min-width: 350px;
+  }
+
+  .modalTitle {
+    font-size: 1.2rem;
+  }
+
+  .modalBody {
+    font-size: 0.95rem;
+  }
 } 

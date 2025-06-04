@@ -1069,7 +1069,7 @@ function Products() {
   };
 
   return (
-    <div className={styles.responsiveContainer} style={{ overflow: 'hidden', width: '100%', position: 'relative' }}>
+    <div className={styles.responsiveContainer}>
       <PageHero 
         backgroundVideoUrl={productVideo}
         title="Products"
@@ -1081,7 +1081,8 @@ function Products() {
         backgroundColor: '#000000', 
         overflow: 'hidden',
         width: '100%',
-        position: 'relative'
+        position: 'relative',
+        boxSizing: 'border-box'
       }}>
         <motion.div ref={valueRef} variants={sectionVariants} initial="hidden" animate={valueInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
@@ -1090,7 +1091,8 @@ function Products() {
               color: '#25abe0',
               marginBottom: '2.5rem',
               textAlign: 'center',
-              fontWeight: '500'
+              fontWeight: '500',
+              width: '100%'
             }}>Larger Product Output, Lower Emissions, Higher Efficiency </h2>
             <div className={styles.valuePropositionContainer}>
               {[
@@ -1104,6 +1106,7 @@ function Products() {
                   variants={cardVariants}
                   initial="hidden"
                   animate={valueInView ? "visible" : "hidden"}
+                  style={{ width: '100%' }}
                 >
                   <Card>
                     {card.icon}
@@ -1288,16 +1291,31 @@ function Products() {
               Modular interconnection for simple augmentation and easy maintenance.
             </p>
             <p className={styles.PlantInfoDescription}>
-    
             </p>
             <motion.div
               ref={imageRef}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={imageInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
             >
               <ImageContainer className={styles.plantImageContainer}>
-                <PlantImage src={plantImage} alt="3D Design of our Chemical Plant" className={styles.plantImage} />
+                <PlantImage 
+                  src={plantImage} 
+                  alt="3D Design of our Chemical Plant" 
+                  className={styles.plantImage}
+                  style={{
+                    width: '100%',
+                    maxWidth: '1000px',
+                    margin: '0 auto',
+                    display: 'block'
+                  }}
+                />
                 <ImageOverlay>
                   <Hotspot
                     style={{ bottom: '45%', left: '32%' }}
@@ -1354,36 +1372,6 @@ function Products() {
             </motion.div>
           </div>
         </motion.div>
-{/* 
-        <motion.div ref={aiRef} variants={sectionVariants} initial="hidden" animate={aiInView ? "visible" : "hidden"}>
-          <div className={styles.sectionContainer}>
-            <div className={styles.aiSection}>
-              <div className={styles.aiTextContainer}>
-                <h2 style={{
-                  fontSize: '40px',
-                  color: '#25abe0',
-                  marginBottom: '1.2rem',
-                  textAlign: 'center',
-                  fontWeight: '500'
-                }} className={styles.sectionTitle}>Alchemity's Generative AI</h2>
-                <AIDescription className={styles.aiDescription}>
-                  Tens of Thousands Variables Screened in Minutes to Project the Lowest Cost of Produced chemicals (LCOChem) while Simulating the Lowest Lifetime Cost of Plants (Capex and Opex).
-                </AIDescription>
-                <AIDescription className={styles.aiDescription}>
-                  Ability to predict optimal system operation (and downtime/maintenance) to meet customer offtake requirements whilst minimizing the LCOChem.
-                </AIDescription>
-              </div>
-              <div className={styles.aiImageContainer}>
-                <AIImage 
-                  src={placeholder} 
-                  alt="AI Technology" 
-                  style={{ marginTop: '0.5rem' }}
-                  className={styles.aiImage}
-                />
-              </div>
-            </div>
-          </div>
-        </motion.div> */}
 
         <motion.div ref={roadmapRef} variants={sectionVariants} initial="hidden" animate={roadmapInView ? "visible" : "hidden"}>
           <RoadmapContainer>
@@ -1451,113 +1439,6 @@ function Products() {
                 }}
               />
             </div>
-            {/* Commented out the original content
-            <CompetitiveHoverText>
-              Click/Hover to learn more
-            </CompetitiveHoverText>
-            <QuadrantContainer className={competitiveStyles.quadrantContainer}>
-              <Axis orientation="horizontal" color="#e53935" />
-              <Axis orientation="vertical" color="#00B050" />
-              <Axis orientation="vertical-negative" color="#e53935" />
-              <Axis orientation="horizontal-positive" color="#00B050" />
-
-              <AxisLabel 
-                position="left-center" 
-                color="#e53935" 
-                offsetX={-3}
-                style={{
-                  '@media (min-width: 769px) and (max-width: 1024px)': {
-                    left: '-5rem'
-                  }
-                }}
-              >
-                HIGH CO₂<br/>EMISSIONS
-              </AxisLabel>
-              <AxisLabel 
-                position="bottom-center" 
-                color="#e53935" 
-                offsetY={-5}
-              >
-                HIGHER LIFETIME COST<br/>AND MASSIVE INFRASTRUCTURE
-              </AxisLabel>
-              <AxisLabel 
-                position="right-center" 
-                color="#00B050" 
-                offsetX={-3}
-                style={{
-                  '@media (min-width: 769px) and (max-width: 1024px)': {
-                    right: '-5rem'
-                  }
-                }}
-              >
-                LOW CO₂<br/>EMISSIONS
-              </AxisLabel>
-              <AxisLabel 
-                position="top-center" 
-                color="#00B050" 
-                offsetY={-5}
-              >
-                LOWER LIFETIME COST<br/>AND MODULAR SCALABILITY
-              </AxisLabel>
-
-              <AlchemityText>
-                Platform Product: unique combination of<br/>
-                chemical flexibility, low emissions and low-cost.
-              </AlchemityText>
-
-              {boxes.map((box, idx) => (
-                box.type === 'logo' ? (
-                  <img
-                    key={box.label}
-                    src={alchemityLogo}
-                    alt="Alchemity Logo"
-                    style={{
-                      position: 'absolute',
-                      left: `${box.x}%`,
-                      top: `${box.y}%`,
-                      width: 200,
-                      height: 60,
-                      objectFit: 'contain',
-                      background: 'none',
-                      border: '2px solid #25abe0',
-                      pointerEvents: 'auto',
-                      '@media (min-width: 769px) and (max-width: 1024px)': {
-                        left: box.tabletX ? `${box.tabletX}%` : `${box.x}%`,
-                      }
-                    }}
-                    className={styles.alchemityLogo}
-                  />
-                ) : (
-                  <Box
-                    key={box.label}
-                    style={{
-                      left: `${box.x}%`,
-                      top: `${box.y}%`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      minHeight: box.type === 'logo' ? 60 : undefined,
-                      borderColor: [
-                        'Electrolyzers on grid',
-                        'Ethylene Steam Crackers',
-                        'Steam Methane Reforming (SMRs)'
-                      ].includes(box.label)
-                        ? '#e53935'
-                        : box.label === 'Smaller GTL Facilities'
-                          ? '#FFFF00'
-                          : undefined,
-                      '@media (min-width: 769px) and (max-width: 1024px)': {
-                        left: box.tabletX ? `${box.tabletX}%` : `${box.x}%`,
-                      }
-                    }}
-                    className={competitiveStyles.quadrantBox}
-                  >
-                    {box.label}
-                  </Box>
-                )
-              ))}
-            </QuadrantContainer>
-            */}
           </div>
         </motion.div>
 
