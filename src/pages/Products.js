@@ -41,7 +41,7 @@ const CardContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
   }
@@ -138,11 +138,11 @@ const TimelineContainer = styled.div`
   align-items: center;
   overflow: hidden;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     overflow-x: auto;
   }
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     padding: 1rem 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -159,6 +159,12 @@ const TimelineSections = styled.div`
   justify-content: center;
   width: 100%;
   margin: 2rem auto 0 auto;
+  
+  @media (min-width: 901px) and (max-width: 1024px) {
+    justify-content: space-between;
+    width: 95%;
+    max-width: 1000px;
+  }
 `;
 
 const TimelineSection = styled.div`
@@ -172,15 +178,15 @@ const TimelineSection = styled.div`
   min-width: 200px;
   margin-top: 2rem;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     min-width: 150px;
     margin-top: 1.5rem;
   }
   
-  @media (min-width: 769px) and (max-width: 1024px) {
-    min-width: 110px;
-    width: auto;
-    padding: 0;
+  @media (min-width: 901px) and (max-width: 1024px) {
+    min-width: 150px;
+    width: 18%;
+    padding: 0 0.5rem;
     margin-top: 1.5rem;
   }
   
@@ -225,14 +231,14 @@ const TimelineImage = styled.div`
     transform: translateY(-5px);
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     width: 150px;
     height: 150px;
   }
   
-  @media (min-width: 769px) and (max-width: 1024px) {
-    width: 120px;
-    height: 120px;
+  @media (min-width: 901px) and (max-width: 1024px) {
+    width: 150px;
+    height: 150px;
   }
   
   @media (min-width: 1025px) and (max-width: 1440px) {
@@ -255,7 +261,7 @@ const TimelineImage = styled.div`
     font-size: 2rem;
     font-weight: 600;
     
-    @media (min-width: 769px) and (max-width: 1024px) {
+    @media (min-width: 901px) and (max-width: 1024px) {
       font-size: 1.4rem;
     }
     
@@ -337,7 +343,7 @@ const TimelineTitle = styled.h3`
   text-align: center;
   font-weight: 600;
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     font-size: 1rem;
     margin: 1.5rem 0 0.2rem 0;
   }
@@ -349,7 +355,7 @@ const TimelineYear = styled.p`
   margin: 0.2rem 0 0 0;
   text-align: center;
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     font-size: 0.9rem;
   }
 `;
@@ -360,7 +366,7 @@ const CompetitiveSection = styled.section`
   padding: 2rem;
   background: #000;
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     max-width: 95%;
   }
   
@@ -399,7 +405,7 @@ const CompetitiveHoverText = styled.p`
   margin-top: 0;
   margin-bottom: -3.5rem;
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     margin-bottom: -2rem;
   }
 `;
@@ -414,7 +420,7 @@ const QuadrantContainer = styled.div`
   overflow: visible;
 
 
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     height: 800px;
   }
   
@@ -440,7 +446,7 @@ const Box = styled.div`
   transition: none;
   box-shadow: none;
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     min-width: 150px;
     max-width: 220px;
     padding: 0.8rem 1rem;
@@ -470,7 +476,7 @@ const AlchemityText = styled.div`
   z-index: 3;
   white-space: nowrap;
   
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 901px) and (max-width: 1024px) {
     min-width: 400px;
     max-width: 2000px;
     padding: 1.5rem 1.8rem;
@@ -691,7 +697,7 @@ const AIDescription = styled.p`
   margin-left: auto;
   margin-right: auto;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 1.3rem;
     margin-bottom: 1rem;
   }
@@ -709,7 +715,7 @@ const AIImage = styled.img`
   margin: 2rem auto;
   border-radius: 8px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     max-width: 90%;
     margin: 1rem auto;
   }
@@ -778,7 +784,7 @@ const DescriptionText = styled.p`
   margin: -2rem auto 3rem auto;
   line-height: 1.6;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 1.3rem;
     margin: -1rem auto 2rem auto;
   }
@@ -801,7 +807,7 @@ const SectionSpacing = styled.div`
   max-width: 1200px;
   padding: 0 2rem;
   
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     margin: 3rem auto;
     padding: 0 1.5rem;
   }

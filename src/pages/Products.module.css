@@ -273,8 +273,8 @@
   }
 }
 
-/* Media Query for Tablet (768px) */
-@media (max-width: 768px) {
+/* Media Query for Mobile (900px) */
+@media (max-width: 900px) {
   .sectionContainer {
     padding: 0 1rem;
   }
@@ -399,8 +399,8 @@
   }
 }
 
-/* Media Query for iPad/Tablet (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* Media Query for iPad/Tablet (901px - 1024px) */
+@media (min-width: 901px) and (max-width: 1024px) {
   .sectionTitle {
     font-size: 36px;
   }
@@ -417,6 +417,7 @@
   .roadmapContainer {
     max-width: 100%;
     padding: 2rem 1rem;
+    margin: 4rem auto 2rem auto;
   }
   
   .timelineContainer {
@@ -426,6 +427,7 @@
     -ms-overflow-style: none;
     justify-content: center;
     padding: 0;
+    width: 100%;
   }
   
   .timelineContainer::-webkit-scrollbar {
@@ -433,60 +435,31 @@
   }
   
   .timelineSections {
-    justify-content: center;
-    gap: 0.2rem;
+    justify-content: space-between;
     max-width: 95%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
   }
   
   .timelineSection {
-    min-width: 110px;
-    width: 19%;
-    padding: 0 0.1rem;
+    min-width: 150px;
+    width: 18%;
+    padding: 0 0.5rem;
     margin-top: 3.5rem;
+    flex-shrink: 0;
   }
   
   .timelineImage {
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
   }
   
   .timelineImage span {
     font-size: 1.4rem;
-  }
-  
-  .aiSection {
-    gap: 2rem;
-  }
-}
-
-/* Media Query for Laptop (1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .sectionTitle {
-    font-size: 36px;
-  }
-
-  .valuePropositionContainer {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .gtchemContainer {
-    gap: 1.5rem;
-  }
-  
-  .timelineSections {
-    gap: 1rem;
-  }
-  
-  .timelineSection {
-    min-width: 180px !important;
-  }
-  
-  .timelineImage {
-    width: 180px !important;
-    height: 180px !important;
   }
   
   .aiSection {
