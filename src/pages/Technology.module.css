@@ -70,8 +70,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    padding: 2rem 0.5rem;
-    max-width: 1200px;
+    padding: 2rem;
+    /* max-width: 1200px; */
     margin: 0 auto;
   }
   

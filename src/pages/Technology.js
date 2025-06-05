@@ -412,7 +412,7 @@ function Technology() {
         <div className={styles1.cardsContainer}>
           {[
             {
-              title: "35 Years of R&D + $20M",
+              title: "35 Years of s R&D + $20M",
               image: rd,
               text: "Alchemity holds exlusive license to 32 patents.",
               imageStyle: {
@@ -436,7 +436,12 @@ function Technology() {
           ].map((card, index) => (
             <motion.div
               key={index}
-              style={cardStyle}
+              style={{
+                ...cardStyle,
+                // backgroundColor: index % 2 === 0 ? '#1F2B33' : '#2A2A2A',
+                margin: 0,
+                width: '100%',
+              }}
               custom={index}
               variants={cardVariants}
               initial="hidden"
