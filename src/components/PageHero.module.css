@@ -53,13 +53,52 @@
   background-repeat: no-repeat;
 }
 
+/* KEYFRAMES: slide animation */
 @keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.imagesLoopWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 120%;
+  overflow: hidden;
+  clip-path: polygon(20% 0,100% 0,100% 100%,20% 100%);
+  z-index: 1;
+  margin-top: -5%;
+  display: flex;
+  align-items: center;
+}
+
+.imagesSlide {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0 2rem;
+  width: max-content;
+  height: 100%;
+  animation: slide 55s linear infinite;
+}
+
+.imageWrapper {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.heroImage {
+  width: 650px;
+  height: 650px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 }
 
 /* Specific style for Markets page */
@@ -108,7 +147,7 @@
   z-index: 1;
 }
 
-/* Specific style for Technology page */
+/* TECHNOLOGY PAGE */
 .aboutHeroSection[data-page="technology"] .backgroundImage {
   background-position: left center;
   width: 65%;
@@ -391,24 +430,15 @@
   .aboutHeroSection[data-page="about"] .title {
     font-size: 3rem !important; /* Increase from default */
   }
+  .imagesLoopWrapper {
+    margin-top: -20%;
+  }
 }
 
 /* ABOUT US PAGE ANIMATIONS-—CONFIGURED SEPARATELY*/
 .aboutHeroSection[data-page="about"] ~ div[style*="animation: slide"] {
   animation: slide 40s linear infinite !important;
 }
-
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(50%); /* Move exactly half the width of the original+duplicated */
-  }
-}
-
-
-
 
 .overlay {
   position: absolute;

@@ -13,6 +13,7 @@ import styles from '../components/ProfileCard.module.css';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import reactionanima from '../components/images/reactionanima.mov';
+import styles1 from './Technology.module.css';
 
 const sectionStyle = {
   padding: 'var(--section-padding)',
@@ -27,25 +28,6 @@ const titleStyle = {
   marginBottom: '3rem',
   textAlign: 'center',
   fontWeight: '500',
-};
-
-const cardsContainerStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  gap: '2rem',
-  padding: '2rem 0.5rem',
-  maxWidth: '1200px',
-  margin: '0 auto',
-  
-  '@media (max-width: 768px)': {
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '1.5rem',
-  },
-  
-  '@media (min-width: 2560px)': {
-    maxWidth: '2000px',
-    gap: '3rem',
-  }
 };
 
 const cardStyle = {
@@ -427,7 +409,7 @@ function Technology() {
         videoRef={heroVideoRef}
       />
       <div style={sectionStyle}>
-        <div style={cardsContainerStyle}>
+        <div className={styles1.cardsContainer}>
           {[
             {
               title: "35 Years of R&D + $20M",

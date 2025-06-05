@@ -13,6 +13,7 @@ import advisor2 from '../components/images/advisor2.jpg';
 import advisor3 from '../components/images/advisor3.jpg';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import styles from '../components/PageHero.module.css';
 
 const founders = [
   {
@@ -122,7 +123,7 @@ const founderGridStyle = {
   ...gridStyle,
   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
   maxWidth: '1200px',
-  gap: '3rem'
+  gap: '3rem',
 };
 
 const advisorGridStyle = {
@@ -144,7 +145,7 @@ const buttonStyle = {
 };
 
 const titleStyle = {
-  fontSize: '40px',
+  fontSize: '45px',
   color: '#25abe0',
   marginBottom: '3rem',
   marginTop: '5rem',
@@ -197,112 +198,56 @@ function About() {
 
   return (
     <>
-      <style>
-        {`
+      {/* <style>
+        {
           @keyframes slide {
             0% {
-              transform: translateX(-11.33%);
+              transform: translateX(0);
             }
             100% {
-              transform: translateX(-83.33%);
+              transform: translateX(-50%);
             }
           }
-        `}
-      </style>
+      </style> */}
       <div style={{ position: 'relative' }}>
-        <PageHero 
-          title="About Us"
-          style={{ marginTop: '-300px', position: 'relative', zIndex: 2 }}
-        />
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: '80%',
-          height: '120%',
-          overflow: 'hidden',
-          clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 20% 100%)',
-          zIndex: 1,
-          marginTop: '-29px',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <div style={{
-            display: 'flex',
-            gap: '0',
-            animation: 'slide 55s linear infinite',
-            alignItems: 'center',
-            margin: 0,
-            padding: '0 2rem',
-            width: 'max-content',
-            height: '100%',
-            transform: 'translateX(0)'
-          }}>
-            {images.map((image, index) => (
-              <div key={index} style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                padding: '0',
-                marginTop: '40px',
-                paddingBottom: '40px',
-                flexShrink: 0
-              }}>
-                <img
-                  src={image}
-                  alt={`About ${index + 1}`}
-                  style={{
-                    width: '650px',
-                    height: '650px',
-                    objectFit: 'contain',
-                    flexShrink: 0,
-                    marginBottom: '0.5rem',
-                    opacity: 1
-                  }}
-                />
-              </div>
-            ))}
-            {images.map((image, index) => (
-              <div key={`duplicate-${index}`} style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                padding: '0',
-                marginTop: '40px',
-                paddingBottom: '40px',
-                flexShrink: 0
-              }}>
-                <img
-                  src={image}
-                  alt={`About ${index + 1}`}
-                  style={{
-                    width: '650px',
-                    height: '650px',
-                    objectFit: 'contain',
-                    flexShrink: 0,
-                    marginBottom: '0.5rem',
-                    opacity: 1
-                  }}
-                />
+        <PageHero title="About Us" style={{ marginTop: '200px', position: 'relative', zIndex: 2 }} />
+
+        <div className={styles.imagesLoopWrapper}>
+          <div className={styles.imagesSlide}>
+            {[...images, ...images].map((src, idx) => (
+              <div key={idx} className={styles.imageWrapper}>
+                <img src={src} alt={`About ${idx % images.length + 1}`} className={styles.heroImage} />
               </div>
             ))}
           </div>
         </div>
       </div>
       <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000'}}>
-        <h2 style={{...titleStyle, marginTop: '0'}}>Founders</h2>
-        <div style={founderGridStyle}>
+        <h2 style={{...titleStyle, marginTop: '0', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Founders</h2>
+        <div style={founderGridStyle} >
           {founders.map((founder, index) => (
+          //   <div
+          //   // key={founder.id}
+            
+          // >
             <motion.div
               key={founder.name}
               custom={index}
               variants={cardVariants}
               initial="hidden"
               animate="visible"
+              style={{
+                /* Alt Blue (darker): 'rgba(27, 135, 178, 0.8)' 
+                
+                Even index- another option: rgba(62, 92, 102, 0.85)*/
+                backgroundColor: index % 2 === 0 ? 'rgba(74, 144, 164, 0.85)	' : 'rgba(34, 61, 79, 0.85)',
+                borderRadius: '1rem',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.2)',
+                height: '100%',
+                border: '2px solid rgba(255, 255, 255, 0.08)',
+                transform: 'scale(1.02)', 
+                transition: 'all 0.3s ease'
+              }}
             >
               <ProfileCard
                 key={founder.name}
@@ -311,10 +256,11 @@ function About() {
                 onClick={() => handleOpenModal(founder)}
               />
             </motion.div>
+            // </div>
           ))}
         </div>
 
-        <h2 style={{...titleStyle, marginTop: '4rem'}}>Advisors</h2>
+        <h2 style={{...titleStyle, marginTop: '4rem', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Advisors</h2>
         <div style={advisorGridStyle}>
           {advisors.map((advisor, index) => (
             <motion.div
@@ -323,6 +269,16 @@ function About() {
               variants={cardVariants}
               initial="hidden"
               animate="visible"
+
+              style={{
+                backgroundColor: index % 2 === 1 ? 'rgba(74, 144, 164, 0.85)	' : 'rgba(34, 61, 79, 0.85)',
+                borderRadius: '1rem',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.2)',
+                height: '100%',
+                border: '2px solid rgba(255, 255, 255, 0.08)',
+                transform: 'scale(1.02)', 
+                transition: 'all 0.3s ease'
+              }}
             >
               <ProfileCard
                 name={advisor.name}
