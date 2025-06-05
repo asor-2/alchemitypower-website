@@ -101,7 +101,7 @@ function Sponsors() {
           className={styles.description}
           variants={itemVariants}
         >
-          Revolutionizing beyond-net-zero chemical & fuels production requires a strong ecosystem.
+          Revolutionizing beyond-net-zero chemicals & fuels production requires a strong ecosystem.
         </motion.p>
         
         <motion.div 
