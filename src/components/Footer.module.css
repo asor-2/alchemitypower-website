@@ -1,6 +1,6 @@
 .footer {
   padding: 2.5rem var(--base-padding); /* More padding */
-  background-color: #11181F; /* Updated - Dark background */
+  background-color: #121212; /* Updated - Dark background */
   color: var(--background-light); /* Light text */
   text-align: center;
   font-size: 0.9rem;
@@ -8,7 +8,7 @@
 }
 
 .footer:hover {
-  background-color: #121212;
+  background-color: #11181F;
 }
 
 .companyName {
