@@ -41,9 +41,21 @@ const CardContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  @media (max-width: 1150px) {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+  }
+  
+  @media (max-width: 890px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0;
+    max-width: 650px;
+    margin: 0 auto 4rem auto;
+    width: 95%;
+    justify-items: center;
   }
   
   @media (min-width: 2560px) {
@@ -84,6 +96,29 @@ const Card = styled.div`
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
     text-align: center;
+  }
+
+  @media (max-width: 890px) {
+    padding: 3rem 2.5rem 2rem 2.5rem;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
   }
 `;
 
@@ -138,11 +173,13 @@ const TimelineContainer = styled.div`
   align-items: center;
   overflow: hidden;
   
-  @media (max-width: 900px) {
-    overflow-x: auto;
+  @media (max-width: 890px) {
+    overflow-x: visible;
+    overflow-y: visible;
+    padding: 1rem 0;
   }
   
-  @media (min-width: 901px) and (max-width: 1024px) {
+  @media (min-width: 891px) and (max-width: 1024px) {
     padding: 1rem 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -160,7 +197,14 @@ const TimelineSections = styled.div`
   width: 100%;
   margin: 2rem auto 0 auto;
   
-  @media (min-width: 901px) and (max-width: 1024px) {
+  @media (max-width: 890px) {
+    flex-direction: column;
+    gap: 3rem;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  @media (min-width: 891px) and (max-width: 1024px) {
     justify-content: space-between;
     width: 95%;
     max-width: 1000px;
@@ -178,12 +222,14 @@ const TimelineSection = styled.div`
   min-width: 200px;
   margin-top: 2rem;
   
-  @media (max-width: 900px) {
-    min-width: 150px;
-    margin-top: 1.5rem;
+  @media (max-width: 890px) {
+    width: 100%;
+    min-width: auto;
+    margin-top: 0;
+    padding: 0;
   }
   
-  @media (min-width: 901px) and (max-width: 1024px) {
+  @media (min-width: 891px) and (max-width: 1024px) {
     min-width: 150px;
     width: 18%;
     padding: 0 0.5rem;
@@ -231,12 +277,14 @@ const TimelineImage = styled.div`
     transform: translateY(-5px);
   }
   
-  @media (max-width: 900px) {
-    width: 150px;
-    height: 150px;
+  @media (max-width: 890px) {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    border-radius: 12px;
   }
   
-  @media (min-width: 901px) and (max-width: 1024px) {
+  @media (min-width: 891px) and (max-width: 1024px) {
     width: 150px;
     height: 150px;
   }
@@ -261,7 +309,11 @@ const TimelineImage = styled.div`
     font-size: 2rem;
     font-weight: 600;
     
-    @media (min-width: 901px) and (max-width: 1024px) {
+    @media (max-width: 890px) {
+      font-size: 3rem;
+    }
+    
+    @media (min-width: 891px) and (max-width: 1024px) {
       font-size: 1.4rem;
     }
     
@@ -343,7 +395,12 @@ const TimelineTitle = styled.h3`
   text-align: center;
   font-weight: 600;
   
-  @media (min-width: 901px) and (max-width: 1024px) {
+  @media (max-width: 890px) {
+    font-size: 1.6rem;
+    margin: 1.6rem 0 0.3rem 0;
+  }
+  
+  @media (min-width: 891px) and (max-width: 1024px) {
     font-size: 1rem;
     margin: 1.5rem 0 0.2rem 0;
   }
@@ -355,7 +412,11 @@ const TimelineYear = styled.p`
   margin: 0.2rem 0 0 0;
   text-align: center;
   
-  @media (min-width: 901px) and (max-width: 1024px) {
+  @media (max-width: 890px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (min-width: 891px) and (max-width: 1024px) {
     font-size: 0.9rem;
   }
 `;
@@ -623,12 +684,12 @@ const Hotspot = styled(motion.div)`
 `;
 
 const HotspotDot = styled.div`
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: #25abe0;
   position: relative;
-  box-shadow: 0 0 0 4px rgba(37, 171, 224, 0.3);
+  box-shadow: 0 0 0 3px rgba(37, 171, 224, 0.3);
   animation: pulse 2s infinite;
 
   @keyframes pulse {
@@ -636,7 +697,7 @@ const HotspotDot = styled.div`
       box-shadow: 0 0 0 0 rgba(37, 171, 224, 0.6);
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(37, 171, 224, 0);
+      box-shadow: 0 0 0 8px rgba(37, 171, 224, 0);
     }
     100% {
       box-shadow: 0 0 0 0 rgba(37, 171, 224, 0);
@@ -913,7 +974,7 @@ function Products() {
       description: ""
     },
     1: {
-      title: "Modular skiSkid",
+      title: "Modular Skid",
       description: ""
     },
     2: {
@@ -925,7 +986,7 @@ function Products() {
       description: ""
     },
     4: {
-      title: "Fedstock delivery",
+      title: "Feedstock delivery",
       description: ""
     }
   };
@@ -978,44 +1039,71 @@ function Products() {
       <div style={{ 
         padding: '0.5rem 1.5rem 0.5rem 1.5rem', 
         color: '#ffffff',
-        maxHeight: '70vh',
-        overflowY: 'auto'
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           gap: '2rem',
-          alignItems: 'start'
+          maxWidth: '1400px',
+          margin: '0 auto',
+          width: '100%'
         }}>
-          <div>
-            <h3 style={{ color: '#25abe0', fontSize: '1.4rem', marginBottom: '1rem', marginTop: '0' }}>GTChem-1</h3>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.5', marginBottom: '1rem' }}>
-              GTChem-1 is Alchemity's first flagship product—a modular, turnkey skid-mounted platform designed to produce clean, drop-in chemicals and fuels with zero CO₂ emissions. GTChem-1 enables flexible deployment through a series of integrated modular skids, making it ideal for both greenfield and brownfield installations producing chemicals at quantities between 1 to 40 tons per day (TPD).
-            </p>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.5', marginBottom: '1rem' }}>
-              The platform delivers high operational efficiency with up to 95% system availability and is engineered with multiple layers of safety and redundancy. GTChem-1 offers product flexibility, low maintenance requirements, and streamlined module augmentation to meet evolving production needs. Alchemity is looking for investment and accepting pre-orders.
-            </p>
-          </div>
-          <div>
+          <div style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
             <img 
               src={skiddo} 
               alt="GTChem Skid" 
               style={{
                 width: '100%',
+                maxWidth: '600px',
                 height: 'auto',
                 objectFit: 'contain',
-                marginBottom: '1rem',
-                marginTop: '2.5rem'
+                borderRadius: '8px'
               }} 
             />
           </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+          <div style={{
+            textAlign: 'center',
+            maxWidth: '1400px',
+            width: '100%'
+          }}>
+            <h3 style={{ 
+              color: '#25abe0', 
+              fontSize: '1.6rem', 
+              marginBottom: '1.5rem',
+              fontWeight: '600'
+            }}>GTChem-1</h3>
+            <p style={{ 
+              fontSize: '1.3rem', 
+              lineHeight: '1.6', 
+              marginBottom: '0.5rem',
+              color: '#ffffff'
+            }}>
+              GTChem-1 is Alchemity's first flagship product—a modular, turnkey skid-mounted platform designed to produce clean, drop-in chemicals and fuels with zero CO₂ emissions. GTChem-1 enables flexible deployment through a series of integrated modular skids, making it ideal for both greenfield and brownfield installations producing chemicals at quantities between 1 to 40 tons per day (TPD).
+            </p>
+            <p style={{ 
+              fontSize: '1.3rem', 
+              lineHeight: '1.6', 
+              marginBottom: '0.5rem',
+              color: '#ffffff'
+            }}>
+              The platform delivers high operational efficiency with up to 95% system availability and is engineered with multiple layers of safety and redundancy. GTChem-1 offers product flexibility, low maintenance requirements, and streamlined module augmentation to meet evolving production needs. Alchemity is looking for investment and accepting pre-orders.
+            </p>
+          </div>
           <div style={{
             display: 'flex',
-            gap: '2rem',
             justifyContent: 'center',
-            width: '100%'
+            width: '100%',
+            marginTop: '0.2rem',
+            marginBottom: '1rem'
           }}>
             <Link 
               to="/contact"
@@ -1038,7 +1126,7 @@ function Products() {
                 border: '2px solid transparent',
                 cursor: 'pointer',
                 width: 'fit-content',
-                minWidth: '130px'
+                minWidth: '180px'
               }}
               className={styles.preOrderButton}
               onMouseOver={(e) => {
@@ -1359,7 +1447,7 @@ function Products() {
                     className={styles.hotspot}
                   >
                     <HotspotDot />
-                    <HotspotTooltip>
+                    <HotspotTooltip style={{ left: '-100px' }}>
                       <h4>{hotspotDetails[1].title}</h4>
                     </HotspotTooltip>
                   </Hotspot>

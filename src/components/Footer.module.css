@@ -72,7 +72,42 @@
   max-width: 1200px;
   width: 95%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 } 
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #25abe0;
+  padding-bottom: 1rem;
+}
+
+.popupHeader h3 {
+  margin-bottom: 0 !important;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #25abe0;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+}
+
+.closeButton:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
 
 /* LinkedIn mobile styling */
 @media (max-width: 768px) {

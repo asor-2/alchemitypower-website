@@ -690,7 +690,7 @@ function Markets() {
           marginBottom: '2rem',
           fontWeight: 'bold'
         }} className={styles.marketInstructions}>
-          Click over each market card to learn how Alchemity contributes.
+          Scroll & Click over each market card to learn how Alchemity contributes.
         </p>
         <div 
           ref={carouselRef}
