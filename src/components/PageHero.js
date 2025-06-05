@@ -4,6 +4,7 @@ import styles from './PageHero.module.css';
 function PageHero({ title, backgroundImageUrl, backgroundVideoUrl, videoRef, videoStyle, titleStyle }) {
   const sectionClass = (title === 'About Us' || title === 'Markets' || title === 'Technology' || title === 'Careers' || title === 'Contact Us' || title === 'Products' || title === 'News') ? styles.aboutHeroSection : styles.heroSection;
   const pageType = title === 'Markets' ? 'markets' : 
+                  title === 'About Us' ? 'about' : 
                   title === 'Technology' ? 'technology' : 
                   title === 'Products' ? 'products' :
                   title === 'News' ? 'news' :
@@ -49,4 +50,4 @@ function PageHero({ title, backgroundImageUrl, backgroundVideoUrl, videoRef, vid
   );
 }
 
-export default PageHero; 
+export default PageHero;

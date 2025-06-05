@@ -33,6 +33,27 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [isScreenTooSmall, setIsScreenTooSmall] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsScreenTooSmall(window.innerWidth <= 1150);
+    };
+
+    // Check initially
+    checkScreenSize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // if (isScreenTooSmall) {
+  //   return <ScreenSizeWarning />;
+  // }
+
   return (
     <Router>
       <div className="App">

@@ -1,6 +1,6 @@
 .footer {
   padding: 2.5rem var(--base-padding); /* More padding */
-  background-color: #000000; /* Dark background */
+  background-color: #11181F; /* Updated - Dark background */
   color: var(--background-light); /* Light text */
   text-align: center;
   font-size: 0.9rem;
@@ -73,3 +73,19 @@
   width: 95%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 } 
+
+/* LinkedIn mobile styling */
+@media (max-width: 768px) {
+  .mobileLinkedin {
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  .mobileLinkedin a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+}

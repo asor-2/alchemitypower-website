@@ -193,7 +193,7 @@ function VideoSection() {
         muted 
         loop 
         playsInline
-        className={styles.styledVideo}
+        className={styles.styledVideo} 
         ref={videoRef}
         poster={videoPoster}
       >

@@ -65,3 +65,30 @@
     font-size: 1.2rem;
     line-height: 1.8;
   }
+  
+  .cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+  }
+  
+  .responsiveSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .cardsContainer {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  
+    .responsiveSection {
+      grid-template-columns: 1fr; /* Stack on mobile */
+    }
+  }

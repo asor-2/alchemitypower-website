@@ -1,6 +1,6 @@
 .section {
   padding: 2rem;
-  max-width: 400px; /* Reduced from 500px */
+  max-width: 100%; 
   margin: 3rem auto; /* Add vertical margin */
   border: 1px solid #ffffff;
   border-radius: 8px;
