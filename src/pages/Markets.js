@@ -17,6 +17,19 @@ import ethane from '../components/images/ethane.png';
 import syngas from '../components/images/syngas.png';
 import benzene from '../components/images/benzene.png';
 
+import marketsVideo from '../components/images/markets_video.mov';
+
+
+const videoStyle = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  zIndex: 0
+}
+
 const sectionStyle = {
   padding: 'var(--section-padding)',
   margin: '0 auto',
@@ -636,9 +649,10 @@ function Markets() {
       <div style={{ position: 'relative' }}>
         <PageHero 
           title="Markets"
-          style={{ marginTop: '-300px' }}
+          videoStyle={videoStyle}
+          backgroundVideoUrl={marketsVideo}
         />
-        <div style={heroCarouselStyle} className={styles.heroCarouselContainer}>
+        {/* <div style={heroCarouselStyle} className={styles.heroCarouselContainer}>
           <div style={heroCarouselTrackStyle}>
             {heroImages.map((item, index) => (
               <div key={index} style={heroImageContainerStyle}>
@@ -663,7 +677,7 @@ function Markets() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <div style={sectionStyle} className={styles.sectionContainer}>
         <p style={highlightTextStyle} className={styles.highlightText}>

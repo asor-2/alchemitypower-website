@@ -361,14 +361,14 @@
 }
 
 /* Add overlay for better text visibility on Markets page */
-.aboutHeroSection[data-page="markets"] .overlay {
+/* .aboutHeroSection[data-page="markets"] .overlay {
   width: 100vw !important;
   max-width: none !important;
   left: 0 !important;
   right: 0 !important;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
-}
+} */
 
 /* Center the title text for Markets page */
 .aboutHeroSection[data-page="markets"] .title {
@@ -453,19 +453,20 @@
 /* Center the title text */
 .aboutHeroSection[data-page="about"] .title {
   position: absolute !important;
-  top: 40% !important; /* Position at 50% from top */
+  top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   text-align: center !important;
   width: 90% !important;
   max-width: 100% !important;
   margin: 0 auto !important;
-  z-index: 10 !important; /* Higher z-index to appear above carousel */
+  z-index: 10 !important; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
   font-weight: 350 !important;
   color: white !important;
   font-size: 3rem;
 }
+
 @media (min-width: 601px) and (max-width: 1024px) {
   .aboutHeroSection[data-page="about"] .overlay {
     height: 100% !important;
@@ -482,7 +483,7 @@
   }
 
   .aboutHeroSection[data-page="about"] .title {
-    top: 30% !important;
+    top: 50% !important;
     transform: translate(-50%, -50%) !important;
   }
 }
@@ -541,7 +542,7 @@
 @media (max-width: 768px) {
   .aboutHeroSection[data-page="about"] .title {
     /* font-size: 3rem !important; Increase from default */
-    top: 30% !important;
+    top: 50% !important;
     transform: translate(-50%, -50%) !important;
   }
 
