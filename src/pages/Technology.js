@@ -15,6 +15,44 @@ import { useInView } from 'react-intersection-observer';
 import reactionanima from '../components/images/reactionanima.mov';
 import styles1 from './Technology.module.css';
 
+const responsiveModalContentStyle = {
+  display: 'flex',
+  gap: '2rem',
+  alignItems: 'flex-start',
+  width: '100%',
+  maxWidth: '3000px',
+  margin: '0 auto',
+  padding: '0',
+  '@media (max-width: 768px)': {
+    flexDirection: 'column',
+    gap: '1rem'
+  }
+};
+
+const responsiveModalColumnStyle = {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  '@media (max-width: 768px)': {
+    width: '100% !important'  // Override any inline width
+  }
+};
+
+const responsiveTextStyle = {
+  fontSize: '18px',
+  lineHeight: '1.6',
+  '@media (max-width: 768px)': {
+    fontSize: '16px',
+    lineHeight: '1.4',
+    marginTop: '1rem'
+  },
+  '@media (max-width: 480px)': {
+    fontSize: '14px',
+    lineHeight: '1.3'
+  }
+};
+
+
 const sectionStyle = {
   padding: 'var(--section-padding)',
   margin: '0 auto',
@@ -412,7 +450,7 @@ function Technology() {
         <div className={styles1.cardsContainer}>
           {[
             {
-              title: "35 Years of s R&D + $20M",
+              title: "35 Years of R&D + $20M",
               image: rd,
               text: "Alchemity holds exlusive license to 32 patents.",
               imageStyle: {
@@ -529,6 +567,7 @@ function Technology() {
           </button>
         </div>
 
+        <div className={styles1.modalContainer}>
         <Modal
           show={showDetailsModal}
           onClose={handleCloseDetailsModal}
@@ -536,8 +575,8 @@ function Technology() {
           size="xxlarge"
           showCloseButton={true}
         >
-          <div style={{...modalContentStyle, flexDirection: 'row', gap: '2rem'}}>
-            <div style={{...modalColumnStyle, width: '40%'}}>
+          <div className={styles1.responsiveModalContent}>
+            <div className={styles1.responsiveModalColumn} style={{width: '40%'}}>
               <img 
                 src={platform} 
                 alt="Platform" 
@@ -550,23 +589,20 @@ function Technology() {
                 }} 
               />
             </div>
-            <div style={{...modalColumnStyle, width: '60%'}}>
-              <div style={{
-                ...bulletPointsStyle,
-                marginTop: '2rem'
-              }}>
-                <div style={bulletPointStyle}>Non-oxidative single-step conversion of methane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.</div>
-                <div style={bulletPointStyle}>In this example methane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.</div>
-                <div style={bulletPointStyle}>Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.</div>
-                <div style={bulletPointStyle}>Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.</div>
+            <div className={styles1.responsiveModalColumn} style={{width: '60%'}}>
+              <div className={styles1.responsiveBulletPoints}>
+                <div className={styles1.bulletPoint}>Non-oxidative single-step conversion of methane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.</div>
+                <div className={styles1.bulletPoint}>In this example methane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.</div>
+                <div className={styles1.bulletPoint}>Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.</div>
+                <div className={styles1.bulletPoint}>Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.</div>
               </div>
             </div>
           </div>
         </Modal>
+        </div>
       </div>
     </>
   );
 }
 
 export default Technology;
-

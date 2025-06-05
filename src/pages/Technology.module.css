@@ -86,9 +86,184 @@
     .cardsContainer {
       grid-template-columns: 1fr;
       gap: 1.5rem;
+      padding-right: 3.5rem;
     }
   
     .responsiveSection {
       grid-template-columns: 1fr; /* Stack on mobile */
     }
   }
+
+  .modalContainer {
+    position: relative;
+    max-width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .responsiveModalContent {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 3000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .responsiveModalColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .responsiveBulletPoints {
+    margin-top: 2rem;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    padding-right: 2rem;
+  }
+  
+  .bulletPoint {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    padding: 0 1rem;
+    /* padding-right: 2rem; */
+  }
+  
+
+  /* Mobile specific styles*/
+  @media (max-width: 768px) {
+
+    .cardsContainer {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-right: 4rem;
+    }
+
+    .responsiveModalContent {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    
+    .responsiveModalColumn {
+      width: 100% !important;
+    }
+    
+    .responsiveBulletPoints {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+    
+    .bulletPoint {
+      margin-bottom: 1rem;
+    }
+
+    .responsiveModalContent {
+      max-height: 70vh; /* Limit height on mobile */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding: 0 1rem;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    
+    /* Ensure modal header stays fixed */
+    :global(.modal-header) {
+      position: sticky;
+      top: 0;
+      background-color: #000000;
+      z-index: 10;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .responsiveModalContent::after {
+      content: '';
+      display: block;
+      padding-bottom: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .responsiveBulletPoints {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    
+    .bulletPoint {
+      margin-bottom: 0.8rem;
+    }
+
+    .responsiveModalContent {
+      max-height: 65vh;
+    }
+  }
+
+
+
+  /* Tablet specific styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .responsiveModalContent {
+    max-height: 75vh; /* Slightly larger than mobile but still scrollable */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1.5rem;
+  }
+  
+  .responsiveModalColumn {
+    /* Adjust columns for better tablet layout */
+    width: 100% !important;
+  }
+  
+  /* Better layout for tablets in landscape mode */
+  @media (orientation: landscape) {
+    .responsiveModalContent {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+    
+    .responsiveModalColumn[style*="width: 40%"] {
+      width: 35% !important;
+    }
+    
+    .responsiveModalColumn[style*="width: 60%"] {
+      width: 65% !important;
+    }
+  }
+  
+  /* Better layout for tablets in portrait mode */
+  @media (orientation: portrait) {
+    .responsiveModalContent {
+      flex-direction: column;
+    }
+  }
+  
+  .responsiveBulletPoints {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  
+  /* Ensure header stays fixed on tablets too */
+  :global(.modal-header) {
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    z-index: 10;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Add padding at bottom for better scrolling experience */
+  .responsiveModalContent::after {
+    content: '';
+    display: block;
+    padding-bottom: 2rem;
+  }
+}
