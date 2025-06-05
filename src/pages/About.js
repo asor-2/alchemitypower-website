@@ -5,6 +5,9 @@ import PageHero from '../components/PageHero';
 import about1 from '../components/images/about1.png';
 import about2 from '../components/images/about2.png';
 import about3 from '../components/images/about3.png';
+
+import aboutVideo from '../components/images/about_video.mov';
+
 import founder1 from '../components/images/founder1.jpg';
 import founder2 from '../components/images/founder2.jpg';
 import founder3 from '../components/images/founder3.jpg';
@@ -166,6 +169,16 @@ const linkedinButtonStyle = {
   transition: 'background-color 0.3s ease',
 };
 
+const videoStyle = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  zIndex: 0
+}
+
 // Add animation variants after imports
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -210,9 +223,13 @@ function About() {
           }
       </style> */}
       <div style={{ position: 'relative' }}>
-        <PageHero title="About Us" style={{ marginTop: '200px', position: 'relative', zIndex: 2 }} />
+      <PageHero 
+          title="About Us"
+          videoStyle={videoStyle}
+          backgroundVideoUrl={aboutVideo}
+        />
 
-        <div className={styles.imagesLoopWrapper}>
+        {/* <div className={styles.imagesLoopWrapper}>
           <div className={styles.imagesSlide}>
             {[...images, ...images].map((src, idx) => (
               <div key={idx} className={styles.imageWrapper}>
@@ -220,7 +237,7 @@ function About() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
       <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000'}}>
         <h2 style={{...titleStyle, marginTop: '0', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Founders</h2>
