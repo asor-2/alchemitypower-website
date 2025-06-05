@@ -309,6 +309,7 @@ function About() {
               selectedPerson.name.includes('Matt') || selectedPerson.name.includes('Glenn') ? 'default' :
               'large'
             }
+            showCloseButton={true}
           >
             <ul style={{ 
               textAlign: 'left', 

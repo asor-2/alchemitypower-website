@@ -392,8 +392,18 @@ const cardVariants = {
 function Technology() {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const heroVideoRef = useRef(null);
   const animationVideoRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -447,53 +457,101 @@ function Technology() {
         videoRef={heroVideoRef}
       />
       <div style={sectionStyle}>
-        <div className={styles1.cardsContainer}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: '1.5rem',
+          padding: '0.5rem',
+          margin: '-2rem auto 0',
+          maxWidth: '1400px',
+          justifyContent: 'center',
+          '@media (max-width: 1024px)': {
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: '0.5rem',
+          }
+        }}>
           {[
             {
-              title: "35 Years of R&D + $20M",
+              title: "35 Years R&D + $20M",
               image: rd,
-              text: "Alchemity holds exlusive license to 32 patents.",
-              imageStyle: {
-                ...imageStyle,
-                objectFit: 'cover',
-                objectPosition: 'center 60%'
-              }
+              text: "Alchemity holds exlusive license to 32 patents."
             },
             {
               title: "Extensively Validated",
               image: validated,
-              text: "In labs & via industrial investment committees.",
-              imageStyle: imageStyle
+              text: "In labs & via industrial investment committees."
             },
             {
               title: "Scalable",
               image: scalable,
-              text: "Demo system design completed & ready for fabrication.",
-              imageStyle: imageStyle
+              text: "Demo system design completed & ready for fabrication."
             }
           ].map((card, index) => (
             <motion.div
               key={index}
               style={{
-                ...cardStyle,
-                // backgroundColor: index % 2 === 0 ? '#1F2B33' : '#2A2A2A',
-                margin: 0,
-                width: '100%',
+                background: '#141414',
+                padding: '2rem',
+                borderRadius: '8px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '1.5rem',
+                transition: 'transform 0.3s ease',
+                width: 'calc(33.333% - 1rem)',
+                minWidth: '280px',
+                maxWidth: '350px',
+                '&:hover': {
+                  transform: 'translateY(-5px)'
+                },
+                '@media (max-width: 1024px)': {
+                  width: '100%',
+                  maxWidth: '500px'
+                }
               }}
               custom={index}
               variants={cardVariants}
               initial="hidden"
               animate="visible"
             >
-              <h3 style={cardTitleStyle}>{card.title}</h3>
-              <div style={imageContainerStyle}>
+              <h3 style={{
+                color: '#25abe0',
+                fontSize: '1.7rem',
+                fontWeight: '600',
+                textAlign: 'center',
+                margin: 0
+              }}>{card.title}</h3>
+              <div style={{
+                width: '100%',
+                height: '250px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'transparent',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
                 <img 
                   src={card.image} 
                   alt={card.title} 
-                  style={card.imageStyle} 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    backgroundColor: 'transparent'
+                  }} 
                 />
               </div>
-              <p style={cardTextStyle}>{card.text}</p>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '1.4rem',
+                lineHeight: '1.6',
+                textAlign: 'center',
+                margin: 0,
+                fontWeight: '500'
+              }}>{card.text}</p>
             </motion.div>
           ))}
         </div>
@@ -552,16 +610,21 @@ function Technology() {
 
         <div style={{
           position: 'relative',
-          height: '100px',
+          height: isMobile ? '70px' : '100px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           maxWidth: '80%',
-          margin: '-2.5rem auto 0'
+          margin: isMobile ? '-2rem auto 0' : '-2.5rem auto 0'
         }}>
           <button 
             className={styles.detailsButton}
             onClick={handleOpenDetailsModal}
+            style={{
+              padding: isMobile ? '0.6rem 1.2rem' : '1rem 2rem',
+              fontSize: isMobile ? '0.9rem' : '1.1rem',
+              minWidth: isMobile ? '100px' : '120px'
+            }}
           >
             Learn More
           </button>
@@ -575,29 +638,81 @@ function Technology() {
           size="xxlarge"
           showCloseButton={true}
         >
-          <div className={styles1.responsiveModalContent}>
-            <div className={styles1.responsiveModalColumn} style={{width: '40%'}}>
-              <img 
-                src={platform} 
-                alt="Platform" 
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  objectFit: 'contain',
-                  marginBottom: '1rem',
-                  marginTop: '1rem'
-                }} 
-              />
-            </div>
-            <div style={{...modalColumnStyle, width: '60%'}}>
+          <div style={{ 
+            padding: '0.25rem 1rem 0.25rem 1rem', 
+            color: '#ffffff',
+            maxHeight: '70vh',
+            overflowY: 'auto',
+            width: '100%',
+            boxSizing: 'border-box'
+          }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+              maxWidth: '1400px',
+              margin: '0 auto',
+              width: '100%'
+            }}>
               <div style={{
-                ...bulletPointsStyle,
-                marginTop: '2rem'
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center'
               }}>
-                <div style={bulletPointStyle}>Non-oxidative single-step conversion of biomethane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.</div>
-                <div style={bulletPointStyle}>In this example biomethane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.</div>
-                <div style={bulletPointStyle}>Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.</div>
-                <div style={bulletPointStyle}>Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.</div>
+                <img 
+                  src={platform} 
+                  alt="Platform" 
+                  style={{
+                    width: '100%',
+                    maxWidth: '500px',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    borderRadius: '8px'
+                  }} 
+                />
+              </div>
+              <div style={{
+                textAlign: 'center',
+                maxWidth: '1400px',
+                width: '100%'
+              }}>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '0.25rem',
+                  textAlign: 'center'
+                }}>
+                  Non-oxidative single-step conversion of biomethane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.
+                </div>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '0.25rem',
+                  textAlign: 'center'
+                }}>
+                  In this example biomethane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.
+                </div>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '0.25rem',
+                  textAlign: 'center'
+                }}>
+                  Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.
+                </div>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '0.25rem',
+                  textAlign: 'center'
+                }}>
+                  Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.
+                </div>
               </div>
             </div>
           </div>
