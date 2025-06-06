@@ -241,7 +241,7 @@
   margin: 0 auto;
   text-align: center;
   z-index: 2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0 20px rgba(37, 171, 224, 0.8);
   font-weight: 350;
 }
 
@@ -461,7 +461,7 @@
   max-width: 100% !important;
   margin: 0 auto !important;
   z-index: 10 !important; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: 0 0 20px rgba(37, 171, 224, 0.8);
   font-weight: 350 !important;
   color: white !important;
   font-size: 3rem;
@@ -621,3 +621,95 @@
     font-size: 2.2rem !important;
   }
 } */
+
+/* Products page responsive styles */
+@media (max-width: 1023px) {
+  .aboutHeroSection[data-page="products"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    position: relative;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+    background: #000000;
+  }
+
+  .aboutHeroSection[data-page="products"] .title {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 350;
+    order: 1;
+    font-size: 3.5rem;
+  }
+
+  .aboutHeroSection[data-page="products"] .backgroundVideo {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    margin: 2rem auto;
+    clip-path: none;
+    order: 2;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    left: -0.5%;
+    right: 0;
+  }
+
+  .aboutHeroSection[data-page="products"] .overlay {
+    display: none;
+  }
+
+  /* Additional responsive adjustments */
+  @media (max-width: 768px) {
+    .aboutHeroSection[data-page="products"] {
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+    }
+
+    .aboutHeroSection[data-page="products"] .title {
+      font-size: 2.8rem;
+    }
+
+    .aboutHeroSection[data-page="products"] .backgroundVideo {
+      max-width: 100%;
+      margin: 0.5rem auto;
+      left: -0.5%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .aboutHeroSection[data-page="products"] {
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .aboutHeroSection[data-page="products"] .title {
+      font-size: 2.2rem;
+    }
+
+    .aboutHeroSection[data-page="products"] .backgroundVideo {
+      margin: 0.25rem auto;
+    }
+  }
+}
+
+/* Portrait orientation specific for tablets and mobile */
+@media (max-width: 1023px) and (orientation: portrait) {
+  .aboutHeroSection[data-page="products"] .backgroundVideo {
+    margin: 0.5rem auto;
+  }
+}

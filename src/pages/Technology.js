@@ -58,6 +58,10 @@ const sectionStyle = {
   margin: '0 auto',
   backgroundColor: '#000000',
   textAlign: 'left',
+  '@media (max-width: 1024px)': {
+    paddingTop: '0',
+    marginTop: '-2rem'
+  }
 };
 
 const titleStyle = {
@@ -389,16 +393,33 @@ const cardVariants = {
   })
 };
 
+const responsiveTitleStyle = {
+  ...titleStyle,
+  color: '#ffffff', 
+  fontWeight: '350', 
+  fontSize: '2.8rem', 
+  letterSpacing: '-0.02em', 
+  lineHeight: '1.2',
+  '@media (max-width: 768px)': {
+    fontSize: '2.5rem',
+  },
+  '@media (max-width: 480px)': {
+    fontSize: '2.2rem',
+  }
+};
+
 function Technology() {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
   const heroVideoRef = useRef(null);
   const animationVideoRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
+      setIsTablet(window.innerWidth <= 1024);
     };
 
     window.addEventListener('resize', handleResize);
@@ -451,12 +472,46 @@ function Technology() {
 
   return (
     <>
-      <PageHero 
-        backgroundVideoUrl={herotech}
-        title="Technology"
-        videoRef={heroVideoRef}
-      />
+      <div className={styles1.heroSection}>
+        <PageHero 
+          backgroundVideoUrl={herotech}
+          title="Technology"
+          videoRef={heroVideoRef}
+        />
+      </div>
       <div style={sectionStyle}>
+        {isTablet && (
+          <>
+            <h1 style={{
+              fontSize: '60px',
+              color: '#ffffff',
+              marginTop: '-1rem',
+              textAlign: 'center',
+              fontWeight: '200',
+              textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
+            }}>Technology</h1>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              margin: '2rem 0 5rem 0'
+            }}>
+              <video 
+                ref={heroVideoRef}
+                src={herotech} 
+                style={{
+                  ...videoStyle,
+                  maxWidth: '95%',
+                  height: 'auto'
+                }} 
+                muted 
+                playsInline
+                autoPlay
+              />
+            </div>
+          </>
+        )}
         <div style={{
           display: 'flex',
           flexDirection: 'row',

@@ -227,6 +227,7 @@ function About() {
           title="About Us"
           videoStyle={videoStyle}
           backgroundVideoUrl={aboutVideo}
+          titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
         />
 
         {/* <div className={styles.imagesLoopWrapper}>

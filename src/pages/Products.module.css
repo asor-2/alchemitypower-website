@@ -233,6 +233,60 @@
   margin-right: auto;
 }
 
+/* Product Title and Video Section */
+.productHeroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 1rem;
+  width: 100%;
+  display: none; /* Hide by default for larger screens */
+}
+
+/* Show product section only on screens smaller than 1024px */
+@media (max-width: 1023px) {
+  .productHeroSection {
+    display: flex;
+  }
+}
+
+/* Hide hero section on screens smaller than 1024px */
+@media (max-width: 1023px) {
+  .heroSection {
+    display: none !important;
+  }
+}
+
+.productTitle {
+  font-size: 3.5rem;
+  color: #25abe0;
+  text-align: center;
+  font-weight: 350;
+  margin: 0;
+}
+
+/* Change title color to white for screens less than 1024px */
+@media (max-width: 1023px) {
+  .productTitle {
+    color: #ffffff;
+  }
+}
+
+.productVideoContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.productVideo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+
 /* Media Query for Mobile (890px and below) */
 @media (max-width: 890px) {
   .sectionContainer {
@@ -538,5 +592,27 @@
   .modalDescription {
     font-size: 1.8rem !important;
     max-width: 1500px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .productHeroSection {
+    padding: 1.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .productTitle {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .productHeroSection {
+    padding: 1rem 0;
+  }
+
+  .productTitle {
+    font-size: 2.2rem;
   }
 } 

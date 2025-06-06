@@ -20,6 +20,7 @@ import placeholder from '../components/images/AI.png';
 import plantImage from '../components/images/30tpd.jpg';
 import styles from './Products.module.css';
 import competitiveStyles from './CompetitiveAnalysis.module.css';
+import herotech from '../components/images/headeranim.mov';
 
 import gtchem11Video from '../components/images/gtchem11.mov';
 import gtchem12Video from '../components/images/gtchem12.mov';
@@ -918,6 +919,7 @@ function Products() {
   const [selectedHotspot, setSelectedHotspot] = useState(null);
   const [gtchem1Popup, setGtchem1Popup] = useState(false);
   const [gtchem2Popup, setGtchem2Popup] = useState(false);
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
   const [imageRef, imageInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -958,6 +960,15 @@ function Products() {
       if (gtchem11VideoRef.current) observer.unobserve(gtchem11VideoRef.current);
       if (gtchem12VideoRef.current) observer.unobserve(gtchem12VideoRef.current);
     };
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleImageClick = (item) => {
@@ -1164,20 +1175,77 @@ function Products() {
 
   return (
     <div className={styles.responsiveContainer}>
-      <PageHero 
-        backgroundVideoUrl={productVideo}
-        title="Products"
-        videoRef={heroVideoRef}
-      />
+      <div className={styles.heroSection}>
+        <PageHero 
+          backgroundVideoUrl={productVideo}
+          title="Products"
+          videoRef={heroVideoRef}
+        />
+      </div>
       <div style={{ 
         padding: 'var(--section-padding)', 
-        minHeight: '60vh', 
         backgroundColor: '#000000', 
         overflow: 'hidden',
         width: '100%',
         position: 'relative',
         boxSizing: 'border-box'
       }}>
+        {isTablet ? (
+          <>
+            <h1 style={{
+              fontSize: '60px',
+              color: '#ffffff',
+              marginTop: '-1rem',
+              textAlign: 'center',
+              fontWeight: '200',
+              textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
+            }}>Product</h1>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              margin: '2rem 0 5rem 0',
+              marginLeft: '0.3rem'
+            }}>
+              <video 
+                ref={heroVideoRef}
+                src={productVideo} 
+                style={{
+                  width: '100%',
+                  maxWidth: '95%',
+                  height: 'auto'
+                }} 
+                muted 
+                playsInline
+                autoPlay
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* New Product Title and Video Section */}
+            <div className={styles.productHeroSection}>
+              <h1 className={styles.productTitle} style={{ 
+                fontWeight: '200', 
+                fontSize: '60px',
+                textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
+              }}>
+                Product
+              </h1>
+              <div className={styles.productVideoContainer}>
+                <video 
+                  ref={heroVideoRef}
+                  src={productVideo}
+                  className={styles.productVideo}
+                  muted
+                  playsInline
+                />
+              </div>
+            </div>
+          </>
+        )}
+
         <motion.div ref={valueRef} variants={sectionVariants} initial="hidden" animate={valueInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
             <h2 style={{

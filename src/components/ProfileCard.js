@@ -20,7 +20,7 @@ function ProfileCard({ name, title, imageUrl, onClick, linkedInUrl, blurb, isAdv
         <p className={`${styles.founderTitle} ${isAdvisor ? styles.advisorTitle : ''}`}>{title}</p>
         <p className={`${styles.founderBlurb} ${isEric ? styles.ericBlurb : ''}`}>{blurb}</p>
         <div className={styles.buttonContainer}>
-          <button onClick={onClick} className={styles.detailsButton}  style={{ marginBottom: '2rem' }}>
+          <button onClick={onClick} className={styles.detailsButton} style={{ marginBottom: '2.75rem' }}>
             View Details
           </button>
         </div>

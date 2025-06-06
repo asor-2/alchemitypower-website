@@ -267,3 +267,25 @@
     padding-bottom: 2rem;
   }
 }
+
+.heroSection {
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .heroSection {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .techHeroSection {
+    padding: 1.5rem 1rem 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .techHeroSection {
+    padding: 1rem 0.5rem 2rem;
+  }
+}

@@ -123,6 +123,7 @@ function News() {
         backgroundVideoUrl={productVideo}
         title="News"
         videoStyle={videoStyle}
+        titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
       />
       <div style={sectionStyle}>
         <motion.h2 

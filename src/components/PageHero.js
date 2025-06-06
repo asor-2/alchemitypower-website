@@ -37,10 +37,10 @@ function PageHero({ title, backgroundImageUrl, backgroundVideoUrl, videoRef, vid
         </div>
       ) : null}
       <div className={styles.overlay}></div>
-      <h1 className={styles.title} style={titleStyle}>
+      <h1 className={styles.title} style={{...titleStyle, textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'}}>
         {title === 'Products' ? (
           <>
-            Product<span style={{ color: '#000000' }}>s</span>
+            Product<span style={{ color: '#000000', textShadow: 'none' }}>s</span>
           </>
         ) : (
           title
