@@ -59,7 +59,7 @@ const OurSolutionSection = () => {
               Platform technology with simplified design, on-site modularity, higher efficiency and reduced capital risk.
             </motion.p>
             <motion.p className={styles.text} variants={itemVariants}>
-              Paradigm shift – no premium for clean chemical & fuel production from biomass, biogass, landfill gas and waste gas. 
+              Paradigm shift – no premium for clean chemical & fuel production from biomass, biogas, landfill gas and waste gas. 
             </motion.p>
           </motion.div>
         </motion.div>

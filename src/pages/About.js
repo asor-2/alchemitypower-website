@@ -27,7 +27,7 @@ const founders = [
     title: 'CEO',
     blurb: '30 years as Fortune 500 Executive',
     bio: [
-      'Rodger brings expertise in building large businesses and succesful exit strategies. He successfully lead the growth of multi-billion dollar S&P 500 companies.',
+      'Rodger brings expertise in building large businesses and succesful exit strategies. He successfully led the growth of multi-billion dollar S&P 500 companies.',
       'Previous Roles:',
       'VP and Head at British Petroleum (Global Exploration, Gas to Chemicals/Liquids).',
       'Interim CEO, LG Fuel Cell Systems, Inc.',

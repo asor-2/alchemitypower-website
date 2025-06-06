@@ -550,7 +550,7 @@ function Markets() {
       isFirstMarket: true,
       marketSize: '$1.1B',
       futureMarketSize: '$62B by 2030',
-      description: 'Conventional Gas-to-Liquids (GTL) and Fischer-Tropsch technologies, can produce fuels such as Sustainable Aviation Fuel (SAF) at scale but require high capital and produce significant CO₂ without expensive capture systems. '
+      description: 'Conventional Gas-to-Liquids (GTL) and Fischer-Tropsch technologies can produce fuels such as Sustainable Aviation Fuel (SAF) at scale but requires high capital and produces significant CO₂ without expensive capture systems. '
     },
     { 
       src: hydrogen, 
@@ -795,7 +795,7 @@ function Markets() {
         }}>
           <div style={{ marginBottom: '1rem' }}>{selectedMarket?.description}</div>
           <div style={{ color: '#25abe0', marginTop: '0rem', fontSize: '1.2rem', fontWeight: '600' }}>
-            {selectedMarket?.title === 'SAF' ? "Our Platform Reactor System offers beyond zero-emission & cost-effective alternative suitable for co-located greenfield sites (SAF at the point of use), or integration with existing infrastructure - ideal for brownfield applications." : 
+            {selectedMarket?.title === 'SAF' ? "Our Platform Reactor System offers beyond zero-emission & a cost-effective alternative suitable for co-located greenfield sites (SAF at the point of use), or integration with existing infrastructure - ideal for brownfield applications." : 
              selectedMarket?.title === 'Hydrogen' ? "Our Platform Reactor System offers a cleaner alternative—producing hydrogen from biomethane via a non-oxidative process while converting carbon into valuable chemicals, strengthening U.S. energy and economic security." :
              selectedMarket?.title === 'Syngas' ? "Alchemity's Platform Reactor System offers a carbon-negative alternative, producing syngas in a single, non-oxidative step using waste biogas from biomass—delivering a cleaner, more sustainable solution." :
              "Placeholder text for additional market information"}
