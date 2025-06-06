@@ -1,6 +1,6 @@
 .footer {
   padding: 2.5rem var(--base-padding); /* More padding */
-  background-color: #121212; /* Updated - Dark background */
+  background-color: black; /* Updated - Dark background */
   color: var(--background-light); /* Light text */
   text-align: center;
   font-size: 0.9rem;
@@ -8,7 +8,7 @@
 }
 
 .footer:hover {
-  background-color: #11181F;
+  background-color: #121212;
 }
 
 .companyName {
@@ -29,6 +29,14 @@
   color: var(--text-light);
   font-size: 0.9rem;
   font-style: italic;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
 }
 
 .links a {
@@ -112,15 +120,19 @@
 /* LinkedIn mobile styling */
 @media (max-width: 768px) {
   .mobileLinkedin {
-    display: block;
-    width: 100%;
+    display: inline;
     margin: 1rem 0;
     text-align: center;
   }
-  
-  .mobileLinkedin a {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
+
+  .links {
+    flex-direction: column;
+    gap: 1rem;
   }
+  
+  /* .mobileLinkedin a {
+    display: inline-block;
+    /* padding: 0.5rem 1rem; */
+    /* text-decoration: none;
+  } */
 }

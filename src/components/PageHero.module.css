@@ -502,7 +502,7 @@
   position: relative;
   z-index: 2;
   color: white;
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin: 0;
   padding: 0;
   text-align: left;
@@ -555,7 +555,7 @@
     padding: 3rem var(--base-padding);
   }
   .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     max-width: 30%;
   }
   .backgroundImage {
@@ -601,18 +601,18 @@
 /* Small mobile screens */
 @media (max-width: 480px) {
   .aboutHeroSection[data-page="markets"] .title {
-    font-size: 2.2rem !important;
+    font-size: 3rem !important; 
   }
 }
 
 /* Landscape orientation on mobile */
 @media (max-width: 768px) and (orientation: landscape) {
   .aboutHeroSection[data-page="markets"] .title {
-    font-size: 2.5rem !important;
+    /* font-size: 3rem !important;  */
   }
 
   .aboutHeroSection[data-page="about"] .title {
-    font-size: 2.5rem !important; /* Match news landscape mobile size */
+    font-size: 3rem !important;  /* Match news landscape mobile size */
   }
 }
 

@@ -139,11 +139,9 @@ For questions about this Privacy Policy or your personal data, please contact us
       <div className={styles.links}>
         <a href="#terms" onClick={(e) => handleLinkClick(e, 'terms')}>Terms & Conditions</a>
         <a href="#privacy" onClick={(e) => handleLinkClick(e, 'privacy')}>Privacy Policy</a>
-        <div className={styles.mobileLinkedin}>
-          <a href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">
             Follow us on LinkedIn
-          </a>
-      </div>
+        </a>
       </div>
 
       {selectedPopup && (
