@@ -17,6 +17,8 @@ import advisor3 from '../components/images/advisor3.jpg';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import styles from '../components/PageHero.module.css';
+import styles1 from '../components/ProfileCard.module.css';
+import { PiAndroidLogoDuotone } from 'react-icons/pi';
 
 const founders = [
   {
@@ -124,7 +126,7 @@ const gridStyle = {
 
 const founderGridStyle = {
   ...gridStyle,
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  // gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
   maxWidth: '1200px',
   gap: '3rem',
 };
@@ -242,12 +244,8 @@ function About() {
       </div>
       <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000'}}>
         <h2 style={{...titleStyle, marginTop: '0', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Founders</h2>
-        <div style={founderGridStyle} >
+        <div style={founderGridStyle} className={styles1.foundersWrapper}>
           {founders.map((founder, index) => (
-          //   <div
-          //   // key={founder.id}
-            
-          // >
             <motion.div
               key={founder.name}
               custom={index}
@@ -274,12 +272,11 @@ function About() {
                 onClick={() => handleOpenModal(founder)}
               />
             </motion.div>
-            // </div>
           ))}
         </div>
 
         <h2 style={{...titleStyle, marginTop: '4rem', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Advisors</h2>
-        <div style={advisorGridStyle}>
+        <div style={advisorGridStyle}  className={styles1.foundersWrapper}>
           {advisors.map((advisor, index) => (
             <motion.div
               key={advisor.id}
