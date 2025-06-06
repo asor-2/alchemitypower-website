@@ -384,7 +384,7 @@
   z-index: 6;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-weight: 350;
-  font-size: 4.5rem;
+  /* font-size: 4.5rem; */
 }
 
 
@@ -573,12 +573,12 @@
     margin-left: 0.5rem;
   }
   .aboutHeroSection[data-page="markets"] .title {
-    font-size: 3rem !important; /* Match about page */
+    font-size: 3rem; /* Match about page */
   }
 
   .aboutHeroSection[data-page="news"] .title {
     font-size: 3rem !important; 
-    top: 40% !important;
+    top: 50% !important;
     transform: translate(-50%, -50%) !important;
   }
 
@@ -595,10 +595,6 @@
   .aboutHeroSection[data-page="about"] .title {
     font-size: 3rem !important; /* Increase from default */
     top: 50% !important;
-  }
-
-  .aboutHeroSection[data-page="markets"] .title {
-    font-size: 3.5rem !important;
   }
 }
 
