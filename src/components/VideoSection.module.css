@@ -116,7 +116,7 @@
   justify-content: center;
   align-items: center;
   margin: 1.5rem auto 3rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1100px;
   animation: fadeIn 1.5s ease-out forwards;
@@ -128,8 +128,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   width: 100%;
 }
 
@@ -236,54 +236,6 @@
   }
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .videoSection {
-    padding: 5rem 0;
-    min-height: 400px;
-  }
-  
-  .sectionHeading {
-    font-size: 2.5rem;
-  }
-  
-  .videoDescription {
-    font-size: 1.3rem;
-    margin: 1.5rem auto;
-  }
-  
-  .keyPhrasesContainer,
-  .keyPhrasesLine {
-    overflow-x: auto;
-    justify-content: center;
-    padding: 0.5rem 0;
-    max-width: 100%;
-  }
-  
-  .keyPhrase {
-    font-size: 1.4rem;
-    white-space: nowrap;
-  }
-
-  .phraseDot {
-    margin: 0 0.5rem;
-    font-size: 1.4rem;
-  }
-  
-  .cardTitle {
-    font-size: 2rem;
-  }
-  
-  .cardText {
-    font-size: 1.1rem;
-  }
-  
-  .mission, .vision {
-    padding: 2rem;
-    max-width: 100%;
-  }
-}
-
 /* Mission Vision Container & Cards */
 .missionVisionContainer {
   display: flex;
@@ -294,14 +246,6 @@
   animation: fadeIn 1.5s ease-out forwards;
   animation-delay: 0.8s;
   opacity: 0;
-}
-
-@media (max-width: 992px) {
-  .missionVisionContainer {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
 }
 
 .mission,
@@ -378,7 +322,7 @@
 .cardText {
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   font-weight: 300;
   text-align: center;
@@ -399,4 +343,147 @@
   background-color: rgba(37, 171, 224, 0.3);
   bottom: -2px;
   left: 0;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1150px) {
+  .videoSection {
+    padding: 6rem 0;
+    min-height: 450px;
+  }
+  
+  .sectionHeading {
+    font-size: 2.8rem;
+  }
+  
+  .videoDescription {
+    font-size: 1.5rem;
+    margin: 1.5rem auto;
+  }
+  
+  .keyPhrase {
+    font-size: 1.5rem;
+  }
+
+  .phraseDot {
+    font-size: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.7rem;
+  }
+
+  .cardText {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .videoSection {
+    padding: 4rem 0;
+    min-height: 400px;
+  }
+  
+  .sectionHeading {
+    font-size: 2.4rem;
+  }
+  
+  .videoDescription {
+    font-size: 1.4rem;
+    margin: 1.2rem auto;
+  }
+  
+  .keyPhrasesContainer {
+    margin: 1rem auto 2rem;
+  }
+  
+  .keyPhrasesLine {
+    gap: 0.3rem;
+  }
+  
+  .keyPhrase {
+    font-size: 1.4rem;
+  }
+
+  .phraseDot {
+    font-size: 1.4rem;
+    margin: 0 0.3rem;
+  }
+  
+  .missionVisionContainer {
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .mission, .vision {
+    padding: 1.5rem;
+    max-width: 280px;
+  }
+
+  .cardTitle {
+    font-size: 1.8rem;
+  }
+
+  .cardText {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoSection {
+    padding: 3rem 0;
+    min-height: 350px;
+  }
+  
+  .sectionHeading {
+    font-size: 2rem;
+  }
+  
+  .videoDescription {
+    font-size: 1.2rem;
+    margin: 1rem auto;
+  }
+  
+  .keyPhrasesContainer {
+    margin: 0.8rem auto 1.5rem;
+  }
+  
+  .keyPhrasesLine {
+    gap: 0.2rem;
+  }
+  
+  .keyPhrase {
+    font-size: 1.2rem;
+  }
+
+  .phraseDot {
+    font-size: 1.2rem;
+    margin: 0 0.2rem;
+  }
+  
+  .missionVisionContainer {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .mission, .vision {
+    padding: 1.2rem;
+    max-width: 240px;
+  }
+
+  .cardTitle {
+    font-size: 1.6rem;
+  }
+
+  .cardText {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .missionVisionContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 } 

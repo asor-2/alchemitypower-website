@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Footer.module.css'; 
+import { IoClose } from 'react-icons/io5';
 
 function Footer() {
   const [selectedPopup, setSelectedPopup] = useState(null);
@@ -138,7 +139,9 @@ For questions about this Privacy Policy or your personal data, please contact us
       <div className={styles.links}>
         <a href="#terms" onClick={(e) => handleLinkClick(e, 'terms')}>Terms & Conditions</a>
         <a href="#privacy" onClick={(e) => handleLinkClick(e, 'privacy')}>Privacy Policy</a>
-        <a href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">Follow us on Linkedin</a>
+        <a href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">
+            Follow us on LinkedIn
+        </a>
       </div>
 
       {selectedPopup && (
@@ -157,9 +160,18 @@ For questions about this Privacy Policy or your personal data, please contact us
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 style={{ color: '#25abe0', fontSize: '28px', marginBottom: '1.5rem', fontWeight: '600' }}>
-              {popupContent[selectedPopup].title}
-            </h3>
+            <div className={styles.popupHeader}>
+              <h3 style={{ color: '#25abe0', fontSize: '28px', marginBottom: '1.5rem', fontWeight: '600' }}>
+                {popupContent[selectedPopup].title}
+              </h3>
+              <button 
+                className={styles.closeButton}
+                onClick={() => setSelectedPopup(null)}
+                aria-label="Close popup"
+              >
+                <IoClose size={24} />
+              </button>
+            </div>
             <div style={{ 
               maxHeight: '70vh', 
               overflowY: 'auto',

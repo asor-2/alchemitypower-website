@@ -12,6 +12,7 @@ import newsImage6 from '../components/images/6.webp';
 import newsImage7 from '../components/images/7.jpg';
 import tedco from '../components/images/tedco.png';
 import mbia from '../components/images/mbia.png';
+import styles from './News.module.css';
 
 const sectionStyle = {
   padding: '0 0 calc(var(--section-padding) + 4rem) 0',
@@ -45,7 +46,16 @@ const articlesGridStyle = {
   gap: '2rem',
   padding: '0 2rem',
   maxWidth: '1800px',
-  margin: '-1rem auto 4rem'
+  margin: '-1rem auto 4rem',
+  '@media (max-width: 1200px)': {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '1.5rem',
+  },
+  '@media (max-width: 768px)': {
+    gridTemplateColumns: '1fr',
+    gap: '1.5rem',
+    padding: '0 1rem',
+  }
 };
 
 const articleVariants = {
@@ -113,6 +123,7 @@ function News() {
         backgroundVideoUrl={productVideo}
         title="News"
         videoStyle={videoStyle}
+        titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
       />
       <div style={sectionStyle}>
         <motion.h2 
@@ -122,7 +133,7 @@ function News() {
           transition={{ duration: 0.6 }}
         >
         </motion.h2>
-        <div style={articlesGridStyle}>
+        <div className={styles.articlesGrid}>
           {newsArticles.map((article, index) => (
             <motion.div
               key={index}

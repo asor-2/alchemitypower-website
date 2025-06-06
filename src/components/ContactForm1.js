@@ -8,7 +8,7 @@ function ContactForm() {
     lastName: '',
     email: '',
     reason: '',
-    affiliation: '',
+    affiliation: '',    
     message: '',
   });
 
@@ -216,5 +216,4 @@ function ContactForm() {
     </section>
   );
 }
-
-export default ContactForm; 
+export default ContactForm;       

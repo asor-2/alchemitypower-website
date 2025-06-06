@@ -20,7 +20,6 @@ import About from './pages/About';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import News from './pages/News';
-import ScreenSizeWarning from './components/ScreenSizeWarning';
 
 // ScrollToTop component - scrolls to top on route change
 function ScrollToTop() {
@@ -51,9 +50,9 @@ function App() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  if (isScreenTooSmall) {
-    return <ScreenSizeWarning />;
-  }
+  // if (isScreenTooSmall) {
+  //   return <ScreenSizeWarning />;
+  // }
 
   return (
     <Router>

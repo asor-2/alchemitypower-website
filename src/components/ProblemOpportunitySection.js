@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import styles from './ProblemOpportunitySection.module.css';
-import problemVideo from './images/prob_and_opp.mp4';
+import problemVideo from './images/prob_and_opp.mov';
 
 const ProblemOpportunitySection = () => {
   const [ref, inView] = useInView({

@@ -4,9 +4,10 @@
 .responsiveContainer {
   max-width: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Section titles */
@@ -22,7 +23,7 @@
 .sectionContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 3rem;
+  padding: 0 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -40,7 +41,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   width: 100%;
   margin-bottom: 6rem;
@@ -66,6 +67,13 @@
   justify-content: center;
   margin-top: 0.5rem;
   margin-bottom: 5rem;
+}
+
+.gtchemButtonContainer > div {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
 }
 
 .gtchemLeftSide {
@@ -107,13 +115,19 @@
 .plantImageContainer {
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto 12rem auto;
+  margin: 0 auto 5.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .plantImage {
   width: 100%;
   height: auto;
   border-radius: 8px;
+  margin: 0 auto;
+  display: block;
 }
 
 .PlantInfoTitle {
@@ -135,7 +149,7 @@
 /* Roadmap section */
 .roadmapContainer {
   max-width: 1200px;
-  margin: 6rem auto 3rem auto;
+  margin: 5rem auto 3rem auto;
   padding: 2rem;
   overflow: hidden;
 }
@@ -172,17 +186,8 @@
 }
 
 .timelineImage {
-  width: 200px;
-  height: 200px;
-  background: #1a1a1a;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  position: relative;
-  cursor: pointer;
-  box-shadow: 0 0 0 rgba(37, 171, 224, 0);
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
 }
 
@@ -228,34 +233,151 @@
   margin-right: auto;
 }
 
-/* Media Query for Tablet (768px) */
-@media (max-width: 768px) {
+/* Product Title and Video Section */
+.productHeroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 1rem;
+  width: 100%;
+  display: none; /* Hide by default for larger screens */
+}
+
+/* Show product section only on screens smaller than 1024px */
+@media (max-width: 1023px) {
+  .productHeroSection {
+    display: flex;
+  }
+}
+
+/* Hide hero section on screens smaller than 1024px */
+@media (max-width: 1023px) {
+  .heroSection {
+    display: none !important;
+  }
+}
+
+.productTitle {
+  font-size: 3.5rem;
+  color: #25abe0;
+  text-align: center;
+  font-weight: 350;
+  margin: 0;
+}
+
+/* Change title color to white for screens less than 1024px */
+@media (max-width: 1023px) {
+  .productTitle {
+    color: #ffffff;
+  }
+}
+
+.productVideoContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.productVideo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+
+/* Media Query for Mobile (890px and below) */
+@media (max-width: 890px) {
+  .sectionContainer {
+    padding: 0 1rem;
+  }
+
   .sectionTitle {
     font-size: 32px;
     margin-bottom: 1rem;
   }
-
+  
   .valuePropositionContainer {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0;
+    max-width: 650px;
+    margin: 0 auto 4rem auto;
+    width: 95%;
+    justify-items: center;
   }
   
-  /* Center the third card on tablet */
-  .valuePropositionContainer > div:nth-child(3) {
-    grid-column: 1 / 3;
-    width: 80%;
+  .valuePropositionContainer p {
+    max-width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1.8;
+  }
+  
+  .valuePropositionContainer > div {
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .valuePropositionContainer h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .valuePropositionContainer .icon {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .timelineSection {
+    min-width: 280px;
+    margin-bottom: 2rem;
+  }
+  
+  .timelineImage {
+    width: 280px !important;
+    height: 280px !important;
+    border-radius: 12px;
+    margin: 0 auto 1.5rem auto;
+  }
+  
+  .timelineImage span {
+    font-size: 3rem;
+  }
+  
+  .timelineTitle {
+    font-size: 1.6rem !important;
+    margin: 1.6rem 0 0.3rem 0 !important;
+  }
+  
+  .timelineYear {
+    font-size: 1.3rem !important;
+  }
+  
+  .roadmapContainer {
+    padding: 0 1rem;
+  }
+  
+  .timelineContainer {
+    margin-bottom: 2rem;
   }
   
   .gtchemContainer {
     flex-direction: column;
+    padding: 0 1rem;
   }
   
   .gtchemLeftSide, .gtchemRightSide {
     flex: 1;
+    width: 100%;
   }
   
   .videoContainer {
     height: 300px !important;
+    width: 100%;
   }
   
   .preOrderButton {
@@ -263,30 +385,10 @@
     padding: 0.8rem 1.6rem;
   }
   
-  .timelineContainer {
-    overflow-x: auto;
-  }
-  
-  .timelineSections {
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
-  }
-  
-  .timelineSection {
-    min-width: 150px;
-  }
-  
-  .timelineImage {
-    width: 150px;
-    height: 150px;
-  }
-  
   .aiSection {
     flex-direction: column;
     gap: 1.5rem;
+    padding: 0 1rem;
   }
   
   .aiDescription {
@@ -294,36 +396,71 @@
   }
   
   .aiImage {
-    max-width: 90% !important;
+    max-width: 100% !important;
   }
   
   .plantImageContainer {
-    max-width: 90%;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto 6rem auto;
+  }
+  
+  .plantImage {
+    width: 100%;
+    margin: 0 auto;
   }
   
   .modalImageContainer {
     flex-direction: column !important;
+    width: 100%;
   }
   
   .modalImage {
-    width: 90% !important;
+    width: 100% !important;
     max-height: 300px !important;
   }
   
   .modalDescription {
     font-size: 1.2rem !important;
+    padding: 0 1rem;
+  }
+
+  .gtchemButtonContainer > div {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .gtchemButtonContainer button,
+  .gtchemButtonContainer a {
+    width: 100%;
+    max-width: 300px;
   }
 }
 
-/* Media Query for iPad/Tablet (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* Media Query for Tablet (891px - 1024px) */
+@media (min-width: 891px) and (max-width: 1024px) {
   .sectionTitle {
     font-size: 36px;
   }
 
   .valuePropositionContainer {
-    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+  }
+  
+  .valuePropositionContainer > div:last-child {
+    grid-column: 1 / 3;
+    width: 50%;
+    margin: 0 auto;
+    transform: translateX(25%);
+  }
+  
+  .valuePropositionContainer p {
+    max-width: 280px;
   }
   
   .gtchemContainer {
@@ -333,6 +470,7 @@
   .roadmapContainer {
     max-width: 100%;
     padding: 2rem 1rem;
+    margin: 4rem auto 2rem auto;
   }
   
   .timelineContainer {
@@ -342,6 +480,7 @@
     -ms-overflow-style: none;
     justify-content: center;
     padding: 0;
+    width: 100%;
   }
   
   .timelineContainer::-webkit-scrollbar {
@@ -349,60 +488,31 @@
   }
   
   .timelineSections {
-    justify-content: center;
-    gap: 0.2rem;
+    justify-content: space-between;
     max-width: 95%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
   }
   
   .timelineSection {
-    min-width: 110px;
-    width: 19%;
-    padding: 0 0.1rem;
+    min-width: 150px;
+    width: 18%;
+    padding: 0 0.5rem;
     margin-top: 3.5rem;
+    flex-shrink: 0;
   }
   
   .timelineImage {
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
   }
   
   .timelineImage span {
     font-size: 1.4rem;
-  }
-  
-  .aiSection {
-    gap: 2rem;
-  }
-}
-
-/* Media Query for Laptop (1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .sectionTitle {
-    font-size: 36px;
-  }
-
-  .valuePropositionContainer {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .gtchemContainer {
-    gap: 1.5rem;
-  }
-  
-  .timelineSections {
-    gap: 1rem;
-  }
-  
-  .timelineSection {
-    min-width: 180px !important;
-  }
-  
-  .timelineImage {
-    width: 180px !important;
-    height: 180px !important;
   }
   
   .aiSection {
@@ -482,5 +592,27 @@
   .modalDescription {
     font-size: 1.8rem !important;
     max-width: 1500px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .productHeroSection {
+    padding: 1.5rem 0;
+    gap: 0.5rem;
+  }
+
+  .productTitle {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .productHeroSection {
+    padding: 1rem 0;
+  }
+
+  .productTitle {
+    font-size: 2.2rem;
   }
 } 

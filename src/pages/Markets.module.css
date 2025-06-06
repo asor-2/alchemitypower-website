@@ -182,85 +182,7 @@
   justify-content: center;
 }
 
-/* Media Query for Tablet (768px) */
-@media (max-width: 768px) {
-  .highlightText {
-    font-size: 28px !important;
-    margin-bottom: 2rem !important;
-  }
 
-  .marketBreakdownTitle {
-    font-size: 30px !important;
-    margin-bottom: 2rem !important;
-  }
-
-  .marketDescription {
-    font-size: 1.3rem !important;
-    margin-bottom: 0.8rem !important;
-    margin-top: -1.5rem !important;
-  }
-
-  .marketInstructions {
-    font-size: 1.2rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-
-  .carouselImage {
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-  .imageTitle {
-    font-size: 24px !important;
-  }
-
-  .heroCarouselContainer {
-    clip-path: polygon(30% 0, 100% 0, 100% 100%, 30% 100%) !important;
-  }
-
-  .heroImage {
-    width: 200px !important;
-    height: 200px !important;
-  }
-
-  .heroImageTitle {
-    font-size: 18px !important;
-  }
-
-  .firstMarketsContainer {
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
-  .firstMarketBoxStyle {
-    width: 90% !important;
-    margin-bottom: 1rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border-radius: 8px !important;
-    border: 2px solid #25abe0 !important;
-  }
-  
-  .marketSectionsContainer {
-    flex-direction: column !important;
-    gap: 0 !important; /* Remove gap in mobile view as it's stacked */
-  }
-  
-  .marketTitle {
-    font-size: 30px !important;
-  }
-  
-  /* Modal responsiveness for mobile */
-  :global(.modal-content) {
-    width: 95% !important;
-    max-width: 400px !important;
-    padding: 1rem !important;
-  }
-  
-  :global(.modal-title) {
-    font-size: 1.5rem !important;
-  }
-}
 
 /* Media Query for Laptop (1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -377,4 +299,53 @@
   .carouselTrack {
     padding-bottom: 0 !important;
   }
-} 
+}
+
+/* Update hero carousel container to be full width */
+@media (min-width: 769px) {
+  .heroCarouselContainer {
+    width: 100vw !important; /* Use viewport width instead of percentage */
+    margin-left: calc(-50vw + 50%) !important; /* Negative margin technique to break out of container */
+    margin-right: calc(-50vw + 50%) !important;
+    left: 0 !important;
+    right: 0 !important;
+    clip-path: none !important;
+    max-width: none !important; /* Remove any max-width restrictions */
+    position: absolute !important;
+  }
+  
+  /* Ensure the parent container doesn't limit width */
+  .responsiveContainer {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Mobile styles for market */
+@media (max-width: 768px) {
+  .heroCarouselContainer {
+    width: 100% !important; /* Use 100% instead of 100vw */
+    clip-path: none !important;
+    height: 100% !important; /* Ensure proper height */
+    top: 0 !important;
+    position: absolute !important;
+  }
+  
+  /* Adjust image size for mobile */
+  .heroImage {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  /* Adjust title size for mobile */
+  .heroImageTitle {
+    font-size: 16px !important;
+  }
+  
+  /* Ensure the section is properly sized for mobile */
+  .aboutHeroSection[data-page="markets"] {
+    height: 35vh !important; /* Smaller height on mobile */
+  }
+}
