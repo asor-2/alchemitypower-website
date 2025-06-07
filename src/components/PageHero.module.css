@@ -234,17 +234,24 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-46%, -50%);
   text-align: center;
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
   z-index: 2;
-  text-shadow: 0 0 20px rgba(37, 171, 224, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-weight: 350;
 }
 
+@media (max-width: 768px) {
+  .aboutHeroSection[data-page="news"] .title {
+    font-size: 3rem !important; 
+    top: 50% !important;
+    transform: translate(-46%, -50%) !important;
+  }
+}
 
 /* CAREERS PAGE */
 /* Specific style for Careers page video */
@@ -270,7 +277,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -50%);
   text-align: center;
   width: 100%;
   max-width: 100%;
@@ -307,7 +314,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -50%);
   text-align: center;
   width: 100%;
   max-width: 100%;
@@ -375,16 +382,15 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-47%, -90%);
   text-align: center;
-  width: 90%;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
   z-index: 6;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-weight: 350;
-  /* font-size: 4.5rem; */
 }
 
 
@@ -450,14 +456,14 @@
   top: calc(90vh - 30px) !important;
 }
 
-/* Center the title text */
+/* Center the title text for About page */
 .aboutHeroSection[data-page="about"] .title {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
-  transform: translate(-50%, -50%) !important;
+  transform: translate(-47%, -50%) !important;
   text-align: center !important;
-  width: 90% !important;
+  width: 100% !important;
   max-width: 100% !important;
   margin: 0 auto !important;
   z-index: 10 !important; 
@@ -541,9 +547,9 @@
 /* Media query example for smaller screens */
 @media (max-width: 768px) {
   .aboutHeroSection[data-page="about"] .title {
-    /* font-size: 3rem !important; Increase from default */
+    font-size: 3rem !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    transform: translate(-47%, -50%) !important;
   }
 
   .imagesLoopWrapper {
@@ -579,7 +585,7 @@
   .aboutHeroSection[data-page="news"] .title {
     font-size: 3rem !important; 
     top: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    transform: translate(-46%, -50%) !important;
   }
 
   .aboutHeroSection[data-page="careers"] .title {
@@ -607,12 +613,13 @@
 
 /* Landscape orientation on mobile */
 @media (max-width: 768px) and (orientation: landscape) {
-  .aboutHeroSection[data-page="markets"] .title {
-    /* font-size: 3rem !important;  */
+  .aboutHeroSection[data-page="about"] .title {
+    font-size: 3rem !important;
+    transform: translate(-47%, -50%) !important;
   }
 
-  .aboutHeroSection[data-page="about"] .title {
-    font-size: 3rem !important;  /* Match news landscape mobile size */
+  .aboutHeroSection[data-page="markets"] .title {
+    /* font-size: 3rem !important;  */
   }
 }
 
