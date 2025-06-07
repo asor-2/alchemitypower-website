@@ -51,6 +51,9 @@ const ProblemOpportunitySection = () => {
               Chemical industry is a $6 trillion market emitting 6 giga-tons of CO<sub>2</sub> annually.
             </motion.p>
             <motion.p className={styles.text} variants={itemVariants}>
+              2 billion tons of municipal solid waste is generated worldwide annually, projected to double by 2050.
+            </motion.p>
+            <motion.p className={styles.text} variants={itemVariants}>
             
             </motion.p>
             <motion.p className={styles.text} variants={itemVariants}>
