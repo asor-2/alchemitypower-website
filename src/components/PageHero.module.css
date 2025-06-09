@@ -804,11 +804,11 @@
     }
 
     .aboutHeroSection[data-page="products"] .backgroundVideo {
-      margin: 0.25rem auto;
+      margin: 0.25rem auto;    
     }
 
     .aboutHeroSection {
-    height: 30vh !important; /* Even smaller on mobile */
+    height: 30vh !important;
     min-height: 200px !important;
   }
   
