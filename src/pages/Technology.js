@@ -703,7 +703,7 @@ function Technology() {
           }}>
             <div style={{
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: isMobile ? 'column' : 'row',
               alignItems: 'center',
               gap: '1rem',
               maxWidth: '1400px',
@@ -711,33 +711,35 @@ function Technology() {
               width: '100%'
             }}>
               <div style={{
-                width: '100%',
+                width: isMobile ? '100%' : '40%',
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                flexShrink: 0,
               }}>
                 <img 
                   src={platform} 
                   alt="Platform" 
                   style={{
                     width: '100%',
-                    maxWidth: '500px',
+                    maxWidth: isMobile ? '400px' : '500px',
                     height: 'auto',
                     objectFit: 'contain',
                     borderRadius: '8px'
                   }} 
-                />
+                /> 
               </div>
               <div style={{
-                textAlign: 'center',
-                maxWidth: '1400px',
-                width: '100%'
+                width: isMobile ? '100%' : '60%',
+                textAlign: 'left',
+                // maxWidth: '1400px',
+                // width: '100%'
               }}>
                 <div style={{
                   color: '#ffffff',
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
-                  marginBottom: '0.25rem',
-                  textAlign: 'center'
+                  marginBottom: '1rem',
+                  // textAlign: 'left'
                 }}>
                   Non-oxidative single-step conversion of biomethane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.
                 </div>
@@ -745,8 +747,8 @@ function Technology() {
                   color: '#ffffff',
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
-                  marginBottom: '0.25rem',
-                  textAlign: 'center'
+                  marginBottom: '1rem',
+                  textAlign: 'left'
                 }}>
                   In this example biomethane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.
                 </div>
@@ -754,8 +756,8 @@ function Technology() {
                   color: '#ffffff',
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
-                  marginBottom: '0.25rem',
-                  textAlign: 'center'
+                  marginBottom: '1rem',
+                  textAlign: 'left'
                 }}>
                   Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.
                 </div>
@@ -764,7 +766,7 @@ function Technology() {
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
                   marginBottom: '0.25rem',
-                  textAlign: 'center'
+                  textAlign: 'left'
                 }}>
                   Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.
                 </div>

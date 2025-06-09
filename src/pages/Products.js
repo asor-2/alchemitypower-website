@@ -1039,131 +1039,146 @@ function Products() {
     setSelectedHotspot(selectedHotspot === index ? null : index);
   };
 
-  const GTChem1Popup = () => (
-    <Modal 
-      show={gtchem1Popup} 
-      onClose={() => setGtchem1Popup(false)}
-      title="GTChem Products"
-      showCloseButton={true}
-      size="xxlarge"
-    >
-      <div style={{ 
-        padding: '0.5rem 1.5rem 0.5rem 1.5rem', 
-        color: '#ffffff',
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        width: '100%',
-        boxSizing: 'border-box'
-      }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '2rem',
-          maxWidth: '1400px',
-          margin: '0 auto',
-          width: '100%'
+  const GTChem1Popup = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 1024);
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return (
+      <Modal 
+        show={gtchem1Popup} 
+        onClose={() => setGtchem1Popup(false)}
+        title="GTChem Products"
+        showCloseButton={true}
+        size="xxlarge"
+      >
+        <div style={{ 
+          padding: '0.5rem 1.5rem 0.5rem 1.5rem', 
+          color: '#ffffff',
+          maxHeight: '80vh',
+          overflowY: 'auto',
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
           <div style={{
-            width: '100%',
             display: 'flex',
-            justifyContent: 'center'
-          }}>
-            <img 
-              src={skiddo} 
-              alt="GTChem Skid" 
-              style={{
-                width: '100%',
-                maxWidth: '600px',
-                height: 'auto',
-                objectFit: 'contain',
-                borderRadius: '8px'
-              }} 
-            />
-          </div>
-          <div style={{
-            textAlign: 'center',
+            flexDirection: isMobile ? 'column' : 'row', // Row for desktop/tablet, column for mobile
+            alignItems: 'flex-start',
+            gap: isMobile ? '1.5rem' : '3rem',
             maxWidth: '1400px',
+            margin: '0 auto',
             width: '100%'
           }}>
-            <h3 style={{ 
-              color: '#25abe0', 
-              fontSize: '1.6rem', 
-              marginBottom: '1.5rem',
-              fontWeight: '600'
-            }}>GTChem-1</h3>
-            <p style={{ 
-              fontSize: '1.3rem', 
-              lineHeight: '1.6', 
-              marginBottom: '0.5rem',
-              color: '#ffffff'
+            {/* Image Section */}
+            <div style={{
+              width: isMobile ? '100%' : '55%', // Full width on mobile, 40% on desktop
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexShrink: 0
             }}>
-              GTChem-1 is Alchemity's first flagship product—a modular, turnkey skid-mounted platform designed to produce clean, drop-in chemicals and fuels with zero CO₂ emissions. GTChem-1 enables flexible deployment through a series of integrated modular skids, making it ideal for both greenfield and brownfield installations producing chemicals at quantities between 1 to 40 tons per day (TPD).
-            </p>
-            <p style={{ 
-              fontSize: '1.3rem', 
-              lineHeight: '1.6', 
-              marginBottom: '0.5rem',
-              color: '#ffffff'
+              <img 
+                src={skiddo} 
+                alt="GTChem Skid" 
+                style={{
+                  width: '100%',
+                  maxWidth: isMobile ? '450px' : '600px',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  borderRadius: '8px'
+                }} 
+              />
+            </div>
+            
+            {/* Text Section */}
+            <div style={{
+              width: isMobile ? '100%' : '55%', // Full width on mobile, 55% on desktop
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}>
-              The platform delivers high operational efficiency with up to 95% system availability and is engineered with multiple layers of safety and redundancy. GTChem-1 offers product flexibility, low maintenance requirements, and streamlined module augmentation to meet evolving production needs. Alchemity is looking for investment and accepting pre-orders.
-            </p>
-          </div>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-            marginTop: '0.2rem',
-            marginBottom: '1rem'
-          }}>
-            <Link 
-              to="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.8rem',
-                padding: '1rem 2rem',
-                backgroundColor: '#25abe0',
-                color: 'white',
-                fontSize: '1.1rem',
+              <h3 style={{ 
+                color: '#25abe0', 
+                fontSize: '1.6rem', 
+                marginBottom: '1.5rem',
                 fontWeight: '600',
-                textDecoration: 'none',
-                borderRadius: '50px',
-                boxShadow: '0 8px 15px rgba(0, 0, 0, 0.3)',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-                border: '2px solid transparent',
-                cursor: 'pointer',
-                width: 'fit-content',
-                minWidth: '180px'
-              }}
-              className={styles.preOrderButton}
-              onMouseOver={(e) => {
-                e.target.style.backgroundColor = '#0077b5';
-                e.target.style.boxShadow = '0 15px 25px rgba(0, 0, 0, 0.4)';
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.backgroundImage = 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)';
-                e.target.style.backgroundPosition = '200% center';
-                e.target.style.backgroundSize = '200% 100%';
-                e.target.style.animation = 'gradientMove 1.5s ease infinite';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.backgroundColor = '#25abe0';
-                e.target.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.3)';
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.backgroundImage = 'none';
-                e.target.style.animation = 'none';
-              }}
-            >
-              Pre-Order Now
-            </Link>
+                textAlign: isMobile ? 'center' : 'left'
+              }}>GTChem-1</h3>
+              
+              <p style={{ 
+                fontSize: '1.3rem', 
+                lineHeight: '1.6', 
+                marginBottom: '1rem',
+                color: '#ffffff',
+                textAlign: 'left'
+              }}>
+                GTChem-1 is Alchemity's first flagship product—a modular, turnkey skid-mounted platform designed to produce clean, drop-in chemicals and fuels with zero CO₂ emissions. GTChem-1 enables flexible deployment through a series of integrated modular skids, making it ideal for both greenfield and brownfield installations producing chemicals at quantities between 1 to 40 tons per day (TPD).
+              </p>
+              
+              <p style={{ 
+                fontSize: '1.3rem', 
+                lineHeight: '1.6', 
+                marginBottom: '2rem',
+                color: '#ffffff',
+                textAlign: 'left'
+              }}>
+                The platform delivers high operational efficiency with up to 95% system availability and is engineered with multiple layers of safety and redundancy. GTChem-1 offers product flexibility, low maintenance requirements, and streamlined module augmentation to meet evolving production needs. Alchemity is looking for investment and accepting pre-orders.
+              </p>
+              
+              {/* Button */}
+              <div style={{
+                display: 'flex',
+                justifyContent: isMobile ? 'center' : 'flex-start',
+                width: '100%'
+              }}>
+                <Link 
+                  to="/contact"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.8rem',
+                    padding: '1rem 2rem',
+                    backgroundColor: '#25abe0',
+                    color: 'white',
+                    fontSize: '1.1rem',
+                    fontWeight: '600',
+                    textDecoration: 'none',
+                    borderRadius: '50px',
+                    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.3)',
+                    transition: 'all 0.3s ease',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    border: '2px solid transparent',
+                    cursor: 'pointer',
+                    width: 'fit-content',
+                    minWidth: '180px'
+                  }}
+                  className={styles.preOrderButton}
+                  onMouseOver={(e) => {
+                    e.target.style.backgroundColor = '#0077b5';
+                    e.target.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.backgroundColor = '#25abe0';
+                    e.target.style.transform = 'translateY(0)';
+                  }}
+                >
+                  Pre-Order Now
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </Modal>
-  );
+      </Modal>
+    );
+  };
 
   // Responsive UI for GTChem videos
   const videoContainerStyle = {
@@ -1706,4 +1721,4 @@ function Products() {
   );
 }
 
-export default Products; 
+export default Products;

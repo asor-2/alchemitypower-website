@@ -234,7 +234,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-46%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   max-width: 100%;
@@ -249,7 +249,7 @@
   .aboutHeroSection[data-page="news"] .title {
     font-size: 3rem !important; 
     top: 50% !important;
-    transform: translate(-46%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
   }
 }
 
@@ -277,7 +277,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-47%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   max-width: 100%;
@@ -314,7 +314,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-47%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   width: 100%;
   max-width: 100%;
@@ -461,7 +461,7 @@
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
-  transform: translate(-47%, -50%) !important;
+  transform: translate(-50%, -50%) !important;
   text-align: center !important;
   width: 100% !important;
   max-width: 100% !important;
@@ -511,9 +511,11 @@
   font-size: 3rem;
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: center;
   font-weight: 200;
-  max-width: 35%;
+  /* max-width: 35%; */
+  position: absolute;
+  left: 50%;
   margin-left: 2rem;
   top: 50%; 
   transform: translate(-50%, -50%);
@@ -549,7 +551,41 @@
   .aboutHeroSection[data-page="about"] .title {
     font-size: 3rem !important;
     top: 50% !important;
-    transform: translate(-47%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="markets"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="careers"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="news"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
   }
 
   .imagesLoopWrapper {
@@ -585,7 +621,7 @@
   .aboutHeroSection[data-page="news"] .title {
     font-size: 3rem !important; 
     top: 50% !important;
-    transform: translate(-46%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   .aboutHeroSection[data-page="careers"] .title {
@@ -599,8 +635,53 @@
 /* Tablet styles (768px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .aboutHeroSection[data-page="about"] .title {
-    font-size: 3rem !important; /* Increase from default */
+    font-size: 3rem !important;
     top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="markets"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="careers"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="news"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="contact"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
   }
 }
 
@@ -615,7 +696,9 @@
 @media (max-width: 768px) and (orientation: landscape) {
   .aboutHeroSection[data-page="about"] .title {
     font-size: 3rem !important;
-    transform: translate(-47%, -50%) !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   .aboutHeroSection[data-page="markets"] .title {
@@ -659,6 +742,16 @@
     font-size: 3.5rem;
   }
 
+  .aboutHeroSection[data-page="contact"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
   .aboutHeroSection[data-page="products"] .backgroundVideo {
     position: relative;
     width: 100%;
@@ -688,7 +781,7 @@
     }
 
     .aboutHeroSection[data-page="products"] .title {
-      font-size: 2.8rem;
+      font-size: 3rem;
     }
 
     .aboutHeroSection[data-page="products"] .backgroundVideo {
@@ -718,5 +811,57 @@
 @media (max-width: 1023px) and (orientation: portrait) {
   .aboutHeroSection[data-page="products"] .backgroundVideo {
     margin: 0.5rem auto;
+  }
+}
+
+@media (min-width: 1024px){
+  .aboutHeroSection[data-page="about"] .title {
+    font-size: 3rem !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="markets"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="careers"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="news"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
+  }
+
+  .aboutHeroSection[data-page="contact"] .title {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    left: 50% !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    font-size: 3rem !important;
   }
 }
