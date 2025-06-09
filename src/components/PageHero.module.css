@@ -789,6 +789,8 @@
       margin: 0.5rem auto;
       left: -0.5%;
     }
+
+    
   }
 
   @media (max-width: 480px) {
@@ -804,6 +806,26 @@
     .aboutHeroSection[data-page="products"] .backgroundVideo {
       margin: 0.25rem auto;
     }
+
+    .aboutHeroSection {
+    height: 30vh !important; /* Even smaller on mobile */
+    min-height: 200px !important;
+  }
+  
+  .aboutHeroSection[data-page="markets"] {
+    height: 30vh !important;
+    min-height: 200px !important;
+  }
+  
+  .aboutHeroSection[data-page="about"] {
+    height: 30vh !important;
+    min-height: 200px !important;
+  }
+  
+  .aboutHeroSection[data-page="products"] {
+    min-height: 60vh !important; /* Adjusted for products page layout */
+  }
+
   }
 }
 
