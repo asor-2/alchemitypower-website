@@ -812,6 +812,7 @@
     min-height: 200px !important;
   }
   
+  /* UPDATED CHANGES FOR IPHONE 12 - PENDING TESTING*/
   .aboutHeroSection[data-page="markets"] {
     height: 30vh !important;
     min-height: 200px !important;

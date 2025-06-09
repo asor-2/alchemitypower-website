@@ -487,3 +487,15 @@
     gap: 2rem;
   }
 } 
+
+/* Optimizing loading time for video section of the header */
+@media (max-width: 768px) {
+  .videoSection video {
+    will-change: auto; /* Remove after load */
+    transform: translate3d(0, 0, 0); /* Hardware acceleration */
+  }
+  
+  .sectionHeading {
+    font-display: swap; /* Prevent invisible text */
+  }
+}

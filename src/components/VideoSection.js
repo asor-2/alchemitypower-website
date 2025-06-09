@@ -22,6 +22,11 @@ function VideoSection() {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
+    
+    // Preload video immediately
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -196,6 +201,7 @@ function VideoSection() {
         className={styles.styledVideo} 
         ref={videoRef}
         poster={videoPoster}
+        preload="metadata"
       >
         <source src={videoFile} type="video/mp4" />
         Your browser does not support the video tag.
@@ -299,4 +305,4 @@ function VideoSection() {
   );
 }
 
-export default VideoSection; 
+export default VideoSection;
