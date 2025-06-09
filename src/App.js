@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -55,6 +57,7 @@ function App() {
   // }
 
   return (
+    <HelmetProvider>
     <Router>
       <div className="App">
         <ScrollToTop />
@@ -74,6 +77,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 

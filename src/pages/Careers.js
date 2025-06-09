@@ -8,6 +8,9 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 const ContactButton = styled.button`
   display: inline-flex;
   align-items: center;
@@ -59,6 +62,14 @@ const ContactButton = styled.button`
 function Careers() {
   return (
     <>
+      <SEO
+        title={seoData.markets.title}
+        description={seoData.markets.description}
+        keywords={seoData.markets.keywords}
+        image={seoData.markets.image}
+        url="/careers"
+      /> 
+
       <PageHero 
         backgroundVideoUrl={careersVideo}
         title="Careers"

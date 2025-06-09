@@ -7,6 +7,9 @@ import PlantInfoSection from '../components/PlantInfoSection';
 import styled from 'styled-components';
 import OurSection from '../components/OurSolutionSection';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 const SectionSpacing = styled.div`
   margin: 0 auto;
   max-width: 1200px;
@@ -16,6 +19,13 @@ const SectionSpacing = styled.div`
 function Home() {
   return (
     <>
+    <SEO
+        title={seoData.home.title}
+        description={seoData.home.description}
+        keywords={seoData.home.keywords}
+        image={seoData.home.image}
+        url="/"
+      />
       <VideoSection />
       <SectionSpacing>
         <ProblemOpportunity />

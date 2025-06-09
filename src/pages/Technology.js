@@ -15,6 +15,9 @@ import { useInView } from 'react-intersection-observer';
 import reactionanima from '../components/images/reactionanima.mov';
 import styles1 from './Technology.module.css';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 const responsiveModalContentStyle = {
   display: 'flex',
   gap: '2rem',
@@ -472,6 +475,14 @@ function Technology() {
 
   return (
     <>
+    <SEO
+        title={seoData.products.title}
+        description={seoData.products.description}
+        keywords={seoData.products.keywords}
+        image={seoData.products.image}
+        url="/products"
+    />
+
       <div className={styles1.heroSection}>
         <PageHero 
           backgroundVideoUrl={herotech}

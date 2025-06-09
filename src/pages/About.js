@@ -20,6 +20,10 @@ import styles from '../components/PageHero.module.css';
 import styles1 from '../components/ProfileCard.module.css';
 import { PiAndroidLogoDuotone } from 'react-icons/pi';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
+
 const founders = [
   {
     id: 2,
@@ -213,6 +217,15 @@ function About() {
 
   return (
     <>
+
+      <SEO
+        title={seoData.about.title}
+        description={seoData.about.description}
+        keywords={seoData.about.keywords}
+        image={seoData.about.image}
+        url="/about"
+      />
+
       {/* <style>
         {
           @keyframes slide {

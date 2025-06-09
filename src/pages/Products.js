@@ -34,6 +34,9 @@ import Modal from '../components/Modal';
 import skiddo from '../components/images/skiddo.png';
 import companal from '../components/images/companal.png';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1189,6 +1192,14 @@ function Products() {
   };
 
   return (
+    <>
+    <SEO
+      title={seoData.products.title}
+      description={seoData.products.description}
+      keywords={seoData.products.keywords}
+      image={seoData.products.image}
+      url="/products"
+    />
     <div className={styles.responsiveContainer}>
       <div className={styles.heroSection}>
         <PageHero 
@@ -1718,6 +1729,7 @@ function Products() {
         <GTChem1Popup />
       </div>
     </div>
+    </>
   );
 }
 

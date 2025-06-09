@@ -19,6 +19,9 @@ import benzene from '../components/images/benzene.png';
 
 import marketsVideo from '../components/images/markets_video.mov';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 
 const videoStyle = {
   position: 'absolute',
@@ -641,6 +644,15 @@ function Markets() {
   };
 
   return (
+    <>
+    <SEO
+        title={seoData.markets.title}
+        description={seoData.markets.description}
+        keywords={seoData.markets.keywords}
+        image={seoData.markets.image}
+        url="/markets"
+    />
+
     <div className={styles.responsiveContainer}>
       <style>{heroKeyframes}</style>
       <style>{keyframes}</style>
@@ -809,6 +821,7 @@ function Markets() {
         </div>
       </Modal>
     </div>
+    </>
   );
 }
 

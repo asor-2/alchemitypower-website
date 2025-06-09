@@ -7,6 +7,9 @@ import contactVideo from '../components/images/contact.mov';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 function Contact() {
   const linkedInUrl = 'https://www.linkedin.com/company/alchemity/';
 
@@ -32,6 +35,14 @@ function Contact() {
 
   return (
     <>
+      <SEO
+        title={seoData.careers.title}
+        description={seoData.careers.description}
+        keywords={seoData.careers.keywords}
+        image={seoData.careers.image}
+        url="/contact"
+      />
+
       <PageHero 
         backgroundVideoUrl={contactVideo}
         title="Contact Us"

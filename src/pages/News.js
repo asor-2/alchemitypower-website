@@ -14,6 +14,9 @@ import tedco from '../components/images/tedco.png';
 import mbia from '../components/images/mbia.png';
 import styles from './News.module.css';
 
+import SEO from '../components/SEO/SEO';
+import { seoData } from '../config/seoConfig';
+
 const sectionStyle = {
   padding: '0 0 calc(var(--section-padding) + 4rem) 0',
   margin: '0 auto',
@@ -119,6 +122,14 @@ const newsArticles = [
 function News() {
   return (
     <>
+      <SEO
+        title={seoData.news.title}
+        description={seoData.news.description}
+        keywords={seoData.news.keywords}
+        image={seoData.news.image}
+        url="/news"
+      />
+
       <PageHero 
         backgroundVideoUrl={productVideo}
         title="News"
