@@ -12,7 +12,7 @@ import { seoData } from '../config/seoConfig';
 
 const SectionSpacing = styled.div`
   margin: 0 auto;
-  max-width: 1300px;
+  max-width: 1200px;
   padding: 0 0.5rem;
 `;
 

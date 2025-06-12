@@ -564,7 +564,7 @@ function Technology() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                // gap: '1.5rem',
+                gap: '1.5rem',
                 transition: 'all 0.3s ease',
                 width: 'calc(33.333% - 1rem)',
                 minWidth: '280px',
