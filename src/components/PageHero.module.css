@@ -272,23 +272,25 @@
   z-index: 1;
 }
 
-/* Center the title text for Careers page */
+/* Left align the title text for Careers page */
 .aboutHeroSection[data-page="careers"] .title {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  z-index: 2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  font-weight: 350;
+  text-align: left;
+  left: 15%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  max-width: 35%;
+  margin-right: 0;
+  padding-right: 2rem;
+  margin-left: 2rem;
 }
 
-
+/* Hide title for Careers page on screens above 1024px */
+@media screen and (min-width: 1024px) {
+  .aboutHeroSection[data-page="careers"] .title {
+    display: none;
+  }
+}
 
 /* CONTACT US PAGE */
 /* Specific style for Contact Us page video */
