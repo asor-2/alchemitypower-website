@@ -117,7 +117,8 @@ function ContactForm({ isCareers = false }) {
       onSubmit={handleSubmit} 
       className={styles.form} 
       netlify-honeypot="bot-field" 
-      netlify>
+      data-netlify="true"
+      data-netlify-recaptcha="true">
         {/* Name Field Group */}
         <input type="hidden" name="form-name" value={isCareers ? "careers-form" : "contact-form"} />
 
@@ -126,7 +127,7 @@ function ContactForm({ isCareers = false }) {
             Don't fill this out if you're human: <input name="bot-field" />
           </label>
         </p>
-        
+
         <div className={styles.fieldGroup}>
           <label className={styles.label} htmlFor="firstName">Name*</label>
           <div className={styles.nameGroup}>
@@ -270,6 +271,10 @@ function ContactForm({ isCareers = false }) {
             {submitStatus.message}
           </div>
         )}
+
+
+        <div data-netlify-recaptcha="true"></div>
+
 
         <button 
           type="submit" 
