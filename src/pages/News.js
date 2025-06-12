@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PageHero from '../components/PageHero';
+import NewsHero from '../components/NewsHero';
 import NewsArticle from '../components/NewsArticle';
 import productVideo from '../components/images/product.mov';
 import newsImage1 from '../components/images/1.jpeg';
@@ -121,6 +122,18 @@ const newsArticles = [
 ];
 
 function News() {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
+  // Handle window resize for responsive hero section
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <SEO
@@ -131,12 +144,17 @@ function News() {
         url="/news"
       />
 
-      <PageHero 
-        backgroundVideoUrl={productVideo}
-        title="News"
-        videoStyle={videoStyle}
-        titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
-      />
+      {isLargeScreen ? (
+        <NewsHero />
+      ) : (
+        <PageHero 
+          backgroundVideoUrl={productVideo}
+          title="News"
+          videoStyle={videoStyle}
+          titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
+        />
+      )}
+      
       <div style={sectionStyle}>
         <motion.h2 
           style={titleStyle}

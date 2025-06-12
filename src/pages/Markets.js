@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import PageHero from '../components/PageHero';
+import MarketsHero from '../components/MarketsHero';
 import Modal from '../components/Modal';
 import styled from 'styled-components';
 import styles from './Markets.module.css';
@@ -26,7 +27,7 @@ import { seoData } from '../config/seoConfig';
 const videoStyle = {
   position: 'absolute',
   top: 0,
-  left: 0,
+  right: 0,
   width: '100%',
   height: '100%',
   objectFit: 'cover',
@@ -526,10 +527,13 @@ function Markets() {
   const [selectedMarket, setSelectedMarket] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const carouselRef = useRef(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      setIsLargeScreen(window.innerWidth > 1024);
     };
 
     window.addEventListener('resize', handleResize);
@@ -645,6 +649,17 @@ function Markets() {
     }
   };
 
+  const handleResize = () => {
+    if (carouselRef.current) {
+      const containerWidth = carouselRef.current.offsetWidth;
+      const imageWidth = 300; // Width of one image
+      const gap = 24; // Gap between images
+      const itemWidth = imageWidth + gap;
+      const visibleItems = Math.floor(containerWidth / itemWidth);
+      setCurrentIndex(prev => Math.min(prev, images.length - visibleItems));
+    }
+  };
+
   return (
     <>
     <SEO
@@ -661,41 +676,20 @@ function Markets() {
       <style>{scrollbarStyles}</style>
       <style>{additionalStyles}</style>
       <div style={{ position: 'relative' }}>
-        <PageHero 
-          title="Markets"
-          videoStyle={videoStyle}
-          backgroundVideoUrl={marketsVideo}
-        />
-        {/* <div style={heroCarouselStyle} className={styles.heroCarouselContainer}>
-          <div style={heroCarouselTrackStyle}>
-            {heroImages.map((item, index) => (
-              <div key={index} style={heroImageContainerStyle}>
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  style={heroCarouselImageStyle}
-                  className={styles.heroImage}
-                />
-                <p style={heroImageTitleStyle} className={styles.heroImageTitle}>{item.title}</p>
-              </div>
-            ))}
-            {heroImages.map((item, index) => (
-              <div key={`duplicate-${index}`} style={heroImageContainerStyle}>
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  style={heroCarouselImageStyle}
-                  className={styles.heroImage}
-                />
-                <p style={heroImageTitleStyle} className={styles.heroImageTitle}>{item.title}</p>
-              </div>
-            ))}
-          </div>
-        </div> */}
+        {isLargeScreen ? (
+          <MarketsHero />
+        ) : (
+          <PageHero 
+            title="Markets"
+            style={{ marginTop: '-300px' }}
+            videoStyle={videoStyle}
+            backgroundVideoUrl={marketsVideo}
+          />
+        )}
       </div>
       <div style={sectionStyle} className={styles.sectionContainer}>
         <p style={highlightTextStyle} className={styles.highlightText}>
-          Alchemity Enables Chemical & Fuel Markets With A Single Platform Design
+          Enabling Chemical & Fuel Markets With A Single Platform Design
         </p>
         
         <h2 style={marketBreakdownTitleStyle} className={styles.marketBreakdownTitle}></h2>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from '../components/Modal';
 import ProfileCard from '../components/ProfileCard';
 import PageHero from '../components/PageHero';
+import AboutHero from '../components/AboutHero';
 import about1 from '../components/images/about1.png';
 import about2 from '../components/images/about2.png';
 import about3 from '../components/images/about3.png';
@@ -202,6 +203,16 @@ const cardVariants = {
 function About() {
   const [showModal, setShowModal] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const images = [about3, about1, about2];
 
@@ -213,6 +224,12 @@ function About() {
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedPerson(null);
+  };
+
+  const videoStyle = {
+    objectFit: 'cover',
+    width: '100%',
+    height: '100%'
   };
 
   return (
@@ -238,22 +255,17 @@ function About() {
           }
       </style> */}
       <div style={{ position: 'relative' }}>
-      <PageHero 
+      {isLargeScreen ? (
+        <AboutHero />
+      ) : (
+        <PageHero 
           title="About Us"
+          style={{ marginTop: '-300px', position: 'relative', zIndex: 2 }}
           videoStyle={videoStyle}
           backgroundVideoUrl={aboutVideo}
           titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
         />
-
-        {/* <div className={styles.imagesLoopWrapper}>
-          <div className={styles.imagesSlide}>
-            {[...images, ...images].map((src, idx) => (
-              <div key={idx} className={styles.imageWrapper}>
-                <img src={src} alt={`About ${idx % images.length + 1}`} className={styles.heroImage} />
-              </div>
-            ))}
-          </div>
-        </div> */}
+      )}
       </div>
       <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000', maxWidth: '1200px', width: '100%', margin: '0 auto',
         }}>
