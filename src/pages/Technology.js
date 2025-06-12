@@ -513,7 +513,7 @@ function Technology() {
                 src={herotech} 
                 style={{
                   ...videoStyle,
-                  maxWidth: '95%',
+                  maxWidth: '900px',
                   height: 'auto'
                 }} 
                 muted 
@@ -559,13 +559,13 @@ function Technology() {
               key={index}
               style={{
                 background: '#141414',
-                padding: '2rem',
+                padding: '1.5rem 1.5rem 1rem 1.5rem',
                 borderRadius: '8px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '1.5rem',
-                transition: 'transform 0.3s ease',
+                // gap: '1.5rem',
+                transition: 'all 0.3s ease',
                 width: 'calc(33.333% - 1rem)',
                 minWidth: '280px',
                 maxWidth: '350px',
@@ -635,7 +635,7 @@ function Technology() {
             src={animationTech} 
             style={{
               ...videoStyle,
-              maxWidth: '80%',
+              maxWidth: '1200px',
               height: 'auto'
             }} 
             muted 
@@ -666,7 +666,7 @@ function Technology() {
             src={reactionanima} 
             style={{
               ...videoStyle,
-              maxWidth: '80%',
+              maxWidth: '1200px',
               height: 'auto'
             }} 
             muted 
