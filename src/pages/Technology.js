@@ -530,7 +530,7 @@ function Technology() {
           gap: '1.5rem',
           padding: '0.5rem',
           margin: '-2rem auto 0',
-          maxWidth: '1400px',
+          maxWidth: '1300px',
           justifyContent: 'center',
           '@media (max-width: 1024px)': {
             flexDirection: 'column',
@@ -635,7 +635,7 @@ function Technology() {
             src={animationTech} 
             style={{
               ...videoStyle,
-              maxWidth: '1200px',
+              maxWidth: '1300px',
               height: 'auto'
             }} 
             muted 
@@ -666,7 +666,7 @@ function Technology() {
             src={reactionanima} 
             style={{
               ...videoStyle,
-              maxWidth: '1200px',
+              maxWidth: '1300px',
               height: 'auto'
             }} 
             muted 

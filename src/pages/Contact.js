@@ -42,11 +42,17 @@ function Contact() {
         image={seoData.careers.image}
         url="/contact"
       />
-
+      
       <PageHero 
         backgroundVideoUrl={contactVideo}
         title="Contact Us"
       />
+      {/* <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        width: '100%',
+        padding: '0 2rem'
+      }}> */}
       <div className={styles.contactPage}>
         <div className={styles.contentWrapper}>
           <div className={styles.contactInfo}>
@@ -117,8 +123,9 @@ function Contact() {
           <div className={styles.formWrapper}>
              <ContactForm isCareers={false} />
           </div>
+          </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   );
 }
