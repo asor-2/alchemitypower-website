@@ -107,6 +107,8 @@ const cardTextStyle = {
 
 const carouselContainerStyle = {
   width: '100%',
+  maxWidth: '1200px',
+  margin: '0 auto',
   overflowX: 'auto',
   marginTop: '4rem',
   position: 'relative',

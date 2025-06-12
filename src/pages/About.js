@@ -122,10 +122,10 @@ const advisors = [
 
 const gridStyle = {
   display: 'grid',
-  gap: '2rem',
-  maxWidth: '1400px',
+  gap: '3rem',
+  maxWidth: '1200px',
   margin: '1rem auto',
-  width: '90%',
+  width: '100%',
   justifyContent: 'center'
 };
 
@@ -267,7 +267,8 @@ function About() {
         />
       )}
       </div>
-      <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000'}}>
+      <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000', maxWidth: '1200px', width: '100%', margin: '0 auto',
+        }}>
         <h2 style={{...titleStyle, marginTop: '0', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Founders</h2>
         <div style={founderGridStyle} className={styles1.foundersWrapper}>
           {founders.map((founder, index) => (

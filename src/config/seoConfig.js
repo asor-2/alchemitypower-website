@@ -26,7 +26,7 @@ export const seoData = {
   },
   markets: {
     title: 'Markets',
-    description: 'Alchemity strategically targets first markets suitable for a turnkey Modular Platform System integration prior to scaled chemical production facilities.',
+    description: 'Alchemity strategically targets markets suitable for a turnkey Modular Platform System integration.',
     keywords: 'chemical markets, SAF, hydrogen, syngas, benzene, ethylene, sustainable fuels',
     image: '/images/markets_metadata_img.png'
   },
