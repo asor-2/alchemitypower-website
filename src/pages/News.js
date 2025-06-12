@@ -23,6 +23,7 @@ const sectionStyle = {
   backgroundColor: '#000000',
   textAlign: 'left',
   maxWidth: '100%',
+  maxWidth: '1200px',
 };
 
 const titleStyle = {
