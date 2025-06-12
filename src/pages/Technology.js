@@ -714,7 +714,7 @@ function Technology() {
           }}>
             <div style={{
               display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
+              flexDirection: (isMobile || isTablet) ? 'column' : 'row',
               alignItems: 'center',
               gap: '1rem',
               maxWidth: '1400px',
@@ -722,7 +722,7 @@ function Technology() {
               width: '100%'
             }}>
               <div style={{
-                width: isMobile ? '100%' : '40%',
+                width: (isMobile || isTablet) ? '100%' : '40%',
                 display: 'flex',
                 justifyContent: 'center',
                 flexShrink: 0,
@@ -732,7 +732,7 @@ function Technology() {
                   alt="Platform" 
                   style={{
                     width: '100%',
-                    maxWidth: isMobile ? '400px' : '500px',
+                    maxWidth: (isMobile || isTablet) ? '400px' : '500px',
                     height: 'auto',
                     objectFit: 'contain',
                     borderRadius: '8px'
@@ -740,7 +740,7 @@ function Technology() {
                 /> 
               </div>
               <div style={{
-                width: isMobile ? '100%' : '60%',
+                width: (isMobile || isTablet) ? '100%' : '60%',
                 textAlign: 'left',
                 // maxWidth: '1400px',
                 // width: '100%'
