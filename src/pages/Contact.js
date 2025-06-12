@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ContactForm from '../components/ContactForm1';
 import styles from './Contact.module.css';
 import PageHero from '../components/PageHero';
+import ContactHero from '../components/ContactHero';
 import contactBg from '../components/images/contact-us-bg-2.jpg';
 import contactVideo from '../components/images/contact.mov';
 import { motion } from 'framer-motion';
@@ -12,6 +13,17 @@ import { seoData } from '../config/seoConfig';
 
 function Contact() {
   const linkedInUrl = 'https://www.linkedin.com/company/alchemity/';
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
+
+  // Handle window resize for responsive hero section
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const linkedinButtonStyle = {
     backgroundColor: '#25abe0',
@@ -43,10 +55,14 @@ function Contact() {
         url="/contact"
       />
 
-      <PageHero 
-        backgroundVideoUrl={contactVideo}
-        title="Contact Us"
-      />
+      {isLargeScreen ? (
+        <ContactHero />
+      ) : (
+        <PageHero 
+          backgroundVideoUrl={contactVideo}
+          title="Contact Us"
+        />
+      )}
       <div className={styles.contactPage}>
         <div className={styles.contentWrapper}>
           <div className={styles.contactInfo}>

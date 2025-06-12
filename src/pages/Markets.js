@@ -27,7 +27,7 @@ import { seoData } from '../config/seoConfig';
 const videoStyle = {
   position: 'absolute',
   top: 0,
-  left: 0,
+  right: 0,
   width: '100%',
   height: '100%',
   objectFit: 'cover',
@@ -525,33 +525,17 @@ function Markets() {
   const [selectedMarket, setSelectedMarket] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const carouselRef = useRef(null);
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
-  const [activeMarket, setActiveMarket] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      setIsLargeScreen(window.innerWidth > 1024);
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
-    };
-    
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    
-    return () => {
-      window.removeEventListener('resize', checkScreenSize);
-    };
   }, []);
 
   // Add responsive styles based on windowWidth
@@ -663,6 +647,17 @@ function Markets() {
     }
   };
 
+  const handleResize = () => {
+    if (carouselRef.current) {
+      const containerWidth = carouselRef.current.offsetWidth;
+      const imageWidth = 300; // Width of one image
+      const gap = 24; // Gap between images
+      const itemWidth = imageWidth + gap;
+      const visibleItems = Math.floor(containerWidth / itemWidth);
+      setCurrentIndex(prev => Math.min(prev, images.length - visibleItems));
+    }
+  };
+
   return (
     <>
     <SEO
@@ -684,8 +679,9 @@ function Markets() {
         ) : (
           <PageHero 
             title="Markets"
-            backgroundVideoUrl={marketsVideo}
+            style={{ marginTop: '-300px' }}
             videoStyle={videoStyle}
+            backgroundVideoUrl={marketsVideo}
           />
         )}
       </div>
