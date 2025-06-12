@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import PageHero from '../components/PageHero';
+import MarketsHero from '../components/MarketsHero';
 import Modal from '../components/Modal';
 import styled from 'styled-components';
 import styles from './Markets.module.css';
@@ -524,6 +525,12 @@ function Markets() {
   const [selectedMarket, setSelectedMarket] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const carouselRef = useRef(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  const [activeMarket, setActiveMarket] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -532,6 +539,19 @@ function Markets() {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
   }, []);
 
   // Add responsive styles based on windowWidth
@@ -659,37 +679,15 @@ function Markets() {
       <style>{scrollbarStyles}</style>
       <style>{additionalStyles}</style>
       <div style={{ position: 'relative' }}>
-        <PageHero 
-          title="Markets"
-          videoStyle={videoStyle}
-          backgroundVideoUrl={marketsVideo}
-        />
-        {/* <div style={heroCarouselStyle} className={styles.heroCarouselContainer}>
-          <div style={heroCarouselTrackStyle}>
-            {heroImages.map((item, index) => (
-              <div key={index} style={heroImageContainerStyle}>
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  style={heroCarouselImageStyle}
-                  className={styles.heroImage}
-                />
-                <p style={heroImageTitleStyle} className={styles.heroImageTitle}>{item.title}</p>
-              </div>
-            ))}
-            {heroImages.map((item, index) => (
-              <div key={`duplicate-${index}`} style={heroImageContainerStyle}>
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  style={heroCarouselImageStyle}
-                  className={styles.heroImage}
-                />
-                <p style={heroImageTitleStyle} className={styles.heroImageTitle}>{item.title}</p>
-              </div>
-            ))}
-          </div>
-        </div> */}
+        {isLargeScreen ? (
+          <MarketsHero />
+        ) : (
+          <PageHero 
+            title="Markets"
+            backgroundVideoUrl={marketsVideo}
+            videoStyle={videoStyle}
+          />
+        )}
       </div>
       <div style={sectionStyle} className={styles.sectionContainer}>
         <p style={highlightTextStyle} className={styles.highlightText}>
