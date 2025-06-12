@@ -693,7 +693,7 @@ function Markets() {
       </div>
       <div style={sectionStyle} className={styles.sectionContainer}>
         <p style={highlightTextStyle} className={styles.highlightText}>
-          Alchemity Enables Chemical & Fuel Markets With A Single Platform Design
+          Enabling Chemical & Fuel Markets With A Single Platform Design
         </p>
         
         <h2 style={marketBreakdownTitleStyle} className={styles.marketBreakdownTitle}></h2>
