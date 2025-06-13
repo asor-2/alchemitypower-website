@@ -95,7 +95,20 @@ function ContactForm() {
 
   return (
     <section className={styles.section}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form name={isCareers ? "careers-form" : "contact-form"} 
+          onSubmit={handleSubmit} 
+          className={styles.form} 
+          netlify-honeypot="bot-field" 
+          data-netlify="true"
+          data-netlify-recaptcha="true">
+
+        <p className={styles.hidden}>
+          <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+
+
         {/* Name Field Group */}
         <div className={styles.fieldGroup}>
           <label className={styles.label} htmlFor="firstName">Name*</label>
