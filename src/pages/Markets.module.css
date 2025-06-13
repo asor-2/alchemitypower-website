@@ -184,8 +184,8 @@
 
 
 
-/* Media Query for Laptop (1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* Media Query for Laptop (1023px) */
+@media (min-width: 769px) and (max-width: 1023px) {
   .highlightText {
     font-size: 30px !important;
   }
@@ -289,8 +289,8 @@
   }
 }
 
-/* Media Query for Laptop (1024px) and above */
-@media (min-width: 1024px) {
+/* Media Query for Laptop (1023px) and above */
+@media (min-width: 1023px) {
   .carouselContainer {
     overflow-x: auto !important;
     overflow-y: hidden !important;

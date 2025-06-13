@@ -203,11 +203,11 @@ const cardVariants = {
 function About() {
   const [showModal, setShowModal] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState(null);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1023);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 1024);
+      setIsLargeScreen(window.innerWidth > 1023);
     };
 
     window.addEventListener('resize', handleResize);

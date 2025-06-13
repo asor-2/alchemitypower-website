@@ -59,7 +59,7 @@ function Header() {
   }, [menuOpen]);
 
   // Check if mobile view
-  const isMobileView = windowWidth < 1024;
+  const isMobileView = windowWidth <= 1024;
 
   return (
     <header className={`${styles.header} ${menuOpen ? styles.menuOpen : ''}`}>
