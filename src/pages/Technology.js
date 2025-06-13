@@ -635,7 +635,7 @@ function Technology() {
             src={animationTech} 
             style={{
               ...videoStyle,
-              maxWidth: '1300px',
+              maxWidth: '1150px',
               height: 'auto'
             }} 
             muted 
@@ -666,7 +666,7 @@ function Technology() {
             src={reactionanima} 
             style={{
               ...videoStyle,
-              maxWidth: '1300px',
+              maxWidth: '1150px',
               height: 'auto'
             }} 
             muted 
@@ -741,7 +741,7 @@ function Technology() {
               </div>
               <div style={{
                 width: (isMobile || isTablet) ? '100%' : '60%',
-                textAlign: 'left',
+                textAlign: (isMobile || isTablet) ? 'center' : 'left',
                 // maxWidth: '1400px',
                 // width: '100%'
               }}>
@@ -750,7 +750,7 @@ function Technology() {
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
                   marginBottom: '1rem',
-                  // textAlign: 'left'
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
                 }}>
                   Non-oxidative single-step conversion of biomethane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.
                 </div>
@@ -759,7 +759,7 @@ function Technology() {
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
                   marginBottom: '1rem',
-                  textAlign: 'left'
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
                 }}>
                   In this example biomethane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.
                 </div>
@@ -768,7 +768,7 @@ function Technology() {
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
                   marginBottom: '1rem',
-                  textAlign: 'left'
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
                 }}>
                   Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.
                 </div>
@@ -777,7 +777,7 @@ function Technology() {
                   fontSize: '1.2rem',
                   lineHeight: '1.5',
                   marginBottom: '0.25rem',
-                  textAlign: 'left'
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
                 }}>
                   Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.
                 </div>

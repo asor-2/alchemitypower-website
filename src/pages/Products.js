@@ -1043,11 +1043,13 @@ function Products() {
   };
 
   const GTChem1Popup = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
 
     useEffect(() => {
       const handleResize = () => {
         setIsMobile(window.innerWidth <= 1024);
+        setIsTablet(window.innerWidth <= 1024);
       };
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
@@ -1071,29 +1073,32 @@ function Products() {
         }}>
           <div style={{
             display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row', // Row for desktop/tablet, column for mobile
-            alignItems: 'flex-start',
-            gap: isMobile ? '1.5rem' : '3rem',
+            flexDirection: (isMobile || isTablet) ? 'column' : 'row', // Row for desktop/tablet, column for mobile
+            alignItems: 'center', // To align image to the center on the left side
+            gap: (isMobile || isTablet) ? '1.5rem' : '3rem',
             maxWidth: '1400px',
+            width: '100%',
             margin: '0 auto',
-            width: '100%'
           }}>
             {/* Image Section */}
             <div style={{
-              width: isMobile ? '100%' : '55%', // Full width on mobile, 40% on desktop
+              width: (isMobile || isTablet) ? '100%' : '40%', // Full width on mobile, 40% on desktop
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              flexShrink: 0
+              flexShrink: 0,
+              
             }}>
               <img 
                 src={skiddo} 
                 alt="GTChem Skid" 
                 style={{
                   width: '100%',
-                  maxWidth: isMobile ? '450px' : '600px',
                   height: 'auto',
+                  maxWidth: (isMobile || isTablet) ? '450px' : '600px',
                   objectFit: 'contain',
+                  marginBottom: '1rem',
+                  // marginTop: (isMobile || isTablet) ? '1rem' : '25%', 
                   borderRadius: '8px'
                 }} 
               />
@@ -1101,7 +1106,7 @@ function Products() {
             
             {/* Text Section */}
             <div style={{
-              width: isMobile ? '100%' : '55%', // Full width on mobile, 55% on desktop
+              width: isMobile ? '100%' : '60%', // Full width on mobile, 55% on desktop
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center'
@@ -1111,7 +1116,7 @@ function Products() {
                 fontSize: '1.6rem', 
                 marginBottom: '1.5rem',
                 fontWeight: '600',
-                textAlign: isMobile ? 'center' : 'left'
+                textAlign: (isMobile || isTablet) ? 'center' : 'left',
               }}>GTChem-1</h3>
               
               <p style={{ 
@@ -1119,7 +1124,7 @@ function Products() {
                 lineHeight: '1.6', 
                 marginBottom: '1rem',
                 color: '#ffffff',
-                textAlign: 'left'
+                textAlign: (isMobile || isTablet) ? 'center' : 'left',
               }}>
                 GTChem-1 is Alchemity's first flagship product—a modular, turnkey skid-mounted platform designed to produce clean, drop-in chemicals and fuels with zero CO₂ emissions. GTChem-1 enables flexible deployment through a series of integrated modular skids, making it ideal for both greenfield and brownfield installations producing chemicals at quantities between 1 to 40 tons per day (TPD).
               </p>
@@ -1129,7 +1134,7 @@ function Products() {
                 lineHeight: '1.6', 
                 marginBottom: '2rem',
                 color: '#ffffff',
-                textAlign: 'left'
+                textAlign: (isMobile || isTablet) ? 'center' : 'left',
               }}>
                 The platform delivers high operational efficiency with up to 95% system availability and is engineered with multiple layers of safety and redundancy. GTChem-1 offers product flexibility, low maintenance requirements, and streamlined module augmentation to meet evolving production needs. Alchemity is looking for investment and accepting pre-orders.
               </p>
@@ -1137,7 +1142,7 @@ function Products() {
               {/* Button */}
               <div style={{
                 display: 'flex',
-                justifyContent: isMobile ? 'center' : 'flex-start',
+                justifyContent: (isMobile || isTablet) ? 'center' : 'flex-start',
                 width: '100%'
               }}>
                 <Link 
