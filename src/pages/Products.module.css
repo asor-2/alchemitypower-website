@@ -246,14 +246,14 @@
 }
 
 /* Show product section only on screens smaller than 1024px */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .productHeroSection {
     display: flex;
   }
 }
 
 /* Hide hero section on screens smaller than 1024px */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .heroSection {
     display: none !important;
   }
@@ -268,7 +268,7 @@
 }
 
 /* Change title color to white for screens less than 1024px */
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .productTitle {
     color: #ffffff;
   }
