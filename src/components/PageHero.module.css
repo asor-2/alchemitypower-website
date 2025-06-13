@@ -210,17 +210,15 @@
 
 /* Specific style for News page video */
 .aboutHeroSection[data-page="news"] .backgroundVideo {
-  width: 100% !important; /* Force 100% width with !important */
+  width: 100%;
   clip-path: none;
   top: 0;
-  /* left: 0;
-  right: 0; */
   height: 100%;
-  object-fit: cover !important; /* Change from cover to fill to stretch the video */
+  object-fit: cover;
   position: absolute;
-  transform: scale(1.01); /* Slightly scale up to avoid any small gaps */
-  min-width: 100%; /* Ensure minimum width is full container */
-  max-width: none; /* Remove any max-width restrictions */
+  transform: scale(1.01);
+  min-width: 100%;
+  max-width: none;
 }
 
 /* Add overlay for better text visibility on News page */
@@ -850,43 +848,267 @@
     font-size: 3rem !important;
   }
 
-  .aboutHeroSection[data-page="markets"] .title {
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="careers"] .title,
+  .aboutHeroSection[data-page="news"] .title,
+  .aboutHeroSection[data-page="contact"] .title,
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    z-index: 3;
+    width: auto;
+    max-width: 25%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .aboutHeroSection[data-page="contact"] .overlay {
+    display: none;
+  }
+
+  /* New hero section layout for screens above 1024px */
+  .aboutHeroSection[data-page="contact"] {
+    display: flex;
+    height: 45vh;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    justify-content: flex-end;
+  }
+
+  .aboutHeroSection[data-page="contact"] .backgroundVideo {
+    width: 75%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    object-fit: cover;
+    clip-path: none;
+    margin-left: auto;
+  }
+
+  .aboutHeroSection[data-page="contact"] .overlay {
+    display: none;
+  }
+
+  /* Careers page styles - matching contact page layout */
+  .aboutHeroSection[data-page="careers"] {
+    display: flex !important;
+    height: 45vh !important;
     padding: 0 !important;
-    font-size: 3rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    justify-content: flex-end !important;
+    background: #000000 !important;
+  }
+
+  .aboutHeroSection[data-page="careers"] .backgroundVideo {
+    width: 65% !important;
+    height: 100% !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    left: auto !important;
+    object-fit: cover !important;
+    clip-path: none !important;
+    margin-left: auto !important;
+    max-width: 65% !important;
+    transform: none !important;
+    z-index: 1 !important;
   }
 
   .aboutHeroSection[data-page="careers"] .title {
+    position: absolute !important;
+    left: 8% !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
+    transform: translateY(-50%) !important;
+    text-align: left !important;
+    width: auto !important;
+    max-width: 25% !important;
+    margin: 0 !important;
     padding: 0 !important;
     font-size: 3rem !important;
+    font-weight: 300 !important;
+    color: #ffffff !important;
+    z-index: 3 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .aboutHeroSection[data-page="careers"] .overlay {
+    display: none !important;
+  }
+
+  /* News page styles - matching contact and careers page layout */
+  .aboutHeroSection[data-page="news"] {
+    display: flex !important;
+    height: 45vh !important;
+    padding: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    justify-content: flex-end !important;
+    background: #000000 !important;
+  }
+
+  .aboutHeroSection[data-page="news"] .backgroundVideo {
+    all: unset !important;
+    width: 65% !important;
+    height: 100% !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    left: auto !important;
+    object-fit: cover !important;
+    clip-path: none !important;
+    margin-left: auto !important;
+    max-width: 65% !important;
+    transform: none !important;
+    z-index: 1 !important;
   }
 
   .aboutHeroSection[data-page="news"] .title {
+    position: absolute !important;
+    left: 8% !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
+    transform: translateY(-50%) !important;
+    text-align: left !important;
+    width: auto !important;
+    max-width: 25% !important;
+    margin: 0 !important;
     padding: 0 !important;
     font-size: 3rem !important;
+    font-weight: 300 !important;
+    color: #ffffff !important;
+    z-index: 3 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
-  .aboutHeroSection[data-page="contact"] .title {
+  .aboutHeroSection[data-page="news"] .overlay {
+    display: none !important;
+  }
+}
+
+/* Hide hero section for screens above 1024px */
+@media (min-width: 1024px) {
+  .aboutHeroSection[data-page="news"] {
+    display: none;
+  }
+
+  /* About page styles - matching contact page layout */
+  .aboutHeroSection[data-page="about"] {
+    display: flex !important;
+    height: 45vh !important;
+    padding: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    justify-content: flex-end !important;
+    background: #000000 !important;
+  }
+
+  .aboutHeroSection[data-page="about"] .backgroundVideo {
+    width: 75% !important;
+    height: 100% !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    left: auto !important;
+    object-fit: cover !important;
+    clip-path: none !important;
+    margin-left: auto !important;
+    max-width: 75% !important;
+    transform: none !important;
+    z-index: 1 !important;
+  }
+
+  .aboutHeroSection[data-page="about"] .title {
+    position: absolute !important;
+    left: 8% !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
+    transform: translateY(-50%) !important;
+    text-align: left !important;
+    width: auto !important;
+    max-width: 25% !important;
+    margin: 0 !important;
     padding: 0 !important;
     font-size: 3rem !important;
+    font-weight: 300 !important;
+    color: #ffffff !important;
+    z-index: 3 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .aboutHeroSection[data-page="about"] .overlay {
+    display: none !important;
+  }
+
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    z-index: 3;
+    width: auto;
+    max-width: 25%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="about"] .title {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    z-index: 3;
+    width: auto;
+    max-width: 25%;
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5),
+                 0 0 20px rgba(0, 123, 255, 0.3),
+                 0 0 30px rgba(0, 123, 255, 0.2);
+  }
+}
+
+@media (min-width: 1500px) {
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="careers"] .title,
+  .aboutHeroSection[data-page="news"] .title,
+  .aboutHeroSection[data-page="contact"] .title,
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    left: 12% !important;
+  }
+}
+
+@media (min-width: 2800px) {
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="careers"] .title,
+  .aboutHeroSection[data-page="news"] .title,
+  .aboutHeroSection[data-page="contact"] .title,
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    left: 14% !important;
   }
 }

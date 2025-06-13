@@ -20,6 +20,5 @@
 .heroVideo {
   width: 150%;
   height: 150%;
-  object-fit: cover;
   transform: scale(0.7);
 } 

@@ -1228,7 +1228,7 @@ function Products() {
               color: '#ffffff',
               marginTop: '-1rem',
               textAlign: 'center',
-              fontWeight: '200',
+              fontWeight: '350',
               textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
             }}>Product</h1>
             <div style={{
