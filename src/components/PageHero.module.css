@@ -848,50 +848,25 @@
     font-size: 3rem !important;
   }
 
-  .aboutHeroSection[data-page="markets"] .title {
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
-    padding: 0 !important;
-    font-size: 3rem !important;
-  }
-
-  .aboutHeroSection[data-page="careers"] .title {
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
-    padding: 0 !important;
-    font-size: 3rem !important;
-  }
-
-  .aboutHeroSection[data-page="news"] .title {
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    text-align: center !important;
-    left: 50% !important;
-    margin: 0 auto !important; 
-    padding: 0 !important;
-    font-size: 3rem !important;
-  }
-
-  .aboutHeroSection[data-page="contact"] .title {
-    position: absolute !important;
-    left: 8% !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    text-align: left !important;
-    width: auto !important;
-    max-width: 25% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 3rem !important;
-    font-weight: 300 !important;
-    color: #ffffff !important;
-    z-index: 2 !important;
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="careers"] .title,
+  .aboutHeroSection[data-page="news"] .title,
+  .aboutHeroSection[data-page="contact"] .title,
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    color: white;
+    font-size: 3rem;
+    font-weight: 300;
+    z-index: 3;
+    width: auto;
+    max-width: 25%;
+    margin: 0;
+    padding: 0;
   }
 
   .aboutHeroSection[data-page="contact"] .overlay {
@@ -1113,5 +1088,27 @@
     text-shadow: 0 0 10px rgba(0, 123, 255, 0.5),
                  0 0 20px rgba(0, 123, 255, 0.3),
                  0 0 30px rgba(0, 123, 255, 0.2);
+  }
+}
+
+@media (min-width: 1500px) {
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="careers"] .title,
+  .aboutHeroSection[data-page="news"] .title,
+  .aboutHeroSection[data-page="contact"] .title,
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    left: 12% !important;
+  }
+}
+
+@media (min-width: 2800px) {
+  .aboutHeroSection[data-page="markets"] .title,
+  .aboutHeroSection[data-page="careers"] .title,
+  .aboutHeroSection[data-page="news"] .title,
+  .aboutHeroSection[data-page="contact"] .title,
+  .aboutHeroSection[data-page="products"] .title,
+  .aboutHeroSection[data-page="technology"] .title {
+    left: 14% !important;
   }
 }

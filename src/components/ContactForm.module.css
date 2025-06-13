@@ -322,3 +322,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
   height: 48px;
   box-sizing: border-box;
 } 
+
+.hidden {
+  display: none;
+}

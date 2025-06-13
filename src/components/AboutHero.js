@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import aboutVideo from './images/about_video.mov';
 
 // Styles
@@ -50,10 +50,34 @@ const styles = {
 };
 
 function AboutHero() {
+  const [titleStyle, setTitleStyle] = useState(styles.title);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 2800) {
+        setTitleStyle({
+          ...styles.title,
+          left: '14%'
+        });
+      } else if (window.innerWidth >= 1500) {
+        setTitleStyle({
+          ...styles.title,
+          left: '12%'
+        });
+      } else {
+        setTitleStyle(styles.title);
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div style={styles.container}>
       <section style={styles.heroSection}>
-        <h1 style={styles.title}>About Us</h1>
+        <h1 style={titleStyle}>About Us</h1>
         <video 
           autoPlay
           muted 

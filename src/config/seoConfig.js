@@ -1,51 +1,51 @@
 // src/config/seoConfig.js
 export const seoData = {
   home: {
-    title: 'Home',
-    description: 'Alchemity - Transforming Greenhouse Gases and Waste Resources into Valuable Chemicals and Fuels with Modular Turn-Key Reactor System.',
-    keywords: 'alchemity, chemical conversion, methane, clean technology, sustainable chemistry, carbon-free, modular reactor system',
+    title: 'Alchemity | Turning waste to net-zero fuels at lower cost',
+    description: ' Alchemity is transforming greenhouse gases and waste into sustainable aviation fuel (SAF), hydrogen, and chemicals using a modular, zero-emissions reactor system.', 
+    keywords: 'Alchemity, sustainable fuels, SAF, hydrogen, clean technology, modular reactor, waste to fuel, net-zero chemicals, chemical conversion, carbon-free, clean energy organization ', 
     image: '/images/alchemity_logo_w_text.png'
   },
   about: {
-    title: 'About Us',
-    description: 'Learn about Alchemity\'s team and leadership.',
-    keywords: 'alchemity team, about alchemity, chemical technology, clean energy, sustainable production, innovation',
-    image: '/images/about.png'
+    title: 'About Alchemity | Meet the Team Behind the Clean Tech Revolution', 
+    description: ' Discover Alchemity\'s leadership, mission, and vision to decarbonize fuels and chemical production through modular, scalable innovation. ', 
+    keywords: 'Alchemity team, alchemity leaders, clean energy founders, sustainable innovation, net-zero technology leaders',  
+    image: '/images/about3.png'
   },
   products: {
-    title: 'Products',
-    description: 'Alchemity is deploying modular turnkey systems followed by large integrated facilities.',
-    keywords: 'alchemity products, platform reactor, chemical conversion, methane processing',
-    image: '/images/productbg.png'
+    title: 'Alchemity Products | Modular Skids for Clean Fuel and Chemical Production', 
+    description: 'Deploy Alchemity\'s plug-and-play modular reactor systems for on-site, clean production of SAF, hydrogen, and chemicals at reduced cost.', 
+    keywords: 'alchemity products, modular reactor skids, chemical production, SAF systems, clean fuel technology, biomethane processing', 
+    image: '/images/companal.png'
   },
   technology: {
-    title: 'Technology',
-    description: 'Explore our cutting-edge Reactor System technology that enables direct and single-step conversion of waste feedstocks to biomethane to clean chemicals without CO₂ emissions.',
-    keywords: 'chemical technology, reactor systems, methane conversion, clean technology, innovation',
-    image: '/images/technology-image.png'
+    title: 'Technology | Zero-Emission Chemical Conversion with Alchemity', 
+    description: ' Explore Alchemity’s advanced mixed-conducting ceramic reactor that enables direct conversion of biogas and waste to valuable products without carbon-dioxide emissions. ', 
+    keywords: 'chemical technology, reactor systems, clean technology, innovation, clean technology, zero-emission reactor, methane conversion, ceramic membranes, chemical innovation', 
+    image: '/images/technology_metadata_img.png'
   },
   markets: {
-    title: 'Markets',
-    description: 'Alchemity strategically targets markets suitable for a turnkey Modular Platform System integration.',
-    keywords: 'chemical markets, SAF, hydrogen, syngas, benzene, ethylene, sustainable fuels',
+    title: 'Alchemity Markets | SAF, Hydrogen, and Circular Chemicals', 
+    description: ' Alchemity is strategically targeting high-impact sectors like aviation, waste management, and chemical production with scalable net-zero solutions and a turnkey Modular Platform System integration.', 
+    keywords: 'chemical markets, SAF market, hydrogen economy, circular chemistry, waste-to-fuel, low-carbon markets, sustainable fuels', 
     image: '/images/markets_metadata_img.png'
   },
   careers: {
-    title: 'Careers',
-    description: 'Join Alchemity\'s innovative team working on revolutionary chemical technology. Explore career opportunities in clean technology.',
-    keywords: 'alchemity careers, chemical engineering jobs, clean technology careers, innovation jobs',
-    image: '/images/careers-bg.png'
+    title: 'Careers at Alchemity | Build the Future of Clean Chemicals', 
+    description: 'Join Alchemity\'s growing team and help develop breakthrough chemical technologies. Explore open roles in engineering, R&D, and commercialization.', 
+    keywords: 'alchemity careers, chemical engineering jobs, clean technology careers, innovation jobs, careers in clean tech, chemical engineer roles, green technology jobs', 
+    image: ''
   },
   contact: {
-    title: 'Contact Us',
-    description: 'Get in touch with Alchemity for partnerships, inquiries, or to learn more about our revolutionary chemical conversion technology.',
-    keywords: 'contact alchemity, partnership inquiries, chemical technology contact',
-    image: '/images/contact-us-bg-2.jpg'
+    title: 'Contact Alchemity | Partner with Us on the Path to Net-Zero', 
+    description: 'Get in touch with us to discuss partnerships, investment, or product inquiries. We’re building the next generation of clean chemical systems.', 
+    keywords: 'contact alchemity, partnership inquiries, chemical technology work, clean energy partnerships, SAF inquiries, chemical technology collaboration ', 
+    image: ''
   },
   news: {
-    title: 'News',
-    description: 'Learn about Alchemity\'s latest developments, research breakthroughs, and industry recognition in clean chemical technology.',
-    keywords: 'alchemity news, chemical technology news, clean energy updates, research breakthroughs',
+    title: 'Alchemity News | Clean Tech Announcements and Industry Updates', 
+    description: 'Learn about Alchemity\'s milestones, pilot deployments, media mentions, and research breakthroughs in clean fuels.',   keywords: 'alchemity news, chemical technology news, clean energy updates, research breakthroughs',
+    keywords: 'alchemity news, chemical technology news, clean energy updates, research breakthroughs, net-zero innovation, SAF news updates, clean fuel announcements, clean energy press releases ', 
     image: ''
   }
-};
+}; 

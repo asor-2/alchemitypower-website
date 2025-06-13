@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ContactForm.module.css';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../config/emailConfig';
+// import emailjs from '@emailjs/browser';
+// import { EMAILJS_CONFIG } from '../config/emailConfig';
 
 function ContactForm({ isCareers = false }) {
   const [formData, setFormData] = useState({
@@ -21,9 +21,9 @@ function ContactForm({ isCareers = false }) {
   const MAX_WORDS = 250;
 
   // Initialize EmailJS
-  useEffect(() => {
-    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-  }, []);
+  // useEffect(() => {
+  //   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+  // }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,72 +48,86 @@ function ContactForm({ isCareers = false }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (wordCount > MAX_WORDS) {
-      setSubmitStatus({
-        type: 'error',
-        message: 'Message exceeds the 250-word limit. Please shorten your message.'
-      });
-      return;
-    }
-
     setIsSubmitting(true);
-    setSubmitStatus({ type: '', message: '' });
-
-    try {
-      const templateId = isCareers ? EMAILJS_CONFIG.TEMPLATES.CAREERS : EMAILJS_CONFIG.TEMPLATES.CONTACT;
-      
-      console.log('Sending email with config:', {
-        serviceId: EMAILJS_CONFIG.SERVICE_ID,
-        templateId: templateId,
-        publicKey: EMAILJS_CONFIG.PUBLIC_KEY
-      });
-
-      const response = await emailjs.sendForm(
-        EMAILJS_CONFIG.SERVICE_ID,
-        templateId,
-        e.target,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
-
-      console.log('EmailJS Response:', response);
-
-      if (response.status === 200) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Thank you for your message! We will be in touch shortly.'
-        });
-        
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          reason: '',
-          affiliation: '',
-          message: '',
-          linkedinLink: '',
-          resumeLink: ''
-        });
-        setWordCount(0);
-        e.target.reset();
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus({
-        type: 'error',
-        message: 'Sorry, there was an error sending your message. Please try again later.'
-      });
-    } finally {
-      setIsSubmitting(false);
+    // e.preventDefault();
+    // if (wordCount > MAX_WORDS) {
+    //   setSubmitStatus({
+    //     type: 'error',
+    //     message: 'Message exceeds the 250-word limit. Please shorten your message.'
+    //   });
+    //   return;
     }
-  };
+
+    // setIsSubmitting(true);
+    // setSubmitStatus({ type: '', message: '' });
+
+  //   try {
+  //     const templateId = isCareers ? EMAILJS_CONFIG.TEMPLATES.CAREERS : EMAILJS_CONFIG.TEMPLATES.CONTACT;
+      
+  //     console.log('Sending email with config:', {
+  //       serviceId: EMAILJS_CONFIG.SERVICE_ID,
+  //       templateId: templateId,
+  //       publicKey: EMAILJS_CONFIG.PUBLIC_KEY
+  //     });
+
+  //     const response = await emailjs.sendForm(
+  //       EMAILJS_CONFIG.SERVICE_ID,
+  //       templateId,
+  //       e.target,
+  //       EMAILJS_CONFIG.PUBLIC_KEY
+  //     );
+
+  //     console.log('EmailJS Response:', response);
+
+  //     if (response.status === 200) {
+  //       setSubmitStatus({
+  //         type: 'success',
+  //         message: 'Thank you for your message! We will be in touch shortly.'
+  //       });
+        
+  //       setFormData({
+  //         firstName: '',
+  //         lastName: '',
+  //         email: '',
+  //         reason: '',
+  //         affiliation: '',
+  //         message: '',
+  //         linkedinLink: '',
+  //         resumeLink: ''
+  //       });
+  //       setWordCount(0);
+  //       e.target.reset();
+  //     } else {
+  //       throw new Error('Failed to send email');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error submitting form:', error);
+  //     setSubmitStatus({
+  //       type: 'error',
+  //       message: 'Sorry, there was an error sending your message. Please try again later.'
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
 
   return (
     <section className={styles.section}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form name={isCareers ? "careers-form" : "contact-form"} 
+      onSubmit={handleSubmit} 
+      className={styles.form} 
+      netlify-honeypot="bot-field" 
+      data-netlify="true"
+      data-netlify-recaptcha="true">
         {/* Name Field Group */}
+        <input type="hidden" name="form-name" value={isCareers ? "careers-form" : "contact-form"} />
+
+        <p className={styles.hidden}>
+          <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+
         <div className={styles.fieldGroup}>
           <label className={styles.label} htmlFor="firstName">Name*</label>
           <div className={styles.nameGroup}>
@@ -257,6 +271,10 @@ function ContactForm({ isCareers = false }) {
             {submitStatus.message}
           </div>
         )}
+
+
+        <div data-netlify-recaptcha="true"></div>
+
 
         <button 
           type="submit" 
