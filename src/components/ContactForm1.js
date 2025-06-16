@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './ContactForm.module.css';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -51,39 +51,69 @@ function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus({ type: '', message: '' });
 
+    // try {
+    //   const templateParams = {
+    //     firstName: formData.firstName,
+    //     lastName: formData.lastName,
+    //     email: formData.email,
+    //     reason: formData.reason,
+    //     affiliation: formData.affiliation,
+    //     message: formData.message,
+    //   };
+
+    //   await emailjs.send(
+    //     'service_yrbvrz8',
+    //     'template_qv74f1k',
+    //     templateParams,
+    //     'Mx1r5JKxAiat8cMWs'
+    //   );
+
+    //   setSubmitStatus({
+    //     type: 'success',
+    //     message: 'Thank you for your message! We will be in touch shortly.'
+    //   });
+
+    //   setFormData({
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     reason: '',
+    //     affiliation: '',
+    //     message: '',
+    //   });
+    //   setWordCount(0);
+    // } catch (error) {
+    //   console.error('Error sending email:', error);
+    //   setSubmitStatus({
+    //     type: 'error',
+    //     message: 'Failed to send message. Please try again later.'
+    //   });
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
+    
     try {
-      const templateParams = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        reason: formData.reason,
-        affiliation: formData.affiliation,
-        message: formData.message,
-      };
-
-      await emailjs.send(
-        'service_yrbvrz8',
-        'template_qv74f1k',
-        templateParams,
-        'Mx1r5JKxAiat8cMWs'
-      );
-
+      // Netlify forms will automatically collect the form data
+      // when properly configured with the "data-netlify=true" attribute
+      
+      // Form submitted successfully
       setSubmitStatus({
         type: 'success',
-        message: 'Thank you for your message! We will be in touch shortly.'
+        message: 'Your message has been sent! We will get back to you soon.'
       });
-
+      
+      // Clear form
       setFormData({
         firstName: '',
         lastName: '',
         email: '',
-        reason: '',
-        affiliation: '',
-        message: '',
+        phone: '',
+        company: '',
+        message: ''
       });
       setWordCount(0);
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error submitting form:', error);
       setSubmitStatus({
         type: 'error',
         message: 'Failed to send message. Please try again later.'
@@ -95,19 +125,10 @@ function ContactForm() {
 
   return (
     <section className={styles.section}>
-      <form name={isCareers ? "careers-form" : "contact-form"} 
-          onSubmit={handleSubmit} 
-          className={styles.form} 
-          netlify-honeypot="bot-field" 
-          data-netlify="true"
-          data-netlify-recaptcha="true">
+      <form onSubmit={handleSubmit} className={styles.form} data-netlify="true"
+        netlify-honeypot="bot-field">
 
-        <p className={styles.hidden}>
-          <label>
-            Don't fill this out if you're human: <input name="bot-field" />
-          </label>
-        </p>
-
+        <input type="hidden" name="form-name" value="contact" />
 
         {/* Name Field Group */}
         <div className={styles.fieldGroup}>

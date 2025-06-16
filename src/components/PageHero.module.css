@@ -701,9 +701,9 @@
     transform: translate(-50%, -50%) !important;
   }
 
-  .aboutHeroSection[data-page="markets"] .title {
+  /* .aboutHeroSection[data-page="markets"] .title { */
     /* font-size: 3rem !important;  */
-  }
+  /* } */
 }
 
 /* @media (max-width: 480px) {
