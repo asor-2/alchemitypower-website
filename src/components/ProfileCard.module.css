@@ -44,7 +44,7 @@
   justify-content: center;
   gap: 0.8rem;
   padding: 1rem 2rem;
-  background-color: var(--primary-color);
+  background-color: #10171A;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
@@ -196,13 +196,13 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0rem !important;
-  color: #fff;
+  color: #10171A;
   text-align: center
 }
 
 .founderTitle {
   font-size: 1.3rem;
-  color: #fff;
+  color: #10171A;
   margin-bottom: 0rem !important;
   font-weight: bold;
   text-align: center
@@ -223,7 +223,7 @@
 
 .founderBlurb {
   font-size: 1.3rem;
-  color: #ccc;
+  color: #424546;
   margin-bottom: 0;
   font-style: italic;
   line-height: 1.4;

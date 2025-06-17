@@ -37,7 +37,7 @@ const videoStyle = {
 const sectionStyle = {
   padding: 'var(--section-padding)',
   margin: '0 auto',
-  backgroundColor: '#000000',
+  backgroundColor: '#244141',
   textAlign: 'left',
 };
 
@@ -51,7 +51,7 @@ const titleStyle = {
 
 const highlightTextStyle = {
   fontSize: '34px',
-  color: '#25abe0',
+  color: '#FFEBCA',
   textAlign: 'center',
   marginBottom: '3rem',
   fontWeight: '600',
@@ -118,7 +118,7 @@ const carouselContainerStyle = {
 const scrollbarStyles = `
   .carousel-container {
     scrollbar-width: thin;
-    scrollbar-color: #25abe0 #141414;
+    scrollbar-color: #A3A380 rgb(73, 99, 99, 0.5);
   }
   .carousel-container::-webkit-scrollbar {
     height: 10px;
@@ -127,11 +127,13 @@ const scrollbarStyles = `
   .carousel-container::-webkit-scrollbar-track {
     background: #141414;
     border-radius: 5px;
+    display: block;
   }
   .carousel-container::-webkit-scrollbar-thumb {
     background: #25abe0;
     border-radius: 5px;
-    border: 2px solid #141414;
+    border: 2px solid rgb(73, 99, 99, 0.5);
+    display: block;
   }
   .carousel-container::-webkit-scrollbar-thumb:hover {
     background: #0077b5;
@@ -695,7 +697,7 @@ function Markets() {
         <h2 style={marketBreakdownTitleStyle} className={styles.marketBreakdownTitle}></h2>
         <p style={{
           fontSize: '1.6rem',
-          color: '#ffffff',
+          color: '#FFEBCA',
           textAlign: 'center',
           marginBottom: '1rem',
           marginTop: '-2rem',
@@ -707,7 +709,7 @@ function Markets() {
         </p>
         <p style={{
           fontSize: '1.5rem',
-          color: '#25abe0',
+          color: '#fff',
           textAlign: 'center',
           marginBottom: '2rem',
           fontWeight: 'bold'

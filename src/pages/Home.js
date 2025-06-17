@@ -16,6 +16,15 @@ const SectionSpacing = styled.div`
   padding: 0 0.5rem;
 `;
 
+const FullWidthSection = styled.section`
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background-color: ${props => props.bgColor || 'transparent'};
+  padding: 3rem 0;
+`;
+
+
 function Home() {
   return (
     <>
@@ -27,21 +36,36 @@ function Home() {
         url="/"
       />
       <VideoSection />
-      <SectionSpacing>
-        <ProblemOpportunity />
-      </SectionSpacing>
-      <SectionSpacing>
-        <OurSection />
-      </SectionSpacing>
-      <SectionSpacing>
-        <PlantInfoSection />
-      </SectionSpacing>
+
+      <FullWidthSection bgColor="#0F171A">
+        <SectionSpacing>
+          <ProblemOpportunity />
+        </SectionSpacing>
+      </FullWidthSection>
+
+      <FullWidthSection bgColor="#0F171A">
+        <SectionSpacing>
+          <OurSection />
+        </SectionSpacing>
+      </FullWidthSection>
+
+      <FullWidthSection bgColor="#D0DDD0">
+        <SectionSpacing>
+          <PlantInfoSection />
+        </SectionSpacing>
+      </FullWidthSection>
+
+      <FullWidthSection bgColor="#254141">
       <SectionSpacing>
         <MarketApplications />
       </SectionSpacing>
-      <SectionSpacing>
-        <Sponsors />
-      </SectionSpacing>
+      </FullWidthSection>
+      
+      <FullWidthSection bgColor="#10171A">
+        <SectionSpacing>
+          <Sponsors />
+        </SectionSpacing>
+      </FullWidthSection>
     </>
   );
 }

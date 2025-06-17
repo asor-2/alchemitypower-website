@@ -1,6 +1,6 @@
 .plantSection {
   padding: 4rem 0 3rem 0;
-  background-color: #000000;
+  background-color:  #D0DDD0;
   position: relative;
   overflow: hidden;
 }
@@ -36,14 +36,14 @@
 
 .statsTitle {
   font-size: 2.5rem;
-  color: #25abe0;
+  color: #203238;
   margin-bottom: 3rem;
   text-align: center;
   font-weight: 700;
 }
 
 .statsSubtitle {
-  color: #ffffff;
+  color: #667477;
   font-size: 1.6rem;
   text-align: center;
   margin: -2rem auto 3rem auto;
@@ -62,7 +62,7 @@
 }
 
 .statCard {
-  background: #141414;
+  background: #203238;
   border-radius: 8px;
   padding: 1rem 1rem 1rem 1rem;
   text-align: center;
@@ -72,12 +72,12 @@
 
 .statCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(37, 171, 224, 0.6);
+  box-shadow: 0 0 20px rgba(16, 122, 115, 0.6);
 }
 
 .statIconContainer {
   font-size: 2rem;
-  color: #25abe0;
+  color: #6599ad;
 }
 
 .statValue {
@@ -92,7 +92,7 @@
 .statCard:nth-child(2) .statValue,
 .statCard:nth-child(3) .statValue,
 .statCard:nth-child(4) .statValue {
-  color: #25abe0;
+  color: #aae3fa;
 }
 
 .statLabel {
@@ -216,7 +216,7 @@
   justify-content: center;
   gap: 0.8rem;
   padding: 1rem 2rem;
-  background-color: var(--primary-color);
+  background-color: #48707e;
   color: white;
   font-size: 1.1rem;
   font-weight: 600;

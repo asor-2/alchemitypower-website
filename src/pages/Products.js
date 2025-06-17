@@ -68,8 +68,26 @@ const CardContainer = styled.div`
   }
 `;
 
+const SectionWrapper = styled.section`
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background-color: ${props => props.bgColor || 'transparent'}; /* Changed from '#000000' */
+  padding: 3rem 0; /* Changed from '4rem 0' */
+  overflow: hidden; /* Add this */
+  position: relative; /* Add this */
+  box-sizing: border-box; /* Add this */
+`;
+
+// Content container to maintain your original margins
+const ContentContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+`;
+
+
 const Card = styled.div`
-  background: #141414;
+  background: #10171A;
   padding: 1.5rem 1.5rem 1rem 1.5rem;
   border-radius: 8px;
   color: #ffffff;
@@ -83,13 +101,13 @@ const Card = styled.div`
 
   .icon {
     font-size: 2.5rem;
-    color: #25abe0;
+    color: #6599AD;
     margin-bottom: 1rem;
   }
 
   h3 {
     margin-bottom: 1rem;
-    color: #25abe0;
+    color: #AAE2F9;
     font-weight: 600;
     font-size: 1.7rem;
     text-align: center;
@@ -883,6 +901,7 @@ const SectionSpacing = styled.div`
   }
 `;
 
+
 // Animation variants
 const sectionVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -1277,11 +1296,13 @@ function Products() {
           </>
         )}
 
+    {/* <SectionWrapper bgColor="#162327">
+      <ContentContainer> */}
         <motion.div ref={valueRef} variants={sectionVariants} initial="hidden" animate={valueInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
             <h2 style={{
               fontSize: '40px',
-              color: '#25abe0',
+              color: '#25ABE0',
               marginBottom: '2.5rem',
               textAlign: 'center',
               fontWeight: '500',
@@ -1311,6 +1332,12 @@ function Products() {
             </div>
           </div>
         </motion.div>
+        {/* </ContentContainer>
+      </SectionWrapper> */}
+
+
+    {/* <SectionWrapper bgColor="#162327">
+      <ContentContainer> */}
         <motion.div ref={gtchemRef} variants={sectionVariants} initial="hidden" animate={gtchemInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
             <h2 style={{
@@ -1476,6 +1503,8 @@ function Products() {
             </div>
           </div>
         </motion.div>
+        {/* </ContentContainer>
+      </SectionWrapper> */}
 
         <motion.div ref={facilityRef} variants={sectionVariants} initial="hidden" animate={facilityInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>

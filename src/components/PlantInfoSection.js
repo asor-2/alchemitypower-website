@@ -88,7 +88,7 @@ const PlantInfoSection = () => {
           initial="hidden"
           animate={statsInView ? "visible" : "hidden"}
         >
-          <h2 className={styles.statsTitle} style={{ color: '#25abe0' }}>Serving the Community</h2>
+          <h2 className={styles.statsTitle}>Serving the Community</h2>
           <p className={styles.statsSubtitle}>
             Transforming waste into value to strengthen domestic energy security.
           </p>

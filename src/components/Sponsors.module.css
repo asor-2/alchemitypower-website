@@ -1,6 +1,6 @@
 .sponsorsSection {
   padding: 4rem 0;
-  background-color: #000000;
+  background-color: #10171A;
   position: relative;
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #25abe0;
+  color: #A1E6FF;
   font-weight: 700;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .description {
-  color: #ffffff;
+  color: #75BDD8;
   font-size: 1.6rem;
   text-align: center;
   margin: -2rem auto 3rem auto;

@@ -411,6 +411,8 @@ const responsiveTitleStyle = {
   }
 };
 
+
+
 function Technology() {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
@@ -558,7 +560,7 @@ function Technology() {
             <motion.div
               key={index}
               style={{
-                background: '#141414',
+                background: '#CFDDD0',
                 padding: '1.5rem 1.5rem 1rem 1.5rem',
                 borderRadius: '8px',
                 display: 'flex',
@@ -583,7 +585,7 @@ function Technology() {
               animate="visible"
             >
               <h3 style={{
-                color: '#25abe0',
+                color: '#203238',
                 fontSize: '1.7rem',
                 fontWeight: '600',
                 textAlign: 'center',
@@ -611,7 +613,7 @@ function Technology() {
                 />
               </div>
               <p style={{
-                color: '#ffffff',
+                color: '#667477',
                 fontSize: '1.4rem',
                 lineHeight: '1.6',
                 textAlign: 'center',

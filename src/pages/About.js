@@ -165,7 +165,7 @@ const titleStyle = {
 
 const linkedinButtonStyle = {
   backgroundColor: '#25abe0',
-  color: 'white',
+  color: 'f',
   padding: '0.5rem 1rem',
   borderRadius: '4px',
   textDecoration: 'none',
@@ -267,7 +267,7 @@ function About() {
         />
       )}
       </div>
-      <div style={{ padding: 'var(--section-padding)', backgroundColor: '#000000', maxWidth: '1200px', width: '100%', margin: '0 auto',
+      <div style={{ padding: 'var(--section-padding)', backgroundColor: '#151B1D',  width: '100%', margin: '0 auto',
         }}>
         <h2 style={{...titleStyle, marginTop: '0', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Founders</h2>
         <div style={founderGridStyle} className={styles1.foundersWrapper}>
@@ -282,7 +282,7 @@ function About() {
                 /* Alt Blue (darker): 'rgba(27, 135, 178, 0.8)' 
                 
                 Even index- another option: rgba(62, 92, 102, 0.85)*/
-                // UI CHANGE: backgroundColor: index % 2 === 0 ? 'rgba(74, 144, 164, 0.85)	' : 'rgba(34, 61, 79, 0.85)',
+                backgroundColor: index % 2 === 0 ? '#9dc6e0	' : '#c0dbed',
                 borderRadius: '1rem',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.2)',
                 height: '100%',
@@ -312,7 +312,7 @@ function About() {
               animate="visible"
 
               style={{
-                // UI CHANGE: backgroundColor: index % 2 === 1 ? 'rgba(74, 144, 164, 0.85)	' : 'rgba(34, 61, 79, 0.85)',
+                backgroundColor: index % 2 === 1 ? '#9dc6e0	' : '#c0dbed',
                 borderRadius: '1rem',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.2)',
                 height: '100%',
