@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ContactForm from '../components/ContactForm1';
 import styles from './Contact.module.css';
-import PageHero from '../components/PageHero';
-import ContactHero from '../components/ContactHero';
-import contactBg from '../components/images/contact-us-bg-2.jpg';
-import contactVideo from '../components/images/contact.mov';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
 
@@ -25,119 +18,187 @@ function Contact() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const linkedinButtonStyle = {
-    backgroundColor: '#25abe0',
-    color: 'white',
-    padding: '0.5rem 1rem',
-    borderRadius: '4px',
-    textDecoration: 'none',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-    marginTop: '1rem',
-    transition: 'all 0.3s ease',
-    fontSize: '1.1rem',
-    fontWeight: '600',
-    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.3)',
-    border: '2px solid transparent',
-    cursor: 'pointer',
-    position: 'relative',
-    overflow: 'hidden'
-  };
-
   return (
     <>
       <SEO
-        title={seoData.careers.title}
-        description={seoData.careers.description}
-        keywords={seoData.careers.keywords}
-        image={seoData.careers.image}
+        title={seoData.contact.title}
+        description={seoData.contact.description}
+        keywords={seoData.contact.keywords}
+        image={seoData.contact.image}
         url="/contact"
       />
-
-      {isLargeScreen ? (
-        <ContactHero />
-      ) : (
-        <PageHero 
-          backgroundVideoUrl={contactVideo}
-          title="Contact Us"
-        />
-      )}
-      <div className={styles.contactPage}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.contactInfo}>
-            <h2 style={{ 
-              fontSize: '40px',
-              color: '#25abe0',
-              fontWeight: '500'
+      <div style={{
+        background: 'linear-gradient(135deg, #000000, #1A3A4A 75%)',
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)',
+        marginRight: 'calc(-50vw + 50%)',
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+        paddingBottom: '4rem'
+      }}>
+        {/* Bold, branded hero section */}
+        <div style={{
+          padding: '3.5rem 2rem 2rem',
+          textAlign: 'center',
+          position: 'relative',
+        }}>
+          <h1 style={{
+            fontSize: '3rem',
+            fontWeight: '300',
+            color: '#ffffff',
+            marginBottom: '1rem',
+            letterSpacing: '-0.03em',
+            maxWidth: '1200px',
+            margin: '0 auto 1rem'
+          }}>
+            Let's Build the Clean Chemical Future Together
+          </h1>
+          <p style={{
+            fontSize: '1.5rem',
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '700px',
+            margin: '0 auto 1.5rem',
+            lineHeight: '1.6'
+          }}>
+            Interested to invest? Have questions about pre-ordering our 
+            system or a general inquiry about our technology, products or interested in learning more? 
+            Fill out the form below.
+          </p>
+          
+         {/* LINE DIVIDER */}
+          <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '2.5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          }}></div>
+        </div>
+        
+        <div className={styles.contactPage} style={{ 
+          backgroundColor: 'transparent', 
+          background: 'transparent',
+          padding: '3rem 0 2rem' 
+        }}>
+          <div className={styles.contentWrapper} style={{ gap: '3rem' }}>
+            {/* Left column - completely redesigned */}
+            <div className={styles.contactInfo} style={{
+              backgroundColor: 'rgba(31, 42, 48, 0.7)',
+              borderRadius: '12px',
+              padding: '2.5rem',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
             }}>
-              We would love to hear from you! 
-            </h2>
-            <p style={{ 
-              color: '#ffffff',
-              fontSize: '1.2rem',
-              lineHeight: '1.6',
-              marginBottom: '1.5rem',
-              maxWidth: '800px'
-            }}>
-              Interested to invest? <br/> 
-              Have questions about pre-ordering our system or a general inquiry about our technology, products or interested in learning more? <br/> 
-              Fill out the form below. 
-            </p>
-
-            <div className={styles.infoBlock}>
+              <h2 style={{ 
+                fontSize: '2.5rem',
+                color: '#ffffff',
+                fontWeight: '300',
+                marginBottom: '2rem',
+                letterSpacing: '-0.02em'
+              }}>
+                Talk to Us
+              </h2>
+              
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem',
+                marginBottom: '2.5rem'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                  <div style={{ color: '#25abe0', fontSize: '1.5rem', marginTop: '0.2rem' }}>📍</div>
+                  <div>
+                    <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.5rem' }}>Address</h3>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.7', fontSize: '1.2rem'}}>
+                      4467 Technology Drive<br/>
+                      Alchemity LLC, Suite 2116<br/>
+                      College Park, MD 20742
+                    </p>
+                    <a href="https://maps.app.goo.gl/Z6SbocEcZ1GCuCvF7" target="_blank" rel="noopener noreferrer" style={{ 
+                      color: '#25abe0', 
+                      display: 'inline-block', 
+                      marginTop: '0.5rem',
+                      fontSize: '1rem',
+                      fontWeight: '500'
+                    }}>
+                      Get Directions →
+                    </a>
+                  </div>
+                </div>
+                
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginTop: '0.8rem' }}>
+                  <div style={{ color: '#25abe0', fontSize: '1.5rem', }}>🔗</div>
+                  <div>
+                    <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.5rem' }}>Connect</h3>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.7', marginBottom: '1rem', fontSize: '1.2rem' }}>
+                      Follow our journey in clean chemical innovation
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
               <a 
                 href={linkedInUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                style={linkedinButtonStyle}
-                className={styles.linkedinButton}
+                style={{
+                  backgroundColor: '#0077b5',
+                  color: 'white',
+                  padding: '1rem',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.75rem',
+                  fontWeight: '600',
+                  transition: 'all 0.3s ease',
+                  fontSize: '1.1rem',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  width: '80%',
+                  marginTop: '1rem',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                }}
               >
-                Follow Us on LinkedIn
+                <span>Follow Us on LinkedIn</span>
               </a>
             </div>
             
-            <div className={styles.infoBlock}>
-              <h2 style={{ 
-                fontSize: '40px',
-                color: '#25abe0',
-                fontWeight: '500',
-                marginBottom: '1rem'
-              }}>
-                Address
-              </h2>
-              <p style={{ 
+            {/* Right column - redesigned form container */}
+            <div className={styles.formWrapper} style={{
+              backgroundColor: 'rgba(31, 42, 48, 0.7)',
+              borderRadius: '12px',
+              padding: '2.5rem',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.5rem',
                 color: '#ffffff',
-                fontSize: '1.2rem',
-                lineHeight: '1.6',
+                fontWeight: '400',
                 marginBottom: '1.5rem',
-                maxWidth: '800px'
-              }}>
-                4467 Technology Drive <br/>
-                Alchemity LLC, Suite 2116 <br/>
-                College Park, MD 20742 <br/>
-                United States
-              </p>
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6201.998091617533!2d-76.94109592408!3d38.99251814108605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c6a3aab7487b%3A0x2058439c34831633!2sMaryland%20Technology%20Enterprise%20Institute%20(Mtech)!5e0!3m2!1sen!2sus!4v1746684090265!5m2!1sen!2sus" 
-                width="100%" 
-                height="300" 
-                style={{ border: 0, marginTop: '1rem', borderRadius: '8px' }} 
-                allowFullScreen="" 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+                textAlign: 'left'
+              }}>Send a Message</h3>
+              
+              <ContactForm isCareers={false} />
             </div>
-
-          </div>
-          <div className={styles.formWrapper}>
-             <ContactForm isCareers={false} />
-          </div>
           </div>
         </div>
-      {/* </div> */}
+        
+        {/* Diagonal accent at bottom */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '5px',
+          background: 'linear-gradient(to-bottom, transparent, rgba(37, 171, 224, 0.3), transparent)'
+        }}></div>
+      </div>
     </>
   );
 }
 
-export default Contact; 
+export default Contact;

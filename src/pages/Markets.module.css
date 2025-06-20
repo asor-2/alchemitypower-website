@@ -47,7 +47,7 @@
   z-index: 1;
   padding: var(--section-padding);
   margin: 0 auto;
-  background-color: #244141 !important; /* UI CHANGE */
+  background: 'transparent'; /* UI CHANGE */ /* UI CHANGE */
   text-align: left;
 }
 
@@ -320,7 +320,7 @@
     overflow-x: hidden !important;
     padding: 0 !important;
     margin: 0 !important;
-    background-color: #244141 !important; /* UI CHANGE */
+    background: linear-gradient(to bottom, #000000 40%, #244141) !important; /* UI CHANGE */ /* UI CHANGE */
   }
 }
 

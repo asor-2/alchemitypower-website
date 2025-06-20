@@ -37,7 +37,7 @@ const videoStyle = {
 const sectionStyle = {
   padding: 'var(--section-padding)',
   margin: '0 auto',
-  backgroundColor: '#244141',
+  background: 'transparent',
   textAlign: 'left',
 };
 
@@ -818,6 +818,7 @@ function Markets() {
           </div>
         </div>
       </Modal>
+      
     </div>
     </>
   );

@@ -1,8 +1,10 @@
 .technologyPage {
     padding: 2rem;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #000000, #244141) !important;
+    
   }
   
   .title {
@@ -288,4 +290,28 @@
   .techHeroSection {
     padding: 1rem 0.5rem 2rem;
   }
+}
+
+.learnMoreContainer {
+  text-align: center;
+  margin-top: -0.5rem;
+}
+
+.learnMoreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background-color: #a3a381;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
 }

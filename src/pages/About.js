@@ -156,9 +156,9 @@ const buttonStyle = {
 
 const titleStyle = {
   fontSize: '45px',
-  color: '#25abe0',
+  color: '#0277B5',
   marginBottom: '3rem',
-  marginTop: '5rem',
+  marginTop: '3rem',
   textAlign: 'center',
   fontWeight: '500',
 };
@@ -254,7 +254,7 @@ function About() {
             }
           }
       </style> */}
-      <div style={{ position: 'relative' }}>
+      {/* <div style={{ position: 'relative' }}>
       {isLargeScreen ? (
         <AboutHero />
       ) : (
@@ -263,13 +263,59 @@ function About() {
           style={{ marginTop: '-300px', position: 'relative', zIndex: 2 }}
           videoStyle={videoStyle}
           backgroundVideoUrl={aboutVideo}
-          titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
+          titleStyle={{
+            color: '#0177B5 !important',
+            fontWeight: '400',
+            lineHeight: '1.2'
+          }}
         />
       )}
-      </div>
-      <div style={{ padding: 'var(--section-padding)', backgroundColor: '#151B1D',  width: '100%', margin: '0 auto',
+      </div> */}
+
+<div style={{background: 'linear-gradient(135deg, #000000, #1A3A4A 75%)',}}>
+      <div style={{
+          padding: '3.5rem 2rem 2rem',
+          textAlign: 'center',
+          position: 'relative',
+          
         }}>
-        <h2 style={{...titleStyle, marginTop: '0', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Founders</h2>
+          <h1 style={{
+            fontSize: '3rem',
+            fontWeight: '300',
+            color: '#ffffff',
+            marginBottom: '1rem',
+            letterSpacing: '-0.03em',
+            maxWidth: '1200px',
+            margin: '0 auto 1rem'
+          }}>
+            Alchemity's Founding Team
+          </h1>
+          <p style={{
+            fontSize: '1.5rem',
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '700px',
+            margin: '0 auto 0.5rem',
+            lineHeight: '1.6'
+          }}>
+            A team of innovators driven by science, impact, and a shared vision for clean chemistry
+          </p>
+          
+         {/* LINE DIVIDER */}
+          <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '1rem auto',
+            marginTop: '3rem',
+            // marginBottom: '0',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          }}></div>
+        </div>
+
+      <div style={{ padding: 'var(--section-padding)', backgroundColor: 'transparent', 
+          background: 'transparent',
+        }}>
+        <h2 style={{...titleStyle, marginTop: '-2rem', }}>Founders</h2>
         <div style={founderGridStyle} className={styles1.foundersWrapper}>
           {founders.map((founder, index) => (
             <motion.div
@@ -301,7 +347,7 @@ function About() {
           ))}
         </div>
 
-        <h2 style={{...titleStyle, marginTop: '4rem', textShadow: '0 0 8px rgba(94, 197, 234, 0.3)'}}>Advisors</h2>
+        <h2 style={{...titleStyle, marginTop: '4rem'}}>Advisors</h2>
         <div style={advisorGridStyle}  className={styles1.foundersWrapper}>
           {advisors.map((advisor, index) => (
             <motion.div
@@ -404,6 +450,7 @@ function About() {
             </ul>
           </Modal>
         )}
+      </div>
       </div>
     </>
   );

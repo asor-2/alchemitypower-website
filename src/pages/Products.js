@@ -87,27 +87,28 @@ const ContentContainer = styled.div`
 
 
 const Card = styled.div`
-  background: #10171A;
+  background: ${props => props.index % 2 === 0 ? '#9CC6DF' : '#C0DBED'};
   padding: 1.5rem 1.5rem 1rem 1.5rem;
   border-radius: 8px;
-  color: #ffffff;
+  color: #424546;
   transition: all 0.3s ease;
   text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Added subtle shadow */
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(37, 171, 224, 0.6);
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(37, 171, 224, 0.7);
   }
 
   .icon {
     font-size: 2.5rem;
-    color: #6599AD;
+    color: ${props => props.index % 2 === 1 ? '#3F5F6B' : '#EAF8FB'};
     margin-bottom: 1rem;
   }
 
   h3 {
     margin-bottom: 1rem;
-    color: #AAE2F9;
+    color: #10171A;
     font-weight: 600;
     font-size: 1.7rem;
     text-align: center;
@@ -152,14 +153,14 @@ const RoadmapContainer = styled.div`
 
 const RoadmapTitle = styled.h2`
   font-size: 40px;
-  color: #25abe0;
+  color: #6FCFFB;
   margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 500;
 `;
 
 const RoadmapDescription = styled.p`
-  color: #ffffff;
+  color: #D1ECF7;
   font-size: 1.6rem;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -168,7 +169,7 @@ const RoadmapDescription = styled.p`
 `;
 
 const ClickToLearnMore = styled.p`
-  color: #25abe0;
+  color: #D1ECF7;
   font-size: 1.5rem;
   text-align: center;
   font-weight: 800;
@@ -283,7 +284,7 @@ const TimelineSection = styled.div`
 const TimelineImage = styled.div`
   width: 200px;
   height: 200px;
-  background: #1a1a1a;
+  background: #10171A;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -327,7 +328,7 @@ const TimelineImage = styled.div`
   }
 
   span {
-    color: #25abe0;
+    color: #6599AD;
     font-size: 2rem;
     font-weight: 600;
     
@@ -411,7 +412,7 @@ const Overlay = styled.div`
 `;
 
 const TimelineTitle = styled.h3`
-  color: #25abe0;
+  color: #C0DBED;
   font-size: 1.2rem;
   margin: 2rem 0 0.2rem 0;
   text-align: center;
@@ -464,7 +465,7 @@ const CompetitiveSection = styled.section`
 
 const CompetitiveTitle = styled.h2`
   font-size: 40px;
-  color: #25abe0;
+  color: #6FCFFB;
   margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 500;
@@ -861,7 +862,7 @@ const ButtonContainer = styled.div`
 `;
 
 const DescriptionText = styled.p`
-  color: #ffffff;
+  color: #D1ECF7;
   font-size: 1.6rem;
   text-align: center;
   margin: -2rem auto 3rem auto;
@@ -901,6 +902,15 @@ const SectionSpacing = styled.div`
   }
 `;
 
+const PageWrapper = styled.div`
+  background: linear-gradient(to bottom, #000000 25%, #3F606C);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+`;
 
 // Animation variants
 const sectionVariants = {
@@ -1217,6 +1227,7 @@ function Products() {
 
   return (
     <>
+    <PageWrapper>
     <SEO
       title={seoData.products.title}
       description={seoData.products.description}
@@ -1230,11 +1241,17 @@ function Products() {
           backgroundVideoUrl={productVideo}
           title="Products"
           videoRef={heroVideoRef}
+          titleStyle={{
+            color: '#0077b5',
+            fontWeight: '400',
+            lineHeight: '1.2',
+            textShadow: 'none !important' 
+          }}
         />
       </div>
       <div style={{ 
         padding: 'var(--section-padding)', 
-        backgroundColor: '#000000', 
+        backgroundColor: 'transparent', 
         overflow: 'hidden',
         width: '100%',
         position: 'relative',
@@ -1302,7 +1319,7 @@ function Products() {
           <div className={styles.sectionContainer}>
             <h2 style={{
               fontSize: '40px',
-              color: '#25ABE0',
+              color: '#6FCFFB',
               marginBottom: '2.5rem',
               textAlign: 'center',
               fontWeight: '500',
@@ -1322,7 +1339,7 @@ function Products() {
                   animate={valueInView ? "visible" : "hidden"}
                   style={{ width: '100%' }}
                 >
-                  <Card>
+                  <Card index={index}>
                     {card.icon}
                     <h3>{card.title}</h3>
                     <p>{card.description}</p>
@@ -1342,7 +1359,7 @@ function Products() {
           <div className={styles.sectionContainer}>
             <h2 style={{
               fontSize: '40px',
-              color: '#25abe0',
+              color: '#6FCFFB',
               marginBottom: '2.5rem',
               textAlign: 'center',
               fontWeight: '500'
@@ -1763,6 +1780,8 @@ function Products() {
         <GTChem1Popup />
       </div>
     </div>
+    
+    </PageWrapper>
     </>
   );
 }

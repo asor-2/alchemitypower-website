@@ -112,7 +112,7 @@ function ContactForm({ isCareers = false }) {
   // };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} style={{ backgroundColor: 'transparent' }}>
       <form name={isCareers ? "careers-form" : "contact-form"} 
       onSubmit={handleSubmit} 
       className={styles.form} 

@@ -18,21 +18,45 @@ import styles from './News.module.css';
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
 
-const sectionStyle = {
+// Update PageWrapper with a cleaner gradient
+const PageWrapper = {
   padding: '0 0 calc(var(--section-padding) + 4rem) 0',
   margin: '0 auto',
-  backgroundColor: '#000000',
+  background: 'linear-gradient(140deg, #000000 5%, #1A3A4A)', // Maintain dark gradient
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+  marginRight: 'calc(-50vw + 50%)',
+  minHeight: '100vh',
+  position: 'relative',
+  overflow: 'hidden',
+};
+
+const sectionStyle = {
+  padding: '0 0 calc(var(--section-padding) + 4rem) 0',
+  margin: '4rem auto 0',
+  backgroundColor: 'transparent',
   textAlign: 'left',
   maxWidth: '100%',
   maxWidth: '1200px',
 };
 
+// Clean title style
 const titleStyle = {
-  fontSize: '40px',
-  color: '#0077b5',
-  marginBottom: '3rem',
+  fontSize: '36px',
+  color: '#0077b5', // Keep your blue
+  marginBottom: '0.5rem', // Reduced margin
   textAlign: 'center',
-  fontWeight: '400',
+  fontWeight: '500',
+};
+
+// Add a subtitle style (like Miro has)
+const subtitleStyle = {
+  fontSize: '1.2rem',
+  color: '#ffffff',
+  opacity: 0.8,
+  textAlign: 'center',
+  marginBottom: '3rem',
+  fontWeight: '300',
 };
 
 const videoStyle = {
@@ -74,6 +98,61 @@ const articleVariants = {
       ease: "easeOut"
     }
   })
+};
+
+// For the news cards
+const cardStyle = {
+  backgroundColor: '#0A2535', // Dark blue
+  borderRadius: '8px',
+  overflow: 'hidden',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+  height: '100%',
+  transition: 'all 0.3s ease',
+  border: '1px solid rgba(37, 171, 224, 0.1)',
+};
+
+// For the "Read More" button
+const buttonStyle = {
+  display: 'inline-block',
+  padding: '0.5rem 1rem',
+  fontSize: '0.9rem',
+  backgroundColor: '#25abe0',
+  color: 'white',
+  borderRadius: '4px',
+  textDecoration: 'none',
+  marginTop: '1rem',
+  transition: 'all 0.2s ease',
+};
+
+// News filter tabs (like Miro)
+const tabsContainerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginBottom: '3rem',
+  gap: '1rem',
+};
+
+const tabStyle = {
+  background: 'transparent',
+  color: '#ffffff',
+  border: 'none',
+  padding: '0.5rem 1rem',
+  cursor: 'pointer',
+  position: 'relative',
+};
+
+const activeTabStyle = {
+  ...tabStyle,
+  color: '#0077b5',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: '-5px',
+    left: '0',
+    width: '100%',
+    height: '2px',
+    backgroundColor: '#0077b5',
+  }
 };
 
 const newsArticles = [
@@ -134,6 +213,19 @@ function News() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Combined resize handler for both states
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024);
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <SEO
@@ -144,7 +236,7 @@ function News() {
         url="/news"
       />
 
-      {isLargeScreen ? (
+      {/* {isLargeScreen ? (
         <NewsHero />
       ) : (
         <PageHero 
@@ -153,35 +245,205 @@ function News() {
           videoStyle={videoStyle}
           titleStyle={{ textShadow: '0 0 20px rgba(37, 171, 224, 0.8)' }}
         />
-      )}
+      )} */}
+      <div style={PageWrapper}>
+
+      {/* UPDATED HEADER */}
+      <div style={{
+        padding: isMobile ? '2rem 1rem 1rem' : '5rem 2rem 1rem',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        display: 'flex',
+        alignItems: 'center',
+        gap: isMobile ? '1rem' : '3rem',
+        flexWrap: 'wrap',
+        flexDirection: isMobile ? 'column' : 'row',
+      }}>
+
+        <div style={{ 
+          flex: '1', 
+          minWidth: '300px',
+          width: isMobile ? '100%' : 'auto', // Full width on mobile
+          marginBottom: isMobile ? '2rem' : '0', // Add space when stacked
+        }}>
+
+        <h1 style={{
+            fontSize: '3rem',
+            fontWeight: '300',
+            color: '#ffffff',
+            marginBottom: '1rem',
+            letterSpacing: '-0.03em',
+            maxWidth: '1200px',
+            margin: '0 auto 1rem'
+          }}>Latest News & Updates</h1>
+        
+        <p style={{
+          fontSize: '1.5rem',
+          color: '#0077b5',
+          marginBottom: '2rem',
+        }}>Discover the latest developments, press coverage, and announcements from Alchemity.</p>
+      </div>
       
-      <div style={sectionStyle}>
-        <motion.h2 
-          style={titleStyle}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-        </motion.h2>
-        <div className={styles.articlesGrid}>
-          {newsArticles.map((article, index) => (
-            <motion.div
-              key={index}
-              custom={index}
-              variants={articleVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <NewsArticle
-                index={index}
-                {...article}
-              />
-            </motion.div>
-          ))}
+          <div style={{ 
+            flex: '1', 
+            minWidth: isMobile ? '100%' : '300px', // Full width on mobile
+            maxWidth: isMobile ? '100%' : '400px', // Limit width on desktop
+            backgroundColor: '#9dc6e0',
+            borderRadius: '10px',
+            padding: isMobile ? '1.5rem' : '2rem', // Smaller padding on mobile
+            boxSizing: 'border-box', // Include padding in width calculation
+            overflow: 'hidden', // Prevent overflow
+          }}>
+          <span style={{ color: '#0077b5', fontWeight: '500' }}>Featured News</span>
+          <h3 style={{ 
+              color: '#203238', 
+              // marginTop: '0.5rem', 
+              // marginBottom: '1rem',
+              fontSize: isMobile ? '1.2rem' : '1.4rem', // Smaller font on mobile
+              lineHeight: '1.4',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 3, // Limit to 3 lines
+              WebkitBoxOrient: 'vertical'
+            }}>
+            {newsArticles[0].title}
+          </h3>
+          <a href={newsArticles[0].link} style={{ color: '#0077b5', fontWeight: '500' }}>
+            Read Story →
+          </a>
+      </div>
+    </div>
+
+    {/* LINE DIVIDER */}
+    <div style={{
+      width: '100%',
+      maxWidth: '1200px',
+      margin: '2.5rem auto',
+      height: '1.5px',
+      background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+    }}></div>
+
+
+    {/* BASIC HEADER */}
+    {/* <div style={{
+  background: 'linear-gradient(to right, #000000, #1A3A4A)',
+  padding: '5rem 0 3rem',
+  textAlign: 'center',
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+  marginRight: 'calc(-50vw + 50%)',
+}}>
+  <h1 style={{ 
+    fontSize: '48px', 
+    color: '#ffffff',
+    marginBottom: '1rem',
+    fontWeight: '300'
+  }}>Newsroom</h1>
+  
+  <div style={{
+    width: '60px',
+    height: '3px',
+    background: '#0077b5',
+    margin: '0 auto 1.5rem'
+  }}></div>
+  
+  <p style={{
+    fontSize: '1.2rem',
+    color: '#ffffff',
+    maxWidth: '700px',
+    margin: '0 auto',
+    opacity: '0.8'
+  }}>The latest news and announcements from Alchemity</p>
+</div> */}
+
+      
+        <div style={sectionStyle}>
+          
+          {/* <div style={tabsContainerStyle}>
+            <button style={activeTabStyle}>All News</button>
+            <button style={tabStyle}>Press Releases</button>
+            <button style={tabStyle}>Media Coverage</button>
+          </div> */}
+          
+          {/* News cards grid */}
+          <div className={styles.articlesGrid}>
+            {newsArticles.map((article, index) => (
+              <motion.div
+                key={index}
+                custom={index}
+                variants={articleVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover={{ y: -5 }}
+                style={{
+                  backgroundColor: index % 2 === 0 ? '#EAF3FB	' : '#D0DCE8', // Using the same blues from About.js
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  height: '100%',
+                  transition: 'all 0.3s ease',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                }}
+              >
+                <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <div style={{ padding: '1.5rem' }}>
+                    <div style={{ 
+                      color: '#0077b5', 
+                      fontSize: '0.85rem', 
+                      marginBottom: '0.75rem',
+                      fontWeight: '500' 
+                    }}>
+                      {article.source}
+                    </div>
+                    
+                    {/* News title */}
+                    <h3 style={{ 
+                      color: '#203238', 
+                      fontSize: '1.3rem', 
+                      marginBottom: '1rem',
+                      lineHeight: '1.4',
+                      fontWeight: '500'
+                    }}>
+                      {article.title}
+                    </h3>
+                    
+                    {/* Image container */}
+                    <div style={{ 
+                      position: 'relative', 
+                      height: '180px', 
+                      overflow: 'hidden',
+                      borderRadius: '4px',
+                      marginBottom: '1rem'
+                    }}>
+                      <img 
+                        src={article.image} 
+                        alt={article.title} 
+                        style={{ 
+                          width: '100%', 
+                          height: '100%', 
+                          objectFit: 'cover',
+                          transition: 'transform 0.5s ease'
+                        }} 
+                      />
+                    </div>
+                    
+                    {/* Read More (subtle) */}
+                    <div style={{
+                      color: '#0077b5',
+                      fontSize: '0.9rem',
+                      fontWeight: '500'
+                    }}>
+                      Read More →
+                    </div>
+                  </div>
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-export default News; 
+export default News;

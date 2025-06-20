@@ -18,6 +18,18 @@ import styles1 from './Technology.module.css';
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
 
+import styled from 'styled-components';
+
+// Main colors
+const colors = {
+  background: 'linear-gradient(135deg, #000000 0%, #223F3E 80%)', // Keep your required color
+  primary: '#25abe0', // Signature blue
+  secondary: '#CFDDD0', // Light mint
+  accent: '#FFEBCA', // Beige accent
+  text: '#ffffff',
+  textDark: '#203238'
+};
+
 const responsiveModalContentStyle = {
   display: 'flex',
   gap: '2rem',
@@ -59,7 +71,7 @@ const responsiveTextStyle = {
 const sectionStyle = {
   padding: 'var(--section-padding)',
   margin: '0 auto',
-  backgroundColor: '#000000',
+  // backgroundColor: 'linear-gradient(to bottom, #000000, #244141) !important',
   textAlign: 'left',
   '@media (max-width: 1024px)': {
     paddingTop: '0',
@@ -413,6 +425,41 @@ const responsiveTitleStyle = {
 
 
 
+const SplitSection = styled.div`
+  display: flex;
+  flex-direction: ${props => props.reversed ? 'row-reverse' : 'row'};
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 3rem;
+  
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`;
+
+const ContentSide = styled.div`
+  flex: 1;
+`;
+
+const VisualSide = styled.div`
+  flex: 1;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2.8rem;
+  color: #25abe0;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+`;
+
+const SectionText = styled.p`
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+`;
+
 function Technology() {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
@@ -485,6 +532,7 @@ function Technology() {
         url="/products"
     />
 
+
       <div className={styles1.heroSection}>
         <PageHero 
           backgroundVideoUrl={herotech}
@@ -492,6 +540,7 @@ function Technology() {
           videoRef={heroVideoRef}
         />
       </div>
+      <div className={styles1.technologyPage} style={{ background: colors.background }}>
       <div style={sectionStyle}>
         {isTablet && (
           <>
@@ -558,39 +607,45 @@ function Technology() {
             }
           ].map((card, index) => (
             <motion.div
-              key={index}
-              style={{
-                background: '#CFDDD0',
-                padding: '1.5rem 1.5rem 1rem 1.5rem',
-                borderRadius: '8px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '1.5rem',
-                transition: 'all 0.3s ease',
-                width: 'calc(33.333% - 1rem)',
-                minWidth: '280px',
-                maxWidth: '350px',
-                '&:hover': {
-                  transform: 'translateY(-5px)'
-                },
-                '@media (max-width: 1024px)': {
-                  width: '100%',
-                  maxWidth: '500px'
-                }
-              }}
+            key={index}
+            style={{
+              background: '#223F3E',
+              padding: '2rem',
+              borderRadius: '10px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.5rem',
+              transition: 'all 0.3s ease',
+              width: 'calc(33.333% - 1rem)',
+              minWidth: '280px',
+              maxWidth: '350px',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+            }}
               custom={index}
               variants={cardVariants}
               initial="hidden"
               animate="visible"
+              whileHover={{
+                y: -5,
+                // boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)',
+                // transition: { duration: 0.2, ease: "easeOut" } 
+              }}
+              // transition={{ duration: 0.2, ease: "easeOut" } }
             >
-              <h3 style={{
-                color: '#203238',
-                fontSize: '1.7rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                margin: 0
-              }}>{card.title}</h3>
+          
+            {/* <div style={{
+                position: 'absolute',
+                top: '8px',
+                left: '8px',
+                right: '-8px',
+                bottom: '-8px',
+                background: 'rgba(37, 171, 224, 0.2)',
+                borderRadius: '12px',
+                zIndex: -1
+              }}></div> */}
+
+              <h3 style={{ color: '#FFEBCA', fontSize: '1.7rem' }}>{card.title}</h3>
               <div style={{
                 width: '100%',
                 height: '250px',
@@ -599,7 +654,7 @@ function Technology() {
                 justifyContent: 'center',
                 backgroundColor: 'transparent',
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
               }}>
                 <img 
                   src={card.image} 
@@ -613,7 +668,7 @@ function Technology() {
                 />
               </div>
               <p style={{
-                color: '#667477',
+                color: 'white',
                 fontSize: '1.4rem',
                 lineHeight: '1.6',
                 textAlign: 'center',
@@ -624,29 +679,73 @@ function Technology() {
           ))}
         </div>
 
-        <h1 style={{...titleStyle, marginTop: '2rem'}}>Example: From Biomass to SAF without CO₂ emissions</h1>
+        {/* LINE DIVIDER */}
         <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          margin: '2rem 0'
-        }}>
-          <video 
-            ref={animationVideoRef}
-            src={animationTech} 
-            style={{
-              ...videoStyle,
-              maxWidth: '1150px',
-              height: 'auto'
-            }} 
-            muted 
-            playsInline
-            autoPlay
-          />
-        </div>
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(255, 235, 202, 0.3), transparent)',
+        }}></div>
 
-        <h1 style={{...titleStyle, marginTop: '5rem'}}>Multifunctional <span style={{ fontStyle: 'italic' }}>Gas to Chemicals</span> Platform</h1>
+        {/* <SplitSection>
+          <ContentSide> */}
+            <h1 style={{...titleStyle, 
+              marginTop: '2rem',
+              color: colors.primary, // Match the card color but slightly brighter
+              // textShadow: '0 0 10px rgba(255, 235, 202, 0.1)', // Subtle glow in mint
+              paddingBottom: '0.5rem',
+              }}>
+                Example: From Biomass to SAF without CO₂ emissions</h1>
+          {/* </ContentSide>
+          <VisualSide> */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              margin: '2rem 0'
+            }}>
+              <video 
+                ref={animationVideoRef}
+                src={animationTech} 
+                style={{
+                  ...videoStyle,
+                  maxWidth: '1150px',
+                  height: 'auto',
+                  borderRadius: '12px', // Add rounded corners
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(37, 171, 224, 0.1)', // Add subtle shadow
+                  // transform: 'translateY(-5px)', // Slight lift effect
+                  transition: 'all 0.3s ease' 
+                }} 
+                onMouseOver={(e) => e.target.style.transform = 'translateY(-8px) scale(1.01)'}
+                onMouseOut={(e) => e.target.style.transform = 'translateY(-5px)'}
+                muted 
+                playsInline
+                autoPlay
+              />
+            </div>
+            {/* </VisualSide>
+        </SplitSection> */}
+
+        {/* LINE DIVIDER */}
+        <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(255, 235, 202, 0.3), transparent)',
+        }}></div>
+
+      {/* <SplitSection reversed>
+        <ContentSide> */}
+        <h1 style={{...titleStyle, 
+          marginTop: '5rem', 
+          color: colors.primary, 
+          // textShadow: '0 0 10px rgba(255, 235, 202, 0.1)', // Subtle glow in mint
+          paddingBottom: '0.5rem',
+        }}>
+          Multifunctional <span style={{ fontStyle: 'italic' }}>Gas to Chemicals</span> Platform</h1>
         <p style={{
           fontSize: '1.6rem',
           color: '#ffffff',
@@ -656,6 +755,8 @@ function Technology() {
         }}>
           Leverages mixed-conducting ceramic membrane and low-cost catalyst. 
         </p>
+        {/* </ContentSide>
+        <VisualSide> */}
         <div style={{
           display: 'flex',
           justifyContent: 'center',
@@ -669,12 +770,20 @@ function Technology() {
             style={{
               ...videoStyle,
               maxWidth: '1150px',
-              height: 'auto'
+              height: 'auto',
+              borderRadius: '12px', // Add rounded corners
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(37, 171, 224, 0.1)', // Add subtle shadow
+              // transform: 'translateY(-5px)', // Slight lift effect
+              transition: 'all 0.3s ease' 
             }} 
+            onMouseOver={(e) => e.target.style.transform = 'translateY(-8px) scale(1.01)'}
+            onMouseOut={(e) => e.target.style.transform = 'translateY(-5px)'}
             muted 
             playsInline
           />
         </div>
+        {/* </VisualSide>
+        </SplitSection> */}
 
         <div style={{
           position: 'relative',
@@ -686,7 +795,7 @@ function Technology() {
           margin: isMobile ? '-2rem auto 0' : '-2.5rem auto 0'
         }}>
           <button 
-            className={styles.detailsButton}
+            className={styles1.learnMoreButton}
             onClick={handleOpenDetailsModal}
             style={{
               padding: isMobile ? '0.6rem 1.2rem' : '1rem 2rem',
@@ -788,6 +897,7 @@ function Technology() {
           </div>
         </Modal>
         </div>
+      </div>
       </div>
     </>
   );

@@ -82,6 +82,15 @@ function Careers() {
     zIndex: 0
   };
 
+  const PageWrapper = styled.div`
+    width: 100%;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+  `;
+
   return (
     <>
       <SEO
@@ -91,43 +100,255 @@ function Careers() {
         image={seoData.careers.image}
         url="/careers"
       />
-      <div style={{ position: 'relative' }}>
-        {isLargeScreen ? (
-          <CareersHero />
-        ) : (
-          <PageHero 
-            title="Careers"
-            style={{ marginTop: '-300px' }}
-            videoStyle={videoStyle}
-            backgroundVideoUrl={careersVideo}
-          />
-        )}
-      </div>
-      <div className={styles.contactPage}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.contactInfo}>
-            <h2 style={{ 
-              fontSize: '40px',
-              color: '#25abe0',
-              fontWeight: '500'
-            }}>
-              We're Hiring!
-            </h2>
-            <p style={{ 
-              color: '#ffffff',
-              fontSize: '1.2rem',
-              lineHeight: '1.6',
-              marginBottom: '1.5rem',
-              maxWidth: '800px'
-            }}>
-              If you're interested in one of our open positions, start by applying here and attaching your resume.
-            </p>
+      <PageWrapper style={{
+        background: 'linear-gradient(135deg, #000000, #23403F 75%)',
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)',
+        marginRight: 'calc(-50vw + 50%)',
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+        paddingBottom: '4rem'
+      }}>
+        {/* Bold, branded hero section */}
+        <div style={{
+          padding: '3.5rem 2rem 2rem',
+          textAlign: 'center',
+          position: 'relative',
+        }}>
+          <h1 style={{
+            fontSize: '3rem',
+            fontWeight: '300',
+            color: '#ffffff',
+            marginBottom: '1rem',
+            letterSpacing: '-0.03em',
+            maxWidth: '1200px',
+            margin: '0 auto 1rem'
+          }}>
+            We're Building the Future of Clean Chemistry
+          </h1>
+          <p style={{
+            fontSize: '1.5rem',
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '700px',
+            margin: '0 auto 1.5rem',
+            lineHeight: '1.6'
+          }}>
+            And we're looking for curious, mission-driven people to help.
+          </p>
+          
+          {/* LINE DIVIDER */}
+          <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '2.5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          }}></div>
+        </div>
+        
+        {/* Why Work Here Section */}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto 3rem',
+          padding: '0 2rem'
+        }}>
+          <h2 style={{
+            fontSize: '2.2rem',
+            color: '#25abe0',
+            textAlign: 'center',
+            marginBottom: '2.5rem',
+            fontWeight: '400'
+          }}>
+            Why Work at Alchemity
+          </h2>
+          
+
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '2rem'
+          }}>
+            {[
+              { icon: '🚀', title: 'Small team, real impact', desc: 'Your work directly shapes our technology and future.' },
+              { icon: '🌎', title: 'Tech that matters', desc: 'Build solutions for real climate and energy challenges.' },
+              { icon: '💡', title: 'Backed by science', desc: 'Join a team with deep technical expertise and innovative vision.' },
+              { icon: '🤝', title: 'Flexible culture', desc: 'Work with a collaborative team focused on outcomes, not hours.' }
+            ].map((item, index) => (
+              <div key={index} style={{
+                flex: '1 1 250px',
+                maxWidth: '300px',
+                backgroundColor: 'rgba(31, 42, 48, 0.7)',
+                borderRadius: '12px',
+                padding: '1.5rem',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)'
+              }}>
+                <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{item.icon}</div>
+                <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.2rem' }}>{item.title}</h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem' }}>{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <div className={styles.formWrapper}>
+        </div>
+        
+        {/* Team Image Carousel */}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto 3rem',
+          padding: '0 2rem'
+        }}>
+          <div style={{
+            display: 'flex',
+            overflowX: 'auto',
+            gap: '1rem',
+            padding: '1rem 0',
+            scrollbarWidth: 'none', // Firefox
+            msOverflowStyle: 'none', // IE/Edge
+            '::-webkit-scrollbar': { display: 'none' } // Chrome/Safari
+          }}>
+            {/* Replace with actual team images */}
+            {[1, 2, 3, 4].map(img => (
+              <div key={img} style={{
+                minWidth: '300px',
+                height: '200px',
+                backgroundColor: 'rgba(31, 42, 48, 0.7)',
+                borderRadius: '8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#25abe0',
+                fontSize: '1rem',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                flexShrink: 0
+              }}>
+                Team Photo {img}
+                {/* Replace with: <img src={teamImage{img}} alt="Alchemity team" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} /> */}
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* LINE DIVIDER */}
+        <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '2.5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          }}></div>
+
+
+        {/* Improved Open Positions Section */}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto 3rem',
+          padding: '0 2rem'
+        }}>
+          <h2 style={{
+            fontSize: '2.2rem',
+            color: '#25abe0',
+            textAlign: 'center',
+            marginBottom: '1.5rem',
+            fontWeight: '400'
+          }}>
+            Open Positions
+          </h2>
+          
+          <p style={{
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: '1.2rem',
+            lineHeight: '1.6',
+            marginBottom: '2rem',
+            textAlign: 'center'
+          }}>
+            We're always looking for exceptional people in engineering, product, and operations—even if no role is listed.
+          </p>
+          
+          {/* Example position cards - you can make these real or remove them */}
+          {/* <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '1.5rem'
+          }}>
+            {[
+              { title: 'Process Engineer', type: 'Full-time' },
+              { title: 'Research Scientist', type: 'Full-time' }
+            ].map((job, index) => (
+              <div key={index} style={{
+                flex: '1 1 250px',
+                maxWidth: '350px',
+                backgroundColor: 'rgba(31, 42, 48, 0.7)',
+                borderRadius: '8px',
+                padding: '1.5rem',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)'
+              }}>
+                <div>
+                  <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.2rem' }}>{job.title}</h3>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem' }}>{job.type}</p>
+                </div>
+              </div>
+            ))}
+          </div> */}
+        </div>
+
+        {/* LINE DIVIDER */}
+        <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '2.5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          }}></div>
+        
+        {/* Application Form Section - full width, no columns */}
+        <div style={{ 
+          backgroundColor: 'transparent', 
+          background: 'transparent',
+          padding: '0 2rem 2rem', // Added horizontal padding
+          maxWidth: '1200px',
+          margin: '0 auto',
+          boxSizing: 'border-box' 
+        }}>
+          <h2 style={{
+            fontSize: '2.2rem',
+            color: '#25abe0',
+            textAlign: 'center',
+            marginBottom: '1.5rem',
+            fontWeight: '400'
+          }}>
+            Apply Now
+          </h2>
+          
+          <p style={{
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: '1.2rem',
+            textAlign: 'center',
+            marginBottom: '2rem'
+          }}>
+            <strong>Note:</strong> Please include a Google Drive link to your resume and make sure it's set to "Anyone with the link can view."
+          </p>
+          
+          <div style={{
+            backgroundColor: 'rgba(31, 42, 48, 0.7)',
+            borderRadius: '12px',
+            padding: '2rem',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+            maxWidth: '1100px', // Control inner container width
+            margin: '0 auto'
+          }}>
             <ContactForm isCareers={true} />
           </div>
         </div>
-      </div>
+      </PageWrapper>
     </>
   );
 }

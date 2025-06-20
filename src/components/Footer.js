@@ -129,8 +129,18 @@ For questions about this Privacy Policy or your personal data, please contact us
   };
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.companyName}>
+    <footer className={styles.footer} style={{ position: 'relative', paddingTop: '5px' }}>
+      <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '5px',
+          background: 'linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          zIndex: 10, 
+          paddingBottom: '5px'
+        }}></div>
+      <div className={styles.companyName} style={{ marginTop: '25px' }}>
         Alchemity
       </div>
       <div className={styles.copyright}>
