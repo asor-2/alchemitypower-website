@@ -22,7 +22,7 @@ import { seoData } from '../config/seoConfig';
 const PageWrapper = {
   padding: '0 0 calc(var(--section-padding) + 4rem) 0',
   margin: '0 auto',
-  background: 'linear-gradient(140deg, #000000 5%, #1A3A4A)', // Maintain dark gradient
+  background: 'linear-gradient(-100deg, #1A3A4A, #000000)', // Maintain dark gradient
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
   marginRight: 'calc(-50vw + 50%)',
@@ -267,53 +267,66 @@ function News() {
           marginBottom: isMobile ? '2rem' : '0', // Add space when stacked
         }}>
 
+        {/* For the title and subtitle - improved visual hierarchy */}
         <h1 style={{
-            fontSize: '3rem',
-            fontWeight: '300',
-            color: '#ffffff',
-            marginBottom: '1rem',
-            letterSpacing: '-0.03em',
-            maxWidth: '1200px',
-            margin: '0 auto 1rem'
-          }}>Latest News & Updates</h1>
-        
+          fontSize: '4rem',
+          fontWeight: '600',
+          color: '#ffffff',
+          marginBottom: '1rem',
+          letterSpacing: '-0.03em',
+          maxWidth: '1200px',
+          margin: '0 auto 1rem',
+          position: 'relative'
+        }}> <span style={{ color: '#ffffff' }}>Latest </span>
+          <span style={{ 
+            background: 'linear-gradient(90deg, #25abe0, rgba(37, 171, 224, 0.7))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent'
+          }}>
+            News & Updates
+          </span>
+        </h1>
+
         <p style={{
           fontSize: '1.5rem',
-          color: '#0077b5',
+          color: 'rgba(255, 255, 255, 0.9)', // Changed from #0077b5 to white for better readability
           marginBottom: '2rem',
         }}>Discover the latest developments, press coverage, and announcements from Alchemity.</p>
       </div>
       
+          {/* Featured News Card - darker with accent */}
           <div style={{ 
             flex: '1', 
-            minWidth: isMobile ? '100%' : '300px', // Full width on mobile
-            maxWidth: isMobile ? '100%' : '400px', // Limit width on desktop
-            backgroundColor: '#9dc6e0',
+            minWidth: isMobile ? '100%' : '300px',
+            maxWidth: isMobile ? '100%' : '400px',
+            backgroundColor: '#1A232B', // Darker background instead of light blue
             borderRadius: '10px',
-            padding: isMobile ? '1.5rem' : '2rem', // Smaller padding on mobile
-            boxSizing: 'border-box', // Include padding in width calculation
-            overflow: 'hidden', // Prevent overflow
+            padding: isMobile ? '1.5rem' : '2rem',
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+            borderLeft: '3px solid #0077b5', // Blue accent on the left
+            boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)'
           }}>
-          <span style={{ color: '#0077b5', fontWeight: '500' }}>Featured News</span>
-          <h3 style={{ 
-              color: '#203238', 
-              // marginTop: '0.5rem', 
-              // marginBottom: '1rem',
-              fontSize: isMobile ? '1.2rem' : '1.4rem', // Smaller font on mobile
+            <span style={{ color: '#0077b5', fontWeight: '500' }}>Featured News</span>
+            <h3 style={{ 
+              color: '#ffffff', // White text for contrast
+              fontSize: isMobile ? '1.2rem' : '1.4rem',
               lineHeight: '1.4',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               display: '-webkit-box',
-              WebkitLineClamp: 3, // Limit to 3 lines
+              WebkitLineClamp: 3,
               WebkitBoxOrient: 'vertical'
             }}>
-            {newsArticles[0].title}
-          </h3>
-          <a href={newsArticles[0].link} style={{ color: '#0077b5', fontWeight: '500' }}>
-            Read Story →
-          </a>
+              {newsArticles[0].title}
+            </h3>
+            <a href={newsArticles[0].link} style={{ color: '#0077b5', fontWeight: '500' }}>
+              Read Story →
+            </a>
+          </div>
       </div>
-    </div>
 
     {/* LINE DIVIDER */}
     <div style={{
@@ -375,9 +388,9 @@ function News() {
                 variants={articleVariants}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0, 0, 0, 0.3)' }}
                 style={{
-                  backgroundColor: index % 2 === 0 ? '#EAF3FB	' : '#D0DCE8', // Using the same blues from About.js
+                  backgroundColor: '#1A232B', // Darker card background
                   borderRadius: '10px',
                   overflow: 'hidden',
                   height: '100%',
@@ -398,16 +411,15 @@ function News() {
                     
                     {/* News title */}
                     <h3 style={{ 
-                      color: '#203238', 
+                      color: '#ffffff', // White text for readability
                       fontSize: '1.3rem', 
                       marginBottom: '1rem',
                       lineHeight: '1.4',
-                      fontWeight: '500'
                     }}>
                       {article.title}
                     </h3>
                     
-                    {/* Image container */}
+                    {/* Image section */}
                     <div style={{ 
                       position: 'relative', 
                       height: '180px', 
@@ -421,8 +433,7 @@ function News() {
                         style={{ 
                           width: '100%', 
                           height: '100%', 
-                          objectFit: 'cover',
-                          transition: 'transform 0.5s ease'
+                          objectFit: 'cover' 
                         }} 
                       />
                     </div>

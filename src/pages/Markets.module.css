@@ -320,7 +320,7 @@
     overflow-x: hidden !important;
     padding: 0 !important;
     margin: 0 !important;
-    background: linear-gradient(to bottom, #000000 40%, #244141) !important; /* UI CHANGE */ /* UI CHANGE */
+    background: linear-gradient(125deg, #000000 10%, #244141) !important; /* UI CHANGE */ /* UI CHANGE */
   }
 }
 

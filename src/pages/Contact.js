@@ -28,7 +28,7 @@ function Contact() {
         url="/contact"
       />
       <div style={{
-        background: 'linear-gradient(135deg, #000000, #1A3A4A 75%)',
+        background: 'linear-gradient(-135deg, #000000, #1A3A4A)',
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
@@ -44,15 +44,25 @@ function Contact() {
           position: 'relative',
         }}>
           <h1 style={{
-            fontSize: '3rem',
-            fontWeight: '300',
+            fontSize: '4rem',
+            fontWeight: '600',
             color: '#ffffff',
             marginBottom: '1rem',
             letterSpacing: '-0.03em',
             maxWidth: '1200px',
             margin: '0 auto 1rem'
           }}>
-            Let's Build the Clean Chemical Future Together
+          <span style={{ 
+            background: 'linear-gradient(150deg, #25abe0, #C0DBED)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent'
+          }}>
+            Talk
+          </span>
+          <span> to Us</span>
+
           </h1>
           <p style={{
             fontSize: '1.5rem',
@@ -84,13 +94,13 @@ function Contact() {
           <div className={styles.contentWrapper} style={{ gap: '3rem' }}>
             {/* Left column - completely redesigned */}
             <div className={styles.contactInfo} style={{
-              backgroundColor: 'rgba(31, 42, 48, 0.7)',
+              // backgroundColor: 'rgba(31, 42, 48, 0.7)',
               borderRadius: '12px',
               padding: '2.5rem',
               border: '1px solid rgba(255, 255, 255, 0.08)',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
             }}>
-              <h2 style={{ 
+              {/* <h2 style={{ 
                 fontSize: '2.5rem',
                 color: '#ffffff',
                 fontWeight: '300',
@@ -98,7 +108,7 @@ function Contact() {
                 letterSpacing: '-0.02em'
               }}>
                 Talk to Us
-              </h2>
+              </h2> */}
               
               <div style={{
                 display: 'flex',
@@ -162,7 +172,7 @@ function Contact() {
                   marginRight: 'auto',
                 }}
               >
-                <span>Follow Us on LinkedIn</span>
+                <span>Connect with us on LinkedIn</span>
               </a>
             </div>
             

@@ -1,6 +1,6 @@
 .marketApplicationsSection {
   padding: 3rem 0 2rem 0;
-  background-color: #254141;
+  background-color: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -41,10 +41,10 @@
 }
 
 .textContainer h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 0.8rem;
   color: #ffebca;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .textContainer p {
@@ -54,6 +54,7 @@
   text-align: center;
   margin: 0 auto 3rem auto;
   max-width: 1000px;
+  font-weight: 400;
 }
 
 /* Carousel Styles */

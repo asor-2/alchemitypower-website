@@ -1,6 +1,6 @@
 .sponsorsSection {
   padding: 4rem 0;
-  background-color: #10171A;
+  background-color: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -27,10 +27,10 @@
   
 .sponsorsTitle {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 3rem;
-  color: #A1E6FF;
-  font-weight: 700;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .sponsorsSubtitle {
@@ -48,6 +48,7 @@
   text-align: center;
   margin: -2rem auto 3rem auto;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 /* New carousel styles with improved reliability */

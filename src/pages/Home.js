@@ -28,46 +28,103 @@ const FullWidthSection = styled.section`
 function Home() {
   return (
     <>
-    <SEO
+      <SEO
         title={seoData.home.title}
         description={seoData.home.description}
         keywords={seoData.home.keywords}
         image={seoData.home.image}
         url="/"
       />
-      <VideoSection />
-
-      <FullWidthSection bgColor="#0F171A">
-        <SectionSpacing>
-          <ProblemOpportunity />
-        </SectionSpacing>
-      </FullWidthSection>
-
-      <FullWidthSection bgColor="#0F171A">
-        <SectionSpacing>
-          <OurSection />
-        </SectionSpacing>
-      </FullWidthSection>
-
-      <FullWidthSection bgColor="#D0DDD0">
-        <SectionSpacing>
-          <PlantInfoSection />
-        </SectionSpacing>
-      </FullWidthSection>
-
-      <FullWidthSection bgColor="#254141">
-      <SectionSpacing>
-        <MarketApplications />
-      </SectionSpacing>
-      </FullWidthSection>
       
-      <FullWidthSection bgColor="#10171A">
-        <SectionSpacing>
-          <Sponsors />
-        </SectionSpacing>
-      </FullWidthSection>
+      {/* Apply dark gradient background to entire page */}
+      <div style={{
+        background: 'linear-gradient(150deg, #000000 15%, #1A3A4A 30%, #3b6666 60%, #000000 92%)',
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)',
+        marginRight: 'calc(-50vw + 50%)',
+        minHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <VideoSection />
+
+        {/* Divider between sections */}
+        {/* <div style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '1rem auto 3rem',
+          height: '1.5px',
+          background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+        }}></div> */}
+
+        <div style={{ backgroundColor: 'transparent' }}>
+          <SectionSpacing>
+            <ProblemOpportunity />
+          </SectionSpacing>
+        </div>
+
+        {/* Divider between sections */}
+        <div style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '1rem auto 3rem',
+          height: '1.5px',
+          background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+        }}></div>
+
+        <div style={{ backgroundColor: 'transparent' }}>
+          <SectionSpacing>
+            <OurSection />
+          </SectionSpacing>
+        </div>
+
+        {/* Divider between sections */}
+        <div style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '1rem auto 3rem',
+          height: '1.5px',
+          background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+        }}></div>
+
+        <div style={{ backgroundColor: 'transparent' }}>
+          <SectionSpacing>
+            <PlantInfoSection />
+          </SectionSpacing>
+        </div>
+
+        {/* Divider between sections */}
+        <div style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '1rem auto 3rem',
+          height: '1.5px',
+          background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+        }}></div>
+
+        <div style={{ backgroundColor: 'transparent' }}>
+          <SectionSpacing>
+            <MarketApplications />
+          </SectionSpacing>
+        </div>
+
+        {/* Divider between sections */}
+        <div style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '1rem auto 3rem',
+          height: '1.5px',
+          background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+        }}></div>
+        
+        <div style={{ backgroundColor: 'transparent' }}>
+          <SectionSpacing>
+            <Sponsors />
+          </SectionSpacing>
+        </div>
+      </div>
     </>
   );
 }
 
-export default Home;
+export default Home; 

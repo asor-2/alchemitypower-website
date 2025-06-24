@@ -62,7 +62,8 @@ function Header() {
   const isMobileView = windowWidth <= 1024;
 
   return (
-    <header className={`${styles.header} ${menuOpen ? styles.menuOpen : ''}`}>
+    <header className={`${styles.header} ${menuOpen ? styles.menuOpen : ''}`}
+    style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
       <nav className={styles.nav}>
         <div>
           <Link to="/" className={styles.logo}>

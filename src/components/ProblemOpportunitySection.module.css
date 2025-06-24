@@ -1,6 +1,6 @@
 .section {
   padding: 4.5rem 0 1rem 0;
-  background-color: #0F171A;
+  background-color: transparent;
   overflow: hidden;
   position: relative;
 }
@@ -46,11 +46,11 @@
 }
 
 .title {
-  font-size: 40px;
+  font-size: 3rem;
   color: #FFEBCA;
   margin-bottom: 1.2rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .text {
@@ -63,7 +63,7 @@
 .highlightText {
   color: #e4cba2;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.6;
   margin: 0;
 }

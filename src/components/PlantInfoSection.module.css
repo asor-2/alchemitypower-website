@@ -1,6 +1,6 @@
 .plantSection {
   padding: 4rem 0 3rem 0;
-  background-color:  #D0DDD0;
+  background-color:  transparent;
   position: relative;
   overflow: hidden;
 }
@@ -35,19 +35,20 @@
 }
 
 .statsTitle {
-  font-size: 2.5rem;
-  color: #203238;
+  font-size: 3rem;
+  color: #ffffff;
   margin-bottom: 3rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .statsSubtitle {
-  color: #667477;
+  color: #c2dae0;
   font-size: 1.6rem;
   text-align: center;
   margin: -2rem auto 3rem auto;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .statsContainer {

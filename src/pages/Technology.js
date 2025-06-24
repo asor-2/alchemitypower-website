@@ -531,260 +531,288 @@ function Technology() {
         image={seoData.products.image}
         url="/products"
     />
-
-
-      <div className={styles1.heroSection}>
-        <PageHero 
-          backgroundVideoUrl={herotech}
-          title="Technology"
-          videoRef={heroVideoRef}
-        />
-      </div>
-      <div className={styles1.technologyPage} style={{ background: colors.background }}>
-      <div style={sectionStyle}>
-        {isTablet && (
-          <>
-            <h1 style={{
-              fontSize: '60px',
-              color: '#ffffff',
-              marginTop: '-1rem',
-              textAlign: 'center',
-              fontWeight: '350',
-              textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
-            }}>Technology</h1>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              margin: '2rem 0 5rem 0'
-            }}>
-              <video 
-                ref={heroVideoRef}
-                src={herotech} 
-                style={{
-                  ...videoStyle,
-                  maxWidth: '900px',
-                  height: 'auto'
-                }} 
-                muted 
-                playsInline
-                autoPlay
-              />
-            </div>
-          </>
-        )}
+    <div className={styles1.technologyPage}>
+      {/* Custom Technology Header */}
+      <div style={{
+        padding: '4rem 2rem 3rem',
+        display: 'flex',
+        flexDirection: isTablet || isMobile ? 'column' : 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '3rem',
+        maxWidth: '1200px',
+        margin: '0 auto',
+      }}>
+        {/* Left/Top: Title */}
         <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          gap: '1.5rem',
-          padding: '0.5rem',
-          margin: '-2rem auto 0',
-          maxWidth: '1300px',
-          justifyContent: 'center',
-          '@media (max-width: 1024px)': {
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: '0.5rem',
-          }
-        }}>
-          {[
-            {
-              title: "35 Years R&D + $20M",
-              image: rd,
-              text: "Alchemity holds exlusive license to 32 patents."
-            },
-            {
-              title: "Extensively Validated",
-              image: validated,
-              text: "In labs & via industrial investment committees."
-            },
-            {
-              title: "Scalable",
-              image: scalable,
-              text: "Demo system design completed & ready for fabrication."
-            }
-          ].map((card, index) => (
-            <motion.div
-            key={index}
-            style={{
-              background: '#223F3E',
-              padding: '2rem',
-              borderRadius: '10px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1.5rem',
-              transition: 'all 0.3s ease',
-              width: 'calc(33.333% - 1rem)',
-              minWidth: '280px',
-              maxWidth: '350px',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-            }}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover={{
-                y: -5,
-                // boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)',
-                // transition: { duration: 0.2, ease: "easeOut" } 
-              }}
-              // transition={{ duration: 0.2, ease: "easeOut" } }
-            >
-          
-            {/* <div style={{
-                position: 'absolute',
-                top: '8px',
-                left: '8px',
-                right: '-8px',
-                bottom: '-8px',
-                background: 'rgba(37, 171, 224, 0.2)',
-                borderRadius: '12px',
-                zIndex: -1
-              }}></div> */}
-
-              <h3 style={{ color: '#FFEBCA', fontSize: '1.7rem' }}>{card.title}</h3>
-              <div style={{
-                width: '100%',
-                height: '250px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'transparent',
-                overflow: 'hidden',
-                position: 'relative',
-              }}>
-                <img 
-                  src={card.image} 
-                  alt={card.title} 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    backgroundColor: 'transparent'
-                  }} 
-                />
-              </div>
-              <p style={{
-                color: 'white',
-                fontSize: '1.4rem',
-                lineHeight: '1.6',
-                textAlign: 'center',
-                margin: 0,
-                fontWeight: '500'
-              }}>{card.text}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* LINE DIVIDER */}
-        <div style={{
-            width: '100%',
-            maxWidth: '1200px',
-            margin: '5rem auto',
-            height: '1.5px',
-            background: 'linear-gradient(to right, transparent, rgba(255, 235, 202, 0.3), transparent)',
-        }}></div>
-
-        {/* <SplitSection>
-          <ContentSide> */}
-            <h1 style={{...titleStyle, 
-              marginTop: '2rem',
-              color: colors.primary, // Match the card color but slightly brighter
-              // textShadow: '0 0 10px rgba(255, 235, 202, 0.1)', // Subtle glow in mint
-              paddingBottom: '0.5rem',
-              }}>
-                Example: From Biomass to SAF without CO₂ emissions</h1>
-          {/* </ContentSide>
-          <VisualSide> */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              margin: '2rem 0'
-            }}>
-              <video 
-                ref={animationVideoRef}
-                src={animationTech} 
-                style={{
-                  ...videoStyle,
-                  maxWidth: '1150px',
-                  height: 'auto',
-                  borderRadius: '12px', // Add rounded corners
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(37, 171, 224, 0.1)', // Add subtle shadow
-                  // transform: 'translateY(-5px)', // Slight lift effect
-                  transition: 'all 0.3s ease' 
-                }} 
-                onMouseOver={(e) => e.target.style.transform = 'translateY(-8px) scale(1.01)'}
-                onMouseOut={(e) => e.target.style.transform = 'translateY(-5px)'}
-                muted 
-                playsInline
-                autoPlay
-              />
-            </div>
-            {/* </VisualSide>
-        </SplitSection> */}
-
-        {/* LINE DIVIDER */}
-        <div style={{
-            width: '100%',
-            maxWidth: '1200px',
-            margin: '5rem auto',
-            height: '1.5px',
-            background: 'linear-gradient(to right, transparent, rgba(255, 235, 202, 0.3), transparent)',
-        }}></div>
-
-      {/* <SplitSection reversed>
-        <ContentSide> */}
-        <h1 style={{...titleStyle, 
-          marginTop: '5rem', 
-          color: colors.primary, 
-          // textShadow: '0 0 10px rgba(255, 235, 202, 0.1)', // Subtle glow in mint
-          paddingBottom: '0.5rem',
-        }}>
-          Multifunctional <span style={{ fontStyle: 'italic' }}>Gas to Chemicals</span> Platform</h1>
-        <p style={{
-          fontSize: '1.6rem',
-          color: '#ffffff',
+          flex: isTablet || isMobile ? 'auto' : '1',
           textAlign: 'center',
-          marginBottom: '1rem',
-          marginTop: '-2.5rem'
+          order: 0,
         }}>
-          Leverages mixed-conducting ceramic membrane and low-cost catalyst. 
-        </p>
-        {/* </ContentSide>
-        <VisualSide> */}
+          <h1 style={{
+            fontSize: '4rem',
+            fontWeight: '600',
+            color: '#ffffff',
+            marginBottom: '1rem',
+            letterSpacing: '-0.03em',
+            maxWidth: isTablet || isMobile ? '100%' : '1200px',
+            margin: '0 auto 1rem'
+          }}> <span>Our </span>
+          <span style={{ 
+            background: 'linear-gradient(110deg, #dbcea4, #50918d)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent'
+          }}>
+            Core Technology
+          </span>
+          </h1>
+        </div>
+        
+        {/* Right/Bottom: Video */}
         <div style={{
+          flex: isTablet || isMobile ? 'auto' : '1',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          width: '100%',
-          margin: '2rem 0'
+          order: isTablet || isMobile ? 1 : 0,
+          width: '100%'
+        }}>
+          <video 
+            ref={heroVideoRef}
+            src={herotech} 
+            style={{
+              width: '100%',
+              maxWidth: '900px',
+              height: 'auto',
+              borderRadius: '8px'
+            }} 
+            muted 
+            playsInline
+            autoPlay
+            loop
+          />
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div style={{
+        width: '100%',
+        maxWidth: '1200px',
+        margin: '1rem auto 3rem',
+        height: '1px',
+        background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+      }}></div>
+      
+      {/* Cards Section - Standardized */}
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto 4rem',
+        padding: '0 2rem'
+      }}>
+        <h2 style={{
+          fontSize: '2.2rem',
+          color: '#ffffff',
+          fontWeight: '400',
+          textAlign: 'center',
+          marginBottom: '2.5rem'
+        }}>
+          Proven Technology Platform
+        </h2>
+        
+        <div style={{
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  gap: '2rem'
+}}>
+  {[
+    { title: "35 Years R&D", image: rd, text: "$20M+ investment in mixed-conducting ceramic membrane reactor." },
+    { title: "Extensively Validated", image: validated, text: "In labs & via industrial investment committees." },
+    { title: "Scalable", image: scalable, text: "Demo system design completed & ready for fabrication." }
+  ].map((card, index) => (
+    <motion.div
+      key={index}
+      custom={index}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover={{ 
+        y: -8,
+        boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
+      }}
+      transition={{ duration: 0.3 }}
+      style={{
+        flex: '1 1 300px',
+        maxWidth: '350px',
+        backgroundColor: 'rgba(31, 42, 48, 0.7)',
+        borderRadius: '12px',
+        padding: '2rem',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'all 0.3s ease'
+      }}
+    >
+      {/* Accent line at top */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '3px',
+        background: 'linear-gradient(90deg, transparent, #6FCFFB, transparent)',
+      }}></div>
+      
+      {/* Image integrated in card */}
+      <div style={{
+        width: '100%',
+        height: '180px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '1.5rem'
+      }}>
+        <img 
+          src={card.image} 
+          alt={card.title} 
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain'
+          }}
+        />
+      </div>
+      
+      {/* Gradient heading */}
+      <h3 style={{ 
+        marginBottom: '1rem',
+        fontSize: '1.5rem',
+        fontWeight: '600',
+        background: 'linear-gradient(100deg, #50918d 50%, #ffffff)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        color: 'transparent',
+        textAlign: 'center'
+      }}>{card.title}</h3>
+      
+      <p style={{
+        color: 'rgba(255, 255, 255, 0.9)',
+        fontSize: '1.4rem',
+        lineHeight: '1.6',
+        marginBottom: '1.5rem',
+        textAlign: 'center'
+      }}>{card.text}</p>
+    </motion.div>
+  ))}
+</div>
+      </div>
+      
+      {/* Process Section - Standardized */}
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto 4rem',
+        padding: '0 2rem'
+      }}>
+        <h2 style={{
+          fontSize: '2.2rem',
+          color: '#ffffff',
+          fontWeight: '400',
+          textAlign: 'center',
+          marginBottom: '1rem'
+        }}>
+          Example: From Biomass to SAF without CO₂ emissions
+        </h2>
+        
+        <p style={{
+          color: '#9cc9dd',
+          fontSize: '1.5rem',
+          lineHeight: '1.6',
+          textAlign: 'center',
+          maxWidth: '800px',
+          margin: '0 auto 2rem'
+        }}>
+          Our revolutionary process enables clean fuel production with zero carbon emissions.
+        </p>
+        
+        <div style={{
+          backgroundColor: 'rgba(26, 35, 43, 0.7)',
+          borderRadius: '16px',
+          padding: '0.5rem',
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
+          marginBottom: '3rem'
+        }}>
+          <video 
+            ref={animationVideoRef}
+            src={animationTech} 
+            style={{
+              width: '100%',
+              maxWidth: '1150px',
+              height: 'auto',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'block'
+            }} 
+            muted 
+            playsInline
+          />
+        </div>
+      </div>
+      
+      {/* Platform Section */}
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto 4rem',
+        padding: '0 2rem'
+      }}>
+        <h2 style={{
+          fontSize: '2.2rem',
+          color: '#ffffff',
+          fontWeight: '400',
+          textAlign: 'center',
+          marginBottom: '1rem'
+        }}>
+          Multifunctional <span style={{ fontStyle: 'italic' }}>Gas to Chemicals</span> Platform
+        </h2>
+        
+        <p style={{
+          color: '#9cc9dd',
+          fontSize: '1.5rem',
+          lineHeight: '1.6',
+          textAlign: 'center',
+          maxWidth: '800px',
+          margin: '0 auto 2rem'
+        }}>
+          Leverages mixed-conducting ceramic membrane and low-cost catalyst. 
+        </p>
+        
+        <div style={{
+          backgroundColor: 'rgba(26, 35, 43, 0.7)',
+          borderRadius: '16px',
+          padding: '0.5rem',
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
+          marginBottom: '2rem'
         }}>
           <video 
             ref={animationVideoRef}
             src={reactionanima} 
             style={{
-              ...videoStyle,
+              width: '100%',
               maxWidth: '1150px',
               height: 'auto',
-              borderRadius: '12px', // Add rounded corners
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(37, 171, 224, 0.1)', // Add subtle shadow
-              // transform: 'translateY(-5px)', // Slight lift effect
-              transition: 'all 0.3s ease' 
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'block'
             }} 
-            onMouseOver={(e) => e.target.style.transform = 'translateY(-8px) scale(1.01)'}
-            onMouseOut={(e) => e.target.style.transform = 'translateY(-5px)'}
             muted 
             playsInline
+            autoPlay
           />
         </div>
-        {/* </VisualSide>
-        </SplitSection> */}
-
+        
         <div style={{
           position: 'relative',
           height: isMobile ? '70px' : '100px',

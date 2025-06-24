@@ -87,14 +87,14 @@ const ContentContainer = styled.div`
 
 
 const Card = styled.div`
-  background: ${props => props.index % 2 === 0 ? '#9CC6DF' : '#C0DBED'};
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
-  border-radius: 8px;
-  color: #424546;
+  background-color: rgba(31, 42, 48, 0.7);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Added subtle shadow */
-
+    
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 0 20px rgba(37, 171, 224, 0.7);
@@ -102,15 +102,20 @@ const Card = styled.div`
 
   .icon {
     font-size: 2.5rem;
-    color: ${props => props.index % 2 === 1 ? '#3F5F6B' : '#EAF8FB'};
+    color: '#3F5F6B';
     margin-bottom: 1rem;
   }
 
   h3 {
     margin-bottom: 1rem;
-    color: #10171A;
+    font-size: 1.5rem;
     font-weight: 600;
-    font-size: 1.7rem;
+    text-align: left;
+    background: linear-gradient(90deg, #6FCFFB, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     text-align: center;
   }
 
@@ -121,28 +126,28 @@ const Card = styled.div`
     text-align: center;
   }
 
-  @media (max-width: 890px) {
-    padding: 3rem 2.5rem 2rem 2.5rem;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 12px;
+  // @media (max-width: 890px) {
+  //   padding: 3rem 2.5rem 2rem 2.5rem;
+  //   width: 100%;
+  //   max-width: 600px;
+  //   border-radius: 12px;
 
-    .icon {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-    }
+  //   .icon {
+  //     font-size: 4rem;
+  //     margin-bottom: 2rem;
+  //   }
 
-    h3 {
-      font-size: 2.4rem;
-      margin-bottom: 1.5rem;
-    }
+  //   h3 {
+  //     font-size: 2.4rem;
+  //     margin-bottom: 1.5rem;
+  //   }
 
-    p {
-      font-size: 1.8rem;
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-  }
+  //   p {
+  //     font-size: 1.8rem;
+  //     line-height: 1.8;
+  //     margin-bottom: 2rem;
+  //   }
+  // }
 `;
 
 const RoadmapContainer = styled.div`
@@ -152,11 +157,11 @@ const RoadmapContainer = styled.div`
 `;
 
 const RoadmapTitle = styled.h2`
-  font-size: 40px;
+  font-size: 2.5rem;
   color: #6FCFFB;
   margin-bottom: 1.2rem;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
 `;
 
 const RoadmapDescription = styled.p`
@@ -464,7 +469,8 @@ const CompetitiveSection = styled.section`
 `;
 
 const CompetitiveTitle = styled.h2`
-  font-size: 40px;
+  fontSize: '3rem';
+  fontWeight: '400';
   color: #6FCFFB;
   margin-bottom: 1.2rem;
   text-align: center;
@@ -903,7 +909,7 @@ const SectionSpacing = styled.div`
 `;
 
 const PageWrapper = styled.div`
-  background: linear-gradient(to bottom, #000000 25%, #3F606C);
+  background: linear-gradient(120deg, #000000, #1A3A4A, #000000 70%);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -1228,27 +1234,74 @@ function Products() {
   return (
     <>
     <PageWrapper>
-    <SEO
-      title={seoData.products.title}
-      description={seoData.products.description}
-      keywords={seoData.products.keywords}
-      image={seoData.products.image}
-      url="/products"
-    />
     <div className={styles.responsiveContainer}>
-      <div className={styles.heroSection}>
-        <PageHero 
-          backgroundVideoUrl={productVideo}
-          title="Products"
-          videoRef={heroVideoRef}
-          titleStyle={{
-            color: '#0077b5',
-            fontWeight: '400',
-            lineHeight: '1.2',
-            textShadow: 'none !important' 
-          }}
-        />
+      <SEO
+        title={seoData.products.title}
+        description={seoData.products.description}
+        keywords={seoData.products.keywords}
+        image={seoData.products.image}
+        url="/products"
+      />
+      
+      <div style={{
+        background: 'transparent',
+        width: '100%',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Centered header without video */}
+        <div style={{
+          padding: '3.5rem 2rem 2rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>
+          <h1 style={{
+            fontSize: '4rem',
+            fontWeight: '600',
+            color: '#ffffff',
+            marginBottom: '1rem',
+            letterSpacing: '-0.03em',
+            maxWidth: '1200px',
+            margin: '0 auto 1rem',
+            textAlign: 'center'
+          }}><span>Learn about our </span>
+          <span style={{ 
+            background: 'linear-gradient(120deg, #25abe0, #dbcea4)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent'
+          }}>
+            Products
+          </span>
+          </h1>
+          
+          <p style={{
+            fontSize: '1.5rem',
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '700px',
+            margin: '0 auto 1rem',
+            lineHeight: '1.6',
+            textAlign: 'center'
+          }}>
+            Larger Product Output, Lower Emissions, Higher Efficiency
+          </p>
+        </div>
+
+        {/* LINE DIVIDER */}
+        <div style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '2.5rem auto',
+            height: '1.5px',
+            background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+          }}></div>
       </div>
+      
       <div style={{ 
         padding: 'var(--section-padding)', 
         backgroundColor: 'transparent', 
@@ -1257,72 +1310,14 @@ function Products() {
         position: 'relative',
         boxSizing: 'border-box'
       }}>
-        {isTablet ? (
-          <>
-            <h1 style={{
-              fontSize: '60px',
-              color: '#ffffff',
-              marginTop: '-1rem',
-              textAlign: 'center',
-              fontWeight: '350',
-              textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
-            }}>Product</h1>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              margin: '2rem 0 5rem 0',
-              marginLeft: '0.3rem'
-            }}>
-              <video 
-                ref={heroVideoRef}
-                src={productVideo} 
-                style={{
-                  width: '100%',
-                  maxWidth: '95%',
-                  height: 'auto'
-                }} 
-                muted 
-                playsInline
-                autoPlay
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            {/* New Product Title and Video Section */}
-            <div className={styles.productHeroSection}>
-              <h1 className={styles.productTitle} style={{ 
-                fontWeight: '200', 
-                fontSize: '60px',
-                textShadow: '0 0 20px rgba(37, 171, 224, 0.8)'
-              }}>
-                Product
-              </h1>
-              <div className={styles.productVideoContainer}>
-                <video 
-                  ref={heroVideoRef}
-                  src={productVideo}
-                  className={styles.productVideo}
-                  muted
-                  playsInline
-                />
-              </div>
-            </div>
-          </>
-        )}
-
-    {/* <SectionWrapper bgColor="#162327">
-      <ContentContainer> */}
         <motion.div ref={valueRef} variants={sectionVariants} initial="hidden" animate={valueInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
             <h2 style={{
-              fontSize: '40px',
+              fontSize: '2.5rem',
+              fontWeight: '400',
               color: '#6FCFFB',
               marginBottom: '2.5rem',
               textAlign: 'center',
-              fontWeight: '500',
               width: '100%'
             }}>Larger Product Output, Lower Emissions, Higher Efficiency </h2>
             <div className={styles.valuePropositionContainer}>
@@ -1339,8 +1334,8 @@ function Products() {
                   animate={valueInView ? "visible" : "hidden"}
                   style={{ width: '100%' }}
                 >
-                  <Card index={index}>
-                    {card.icon}
+                  <Card>
+                    <div className="icon">{card.icon}</div>
                     <h3>{card.title}</h3>
                     <p>{card.description}</p>
                   </Card>
@@ -1349,20 +1344,15 @@ function Products() {
             </div>
           </div>
         </motion.div>
-        {/* </ContentContainer>
-      </SectionWrapper> */}
 
-
-    {/* <SectionWrapper bgColor="#162327">
-      <ContentContainer> */}
         <motion.div ref={gtchemRef} variants={sectionVariants} initial="hidden" animate={gtchemInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
             <h2 style={{
-              fontSize: '40px',
+             fontSize: '2.5rem',
+             fontWeight: '400',
               color: '#6FCFFB',
               marginBottom: '2.5rem',
               textAlign: 'center',
-              fontWeight: '500'
             }} className={styles.sectionTitle}> Modular System Offering</h2>
             
             <DescriptionText style={{ marginBottom: '0rem' }}>
@@ -1520,8 +1510,6 @@ function Products() {
             </div>
           </div>
         </motion.div>
-        {/* </ContentContainer>
-      </SectionWrapper> */}
 
         <motion.div ref={facilityRef} variants={sectionVariants} initial="hidden" animate={facilityInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>

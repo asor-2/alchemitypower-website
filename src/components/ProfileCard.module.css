@@ -196,13 +196,13 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0rem !important;
-  color: #10171A;
+  color: #ffffff;
   text-align: center
 }
 
 .founderTitle {
   font-size: 1.3rem;
-  color: #10171A;
+  color: #d0d0d0;
   margin-bottom: 0rem !important;
   font-weight: bold;
   text-align: center
@@ -223,7 +223,7 @@
 
 .founderBlurb {
   font-size: 1.3rem;
-  color: #424546;
+  color: #d0d0d0;
   margin-bottom: 0;
   font-style: italic;
   line-height: 1.4;

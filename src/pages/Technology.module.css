@@ -2,8 +2,8 @@
     padding: 2rem;
     /* max-width: 1200px; */
     margin: 0 auto;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #000000, #244141) !important;
+    /* font-family: Arial, sans-serif; */
+    background: linear-gradient(-140deg, #000000 10%, #244141, #000000) !important;
     
   }
   

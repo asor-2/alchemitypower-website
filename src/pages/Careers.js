@@ -101,7 +101,7 @@ function Careers() {
         url="/careers"
       />
       <PageWrapper style={{
-        background: 'linear-gradient(135deg, #000000, #23403F 75%)',
+        background: 'linear-gradient(-125deg, #000000, #23403F)',
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',
@@ -117,15 +117,25 @@ function Careers() {
           position: 'relative',
         }}>
           <h1 style={{
-            fontSize: '3rem',
-            fontWeight: '300',
+            fontSize: '4rem',
+            fontWeight: '600',
             color: '#ffffff',
             marginBottom: '1rem',
             letterSpacing: '-0.03em',
             maxWidth: '1200px',
             margin: '0 auto 1rem'
           }}>
-            We're Building the Future of Clean Chemistry
+            <span>We're </span>
+            <span style={{ 
+              background: 'linear-gradient(130deg, #25abe0 15%, #50918d)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}>
+              Building the Future
+            </span>
+            <span> of Clean Energy</span>
           </h1>
           <p style={{
             fontSize: '1.5rem',
@@ -154,8 +164,8 @@ function Careers() {
           padding: '0 2rem'
         }}>
           <h2 style={{
-            fontSize: '2.2rem',
-            color: '#25abe0',
+            fontSize: '2.5rem',
+            color: '#ffffff',
             textAlign: 'center',
             marginBottom: '2.5rem',
             fontWeight: '400'
@@ -176,19 +186,88 @@ function Careers() {
               { icon: '💡', title: 'Backed by science', desc: 'Join a team with deep technical expertise and innovative vision.' },
               { icon: '🤝', title: 'Flexible culture', desc: 'Work with a collaborative team focused on outcomes, not hours.' }
             ].map((item, index) => (
-              <div key={index} style={{
-                flex: '1 1 250px',
-                maxWidth: '300px',
-                backgroundColor: 'rgba(31, 42, 48, 0.7)',
-                borderRadius: '12px',
-                padding: '1.5rem',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)'
-              }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{item.icon}</div>
-                <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.2rem' }}>{item.title}</h3>
-                <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem' }}>{item.desc}</p>
-              </div>
+              <motion.div 
+                key={index} 
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
+                  border: '1px solid rgba(37, 171, 224, 0.3)'
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  flex: '1 1 250px',
+                  maxWidth: '300px',
+                  backgroundColor: 'rgba(31, 42, 48, 0.7)',
+                  borderRadius: '12px',
+                  padding: '2rem',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                {/* Accent line at top */}
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: 'linear-gradient(90deg, transparent, #25abe0, transparent)',
+                }}></div>
+                
+                {/* Glowing icon container */}
+                <div style={{
+                  fontSize: '2.5rem',
+                  marginBottom: '1.25rem',
+                  width: '60px',
+                  height: '60px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(37, 171, 224, 0.1)',
+                  borderRadius: '50%',
+                  boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
+                  border: '1px solid rgba(37, 171, 224, 0.3)'
+                }}>
+                  {item.icon}
+                </div>
+                
+                {/* Gradient heading */}
+                <h3 style={{ 
+                  marginBottom: '0.75rem', 
+                  fontSize: '1.5rem',
+                  fontWeight: '600',
+                  background: 'linear-gradient(90deg, #25abe0, #ffffff)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: 'transparent'
+                }}>
+                  {item.title}
+                </h3>
+                
+                <p style={{ 
+                  color: 'rgba(255, 255, 255, 0.9)', 
+                  fontSize: '1.1rem',
+                  lineHeight: '1.6'
+                }}>
+                  {item.desc}
+                </p>
+                
+                {/* Subtle bottom accent */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '15px',
+                  right: '15px',
+                  fontSize: '14px',
+                  opacity: 0.4,
+                  color: '#25abe0'
+                }}>
+                  →
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -248,7 +327,7 @@ function Careers() {
           padding: '0 2rem'
         }}>
           <h2 style={{
-            fontSize: '2.2rem',
+            fontSize: '2.5rem',
             color: '#25abe0',
             textAlign: 'center',
             marginBottom: '1.5rem',
@@ -318,8 +397,8 @@ function Careers() {
           boxSizing: 'border-box' 
         }}>
           <h2 style={{
-            fontSize: '2.2rem',
-            color: '#25abe0',
+            fontSize: '2.5rem',
+            color: '#ffffff',
             textAlign: 'center',
             marginBottom: '1.5rem',
             fontWeight: '400'

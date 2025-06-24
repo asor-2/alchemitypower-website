@@ -6,7 +6,7 @@ import MarketsHero from '../components/MarketsHero';
 import Modal from '../components/Modal';
 import styled from 'styled-components';
 import styles from './Markets.module.css';
-
+import styles1 from './Technology.module.css';
 import marketsBg from '../components/images/market.avif';
 
 import waste from '../components/images/waste.png';
@@ -50,11 +50,14 @@ const titleStyle = {
 };
 
 const highlightTextStyle = {
-  fontSize: '34px',
-  color: '#FFEBCA',
+  color: '#ffffff',
   textAlign: 'center',
   marginBottom: '3rem',
   fontWeight: '600',
+  fontSize: '2.5rem',
+  fontWeight: '400',
+  maxWidth: '1200px',
+  margin: '0 auto',
 };
 
 const cardsContainerStyle = {
@@ -530,12 +533,17 @@ function Markets() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const carouselRef = useRef(null);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024 && window.innerWidth > 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      setIsLargeScreen(window.innerWidth > 1024);
+      const width = window.innerWidth;
+      setWindowWidth(width);
+      setIsLargeScreen(width > 1024);
+      setIsTablet(width <= 1024 && width > 768);
+      setIsMobile(width <= 768);
     };
 
     window.addEventListener('resize', handleResize);
@@ -672,114 +680,160 @@ function Markets() {
         url="/markets"
     />
 
-    <div className={styles.responsiveContainer}>
+    <div className={styles.responsiveContainer} style={{ background: 'transparent' }}>
       <style>{heroKeyframes}</style>
       <style>{keyframes}</style>
       <style>{scrollbarStyles}</style>
       <style>{additionalStyles}</style>
-      <div style={{ position: 'relative' }}>
-        {isLargeScreen ? (
-          <MarketsHero />
-        ) : (
-          <PageHero 
-            title="Markets"
-            style={{ marginTop: '-300px' }}
-            videoStyle={videoStyle}
-            backgroundVideoUrl={marketsVideo}
-          />
-        )}
-      </div>
-      <div style={sectionStyle} className={styles.sectionContainer}>
-        <p style={highlightTextStyle} className={styles.highlightText}>
-          Enabling Chemical & Fuel Markets With A Single Platform Design
-        </p>
+      
+      {/* Custom Markets Header - without video */}
+      <div >
+        <div style={{
+          padding: '3.5rem 2rem 2rem',
+          display: 'flex',
+          justifyContent: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>
+          {/* Centered Title */}
+          <div style={{
+            textAlign: 'center',
+          }}>
+            <h1 style={{
+              fontSize: '4rem',
+              fontWeight: '600',
+              marginBottom: '1rem',
+              letterSpacing: '-0.02em',
+              maxWidth: '1200px',
+              margin: '0 auto 1rem',
+              textAlign: 'center'
+            }}>
+              <span style={{ color: '#ffffff' }}>Transforming </span>
+              <span style={{ 
+                background: 'linear-gradient(135deg, #dbcea4 40%, #50918d)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                color: 'transparent'
+              }}>
+                Markets
+              </span>
+            </h1>
+            
+            <p style={{
+              fontSize: '1.5rem',
+              color: 'rgba(255, 255, 255, 0.8)',
+              maxWidth: '700px',
+              margin: '0 auto 1rem',
+              lineHeight: '1.6'
+            }}>
+              Enabling Chemical & Fuel Markets With A Single Platform Design
+            </p>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div style={{
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '1rem auto 3rem',
+          height: '1.5px',
+          background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+        }}></div>
         
-        <h2 style={marketBreakdownTitleStyle} className={styles.marketBreakdownTitle}></h2>
-        <p style={{
-          fontSize: '1.6rem',
-          color: '#FFEBCA',
-          textAlign: 'center',
-          marginBottom: '1rem',
-          marginTop: '-2rem',
-          maxWidth: '1000px',
-          marginLeft: 'auto',
-          marginRight: 'auto'
-        }} className={styles.marketDescription}>
-          We strategically target first markets suitable for a turnkey Modular Platform System integration prior to scaled chemical production facilities.
-        </p>
-        <p style={{
-          fontSize: '1.5rem',
-          color: '#fff',
-          textAlign: 'center',
-          marginBottom: '2rem',
-          fontWeight: 'bold'
-        }} className={styles.marketInstructions}>
-          Scroll & Click over each market card to learn how Alchemity contributes.
-        </p>
-        <div 
-          ref={carouselRef}
-          className={`carousel-container ${styles.carouselContainer}`}
-          style={responsiveStyles.carouselContainer} 
-          onWheel={handleWheel}
-        >
-          <div style={responsiveStyles.carouselTrack}>
-            <div style={carouselTrackStyle}>
-              <div style={marketSectionsStyle} className={styles.marketSectionsContainer}>
-                <div className={styles.marketSection}>
-                  <div style={firstMarketsContainerStyle} className={styles.firstMarketsContainer}>
-                    <div style={firstMarketsContentStyle} className={styles.firstMarketsContentStyle}>
-                      {images.slice(0, 3).map((item, index) => (
-                        <motion.div 
-                          key={index} 
-                          className={`market-image-container ${styles.firstMarketBoxStyle}`}
-                          style={{
-                            ...imageContainerStyle,
-                            userSelect: 'none',
-                          }}
-                          onClick={() => setSelectedMarket(item)}
-                          custom={index}
-                          variants={cardVariants}
-                          initial="hidden"
-                          animate="visible"
-                        >
-                          <img
-                            src={item.src}
-                            alt={item.title}
-                            className={`market-image ${styles.carouselImage}`}
-                            style={carouselImageStyle}
-                          />
-                          <p style={imageTitleStyle} className={styles.imageTitle}>{item.title}</p>
-                        </motion.div>
-                      ))}
+        {/* Rest of your content follows */}
+        <div style={sectionStyle} className={styles.sectionContainer}>
+          <p style={highlightTextStyle} className={styles.highlightText}>
+            Enabling Chemical & Fuel Markets With A Single Platform Design
+          </p>
+          
+          <h2 style={marketBreakdownTitleStyle} className={styles.marketBreakdownTitle}></h2>
+          <p style={{
+            fontSize: '1.6rem',
+            color: '#ffffff',
+            textAlign: 'center',
+            marginBottom: '1rem',
+            marginTop: '-2rem',
+            maxWidth: '1000px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          }} className={styles.marketDescription}>
+            We strategically target first markets suitable for a turnkey Modular Platform System integration prior to scaled chemical production facilities.
+          </p>
+          <p style={{
+            fontSize: '1.5rem',
+            color: '#FFEBCA',
+            textAlign: 'center',
+            marginBottom: '2rem',
+            fontWeight: 'bold'
+          }} className={styles.marketInstructions}>
+            Scroll & Click over each market card to learn how Alchemity contributes.
+          </p>
+          <div 
+            ref={carouselRef}
+            className={`carousel-container ${styles.carouselContainer}`}
+            style={responsiveStyles.carouselContainer} 
+            onWheel={handleWheel}
+          >
+            <div style={responsiveStyles.carouselTrack}>
+              <div style={carouselTrackStyle}>
+                <div style={marketSectionsStyle} className={styles.marketSectionsContainer}>
+                  <div className={styles.marketSection}>
+                    <div style={firstMarketsContainerStyle} className={styles.firstMarketsContainer}>
+                      <div style={firstMarketsContentStyle} className={styles.firstMarketsContentStyle}>
+                        {images.slice(0, 3).map((item, index) => (
+                          <motion.div 
+                            key={index} 
+                            className={`market-image-container ${styles.firstMarketBoxStyle}`}
+                            style={{
+                              ...imageContainerStyle,
+                              userSelect: 'none',
+                            }}
+                            onClick={() => setSelectedMarket(item)}
+                            custom={index}
+                            variants={cardVariants}
+                            initial="hidden"
+                            animate="visible"
+                          >
+                            <img
+                              src={item.src}
+                              alt={item.title}
+                              className={`market-image ${styles.carouselImage}`}
+                              style={carouselImageStyle}
+                            />
+                            <p style={imageTitleStyle} className={styles.imageTitle}>{item.title}</p>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className={styles.marketSection}>
-                  <div style={secondMarketsContainer} className={styles.secondMarketsContainer}>
-                    <div style={secondMarketsGrid} className={styles.secondMarketsGrid}>
-                      {images.slice(3).map((item, index) => (
-                        <motion.div 
-                          key={index + 3} 
-                          className="market-image-container"
-                          style={{
-                            ...imageContainerStyle,
-                            userSelect: 'none',
-                          }}
-                          custom={index + 3}
-                          variants={cardVariants}
-                          initial="hidden"
-                          animate="visible"
-                        >
-                          <img
-                            src={item.src}
-                            alt={item.title}
-                            className={`market-image ${styles.carouselImage}`}
-                            style={carouselImageStyle}
-                          />
-                          <p style={imageTitleStyle} className={styles.imageTitle}>{item.title}</p>
-                        </motion.div>
-                      ))}
+                  
+                  <div className={styles.marketSection}>
+                    <div style={secondMarketsContainer} className={styles.secondMarketsContainer}>
+                      <div style={secondMarketsGrid} className={styles.secondMarketsGrid}>
+                        {images.slice(3).map((item, index) => (
+                          <motion.div 
+                            key={index + 3} 
+                            className="market-image-container"
+                            style={{
+                              ...imageContainerStyle,
+                              userSelect: 'none',
+                            }}
+                            custom={index + 3}
+                            variants={cardVariants}
+                            initial="hidden"
+                            animate="visible"
+                          >
+                            <img
+                              src={item.src}
+                              alt={item.title}
+                              className={`market-image ${styles.carouselImage}`}
+                              style={carouselImageStyle}
+                            />
+                            <p style={imageTitleStyle} className={styles.imageTitle}>{item.title}</p>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -787,38 +841,37 @@ function Markets() {
             </div>
           </div>
         </div>
+        <Modal
+          show={selectedMarket !== null && selectedMarket.isFirstMarket}
+          onClose={() => setSelectedMarket(null)}
+          title={selectedMarket?.title}
+          size="xlarge"
+          showCloseButton={true}
+        >
+          <div style={{
+            color: '#ffffff',
+            fontSize: '18px',
+            lineHeight: '1.8',
+            marginBottom: '0',
+            paddingLeft: '0',
+            listStyle: 'none',
+          }}>
+            <div style={{ marginBottom: '1rem' }}>{selectedMarket?.description}</div>
+            <div style={{ color: '#25abe0', marginTop: '0rem', fontSize: '1.2rem', fontWeight: '600' }}>
+              {selectedMarket?.title === 'SAF' ? "Our Platform Reactor System offers beyond zero-emission & a cost-effective alternative suitable for co-located greenfield sites (SAF at the point of use), or integration with existing infrastructure - ideal for brownfield applications." : 
+              selectedMarket?.title === 'Hydrogen' ? "Our Platform Reactor System offers a cleaner alternative—producing hydrogen from biomethane via a non-oxidative process while converting carbon into valuable chemicals, strengthening U.S. energy and economic security." :
+              selectedMarket?.title === 'Syngas' ? "Alchemity's Platform Reactor System offers a carbon-negative alternative, producing syngas in a single, non-oxidative step using waste biogas from biomass—delivering a cleaner, more sustainable solution." :
+              "Placeholder text for additional market information"}
+            </div>
+            <div style={{ color: '#ffffff', marginTop: '0.5rem', fontWeight: '600' }}>
+              Current Market Size: {selectedMarket?.marketSize}
+            </div>
+            <div style={{ color: '#ffffff', marginTop: '0.5rem', fontWeight: '600' }}>
+              Projected: {selectedMarket?.futureMarketSize}
+            </div>
+          </div>
+        </Modal>
       </div>
-      <Modal
-        show={selectedMarket !== null && selectedMarket.isFirstMarket}
-        onClose={() => setSelectedMarket(null)}
-        title={selectedMarket?.title}
-        size="xlarge"
-        showCloseButton={true}
-      >
-        <div style={{
-          color: '#ffffff',
-          fontSize: '18px',
-          lineHeight: '1.8',
-          marginBottom: '0',
-          paddingLeft: '0',
-          listStyle: 'none',
-        }}>
-          <div style={{ marginBottom: '1rem' }}>{selectedMarket?.description}</div>
-          <div style={{ color: '#25abe0', marginTop: '0rem', fontSize: '1.2rem', fontWeight: '600' }}>
-            {selectedMarket?.title === 'SAF' ? "Our Platform Reactor System offers beyond zero-emission & a cost-effective alternative suitable for co-located greenfield sites (SAF at the point of use), or integration with existing infrastructure - ideal for brownfield applications." : 
-             selectedMarket?.title === 'Hydrogen' ? "Our Platform Reactor System offers a cleaner alternative—producing hydrogen from biomethane via a non-oxidative process while converting carbon into valuable chemicals, strengthening U.S. energy and economic security." :
-             selectedMarket?.title === 'Syngas' ? "Alchemity's Platform Reactor System offers a carbon-negative alternative, producing syngas in a single, non-oxidative step using waste biogas from biomass—delivering a cleaner, more sustainable solution." :
-             "Placeholder text for additional market information"}
-          </div>
-          <div style={{ color: '#ffffff', marginTop: '0.5rem', fontWeight: '600' }}>
-            Current Market Size: {selectedMarket?.marketSize}
-          </div>
-          <div style={{ color: '#ffffff', marginTop: '0.5rem', fontWeight: '600' }}>
-            Projected: {selectedMarket?.futureMarketSize}
-          </div>
-        </div>
-      </Modal>
-      
     </div>
     </>
   );
