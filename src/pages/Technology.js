@@ -460,6 +460,7 @@ const SectionText = styled.p`
   margin-bottom: 1.5rem;
 `;
 
+
 function Technology() {
   const [showModal, setShowModal] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
@@ -467,6 +468,8 @@ function Technology() {
   const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
   const heroVideoRef = useRef(null);
   const animationVideoRef = useRef(null);
+  const [activeModal, setActiveModal] = useState(null);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -625,11 +628,11 @@ function Technology() {
         </p>
         
         <div style={{
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-  gap: '2rem'
-}}>
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '2rem'
+        }}>
   {[
     { title: "35 Years R&D", image: rd, text: "$20M+ investment in mixed-conducting ceramic membrane reactor." },
     { title: "Extensively Validated", image: validated, text: "In labs & via industrial investment committees." },
@@ -656,7 +659,8 @@ function Technology() {
         boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
         position: 'relative',
         overflow: 'hidden',
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        marginTop: '2rem'
       }}
     >
       {/* Accent line at top */}
@@ -715,7 +719,7 @@ function Technology() {
       </div>
       
       {/* Process Section - Standardized */}
-      <div style={{
+      {/* <div style={{
         maxWidth: '1200px',
         margin: '0 auto 4rem',
         padding: '0 2rem'
@@ -764,12 +768,13 @@ function Technology() {
             }} 
             muted 
             playsInline
+            autoPlay
           />
         </div>
-      </div>
+      </div> */}
       
       {/* Platform Section */}
-      <div style={{
+      {/* <div style={{
         maxWidth: '1200px',
         margin: '0 auto 4rem',
         padding: '0 2rem'
@@ -934,7 +939,312 @@ function Technology() {
           </div>
         </Modal>
         </div>
+      </div> */}
+
+      {/* Real-World Applications Section */}
+      <div style={{
+       maxWidth: '1200px',
+       margin: '4rem auto',
+       padding: '0 2rem',
+       boxSizing: 'border-box',
+      }}>
+        <p style={{
+          color: '#ffffff',
+          textAlign: 'center',
+          marginBottom: '3rem',
+          fontWeight: '600',
+          fontSize: '2.5rem',
+          fontWeight: '400',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>Real-World Applications</p>
+        
+        <div style={{
+          display: 'block',  // Changed from 'flex' to 'block'
+          width: '100%',
+          justifyContent: 'center',
+          gap: '2rem',
+          marginTop: '2rem', 
+          marginBottom: '2rem'
+        }}>
+          {/* Application Card 1 */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ 
+              boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
+            }}
+            transition={{ duration: 0.3 }}
+            style={{
+              width: '100%',
+              maxWidth: (isMobile||isTablet)?'850px': '1000px',
+              backgroundColor: 'rgba(31, 42, 48, 0.7)',
+              borderRadius: '12px',
+              padding: '2rem',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+              position: 'relative',
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              marginBottom: '2rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              boxSizing: 'border-box',
+            }}
+          >
+            {/* Accent line at top */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '4px',
+              background: 'linear-gradient(90deg, #25ABE0, #ffffff)'
+            }} />
+            
+            <h3 style={{ fontSize: '2rem', marginBottom: '1rem', fontWeight: '400', textAlign: 'center' }}>
+              From Biomass to SAF without CO₂ emissions
+            </h3>
+            
+            <p style={{ fontSize: '1.3rem', marginBottom: '1.75rem', opacity: 0.9, textAlign: 'center' }}>
+              Our revolutionary process enables clean fuel production with zero carbon emissions.
+            </p>
+            
+            <div 
+              onClick={() => setActiveModal('biomass')}
+              style={{ 
+                cursor: 'pointer', 
+                marginBottom: '1.5rem',
+                borderRadius: '8px',
+                overflow: 'hidden'
+              }}
+            >
+              <video 
+                ref={animationVideoRef}
+                src={animationTech} 
+                style={{
+                  width: '100%',
+                  maxWidth: '1150px',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  margin: '0 auto',
+                  display: 'block'
+                }} 
+                muted 
+                playsInline
+                autoPlay
+              />
+            </div>
+            
+          <div style={{ 
+            textAlign: 'center',
+            width: '100%',
+            marginTop: '1.5rem' 
+          }}>
+            <button 
+              onClick={() => setActiveModal('biomass')}
+              style={{
+                background: 'linear-gradient(90deg, #25ABE0)',
+                color: 'white',
+                border: 'none',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                fontWeight: '500',
+                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
+              }}
+            >
+              Learn More about our Process
+            </button>
+          </div>
+          </motion.div>
+    
+          {/* Application Card 2 */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ 
+              boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
+            }}
+            transition={{ duration: 0.3 }}
+            style={{
+              width: '100%',            // Full width of container
+              maxWidth: (isMobile||isTablet)?'850px': '1000px',
+              backgroundColor: 'rgba(31, 42, 48, 0.7)',
+              borderRadius: '12px',
+              padding: '2rem',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+              position: 'relative',
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              marginBottom: '2rem',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              boxSizing: 'border-box',
+            }}
+          >
+            {/* Accent line at top */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '4px',
+              background: 'linear-gradient(90deg, #25ABE0, #ffffff)'
+            }} />
+            
+            <h3 style={{ fontSize: '2rem', marginBottom: '1rem', fontWeight: '400', textAlign: 'center' }}>
+              Multifunctional Gas to Chemicals Platform
+            </h3>
+            
+            <p style={{ fontSize: '1.3rem', marginBottom: '1.7rem', opacity: 0.9,  textAlign: 'center'}}>
+              Leverages mixed-conducting ceramic membrane and low-cost catalyst.
+            </p>
+            
+            <div 
+              onClick={() => setActiveModal('gasToChemicals')}
+              style={{ 
+                cursor: 'pointer', 
+                marginBottom: '1.5rem',
+                borderRadius: '8px',
+                overflow: 'hidden'
+              }}
+            >
+              
+              <video 
+            ref={animationVideoRef}
+            src={reactionanima} 
+            style={{
+              width: '100%',
+              maxWidth: '1150px',
+              height: 'auto',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'block'
+            }} 
+            muted 
+            playsInline
+            autoPlay
+          />
+            </div>
+            <div style={{ 
+              textAlign: 'center',
+              width: '100%',
+              marginTop: '1.5rem' 
+            }}>
+            <button 
+              onClick={() => setActiveModal('gasToChemicals')}
+              style={{
+                background: 'linear-gradient(110deg, #25ABE0)',
+                color: 'white',
+                border: 'none',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                fontWeight: '500',
+                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
+              }}
+            >
+              View our Platform
+            </button>
+            </div>
+          </motion.div>
+        </div>
       </div>
+    
+      {/* Modal Popups */}
+      {activeModal && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: '2rem'
+          }}
+          onClick={() => setActiveModal(null)}
+        >
+          <div 
+            style={{
+              position: 'relative',
+              maxWidth: '90%',
+              maxHeight: '90%',
+              borderRadius: '12px',
+              overflow: 'hidden'
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            {activeModal === 'biomass' && (
+               <video 
+               ref={animationVideoRef}
+               src={animationTech} 
+               style={{
+                 width: '100%',
+                 maxWidth: '1150px',
+                 height: 'auto',
+                 borderRadius: '8px',
+                 margin: '0 auto',
+                 display: 'block'
+               }} 
+               muted 
+               playsInline
+               autoPlay
+             />
+            )}
+            
+            {activeModal === 'gasToChemicals' && (
+              <video 
+              ref={animationVideoRef}
+              src={reactionanima} 
+              style={{
+                width: '100%',
+                maxWidth: '1150px',
+                height: 'auto',
+                borderRadius: '8px',
+                margin: '0 auto',
+                display: 'block'
+              }} 
+              muted 
+              playsInline
+              autoPlay
+            />
+            )}
+            
+            <button
+              onClick={() => setActiveModal(null)}
+              style={{
+                position: 'absolute',
+                top: '1rem',
+                right: '1rem',
+                background: 'rgba(0, 0, 0, 0.7)',
+                color: 'white',
+                border: 'none',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                fontSize: '1.2rem'
+              }}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
       </div>
     </>
   );

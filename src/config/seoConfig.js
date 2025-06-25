@@ -3,7 +3,7 @@ export const seoData = {
   home: {
     title: 'Alchemity | Turning waste to net-zero fuels at lower cost',
     description: ' Alchemity is transforming greenhouse gases and waste into sustainable aviation fuel (SAF), hydrogen, and chemicals using a modular, zero-emissions reactor system.', 
-    keywords: 'Alchemity, sustainable fuels, SAF, hydrogen, clean technology, modular reactor, waste to fuel, net-zero chemicals, chemical conversion, carbon-free, clean energy organization ', 
+    keywords: 'Alchemity, sustainable fuels, SAF, hydrogen, clean technology, modular reactor, waste to fuel, net-zero chemicals, chemical conversion, carbon-free, clean energy organization, maryland clean energy startup, college park startup ', 
     image: '/images/alchemity_logo_w_text.png'
   },
   about: {
