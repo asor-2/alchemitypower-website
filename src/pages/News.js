@@ -291,7 +291,7 @@ function News() {
 
         <p style={{
           fontSize: '1.5rem',
-          color: 'rgba(255, 255, 255, 0.9)', // Changed from #0077b5 to white for better readability
+          color: 'rgba(255, 255, 255, 0.8)', 
           marginBottom: '2rem',
         }}>Discover the latest developments, press coverage, and announcements from Alchemity.</p>
       </div>

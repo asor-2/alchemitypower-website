@@ -611,15 +611,18 @@ function Technology() {
         margin: '0 auto 4rem',
         padding: '0 2rem'
       }}>
-        <h2 style={{
-          fontSize: '2.2rem',
+        <p style={{
           color: '#ffffff',
-          fontWeight: '400',
           textAlign: 'center',
-          marginBottom: '2.5rem'
+          marginBottom: '3rem',
+          fontWeight: '600',
+          fontSize: '2.5rem',
+          fontWeight: '400',
+          maxWidth: '1200px',
+          margin: '0 auto',
         }}>
           Proven Technology Platform
-        </h2>
+        </p>
         
         <div style={{
   display: 'flex',
@@ -717,15 +720,18 @@ function Technology() {
         margin: '0 auto 4rem',
         padding: '0 2rem'
       }}>
-        <h2 style={{
-          fontSize: '2.2rem',
+        <p style={{
           color: '#ffffff',
-          fontWeight: '400',
           textAlign: 'center',
-          marginBottom: '1rem'
+          marginBottom: '3rem',
+          fontWeight: '600',
+          fontSize: '2.5rem',
+          fontWeight: '400',
+          maxWidth: '1200px',
+          margin: '0 auto',
         }}>
           Example: From Biomass to SAF without CO₂ emissions
-        </h2>
+        </p>
         
         <p style={{
           color: '#9cc9dd',
@@ -768,15 +774,18 @@ function Technology() {
         margin: '0 auto 4rem',
         padding: '0 2rem'
       }}>
-        <h2 style={{
-          fontSize: '2.2rem',
+        <p style={{
           color: '#ffffff',
-          fontWeight: '400',
           textAlign: 'center',
-          marginBottom: '1rem'
+          marginBottom: '3rem',
+          fontWeight: '600',
+          fontSize: '2.5rem',
+          fontWeight: '400',
+          maxWidth: '1200px',
+          margin: '0 auto',
         }}>
           Multifunctional <span style={{ fontStyle: 'italic' }}>Gas to Chemicals</span> Platform
-        </h2>
+        </p>
         
         <p style={{
           color: '#9cc9dd',
