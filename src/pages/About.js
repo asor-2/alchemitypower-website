@@ -519,7 +519,7 @@ const cardAccentStyle = {
                 }}>
                   <li>Deliver functioning systems, not just prototypes: our modular reactors must perform at scale in real environments.</li>
                   <li>Iterate and scale with urgency: rapid skid deployment means faster results, faster impact.</li>
-                  <li>Partner with alignment: we collaborate with customers, early adopters, system integrators, engineering (EPC) firms, and universities who share our urgency and vision.</li>
+                  <li>Partner with alignment: we collaborate with customers, early adopters, system integrators, and engineering (EPC) firms who share our urgency and vision.</li>
                   <li>Maintain ethical rigor: we prioritize sustainability, team welfare, and transparency in everything we build and deliver.</li>
                   <li>Post-sale service: once we deliver, we serve our customers long-term.</li>
                 </ul>

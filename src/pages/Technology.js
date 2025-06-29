@@ -941,6 +941,16 @@ function Technology() {
         </div>
       </div> */}
 
+      <div style={{
+        width: '100%',
+        maxWidth: '900px',
+        margin: '1rem auto',
+        marginTop: '3rem',
+        // marginBottom: '0',
+        height: '1.5px',
+        background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+      }}></div>
+
       {/* Real-World Applications Section */}
       <div style={{
        maxWidth: '1200px',
@@ -1056,7 +1066,7 @@ function Technology() {
                 boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
               }}
             >
-              Learn More about our Process
+               Enlarge Image
             </button>
           </div>
           </motion.div>
@@ -1150,7 +1160,7 @@ function Technology() {
                 boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
               }}
             >
-              View our Platform
+              Enlarge Image
             </button>
             </div>
           </motion.div>

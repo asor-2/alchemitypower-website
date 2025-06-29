@@ -38,7 +38,7 @@ function Home() {
       
       {/* Apply dark gradient background to entire page */}
       <div style={{
-        background: 'linear-gradient(150deg, #000000 15%, #1A3A4A 30%, #3b6666 60%, #000000 92%)',
+        background: 'linear-gradient(155deg, #000000 25%, #1A3A4A, #3b6666 60%, #000000 92%)',
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         marginRight: 'calc(-50vw + 50%)',

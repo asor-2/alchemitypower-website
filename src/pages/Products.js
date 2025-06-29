@@ -287,83 +287,54 @@ const TimelineSection = styled.div`
 `;
 
 const TimelineImage = styled.div`
-  width: 200px;
-  height: 200px;
-  background: #10171A;
-  border-radius: 8px;
+  width: 160px;
+  height: 160px;
+  background: ${({ bg }) => bg || '#10171A'};
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
   position: relative;
   cursor: pointer;
-  box-shadow: 0 0 0 rgba(37, 171, 224, 0);
   margin: 0 auto;
+  box-shadow: ${({ highlight }) =>
+    highlight
+      ? '0 0 8px 2px #dbcea4, 0 0 0 2px #25abe0'
+      : '0 2px 2px rgba(37, 171, 224, 0.10)'};
+  transform: ${({ highlight }) => (highlight ? 'scale(1.06)' : 'none')};
+  z-index: ${({ highlight }) => (highlight ? 10 : 1)};
+  border: ${({ highlight }) => (highlight ? '2px solid #dbcea4' : '1px solid rgba(255,255,255,0.10)')};
+  opacity: ${({ highlight }) => (highlight ? 1 : 0.9)};
 
   &:hover {
-    box-shadow: 0 0 20px rgba(37, 171, 224, 0.6);
-    transform: translateY(-5px);
-  }
-  
-  @media (max-width: 890px) {
-    width: 280px;
-    height: 280px;
-    margin: 0 auto;
-    border-radius: 12px;
-  }
-  
-  @media (min-width: 891px) and (max-width: 1024px) {
-    width: 150px;
-    height: 150px;
-  }
-  
-  @media (min-width: 1025px) and (max-width: 1440px) {
-    width: 180px;
-    height: 180px;
-  }
-  
-  @media (min-width: 1441px) and (max-width: 1920px) {
-    width: 200px;
-    height: 200px;
-  }
-  
-  @media (min-width: 1921px) {
-    width: 220px;
-    height: 220px;
+    box-shadow: 0 0 24px 4px #25abe0, 0 8px 32px rgba(37, 171, 224, 0.18);
+    transform: translateY(-5px) scale(1.015);
+    opacity: 1;
   }
 
   span {
-    color: #6599AD;
-    font-size: 2rem;
-    font-weight: 600;
-    
-    @media (max-width: 890px) {
-      font-size: 3rem;
-    }
-    
-    @media (min-width: 891px) and (max-width: 1024px) {
-      font-size: 1.4rem;
-    }
-    
-    @media (min-width: 1025px) and (max-width: 1440px) {
-      font-size: 1.8rem;
-    }
-    
-    @media (min-width: 1441px) and (max-width: 1920px) {
-      font-size: 2rem;
-    }
-    
-    @media (min-width: 1921px) {
-      font-size: 2.2rem;
-    }
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
   }
 `;
+
+const trlGradients = [
+  'linear-gradient(135deg, #0B3C5D, #1C5C8C)', // TRL3
+  'linear-gradient(135deg, #174863, #1F678A)', // TRL4
+  'linear-gradient(135deg,rgb(28, 83, 119), #1C5C8C)', // TRL5 (highlight)
+  'linear-gradient(135deg, #174863, #1F678A)', // TRL6/7
+  'linear-gradient(135deg, #0B3C5D, #1C5C8C)', // TRL8/9
+];
 
 const Popup = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
   background: rgba(20, 20, 20, 0.95);
   padding: 2rem;
   border-radius: 8px;
@@ -1626,6 +1597,8 @@ function Products() {
                   >
                     <TimelineSection>
                       <TimelineImage 
+                      bg={trlGradients[index]}
+                      highlight={item.trl === "TRL 5" || item.trl === "TRL 4"}
                         onClick={() => handleImageClick({
                           image: item.image,
                           images: item.images,
