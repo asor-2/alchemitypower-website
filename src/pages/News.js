@@ -309,7 +309,7 @@ function News() {
             borderLeft: '3px solid #0077b5', // Blue accent on the left
             boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)'
           }}>
-            <span style={{ color: '#0077b5', fontWeight: '500' }}>Featured News</span>
+            <span style={{ color: '#27AADF', fontWeight: '500' }}>Featured News</span>
             <h3 style={{ 
               color: '#ffffff', // White text for contrast
               fontSize: isMobile ? '1.2rem' : '1.4rem',
@@ -322,7 +322,7 @@ function News() {
             }}>
               {newsArticles[0].title}
             </h3>
-            <a href={newsArticles[0].link} style={{ color: '#0077b5', fontWeight: '500' }}>
+            <a href={newsArticles[0].link} style={{ color: '#27AADF', fontWeight: '450' }}>
               Read Story →
             </a>
           </div>
@@ -401,8 +401,8 @@ function News() {
                 <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                   <div style={{ padding: '1.5rem' }}>
                     <div style={{ 
-                      color: '#0077b5', 
-                      fontSize: '0.85rem', 
+                      color: '#27AADF', 
+                      fontSize: '1rem', 
                       marginBottom: '0.75rem',
                       fontWeight: '500' 
                     }}>
@@ -415,6 +415,7 @@ function News() {
                       fontSize: '1.3rem', 
                       marginBottom: '1rem',
                       lineHeight: '1.4',
+                      fontWeight: '300'
                     }}>
                       {article.title}
                     </h3>
@@ -440,7 +441,7 @@ function News() {
                     
                     {/* Read More (subtle) */}
                     <div style={{
-                      color: '#0077b5',
+                      color: '#27AADF',
                       fontSize: '0.9rem',
                       fontWeight: '500'
                     }}>

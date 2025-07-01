@@ -380,7 +380,7 @@ const cardAccentStyle = {
           
           <h2 style={{
             fontSize: '28px',
-            color: '#0077b5',
+            color: '#24AADF',
             textAlign: 'center',
             marginBottom: '1.5rem',
             fontWeight: '400',

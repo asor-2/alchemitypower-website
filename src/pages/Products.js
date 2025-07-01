@@ -230,6 +230,7 @@ const TimelineSections = styled.div`
     gap: 3rem;
     width: 90%;
     max-width: 400px;
+    align-items: center; 
   }
   
   @media (min-width: 891px) and (max-width: 1024px) {
@@ -249,12 +250,15 @@ const TimelineSection = styled.div`
   z-index: 2;
   min-width: 200px;
   margin-top: 2rem;
+  margin-left: ${({ index }) => (index > 0 ? '-40px' : '0')};
   
   @media (max-width: 890px) {
     width: 100%;
     min-width: auto;
     margin-top: 0;
     padding: 0;
+    margin-left: 0;
+    align-items: center; 
   }
   
   @media (min-width: 891px) and (max-width: 1024px) {
@@ -290,7 +294,7 @@ const TimelineImage = styled.div`
   width: 160px;
   height: 160px;
   background: ${({ bg }) => bg || '#10171A'};
-  border-radius: 16px;
+  border-radius: 16px 0 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,9 +310,12 @@ const TimelineImage = styled.div`
   z-index: ${({ highlight }) => (highlight ? 10 : 1)};
   border: ${({ highlight }) => (highlight ? '2px solid #dbcea4' : '1px solid rgba(255,255,255,0.10)')};
   opacity: ${({ highlight }) => (highlight ? 1 : 0.9)};
+  clip-path: polygon(
+    0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%
+  );
 
   &:hover {
-    box-shadow: 0 0 24px 4px #25abe0, 0 8px 32px rgba(37, 171, 224, 0.18);
+    // box-shadow: 0 0 24px 4px #25abe0, 0 8px 32px rgba(37, 171, 224, 0.18);
     transform: translateY(-5px) scale(1.015);
     opacity: 1;
   }
@@ -323,11 +330,11 @@ const TimelineImage = styled.div`
 `;
 
 const trlGradients = [
-  'linear-gradient(135deg, #0B3C5D, #1C5C8C)', // TRL3
-  'linear-gradient(135deg, #174863, #1F678A)', // TRL4
-  'linear-gradient(135deg,rgb(28, 83, 119), #1C5C8C)', // TRL5 (highlight)
-  'linear-gradient(135deg, #174863, #1F678A)', // TRL6/7
-  'linear-gradient(135deg, #0B3C5D, #1C5C8C)', // TRL8/9
+  'linear-gradient(135deg,rgb(32, 101, 147),rgb(26, 93, 144))', // TRL3
+  'linear-gradient(135deg,rgb(74, 183, 242),rgb(13, 172, 186))', // TRL4
+  'linear-gradient(135deg,rgb(74, 183, 242),rgb(13, 172, 186))', // TRL5 (highlight)
+  'linear-gradient(135deg,rgb(32, 101, 147),rgb(26, 93, 144))', // TRL6/7
+  'linear-gradient(135deg,rgb(32, 101, 147),rgb(26, 93, 144))', // TRL8/9
 ];
 
 const Popup = styled.div`
@@ -1595,10 +1602,10 @@ function Products() {
                     initial="hidden"
                     animate={roadmapInView ? "visible" : "hidden"}
                   >
-                    <TimelineSection>
+                    <TimelineSection index={index}>
                       <TimelineImage 
                       bg={trlGradients[index]}
-                      highlight={item.trl === "TRL 5" || item.trl === "TRL 4"}
+                      // highlight={item.trl === "TRL 5" || item.trl === "TRL 4"}
                         onClick={() => handleImageClick({
                           image: item.image,
                           images: item.images,
