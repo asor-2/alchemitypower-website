@@ -19,7 +19,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.75;
+  opacity: 0.25;
 }
 
 .contentOverlay {
@@ -31,7 +31,7 @@
 }
 
 .sectionHeading {
-  font-size: 3.6rem;
+  font-size: 5rem;
   margin-bottom: 2rem;
   font-weight: 700;
   color: white;
@@ -82,7 +82,7 @@
   animation: fadeInUp 1.2s ease-out forwards;
   animation-delay: 0.3s;
   opacity: 0;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .ctaButton {

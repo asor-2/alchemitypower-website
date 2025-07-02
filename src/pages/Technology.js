@@ -14,6 +14,10 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import reactionanima from '../components/images/reactionanima.mov';
 import styles1 from './Technology.module.css';
+import biomass_image from '../components/images/biomass_image.png';
+import gas_to_chem_image from '../components/images/gas_to_chem_image.png';
+import technology_header from '../components/images/technology_header.png';
+
 
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
@@ -561,18 +565,30 @@ function Technology() {
             marginBottom: '1rem',
             letterSpacing: '-0.03em',
             maxWidth: isTablet || isMobile ? '100%' : '1200px',
-            margin: '0 auto 1rem'
+            margin: '0 auto 1rem',
+            textAlign: isTablet || isMobile ? 'center':'left'
           }}> <span>Our </span>
           <span style={{ 
             background: 'linear-gradient(110deg, #dbcea4, #50918d)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            color: 'transparent'
+            color: 'transparent',
+            textAlign: isTablet || isMobile ? 'center':'left'
           }}>
             Core Technology
           </span>
           </h1>
+          <p style={{
+            fontSize: '1.5rem',
+            color: 'rgba(255, 255, 255, 0.8)',
+            maxWidth: '700px',
+            margin: '0 auto 0.5rem',
+            lineHeight: '1.6',
+            textAlign: isTablet || isMobile ? 'center':'left'
+          }}>
+            A team of innovators driven by science, impact, and a shared vision for clean chemistry
+          </p>
         </div>
         
         {/* Right/Bottom: Video */}
@@ -584,7 +600,7 @@ function Technology() {
           order: isTablet || isMobile ? 1 : 0,
           width: '100%'
         }}>
-          <video 
+          {/* <video 
             ref={heroVideoRef}
             src={herotech} 
             style={{
@@ -597,6 +613,18 @@ function Technology() {
             playsInline
             autoPlay
             loop
+          /> */}
+          <img
+            src={technology_header}
+            alt="Biomass to SAF"
+            style={{
+              width: '100%',
+              maxWidth: '500px',
+              height: 'auto',
+              borderRadius: '8px',
+              margin: '0 auto',
+              display: 'block'
+            }}
           />
         </div>
       </div>
@@ -652,16 +680,19 @@ function Technology() {
         marginLeft: 'auto',
         marginRight: 'auto',
         boxSizing: 'border-box',
-        // paddingLeft: isMobile ? '1rem' : 0, // add a little padding on mobile
-        // paddingRight: isMobile ? '2rem' : 0,
       }}>
         {/* R&D Circle */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.5rem',
-        }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem',
+          }}
+        >
           <div style={{
             width: '18rem',
             height: '18rem',
@@ -711,15 +742,20 @@ function Technology() {
           }}>
             $20M+ investment in mixed-conducting ceramic membrane reactor
           </div>
-        </div>
+        </motion.div>
 
         {/* Validation Circle */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.5rem'
-        }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem'
+          }}
+        >
           <div style={{
             width: '18rem',
             height: '18rem',
@@ -770,15 +806,20 @@ function Technology() {
           }}>
             In labs & via industrial investment committees
           </div>
-        </div>
+        </motion.div>
 
         {/* Scalable Circle */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.5rem'
-        }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem'
+          }}
+        >
           <div style={{
             width: '18rem',
             height: '18rem',
@@ -828,7 +869,7 @@ function Technology() {
           }}>
             Demo system design completed & ready for fabrication
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Mobile Responsive Styles */}
@@ -1232,7 +1273,7 @@ function Technology() {
                 width: '100%',
               }}
             >
-              <video 
+              {/* <video 
                 ref={animationVideoRef}
                 src={animationTech} 
                 style={{
@@ -1246,6 +1287,18 @@ function Technology() {
                 muted 
                 playsInline
                 autoPlay
+              /> */}
+              <img
+                src={biomass_image}
+                alt="Biomass to SAF"
+                style={{
+                  width: '100%',
+                  maxWidth: '500px',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  margin: '0 auto',
+                  display: 'block'
+                }}
               />
             </div>
             <button 
@@ -1320,7 +1373,7 @@ function Technology() {
               }}
             >
               
-              <video 
+              {/* <video 
                 ref={animationVideoRef}
                 src={reactionanima} 
                 style={{
@@ -1334,6 +1387,18 @@ function Technology() {
                 muted 
                 playsInline
                 autoPlay
+              /> */}
+              <img
+                src={gas_to_chem_image}
+                alt="Biomass to SAF"
+                style={{
+                  width: '100%',
+                  maxWidth: '500px',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  margin: '0 auto',
+                  display: 'block'
+                }}
               />
             </div>
             <button 

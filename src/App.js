@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import BackToTopButton from './components/BackToTopButton';
 
 import {
   BrowserRouter as Router,
@@ -74,6 +75,7 @@ function App() {
             <Route path="/news" element={<News />} />
           </Routes>
         </main>
+        {/* <BackToTopButton /> */}
         <Footer />
       </div>
     </Router>

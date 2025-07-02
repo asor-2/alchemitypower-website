@@ -57,7 +57,7 @@ function Home() {
           background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
         }}></div> */}
 
-        <div style={{ backgroundColor: 'transparent' }}>
+        <div id="problem-opportunity" style={{ backgroundColor: 'transparent' }}>
           <SectionSpacing>
             <ProblemOpportunity />
           </SectionSpacing>

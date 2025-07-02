@@ -60,9 +60,9 @@
 }
 
 .highlightText {
-  color: #75bdd8;
+  color: #7fceeb;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 550;
   line-height: 1.6;
   margin: 0;
 }
@@ -72,7 +72,7 @@
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); */
   max-width: 500px;
   margin: 0 auto;
 }

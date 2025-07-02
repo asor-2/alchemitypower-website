@@ -33,7 +33,7 @@ export const seoData = {
   careers: {
     title: 'Careers at Alchemity | Build the Future of Clean Chemicals', 
     description: 'Join Alchemity\'s growing team and help develop breakthrough chemical technologies. Explore open roles in engineering, R&D, and commercialization.', 
-    keywords: 'alchemity careers, chemical engineering jobs, clean technology careers, innovation jobs, careers in clean tech, chemical engineer roles, green technology jobs', 
+    keywords: 'alchemity careers, chemical engineering jobs, clean technology careers, innovation jobs, careers in clean tech, chemical engineer roles, green technology jobs, saf companies, saf startups, clean hydrogen companies, climatetech hiring', 
     image: ''
   },
   contact: {

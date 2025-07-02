@@ -613,9 +613,9 @@ const cardAccentStyle = {
                 backgroundColor: 'rgba(31, 42, 48, 0.65)', // More transparent
                 backdropFilter: 'blur(10px)', // Glass effect
                 WebkitBackdropFilter: 'blur(10px)', // For Safari
-                borderRadius: '12px',
+                borderRadius: '15px',
                 boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                border: '3px ridge rgba(116, 186, 198, 0.3)',
                 transition: 'all 0.3s ease',
                 position: 'relative',
                 overflow: 'hidden'
@@ -657,9 +657,9 @@ const cardAccentStyle = {
                 backgroundColor: 'rgba(31, 42, 48, 0.65)', // More transparent
                 backdropFilter: 'blur(10px)', // Glass effect
                 WebkitBackdropFilter: 'blur(10px)', // For Safari
-                borderRadius: '12px',
+                borderRadius: '15px',
                 boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                border: '3px ridge rgba(116, 186, 198, 0.3)',
                 transition: 'all 0.3s ease',
                 position: 'relative',
                 overflow: 'hidden'

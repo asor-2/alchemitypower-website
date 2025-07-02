@@ -22,8 +22,8 @@ import styles from './Products.module.css';
 import competitiveStyles from './CompetitiveAnalysis.module.css';
 import herotech from '../components/images/headeranim.mov';
 
-import gtchem11Video from '../components/images/gtchem11.mov';
-import gtchem12Video from '../components/images/gtchem12.mov';
+import gtchem11Video from '../components/images/gtchem11_new.mp4';
+import gtchem12Video from '../components/images/gtchem12_new.mp4';
 import gtchem21Image from '../components/images/gtchem21.png';
 import gtchem22Image from '../components/images/gtchem22.png';
 import { motion } from 'framer-motion';
@@ -88,10 +88,10 @@ const ContentContainer = styled.div`
 
 const Card = styled.div`
   background-color: rgba(31, 42, 48, 0.7);
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 5px double rgba(116, 186, 198, 0.6);
   transition: all 0.3s ease;
   text-align: center;
     
@@ -326,6 +326,16 @@ const TimelineImage = styled.div`
     font-weight: 700;
     letter-spacing: 0.02em;
     text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    @media (max-width: 890px) {
+      transform: rotate(-90deg);
+    }
+  }
+
+  @media (max-width: 890px) {
+    transform: rotate(90deg);
+    &:hover {
+      transform: rotate(90deg) translateY(-5px) scale(1.015);
+    }
   }
 `;
 
@@ -935,6 +945,7 @@ function Products() {
   const [selectedHotspot, setSelectedHotspot] = useState(null);
   const [gtchem1Popup, setGtchem1Popup] = useState(false);
   const [gtchem2Popup, setGtchem2Popup] = useState(false);
+  const [activeVideo, setActiveVideo] = useState(0);
   const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
   const [imageRef, imageInView] = useInView({
     triggerOnce: true,
@@ -1338,55 +1349,148 @@ function Products() {
             </DescriptionText>
 
             <div className={styles.gtchemContainer}>
-              {/* Left Side */}
-              <div className={styles.gtchemLeftSide} style={videoContainerStyle}>
-                <div className={styles.videoContainer} style={{ 
-                  marginBottom: '1rem',
-                  marginTop: '50px',
-                  height: '400px',
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  backgroundColor: '#000000'
+              <div style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '20px',
+                marginBottom: '20px'
+              }}>
+                {/* Toggle Buttons */}
+                <div style={{
+                  display: 'flex',
+                  gap: '1.5rem',
+                  marginBottom: '1.5rem',
+                  justifyContent: 'center'
                 }}>
-                  <video 
-                    ref={gtchem11VideoRef}
-                    src={gtchem11Video}
-                    style={{ 
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain',
-                      borderRadius: '20px'
+                  <button
+                    onClick={() => setActiveVideo(0)}
+                    style={{
+                      padding: '0.8rem 1.5rem',
+                      backgroundColor: activeVideo === 0 ? 'rgba(37, 171, 224, 0.5)' : 'rgba(31, 42, 48, 0.7)',
+                      color: 'white',
+                      fontWeight: '600',
+                      border: '2px solid rgba(37, 171, 224, 0.5)',
+                      borderRadius: '20px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
                     }}
-                    muted
-                    playsInline
-                    className={styles.gtchemVideo}
-                  />
+                    onMouseOver={(e) => {
+                      if (activeVideo !== 0) {
+                        e.target.style.backgroundColor = 'rgba(37, 171, 224, 0.2)';
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      if (activeVideo !== 0) {
+                        e.target.style.backgroundColor = 'rgba(31, 42, 48, 0.7)';
+                      }
+                    }}
+                  >
+                    View Exterior
+                  </button>
+                  <button
+                    onClick={() => setActiveVideo(1)}
+                    style={{
+                      padding: '0.8rem 1.5rem',
+                      backgroundColor: activeVideo === 0 ? 'rgba(31, 42, 48, 0.7)' : 'rgba(37, 171, 224, 0.5)',
+                      color: 'white',
+                      fontWeight: '600',
+                      border: '2px solid rgba(37, 171, 224, 0.5)',
+                      borderRadius: '20px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      if (activeVideo !== 1) {
+                        e.target.style.backgroundColor = 'rgba(37, 171, 224, 0.2)';
+                      }
+                    }}
+                    onMouseOut={(e) => {
+                      if (activeVideo !== 1) {
+                        e.target.style.backgroundColor = 'rgba(31, 42, 48, 0.7)';
+                      }
+                    }}
+                  >
+                    View Interior
+                  </button>
                 </div>
-              </div>
-
-              {/* Right Side */}
-              <div className={styles.gtchemRightSide} style={videoContainerStyle}>
-                <div className={styles.videoContainer} style={{ 
-                  marginBottom: '1rem',
-                  marginTop: '11px',
+                
+                {/* Video Container */}
+                <div style={{ 
+                  position: 'relative',
+                  width: '100%',
+                  maxWidth: '1000px',
                   height: '450px',
+                  margin: '0 auto',
                   borderRadius: '20px',
                   overflow: 'hidden',
-                  backgroundColor: '#000000'
+                  backgroundColor: 'transparent'
                 }}>
-                  <video 
-                    ref={gtchem12VideoRef}
-                    src={gtchem12Video}
-                    style={{ 
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'contain',
-                      borderRadius: '20px'
-                    }}
-                    muted
-                    playsInline
-                    className={styles.gtchemVideo}
-                  />
+                  {/* First Video - Outside View */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    opacity: activeVideo === 0 ? 1 : 0,
+                    transition: 'opacity 0.5s ease-in-out',
+                    pointerEvents: activeVideo === 0 ? 'auto' : 'none'
+                  }}>
+                    <video 
+                      ref={gtchem11VideoRef}
+                      src={gtchem11Video}
+                      style={{ 
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                        borderRadius: '20px'
+                      }}
+                      muted
+                      playsInline
+                      className={styles.gtchemVideo}
+                    />
+                  </div>
+                  
+                  {/* Second Video - Inside View */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    opacity: activeVideo === 1 ? 1 : 0,
+                    transition: 'opacity 0.5s ease-in-out'
+                  }}>
+                    <video 
+                      ref={gtchem12VideoRef}
+                      src={gtchem12Video}
+                      style={{ 
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                        borderRadius: '20px'
+                      }}
+                      muted
+                      playsInline
+                      className={styles.gtchemVideo}
+                    />
+                  </div>
+                </div>
+                
+                {/* Caption */}
+                <div style={{
+                  marginTop: '1rem',
+                  fontSize: '1.1rem',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  textAlign: 'center',
+                  minHeight: '50px'
+                }}>
+                  {/* {activeVideo === 0 
+                    ? "Exterior view of the modular reactor system" 
+                    : "Interior view showing the reactor core and components"} */}
                 </div>
               </div>
             </div>

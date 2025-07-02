@@ -91,11 +91,12 @@ function Header() {
                 <li className={styles.navItem}><Link to="/about" className={styles.navLink} onClick={toggleMenu}>About</Link></li>
                 <li className={styles.navItem}><Link to="/careers" className={styles.navLink} onClick={toggleMenu}>Careers</Link></li>
                 <li className={styles.navItem}><Link to="/news" className={styles.navLink} onClick={toggleMenu}>News</Link></li>
-                <li className={styles.navItem}>
+                <li className={styles.navItem}><Link to="/contact" className={styles.navLink} onClick={toggleMenu}>Contact Us</Link></li>
+                {/* <li className={styles.navItem}>
                   <Link to="/contact" className={`${styles.navLink} ${styles.contactButton}`} onClick={toggleMenu}>
                     Contact Us
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className={styles.menuOverlay} onClick={handleClickOutside}></div>
@@ -108,11 +109,12 @@ function Header() {
             <li className={styles.navItem}><Link to="/about" className={styles.navLink}>About</Link></li>
             <li className={styles.navItem}><Link to="/careers" className={styles.navLink}>Careers</Link></li>
             <li className={styles.navItem}><Link to="/news" className={styles.navLink}>News</Link></li>
-            <li className={styles.navItem}>
+            <li className={styles.navItem}><Link to="/contact" className={styles.navLink} onClick={toggleMenu}>Contact Us</Link></li>
+            {/* <li className={styles.navItem}>
               <Link to="/contact" className={`${styles.navLink} ${styles.contactButton}`}>
                 Contact Us
               </Link>
-            </li>
+            </li> */}
           </ul>
         )}
       </nav>

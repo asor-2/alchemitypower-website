@@ -8,6 +8,12 @@ import careersVideo from '../components/images/careers.mov';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import teamImage2 from '../components/images/3.png'; 
+import teamImage1 from '../components/images/about1.png'; 
+import teamImage3 from '../components/images/about2.png'; 
+import teamImage4 from '../components/images/about3.png'; 
+
+
 
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
@@ -62,6 +68,7 @@ const ContactButton = styled.button`
 
 function Careers() {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+  const [enlargedImage, setEnlargedImage] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,6 +97,14 @@ function Careers() {
     overflow: hidden;
     position: relative;
   `;
+
+  const handleImageClick = (image) => {
+    setEnlargedImage(image);
+  };
+
+  const closeEnlargedImage = () => {
+    setEnlargedImage(null);
+  };
 
   return (
     <>
@@ -188,12 +203,14 @@ function Careers() {
             ].map((item, index) => (
               <motion.div 
                 key={index} 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
                 whileHover={{ 
                   y: -10,
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
                   border: '1px solid rgba(37, 171, 224, 0.3)'
-                }}
-                transition={{ duration: 0.3 }}
+                }} 
                 style={{
                   flex: '1 1 250px',
                   maxWidth: '300px',
@@ -272,7 +289,7 @@ function Careers() {
           </div>
         </div>
         
-        {/* Team Image Carousel */}
+        {/* Team Image Carousel - modified */}
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto 3rem',
@@ -283,28 +300,55 @@ function Careers() {
             overflowX: 'auto',
             gap: '1rem',
             padding: '1rem 0',
-            scrollbarWidth: 'none', // Firefox
-            msOverflowStyle: 'none', // IE/Edge
-            '::-webkit-scrollbar': { display: 'none' } // Chrome/Safari
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            '::-webkit-scrollbar': { display: 'none' }
           }}>
-            {/* Replace with actual team images */}
-            {[1, 2, 3, 4].map(img => (
-              <div key={img} style={{
-                minWidth: '300px',
-                height: '200px',
-                backgroundColor: 'rgba(31, 42, 48, 0.7)',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#25abe0',
-                fontSize: '1rem',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                flexShrink: 0
-              }}>
-                Team Photo {img}
-                {/* Replace with: <img src={teamImage{img}} alt="Alchemity team" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} /> */}
+            {[teamImage1, teamImage2, teamImage3, teamImage4].map((img, index) => (
+              <div 
+                key={index} 
+                style={{
+                  minWidth: '300px',
+                  height: '200px',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                  flexShrink: 0,
+                  cursor: 'pointer',
+                  position: 'relative'
+                }}
+                onClick={() => handleImageClick(img)}
+              >
+                <img 
+                  src={img} 
+                  alt={`Alchemity team ${index + 1}`} 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    borderRadius: '8px',
+                    transition: 'transform 0.3s ease'
+                  }} 
+                />
+                {/* Zoom indicator */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '12px',
+                  right: '12px',
+                  background: 'rgba(0,0,0,0.6)',
+                  color: 'white',
+                  borderRadius: '50%',
+                  width: '30px',
+                  height: '30px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '16px',
+                  opacity: 0.7
+                }}>
+                  ⌕
+                </div>
               </div>
             ))}
           </div>
@@ -345,6 +389,20 @@ function Careers() {
           }}>
             We're always looking for exceptional people in engineering, product, and operations—even if no role is listed.
           </p>
+
+          {/* Add the button here */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+            <ContactButton 
+              style={{ 
+                background: 'linear-gradient(90deg, #25abe0, #50918d)',
+                fontSize: '1rem',
+                padding: '0.9rem 1.8rem'
+              }}
+              onClick={() => window.open('https://airtable.com/appaLvnKQBlH5uZNM/pagRagIDr3QFuTolK/form', '_blank')}
+            >
+              Explore Open Roles <span style={{ marginLeft: '8px' }}>→</span>
+            </ContactButton>
+          </div>
           
           {/* Example position cards - you can make these real or remove them */}
           {/* <div style={{
@@ -388,7 +446,7 @@ function Careers() {
           }}></div>
         
         {/* Application Form Section - full width, no columns */}
-        <div style={{ 
+        {/* <div style={{ 
           backgroundColor: 'transparent', 
           background: 'transparent',
           padding: '0 2rem 2rem', // Added horizontal padding
@@ -426,8 +484,67 @@ function Careers() {
           }}>
             <ContactForm isCareers={true} />
           </div>
-        </div>
+        </div> */}
       </PageWrapper>
+      
+      {/* Add this image modal/lightbox at the end */}
+      {enlargedImage && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            cursor: 'pointer'
+          }}
+          onClick={closeEnlargedImage}
+        >
+          <div style={{ position: 'relative', maxWidth: '90%', maxHeight: '90%' }}>
+            <img 
+              src={enlargedImage} 
+              alt="Enlarged view" 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '90vh', 
+                objectFit: 'contain',
+                borderRadius: '8px',
+                boxShadow: '0 5px 30px rgba(0, 0, 0, 0.5)'
+              }} 
+            />
+            <div 
+              style={{
+                position: 'absolute',
+                top: '-15px',
+                right: '-15px',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                background: 'rgba(0, 0, 0, 0.8)',
+                border: '2px solid rgba(255, 255, 255, 0.5)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                cursor: 'pointer',
+                fontSize: '20px',
+                fontWeight: 'bold'
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeEnlargedImage();
+              }}
+            >
+              ×
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

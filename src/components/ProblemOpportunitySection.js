@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import styles from './ProblemOpportunitySection.module.css';
 import problemVideo from './images/prob_and_opp.mov';
+import { Link } from 'react-router-dom';
+import { FiExternalLink } from 'react-icons/fi'; // Add this import at the top with others
+
 
 const ProblemOpportunitySection = () => {
   const [ref, inView] = useInView({
@@ -59,6 +62,21 @@ const ProblemOpportunitySection = () => {
             <motion.p className={styles.text} variants={itemVariants}>
               
             </motion.p>
+             <Link 
+                to="/about" 
+                className={styles.learnMoreLink}
+                style={{
+                  color: '#FFEBCA',
+                  fontWeight: 500,
+                  fontSize: '1.5rem',
+                  textDecoration: '1px underline',
+                  paddingBottom: '2px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                Learn about our mission and vision 
+                <FiExternalLink style={{ fontSize: '1.2rem', marginLeft: '0.2rem' }} />
+              </Link>
           </motion.div>
 
           <motion.div 

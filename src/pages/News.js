@@ -328,131 +328,97 @@ function News() {
           </div>
       </div>
 
-    {/* LINE DIVIDER */}
-    <div style={{
-      width: '100%',
-      maxWidth: '1200px',
-      margin: '2.5rem auto',
-      height: '1.5px',
-      background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
-    }}></div>
-
-
-    {/* BASIC HEADER */}
-    {/* <div style={{
-  background: 'linear-gradient(to right, #000000, #1A3A4A)',
-  padding: '5rem 0 3rem',
-  textAlign: 'center',
-  width: '100vw',
-  marginLeft: 'calc(-50vw + 50%)',
-  marginRight: 'calc(-50vw + 50%)',
-}}>
-  <h1 style={{ 
-    fontSize: '48px', 
-    color: '#ffffff',
-    marginBottom: '1rem',
-    fontWeight: '300'
-  }}>Newsroom</h1>
-  
-  <div style={{
-    width: '60px',
-    height: '3px',
-    background: '#0077b5',
-    margin: '0 auto 1.5rem'
-  }}></div>
-  
-  <p style={{
-    fontSize: '1.2rem',
-    color: '#ffffff',
-    maxWidth: '700px',
-    margin: '0 auto',
-    opacity: '0.8'
-  }}>The latest news and announcements from Alchemity</p>
-</div> */}
-
+      {/* LINE DIVIDER */}
+      <div style={{
+        width: '100%',
+        maxWidth: '1200px',
+        margin: '2.5rem auto',
+        height: '1.5px',
+        background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+      }}></div>
       
-        <div style={sectionStyle}>
-          
-          {/* <div style={tabsContainerStyle}>
-            <button style={activeTabStyle}>All News</button>
-            <button style={tabStyle}>Press Releases</button>
-            <button style={tabStyle}>Media Coverage</button>
-          </div> */}
-          
-          {/* News cards grid */}
-          <div className={styles.articlesGrid}>
-            {newsArticles.map((article, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                variants={articleVariants}
-                initial="hidden"
-                animate="visible"
-                whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0, 0, 0, 0.3)' }}
-                style={{
-                  backgroundColor: '#1A232B', // Darker card background
-                  borderRadius: '10px',
-                  overflow: 'hidden',
-                  height: '100%',
-                  transition: 'all 0.3s ease',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                }}
-              >
-                <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <div style={{ padding: '1.5rem' }}>
-                    <div style={{ 
-                      color: '#27AADF', 
-                      fontSize: '1rem', 
-                      marginBottom: '0.75rem',
-                      fontWeight: '500' 
-                    }}>
-                      {article.source}
-                    </div>
-                    
-                    {/* News title */}
-                    <h3 style={{ 
-                      color: '#ffffff', // White text for readability
-                      fontSize: '1.3rem', 
-                      marginBottom: '1rem',
-                      lineHeight: '1.4',
-                      fontWeight: '300'
-                    }}>
-                      {article.title}
-                    </h3>
-                    
-                    {/* Image section */}
-                    <div style={{ 
-                      position: 'relative', 
-                      height: '180px', 
-                      overflow: 'hidden',
-                      borderRadius: '4px',
-                      marginBottom: '1rem'
-                    }}>
-                      <img 
-                        src={article.image} 
-                        alt={article.title} 
-                        style={{ 
-                          width: '100%', 
-                          height: '100%', 
-                          objectFit: 'cover' 
-                        }} 
-                      />
-                    </div>
-                    
-                    {/* Read More (subtle) */}
-                    <div style={{
-                      color: '#27AADF',
-                      fontSize: '0.9rem',
-                      fontWeight: '500'
-                    }}>
-                      Read More →
-                    </div>
+      <div style={sectionStyle}>
+        
+        {/* <div style={tabsContainerStyle}>
+          <button style={activeTabStyle}>All News</button>
+          <button style={tabStyle}>Press Releases</button>
+          <button style={tabStyle}>Media Coverage</button>
+        </div> */}
+        
+        {/* News cards grid */}
+        <div className={styles.articlesGrid}>
+          {newsArticles.map((article, index) => (
+            <motion.div
+              key={index}
+              custom={index}
+              variants={articleVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0, 0, 0, 0.3)' }}
+              style={{
+                backgroundColor: '#1A232B', // Darker card background
+                borderRadius: '10px',
+                overflow: 'hidden',
+                height: '100%',
+                transition: 'all 0.3s ease',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+              }}
+            >
+              <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                <div style={{ padding: '1.5rem' }}>
+                  <div style={{ 
+                    color: '#27AADF', 
+                    fontSize: '1rem', 
+                    marginBottom: '0.75rem',
+                    fontWeight: '500' 
+                  }}>
+                    {article.source}
                   </div>
-                </a>
-              </motion.div>
-            ))}
-          </div>
+                  
+                  {/* News title */}
+                  <h3 style={{ 
+                    color: '#ffffff', // White text for readability
+                    fontSize: '1.3rem', 
+                    marginBottom: '1rem',
+                    lineHeight: '1.4',
+                    fontWeight: '300'
+                  }}>
+                    {article.title}
+                  </h3>
+                  
+                  {/* Image section */}
+                  <div style={{ 
+                    position: 'relative', 
+                    height: '180px', 
+                    overflow: 'hidden',
+                    borderRadius: '4px',
+                    marginBottom: '1rem'
+                  }}>
+                    <img 
+                      src={article.image} 
+                      alt={article.title} 
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover' 
+                      }} 
+                    />
+                  </div>
+                  
+                  {/* Read More (subtle) */}
+                  <div style={{
+                    color: '#27AADF',
+                    fontSize: '0.9rem',
+                    fontWeight: '500'
+                  }}>
+                    Read More →
+                  </div>
+                </div>
+              </a>
+            </motion.div>
+          ))}
         </div>
+      </div>
       </div>
     </>
   );

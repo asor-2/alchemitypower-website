@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './VideoSection.module.css';
-import videoFile from './images/homepage-hero.mp4';
+import videoFile from './images/futuristic_homepage.mp4';
 import { FaCloud, FaDollarSign, FaShieldAlt, FaSeedling } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
 
 function VideoSection() {
   const videoRef = useRef(null);
@@ -35,6 +36,7 @@ function VideoSection() {
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
+      video.playbackRate = 0.6;
       const handleLoadedData = () => {
         try {
           const canvas = document.createElement('canvas');
@@ -146,10 +148,10 @@ function VideoSection() {
       alignItems: 'center',
       justifyContent: 'center',
       gap: '0.8rem',
-      padding: '0.8rem 1rem',
-      backgroundColor: '#25abe0',
+      padding: '0.35rem 0.5rem',
+      backgroundColor: '#25abe4',
       color: 'white',
-      fontWeight: '600',
+      fontWeight: '500',
       textDecoration: 'none',
       borderRadius: '50px',
       boxShadow: '0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)',
@@ -163,31 +165,31 @@ function VideoSection() {
     if (windowWidth <= 480) {
       return {
         ...baseStyle,
-        fontSize: '1rem',
-        width: '180px',
-        height: '40px',
+        fontSize: '0.95rem',
+        width: '120px',
+        height: '32px',
       };
     } else if (windowWidth <= 768) {
       return {
         ...baseStyle,
         fontSize: '1.1rem',
-        width: '200px',
-        height: '45px',
+        width: '135px',
+        height: '36px',
       };
     } else if (windowWidth <= 1150) {
       return {
         ...baseStyle,
         fontSize: '1.2rem',
-        width: '220px',
-        height: '48px',
+        width: '160px',
+        height: '40px',
       };
     }
 
     return {
       ...baseStyle,
-      fontSize: '1.4rem',
-      width: '250px',
-      height: '50px',
+      fontSize: '1.2rem',
+      width: '190px',
+      height: '40px',
     };
   };
 
@@ -210,7 +212,18 @@ function VideoSection() {
       <div className={styles.videoOverlay}></div>
       
       <div className={styles.contentOverlay}>
-        <h2 className={styles.sectionHeading}>Revolutionizing Clean Chemical Production</h2>
+        <h2
+          className={styles.sectionHeading}
+          style={{
+            background: 'linear-gradient(90deg,rgb(119, 216, 255) 10%, #dbcea4 90%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            color: 'transparent'
+          }}
+        >
+          Revolutionizing Clean Chemical Production
+        </h2>
         
         <p className={styles.videoDescription}>
           Transforming Greenhouse Gasses and Waste Resources into Valuable Chemicals and Fuels with Modular Turn-Key Reactor System
@@ -285,7 +298,7 @@ function VideoSection() {
           </div>
         </div>
         
-        <div className={styles.missionVisionContainer}>
+        {/* <div className={styles.missionVisionContainer}>
           <div className={styles.mission}>
             <h2 className={styles.cardTitle}>Our Mission</h2>
             <p className={styles.cardText}>
@@ -299,7 +312,41 @@ function VideoSection() {
               Accelerate global transition to low-cost clean chemicals & fuels.
             </p>
           </div>
-        </div>
+        </div> */}
+        <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '2.5rem',
+        width: '100%',
+        position: 'relative',
+        zIndex: 10
+      }}>
+        <a
+          href="#problem-opportunity"
+          style={{
+            fontSize: '1.1rem',
+            color: '#ffffff',
+            fontWeight: 800,
+            marginTop: '0.2rem',
+            cursor: 'pointer',
+            opacity: 0.85,
+            transition: 'color 0.2s'
+          }}
+          aria-label="Scroll down to learn more"
+          onMouseOver={(e) => {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0px)';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.opacity = '0.85';
+            e.target.style.transform = 'translateY(0)';
+          }}
+        >
+          <FaChevronDown size={60} />
+          
+        </a>
+      </div>
       </div>
     </section>
   );

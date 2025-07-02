@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import styles from './OurSolutionSection.module.css';
-import staticskid from './images/staticskid.png';
+import staticskid from './images/staticskid_new.png';
+import { FiExternalLink } from 'react-icons/fi';
 
 const OurSolutionSection = () => {
   const [ref, inView] = useInView({
@@ -61,6 +63,25 @@ const OurSolutionSection = () => {
             <motion.p className={styles.text} variants={itemVariants}>
               Paradigm shift – no premium for clean chemical & fuel production from biomass, biogas, landfill gas and waste gas. 
             </motion.p>
+            
+            <motion.div variants={itemVariants} style={{ marginTop: '1.5rem' }}>
+              <Link 
+                to="/technology" 
+                className={styles.learnMoreLink}
+                style={{
+                  color: 'rgb(181, 226, 244)',
+                  fontWeight: 500,
+                  fontSize: '1.5rem',
+                  textDecoration: '1px underline',
+                  // borderBottom: '1px solid rgb(181, 226, 244)',
+                  paddingBottom: '2px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                More about our technology
+                <FiExternalLink style={{ fontSize: '1.2rem', marginLeft: '0.2rem' }} />
+              </Link>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>
@@ -68,4 +89,4 @@ const OurSolutionSection = () => {
   );
 };
 
-export default OurSolutionSection; 
+export default OurSolutionSection;
