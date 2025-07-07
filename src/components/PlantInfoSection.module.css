@@ -64,7 +64,8 @@
 
 .statCard {
   background: #203238;
-  border-radius: 8px;
+  border-radius: 20px;
+  border: 5px double rgba(137, 207, 219, 0.6);
   padding: 1rem 1rem 1rem 1rem;
   text-align: center;
   transition: all 0.3s ease;
@@ -77,13 +78,23 @@
 }
 
 .statIconContainer {
-  font-size: 2rem;
-  color: #6599ad;
+  font-size: 1.9rem;
+  color: #cee4ec;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(186, 240, 242, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 .statValue {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
@@ -108,11 +119,11 @@
 .statCard:nth-child(3) .statLabel,
 .statCard:nth-child(4) .statLabel {
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .statDescription {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #cccccc;
   line-height: 1.4;
 }

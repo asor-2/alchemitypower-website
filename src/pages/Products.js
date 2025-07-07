@@ -9,8 +9,8 @@ import bundle1 from '../components/images/bundle1.png';
 import bundle2 from '../components/images/bundle2.png';
 import benchtop1 from '../components/images/benchtop1.png';
 import benchtop2 from '../components/images/benchtop2.png';
-import skid1 from '../components/images/skid1.png';
-import skid2 from '../components/images/skid2.png';
+import skid1 from '../components/images/skid1_new.png';
+import skid2 from '../components/images/skid2_new.png';
 import plant1 from '../components/images/plant1.png';
 import plant22 from '../components/images/plant22.jpg';
 import alchemityLogo from '../components/images/alchemity_logo_w_text.png';
@@ -22,8 +22,8 @@ import styles from './Products.module.css';
 import competitiveStyles from './CompetitiveAnalysis.module.css';
 import herotech from '../components/images/headeranim.mov';
 
-import gtchem11Video from '../components/images/gtchem11_new.mp4';
-import gtchem12Video from '../components/images/gtchem12_new.mp4';
+import gtchem11Video from '../components/images/gtchem11_static.png';
+import gtchem12Video from '../components/images/gtchem12_static.png';
 import gtchem21Image from '../components/images/gtchem21.png';
 import gtchem22Image from '../components/images/gtchem22.png';
 import { motion } from 'framer-motion';
@@ -100,11 +100,11 @@ const Card = styled.div`
     box-shadow: 0 0 20px rgba(37, 171, 224, 0.7);
   }
 
-  .icon {
-    font-size: 2.5rem;
-    color: '#3F5F6B';
-    margin-bottom: 1rem;
-  }
+  // .icon {
+  //   font-size: 2.5rem;
+  //   color: '#3F5F6B';
+  //   margin-bottom: 1rem;
+  // }
 
   h3 {
     margin-bottom: 1rem;
@@ -962,32 +962,33 @@ function Products() {
   const [roadmapRef, roadmapInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [competitiveRef, competitiveInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          video.currentTime = 0;
-          video.play();
-          video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= video.duration - 0.1) {
-              video.pause();
-            }
-          });
-        }
-      });
-    }, { threshold: 0.5 });
+  // useEffect(() => {
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach(entry => {
+  //     const video = entry.target;
+  //     // Only play if it's a video element
+  //     if (entry.isIntersecting && video.tagName === 'VIDEO') {
+  //       video.currentTime = 0;
+  //       video.play();
+  //       video.addEventListener('timeupdate', () => {
+  //         if (video.currentTime >= video.duration - 0.1) {
+  //           video.pause();
+  //         }
+  //       });
+  //     }
+  //   });
+  // }, { threshold: 0.5 });
 
-    if (heroVideoRef.current) observer.observe(heroVideoRef.current);
-    if (gtchem11VideoRef.current) observer.observe(gtchem11VideoRef.current);
-    if (gtchem12VideoRef.current) observer.observe(gtchem12VideoRef.current);
+  // // Only observe refs that are actually video elements
+  // if (heroVideoRef.current && heroVideoRef.current.tagName === 'VIDEO') observer.observe(heroVideoRef.current);
+  // // gtchem11VideoRef is now an image, so do NOT observe it
+  // if (gtchem12VideoRef.current && gtchem12VideoRef.current.tagName === 'VIDEO') observer.observe(gtchem12VideoRef.current);
 
-    return () => {
-      if (heroVideoRef.current) observer.unobserve(heroVideoRef.current);
-      if (gtchem11VideoRef.current) observer.unobserve(gtchem11VideoRef.current);
-      if (gtchem12VideoRef.current) observer.unobserve(gtchem12VideoRef.current);
-    };
-  }, []);
+  // return () => {
+  //   if (heroVideoRef.current && heroVideoRef.current.tagName === 'VIDEO') observer.unobserve(heroVideoRef.current);
+  //   if (gtchem12VideoRef.current && gtchem12VideoRef.current.tagName === 'VIDEO') observer.unobserve(gtchem12VideoRef.current);
+  // };
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -1114,12 +1115,12 @@ function Products() {
               
             }}>
               <img 
-                src={skiddo} 
+                src={gtchem12Video} 
                 alt="GTChem Skid" 
                 style={{
                   width: '100%',
                   height: 'auto',
-                  maxWidth: (isMobile || isTablet) ? '450px' : '600px',
+                  maxWidth: (isMobile || isTablet) ? '450px' : '700px',
                   objectFit: 'contain',
                   marginBottom: '1rem',
                   // marginTop: (isMobile || isTablet) ? '1rem' : '25%', 
@@ -1144,7 +1145,7 @@ function Products() {
               }}>GTChem-1</h3>
               
               <p style={{ 
-                fontSize: '1.3rem', 
+                fontSize: '1.2rem', 
                 lineHeight: '1.6', 
                 marginBottom: '1rem',
                 color: '#ffffff',
@@ -1324,7 +1325,25 @@ function Products() {
                   style={{ width: '100%' }}
                 >
                   <Card>
-                    <div className="icon">{card.icon}</div>
+                    <div
+                      style={{
+                        fontSize: '1.9rem',
+                        marginBottom: '1.25rem',
+                        width: '60px',
+                        height: '60px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        background: 'rgba(214, 200, 163, 0.1)',
+                        borderRadius: '50%',
+                        // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
+                        // border: '1px solid rgba(37, 171, 224, 0.3)'
+                      }}
+                    >
+                      {card.icon}
+                    </div>
                     <h3>{card.title}</h3>
                     <p>{card.description}</p>
                   </Card>
@@ -1439,17 +1458,16 @@ function Products() {
                     transition: 'opacity 0.5s ease-in-out',
                     pointerEvents: activeVideo === 0 ? 'auto' : 'none'
                   }}>
-                    <video 
+                    <img
                       ref={gtchem11VideoRef}
                       src={gtchem11Video}
-                      style={{ 
+                      alt="GTChem Exterior"
+                      style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'contain',
-                        borderRadius: '20px'
+                        borderRadius: '20px',
                       }}
-                      muted
-                      playsInline
                       className={styles.gtchemVideo}
                     />
                   </div>
@@ -1464,17 +1482,16 @@ function Products() {
                     opacity: activeVideo === 1 ? 1 : 0,
                     transition: 'opacity 0.5s ease-in-out'
                   }}>
-                    <video 
+                    <img
                       ref={gtchem12VideoRef}
                       src={gtchem12Video}
-                      style={{ 
+                      alt="GTChem Interior"
+                      style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'contain',
                         borderRadius: '20px'
                       }}
-                      muted
-                      playsInline
                       className={styles.gtchemVideo}
                     />
                   </div>

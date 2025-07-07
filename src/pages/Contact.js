@@ -119,7 +119,7 @@ function Contact() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ color: '#25abe0', fontSize: '1.5rem', marginTop: '0.2rem' }}>📍</div>
                   <div>
-                    <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.5rem' }}>Address</h3>
+                    <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.5rem',fontWeight: '400'}}>Address</h3>
                     <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.7', fontSize: '1.2rem'}}>
                       4467 Technology Drive<br/>
                       Alchemity LLC, Suite 2116<br/>
@@ -129,8 +129,8 @@ function Contact() {
                       color: '#25abe0', 
                       display: 'inline-block', 
                       marginTop: '0.5rem',
-                      fontSize: '1rem',
-                      fontWeight: '500'
+                      fontSize: '1.05rem',
+                      fontWeight: '450'
                     }}>
                       Get Directions →
                     </a>
@@ -140,7 +140,7 @@ function Contact() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginTop: '0.8rem' }}>
                   <div style={{ color: '#25abe0', fontSize: '1.5rem', }}>🔗</div>
                   <div>
-                    <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.5rem' }}>Connect</h3>
+                    <h3 style={{ color: '#25abe0', marginBottom: '0.5rem', fontSize: '1.5rem', fontWeight: '400'}}>Connect</h3>
                     <p style={{ color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.7', marginBottom: '1rem', fontSize: '1.2rem' }}>
                       Follow our journey in clean chemical innovation
                     </p>
@@ -155,18 +155,18 @@ function Contact() {
                 style={{
                   backgroundColor: '#0077b5',
                   color: 'white',
-                  padding: '1rem',
-                  borderRadius: '6px',
+                  padding: '0.8rem',
+                  borderRadius: '12px',
                   textDecoration: 'none',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '0.75rem',
-                  fontWeight: '600',
+                  fontWeight: '500',
                   transition: 'all 0.3s ease',
                   fontSize: '1.1rem',
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  width: '80%',
+                  width: '70%',
                   marginTop: '1rem',
                   marginLeft: 'auto',
                   marginRight: 'auto',

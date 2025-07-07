@@ -8,12 +8,13 @@ import careersVideo from '../components/images/careers.mov';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import teamImage2 from '../components/images/3.png'; 
 import teamImage1 from '../components/images/about1.png'; 
-import teamImage3 from '../components/images/about2.png'; 
+import teamImage3 from '../components/images/3.png'; 
+import teamImage6 from '../components/images/about2.png'; 
 import teamImage4 from '../components/images/about3.png'; 
-
-
+import teamImage5 from '../components/images/interns_2.jpeg'; 
+import teamImage2 from '../components/images/interns_1.png'; 
+import { Activity, Globe, Zap, Users, Clock, Wind } from 'react-feather';
 
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
@@ -196,43 +197,48 @@ function Careers() {
             gap: '2rem'
           }}>
             {[
-              { icon: '🚀', title: 'Small team, real impact', desc: 'Your work directly shapes our technology and future.' },
-              { icon: '🌎', title: 'Tech that matters', desc: 'Build solutions for real climate and energy challenges.' },
-              { icon: '💡', title: 'Backed by science', desc: 'Join a team with deep technical expertise and innovative vision.' },
-              { icon: '🤝', title: 'Flexible culture', desc: 'Work with a collaborative team focused on outcomes, not hours.' }
+              { icon: <Wind color="#fff" size={32} />, title: 'Small team, real impact', desc: 'Your work directly shapes our technology and future.' },
+              { icon: <Globe color="#fff" size={32} />, title: 'Tech that matters', desc: 'Build solutions for real climate and energy challenges.' },
+              { icon: <Zap color="#fff" size={32} />, title: 'Backed by science', desc: 'Join a team with deep technical expertise and innovative vision.' },
+              { icon: <Clock color="#fff" size={32} />, title: 'Flexible culture', desc: 'Work with a collaborative team focused on outcomes, not hours.' }
             ].map((item, index) => (
               <motion.div 
                 key={index} 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 * (index + 1) }}
+                transition={{ duration: 0.3, delay: 0.05 * (index) }}
                 whileHover={{ 
                   y: -10,
-                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                  border: '1px solid rgba(37, 171, 224, 0.3)'
+                  // boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                  // border: '5px double rgba(116, 186, 198, 0.3)',
+                  transition: { duration: 0.2 } 
                 }} 
                 style={{
                   flex: '1 1 250px',
                   maxWidth: '300px',
-                  backgroundColor: 'rgba(31, 42, 48, 0.7)',
-                  borderRadius: '12px',
+                  backgroundColor: 'rgba(31, 42, 48, 0.3)',
+                  borderRadius: '18px',
                   padding: '2rem',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  border: '5px double rgba(255, 235, 202, 0.4)',
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
                   position: 'relative',
                   overflow: 'hidden',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
+                  display: 'flex',                
+                  flexDirection: 'column',        
+                  alignItems: 'center',           
+                  textAlign: 'center',  
                 }}
               >
                 {/* Accent line at top */}
-                <div style={{
+                {/* <div style={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
                   right: 0,
                   height: '3px',
                   background: 'linear-gradient(90deg, transparent, #25abe0, transparent)',
-                }}></div>
+                }}></div> */}
                 
                 {/* Glowing icon container */}
                 <div style={{
@@ -243,10 +249,10 @@ function Careers() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'rgba(37, 171, 224, 0.1)',
+                  background: 'rgba(214, 200, 163, 0.1)',
                   borderRadius: '50%',
-                  boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
-                  border: '1px solid rgba(37, 171, 224, 0.3)'
+                  // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
+                  // border: '1px solid rgba(37, 171, 224, 0.3)'
                 }}>
                   {item.icon}
                 </div>
@@ -256,7 +262,7 @@ function Careers() {
                   marginBottom: '0.75rem', 
                   fontSize: '1.5rem',
                   fontWeight: '600',
-                  background: 'linear-gradient(90deg, #25abe0, #ffffff)',
+                  background: 'linear-gradient(90deg, #D6CBA3, #ffffff)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -282,7 +288,7 @@ function Careers() {
                   opacity: 0.4,
                   color: '#25abe0'
                 }}>
-                  →
+                  {/* → */}
                 </div>
               </motion.div>
             ))}
@@ -300,16 +306,17 @@ function Careers() {
             overflowX: 'auto',
             gap: '1rem',
             padding: '1rem 0',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            '::-webkit-scrollbar': { display: 'none' }
+            scrollbarWidth: 'auto',
+            msOverflowStyle: 'auto',
+            scrollbarColor: '#FFEBCA #222',
+            // '::-webkit-scrollbar': { display: 'none' }
           }}>
-            {[teamImage1, teamImage2, teamImage3, teamImage4].map((img, index) => (
+            {[teamImage1, teamImage2, teamImage3, teamImage4, teamImage5, teamImage6].map((img, index) => (
               <div 
                 key={index} 
                 style={{
                   minWidth: '300px',
-                  height: '200px',
+                  height: '350px',
                   borderRadius: '8px',
                   overflow: 'hidden',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
@@ -398,7 +405,7 @@ function Careers() {
                 fontSize: '1rem',
                 padding: '0.9rem 1.8rem'
               }}
-              onClick={() => window.open('https://airtable.com/appaLvnKQBlH5uZNM/pagRagIDr3QFuTolK/form', '_blank')}
+              onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScIRsEjt7P_Fa6v64amzFEPN4rcG34y9GgH3KMXkKOFVHEOuw/viewform?usp=dialog', '_blank')}
             >
               Explore Open Roles <span style={{ marginLeft: '8px' }}>→</span>
             </ContactButton>

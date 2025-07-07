@@ -541,7 +541,7 @@ function Technology() {
     <div className={styles1.technologyPage}>
       {/* Custom Technology Header */}
       <div style={{
-        padding: '4rem 2rem 3rem',
+        padding: isTablet || isMobile ? '2rem 1rem 3rem' : '2.5rem 2rem 3rem',
         display: 'flex',
         flexDirection: isTablet || isMobile ? 'column' : 'row',
         alignItems: 'center',
@@ -551,6 +551,7 @@ function Technology() {
         margin: '0 auto',
         marginLeft: 'auto', // <-- center horizontally
         marginRight: 'auto', // <-- center horizontally
+        marginTop: isTablet || isMobile ? '-1.5rem' : '-2.5rem',
       }}>
         {/* Left/Top: Title */}
         <div style={{
@@ -616,10 +617,10 @@ function Technology() {
           /> */}
           <img
             src={technology_header}
-            alt="Biomass to SAF"
+            alt="Technology Header"
             style={{
               width: '100%',
-              maxWidth: '500px',
+              maxWidth: '700px',
               height: 'auto',
               borderRadius: '8px',
               margin: '0 auto',
@@ -716,12 +717,25 @@ function Technology() {
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
             e.currentTarget.style.boxShadow = 'none';
           }}>
-            <img src={rd} alt="R&D" style={{
-              width: '40px',
-              height: '40px',
-              marginBottom: '2rem',
-              opacity: 0.9
-            }}/>
+            <div style={{
+              fontSize: '2.5rem',
+              marginBottom: '1.25rem',
+              width: '60px',
+              height: '60px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(214, 200, 163, 0.1)',
+              borderRadius: '50%',
+              // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
+              // border: '1px solid rgba(37, 171, 224, 0.3)'
+            }}>
+              <img src={rd} alt="R&D" style={{
+                width: '32px',
+                height: '32px',
+                opacity: 0.9
+              }}/>
+            </div>
             <span style={{
               color: '#ffffff',
               fontSize: '1.75rem',
@@ -779,13 +793,26 @@ function Technology() {
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
             e.currentTarget.style.boxShadow = 'none';
           }}>
-            <img src={validated} alt="Validated" style={{
-              width: '40px',
-              height: '40px',
-              marginBottom: '2rem',
-              opacity: 0.9,
-              filter: 'invert(1)'
-            }}/>
+            <div style={{
+              fontSize: '2.5rem',
+              marginBottom: '1.25rem',
+              width: '60px',
+              height: '60px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(214, 200, 163, 0.1)',
+              borderRadius: '50%',
+              // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
+              // border: '1px solid rgba(37, 171, 224, 0.3)'
+            }}>
+              <img src={validated} alt="Validated" style={{
+                width: '32px',
+                height: '32px',
+                opacity: 0.9,
+                filter: 'invert(1)'
+              }}/>
+            </div>
             <span style={{
               color: '#ffffff',
               fontSize: '1.75rem',
@@ -843,12 +870,25 @@ function Technology() {
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
             e.currentTarget.style.boxShadow = 'none';
           }}>
-            <img src={scalable} alt="Scalable" style={{
-              width: '40px',
-              height: '40px',
-              marginBottom: '2rem',
-              opacity: 0.9
-            }}/>
+            <div style={{
+              fontSize: '2.5rem',
+              marginBottom: '1.25rem',
+              width: '60px',
+              height: '60px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'rgba(214, 200, 163, 0.1)',
+              borderRadius: '50%',
+              // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
+              // border: '1px solid rgba(37, 171, 224, 0.3)'
+            }}>
+              <img src={scalable} alt="Scalable" style={{
+                width: '32px',
+                height: '32px',
+                opacity: 0.9,
+              }}/>
+            </div>
             <span style={{
               color: '#ffffff',
               fontSize: '1.75rem',
@@ -1199,6 +1239,7 @@ function Technology() {
         </div>
       </div> */}
 
+      {/* Line Divider */}
       <div
           style={{
             height: '2px',
@@ -1210,223 +1251,146 @@ function Technology() {
             // paddingTop: '2rem',
             transition: 'width 0.2s',
           }}
-        />
+      />
 
       {/* Real-World Applications Section */}
-      <div style={{
-       maxWidth: '1200px',
-       margin: '4rem auto',
-       padding: '0 2rem',
-       boxSizing: 'border-box',
-      }}>
-        {/* <p style={{
-          color: '#ffffff',
-          textAlign: 'center',
-          marginBottom: '3rem',
-          fontWeight: '600',
-          fontSize: '2.5rem',
-          fontWeight: '400',
+      <div
+        style={{
           maxWidth: '1200px',
-          margin: '0 auto',
-        }}>Real-World Applications</p> */}
-        
-        {/* Application Card 1 */}
-        <div style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '2rem',
-          marginBottom: '2rem',
-          width: '100%',
-          maxWidth: isMobile||isTablet ? '850px' : '1200px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          // backgroundColor: 'rgba(31, 42, 48, 0.7)',
-          borderRadius: '12px',
-          paddingTop: '2rem',
-          // border: '1px solid rgba(255, 255, 255, 0.08)',
-          // boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-          position: 'relative',
-          overflow: 'hidden',
-          transition: 'all 0.3s ease',
+          margin: '4rem auto',
+          padding: '0 2rem',
           boxSizing: 'border-box',
-        }}>
-          {/* Left: Text */}
-          <div style={{ flex: 1 }}>
-            <p style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '400', textAlign: isMobile ? 'center' : 'left'}}>
-              From Biomass to SAF without CO₂ emissions
-            </p>
-            <p style={{ fontSize: '1.4rem', marginBottom: '1.75rem', opacity: 0.8, textAlign: isMobile ? 'center' : 'left'}}>
-              Our revolutionary process enables clean fuel production with zero carbon emissions.
-            </p>
-          </div>
-          {/* Right: Video + Button */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div 
-              onClick={() => setActiveModal('biomass')}
-              style={{ 
-                cursor: 'pointer', 
-                marginBottom: '1.5rem',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                width: '100%',
-              }}
-            >
-              {/* <video 
-                ref={animationVideoRef}
-                src={animationTech} 
-                style={{
-                  width: '100%',
-                  maxWidth: '500px',
-                  height: 'auto',
-                  borderRadius: '8px',
-                  margin: '0 auto',
-                  display: 'block'
-                }} 
-                muted 
-                playsInline
-                autoPlay
-              /> */}
-              <img
-                src={biomass_image}
-                alt="Biomass to SAF"
-                style={{
-                  width: '100%',
-                  maxWidth: '500px',
-                  height: 'auto',
-                  borderRadius: '8px',
-                  margin: '0 auto',
-                  display: 'block'
-                }}
-              />
-            </div>
-            <button 
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '3.5rem'
+        }}
+      >
+        {/* Application Card 1 */}
+        <div style={{ width: '100%' }}>
+          <p
+            style={{
+              fontSize: '2.2rem',
+              marginBottom: '1.2rem',
+              fontWeight: '400',
+              textAlign: 'center'
+            }}
+          >
+            From Biomass to SAF without CO₂ emissions
+          </p>
+          <p
+            style={{
+              fontSize: '1.2rem',
+              marginBottom: '0',
+              opacity: 0.8,
+              textAlign: 'center'
+            }}
+          >
+            Our revolutionary process enables clean fuel production with zero carbon emissions.
+          </p>
+          <img
+            src={biomass_image}
+            alt="Biomass to SAF"
+            style={{
+              width: '100%',
+              maxWidth: '850px',
+              height: 'auto',
+              borderRadius: '8px',
+              margin: '0 auto 0.6rem auto',
+              marginTop: '-4rem', 
+              marginBottom: '-4rem', 
+              display: 'block'
+            }}
+            onClick={() => setActiveModal('biomass')}
+          />
+          
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <button
               onClick={() => setActiveModal('biomass')}
               style={{
                 background: 'linear-gradient(90deg, #A3A380)',
                 color: 'white',
                 border: 'none',
-                padding: '0.75rem 1.5rem',
+                padding: '0.65rem 1.3rem',
                 borderRadius: '50px',
                 fontSize: '1rem',
                 cursor: 'pointer',
                 fontWeight: '500',
-                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
+                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)'
               }}
             >
               Enlarge Image
             </button>
           </div>
-          {/* Accent line at top */}
-          {/* <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '4px',
-            background: 'linear-gradient(90deg, #25ABE0, #ffffff)'
-          }} /> */}
         </div>
 
+        {/* Line Divider */}
+      <div
+          style={{
+            height: '2px',
+            width: '40%',
+            background: 'linear-gradient(to right, transparent, #FFEBCA, transparent)',
+            borderRadius: '2px',
+            margin: '2rem auto -1rem auto',
+            opacity: 0.6,
+            // paddingTop: '2rem',
+            transition: 'width 0.2s',
+          }}
+      />
+
         {/* Application Card 2 */}
-        <div style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row-reverse',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '2rem',
-          marginBottom: '2rem',
-          width: '100%',
-          maxWidth: isMobile||isTablet ? '850px' : '1200px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          // backgroundColor: 'rgba(31, 42, 48, 0.7)',
-          borderRadius: '12px',
-          paddingTop: '2rem',
-          // border: '1px solid rgba(255, 255, 255, 0.08)',
-          // boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-          position: 'relative',
-          overflow: 'hidden',
-          transition: 'all 0.3s ease',
-          boxSizing: 'border-box',
-        }}>
-          {/* Right: Text */}
-          <div style={{ flex: 1 }}>
-            <p style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: '400', textAlign: isMobile ? 'center' : 'right'}}>
-              Multifunctional Gas to Chemicals Platform
-            </p>
-            <p style={{ fontSize: '1.4rem', marginBottom: '1.7rem', opacity: 0.9, textAlign: isMobile ? 'center' : 'right' }}>
-              Leverages mixed-conducting ceramic membrane and low-cost catalyst.
-            </p>
-          </div>
-          {/* Left: Video + Button */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div 
-              onClick={() => setActiveModal('gasToChemicals')}
-              style={{ 
-                cursor: 'pointer', 
-                marginBottom: '1.5rem',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                width: '100%',
-              }}
-            >
-              
-              {/* <video 
-                ref={animationVideoRef}
-                src={reactionanima} 
-                style={{
-                  width: '100%',
-                  maxWidth: '500px',
-                  height: 'auto',
-                  borderRadius: '8px',
-                  margin: '0 auto',
-                  display: 'block'
-                }} 
-                muted 
-                playsInline
-                autoPlay
-              /> */}
-              <img
-                src={gas_to_chem_image}
-                alt="Biomass to SAF"
-                style={{
-                  width: '100%',
-                  maxWidth: '500px',
-                  height: 'auto',
-                  borderRadius: '8px',
-                  margin: '0 auto',
-                  display: 'block'
-                }}
-              />
-            </div>
-            <button 
+        <div style={{ width: '100%' }}>
+          <p
+            style={{
+              fontSize: '2.2rem',
+              marginBottom: '1.2rem',
+              fontWeight: '400',
+              textAlign: 'center'
+            }}
+          >
+            Multifunctional Gas to Chemicals Platform
+          </p>
+          <p
+            style={{
+              fontSize: '1.2rem',
+              marginBottom: '0',
+              opacity: 0.9,
+              textAlign: 'center'
+            }}
+          >
+            Leverages mixed-conducting ceramic membrane and low-cost catalyst.
+          </p>
+          <img
+            src={gas_to_chem_image}
+            alt="Gas to Chemicals"
+            style={{
+              width: '100%',
+              maxWidth: '850px',
+              height: 'auto',
+              borderRadius: '8px',
+              margin: '0 auto 1.2rem auto',
+              display: 'block'
+            }}
+            onClick={() => setActiveModal('gasToChemicals')}
+          />
+          {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+            <button
               onClick={() => setActiveModal('gasToChemicals')}
               style={{
                 background: 'linear-gradient(110deg, #A3A380)',
                 color: 'white',
                 border: 'none',
-                padding: '0.75rem 1.5rem',
+                padding: '0.65rem 1.3rem',
                 borderRadius: '50px',
                 fontSize: '1rem',
                 cursor: 'pointer',
                 fontWeight: '500',
-                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
+                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)'
               }}
             >
               Enlarge Image
             </button>
-          </div>
-          {/* Accent line at top */}
-          {/* <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '4px',
-            background: 'linear-gradient(90deg, #25ABE0, #ffffff)'
-          }} /> */}
+          </div> */}
         </div>
       </div>
     
@@ -1518,7 +1482,128 @@ function Technology() {
           </div>
         </div>
       )}
+      <div style={{
+          position: 'relative',
+          height: isMobile ? '70px' : '100px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          maxWidth: '80%',
+          margin: isMobile ? '-2rem auto 0' : '-2.5rem auto 0'
+        }}>
+          <button 
+            className={styles.detailsButton}
+            onClick={handleOpenDetailsModal}
+            style={{
+                background: 'linear-gradient(110deg, #A3A380)',
+                color: 'white',
+                border: 'none',
+                padding: '0.65rem 1.3rem',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                fontWeight: '500',
+                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',
+                marginTop: '-4rem', 
+              }}
+          >
+            Learn More
+          </button>
+        </div>
+
+        <div className={styles1.modalContainer}>
+        <Modal
+          show={showDetailsModal}
+          onClose={handleCloseDetailsModal}
+          title="Reactor Platform Basic Science"
+          size="xxlarge"
+          showCloseButton={true}
+        >
+          <div style={{ 
+            padding: '0.25rem 1rem 0.25rem 1rem', 
+            color: '#ffffff',
+            maxHeight: '70vh',
+            overflowY: 'auto',
+            width: '100%',
+            boxSizing: 'border-box'
+          }}>
+            <div style={{
+              display: 'flex',
+              flexDirection: (isMobile || isTablet) ? 'column' : 'row',
+              alignItems: 'center',
+              gap: '1rem',
+              maxWidth: '1400px',
+              margin: '0 auto',
+              width: '100%'
+            }}>
+              <div style={{
+                width: (isMobile || isTablet) ? '100%' : '40%',
+                display: 'flex',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                <img 
+                  src={platform} 
+                  alt="Platform" 
+                  style={{
+                    width: '100%',
+                    maxWidth: (isMobile || isTablet) ? '400px' : '500px',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    borderRadius: '8px'
+                  }} 
+                /> 
+              </div>
+              <div style={{
+                width: (isMobile || isTablet) ? '100%' : '60%',
+                textAlign: (isMobile || isTablet) ? 'center' : 'left',
+                // maxWidth: '1400px',
+                // width: '100%'
+              }}>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '1rem',
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
+                }}>
+                  Non-oxidative single-step conversion of biomethane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.
+                </div>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '1rem',
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
+                }}>
+                  In this example biomethane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.
+                </div>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '1rem',
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
+                }}>
+                  Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.
+                </div>
+                <div style={{
+                  color: '#ffffff',
+                  fontSize: '1.2rem',
+                  lineHeight: '1.5',
+                  marginBottom: '0.25rem',
+                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
+                }}>
+                  Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+        </div>
       </div>
+
+      
     </>
   );
 }

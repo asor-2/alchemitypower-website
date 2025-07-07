@@ -170,3 +170,17 @@ select {
   /* Update arrow color if needed - requires complex SVG or different approach */
   /* background-image: url(...); /* Update SVG fill color if possible */
 }
+
+.team-carousel-scrollbar::-webkit-scrollbar {
+  height: 12px;
+  background: #222;
+}
+
+.team-carousel-scrollbar::-webkit-scrollbar-thumb {
+  background: #FFEBCA;
+  border-radius: 6px;
+}
+
+.team-carousel-scrollbar::-webkit-scrollbar-track {
+  background: #222;
+}

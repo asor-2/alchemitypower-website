@@ -615,7 +615,7 @@ const cardAccentStyle = {
                 WebkitBackdropFilter: 'blur(10px)', // For Safari
                 borderRadius: '15px',
                 boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                border: '3px ridge rgba(116, 186, 198, 0.3)',
+                border: '3px double rgba(116, 186, 198, 0.3)',
                 transition: 'all 0.3s ease',
                 position: 'relative',
                 overflow: 'hidden'
@@ -626,8 +626,8 @@ const cardAccentStyle = {
                 top: 0,
                 left: 0,
                 right: 0,
-                height: '3px',
-                background: 'linear-gradient(90deg, transparent, #25abe0, transparent)',
+                height: '2px',
+                background: 'linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.5), transparent)',
               }}></div>
               <ProfileCard
                 key={founder.name}
@@ -659,7 +659,7 @@ const cardAccentStyle = {
                 WebkitBackdropFilter: 'blur(10px)', // For Safari
                 borderRadius: '15px',
                 boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-                border: '3px ridge rgba(116, 186, 198, 0.3)',
+                border: '3px double rgba(116, 186, 198, 0.3)',
                 transition: 'all 0.3s ease',
                 position: 'relative',
                 overflow: 'hidden'
@@ -672,7 +672,7 @@ const cardAccentStyle = {
                 left: 0,
                 right: 0,
                 height: '3px',
-                background: 'linear-gradient(90deg, transparent, #25abe0, transparent)',
+                background: 'linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.5), transparent)',
               }}></div>
 
               <ProfileCard
