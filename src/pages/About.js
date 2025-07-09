@@ -126,7 +126,8 @@ const gridStyle = {
   maxWidth: '1200px',
   margin: '1rem auto',
   width: '100%',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  justifyItems: 'center',
 };
 
 const founderGridStyle = {
@@ -138,7 +139,7 @@ const founderGridStyle = {
 
 const advisorGridStyle = {
   ...gridStyle,
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  // gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
   maxWidth: '1200px',
   gap: '3rem'
 };
@@ -307,7 +308,8 @@ const cardAccentStyle = {
   <div style={{background: 'linear-gradient(135deg, #000000, #1A3A4A, #000000)',
       padding: '0 2rem', // Add horizontal padding on the outside
       maxWidth: '100%',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      minHeight: '90vh'
     }}>
 
       <div style={{
@@ -606,8 +608,8 @@ const cardAccentStyle = {
               initial="hidden"
               animate="visible"
               style={{ 
-                paddingLeft: '1rem', 
-                paddingRight: '1rem', 
+                paddingLeft: window.innerWidth < 480 ? '0.5rem' : '1rem',
+                paddingRight: window.innerWidth < 480 ? '0.25rem' : '1rem',
                 paddingTop: '2rem',
                 paddingBottom: '2rem',
                 backgroundColor: 'rgba(31, 42, 48, 0.65)', // More transparent
@@ -650,8 +652,8 @@ const cardAccentStyle = {
               animate="visible"
 
               style={{ 
-                paddingLeft: '1rem', 
-                paddingRight: '1rem', 
+                paddingLeft: window.innerWidth < 480 ? '0.5rem' : '1rem',
+                paddingRight: window.innerWidth < 480 ? '0.25rem' : '1rem',
                 paddingTop: '2rem',
                 paddingBottom: '2rem',
                 backgroundColor: 'rgba(31, 42, 48, 0.65)', // More transparent

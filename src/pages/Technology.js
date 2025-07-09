@@ -743,15 +743,15 @@ function Technology() {
               textAlign: 'center',
               lineHeight: '1.2',
             }}>
-              35 Years R&D
+              35 <br/> Years R&D
             </span>
           </div>
           
           <div style={{
-            width: '180px',
+            width: '200px',
             textAlign: 'center',
             color: 'rgba(255,255,255,0.8)',
-            fontSize: '1.2rem',
+            fontSize: '1.3rem',
             lineHeight: '1.4'
           }}>
             $20M+ investment in mixed-conducting ceramic membrane reactor
@@ -825,10 +825,10 @@ function Technology() {
           </div>
           
           <div style={{
-            width: '180px',
+            width: '200px',
             textAlign: 'center',
             color: 'rgba(255,255,255,0.8)',
-            fontSize: '1.2rem',
+            fontSize: '1.3rem',
             lineHeight: '1.4'
           }}>
             In labs & via industrial investment committees
@@ -901,10 +901,10 @@ function Technology() {
           </div>
           
           <div style={{
-            width: '180px',
+            width: '200px',
             textAlign: 'center',
             color: 'rgba(255,255,255,0.8)',
-            fontSize: '1.2rem',
+            fontSize: '1.3rem',
             lineHeight: '1.4'
           }}>
             Demo system design completed & ready for fabrication
@@ -923,6 +923,18 @@ function Technology() {
         }
       `}</style>
         
+        <div
+          style={{
+            height: '2px',
+            width: '40%',
+            background: 'linear-gradient(to right, transparent, #FFEBCA, transparent)',
+            borderRadius: '2px',
+            margin: '6rem auto 0.5rem auto',
+            opacity: 0.6,
+            // paddingTop: '2rem',
+            transition: 'width 0.2s',
+          }}
+      />
       {/* <div style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -1240,18 +1252,7 @@ function Technology() {
       </div> */}
 
       {/* Line Divider */}
-      <div
-          style={{
-            height: '2px',
-            width: '40%',
-            background: 'linear-gradient(to right, transparent, #FFEBCA, transparent)',
-            borderRadius: '2px',
-            margin: '6rem auto 0.5rem auto',
-            opacity: 0.6,
-            // paddingTop: '2rem',
-            transition: 'width 0.2s',
-          }}
-      />
+      
 
       {/* Real-World Applications Section */}
       <div
@@ -1270,7 +1271,7 @@ function Technology() {
         <div style={{ width: '100%' }}>
           <p
             style={{
-              fontSize: '2.2rem',
+              fontSize: '2.5rem',
               marginBottom: '1.2rem',
               fontWeight: '400',
               textAlign: 'center'
@@ -1280,7 +1281,7 @@ function Technology() {
           </p>
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: '1.6rem',
               marginBottom: '0',
               opacity: 0.8,
               textAlign: 'center'
@@ -1293,7 +1294,7 @@ function Technology() {
             alt="Biomass to SAF"
             style={{
               width: '100%',
-              maxWidth: '850px',
+              maxWidth: '900px',
               height: 'auto',
               borderRadius: '8px',
               margin: '0 auto 0.6rem auto',
@@ -1311,9 +1312,9 @@ function Technology() {
                 background: 'linear-gradient(90deg, #A3A380)',
                 color: 'white',
                 border: 'none',
-                padding: '0.65rem 1.3rem',
+                padding: '0.9rem 1.3rem',
                 borderRadius: '50px',
-                fontSize: '1rem',
+                fontSize: '1.5rem',
                 cursor: 'pointer',
                 fontWeight: '500',
                 boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)'
@@ -1342,7 +1343,7 @@ function Technology() {
         <div style={{ width: '100%' }}>
           <p
             style={{
-              fontSize: '2.2rem',
+              fontSize: '2.5rem',
               marginBottom: '1.2rem',
               fontWeight: '400',
               textAlign: 'center'
@@ -1352,7 +1353,7 @@ function Technology() {
           </p>
           <p
             style={{
-              fontSize: '1.2rem',
+              fontSize: '1.6rem',
               marginBottom: '0',
               opacity: 0.9,
               textAlign: 'center'
@@ -1365,7 +1366,7 @@ function Technology() {
             alt="Gas to Chemicals"
             style={{
               width: '100%',
-              maxWidth: '850px',
+              maxWidth: '900px',
               height: 'auto',
               borderRadius: '8px',
               margin: '0 auto 1.2rem auto',
@@ -1498,9 +1499,9 @@ function Technology() {
                 background: 'linear-gradient(110deg, #A3A380)',
                 color: 'white',
                 border: 'none',
-                padding: '0.65rem 1.3rem',
+                padding: '0.9rem 1.3rem',
                 borderRadius: '50px',
-                fontSize: '1rem',
+                fontSize: '1.5rem',
                 cursor: 'pointer',
                 fontWeight: '500',
                 boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)',

@@ -299,7 +299,14 @@ function ContactForm({ isCareers = false }) {
         {/* Turnstile widget - always render container */}
         <div
           ref={turnstileRef}
-          style={{ margin: '0 0 1rem 0', minHeight: '65px', display: 'block' }}
+          style={{ margin: '0 0 1rem 0', minHeight: '65px', 
+            display: 'block',
+            maxWidth: window.innerWidth < 480 ? '300px' : '100%',
+            width: '100%',
+            boxSizing: 'border-box',
+            marginLeft: window.innerWidth < 480 ? 'auto' : undefined,
+            marginRight: window.innerWidth < 480 ? 'auto' : undefined,
+           }}
         ></div>
 
         {submitStatus.message && (

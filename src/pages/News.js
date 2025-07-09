@@ -22,7 +22,7 @@ import { seoData } from '../config/seoConfig';
 const PageWrapper = {
   padding: '0 0 calc(var(--section-padding) + 4rem) 0',
   margin: '0 auto',
-  background: 'linear-gradient(-100deg, #1A3A4A, #000000)', // Maintain dark gradient
+  background: 'linear-gradient(160deg, #000000, #1A3A4A 40%,rgb(45, 82, 93) 90%)', // Maintain dark gradient
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
   marginRight: 'calc(-50vw + 50%)',
@@ -356,62 +356,100 @@ function News() {
               animate="visible"
               whileHover={{ y: -5, boxShadow: '0 12px 30px rgba(0, 0, 0, 0.3)' }}
               style={{
-                backgroundColor: '#1A232B', // Darker card background
+                backgroundColor: '#1A232B',
                 borderRadius: '10px',
                 overflow: 'hidden',
-                height: '100%',
+                minHeight: '420px',
+                height: '420px',
                 transition: 'all 0.3s ease',
                 border: '1px solid rgba(255, 255, 255, 0.05)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
               }}
             >
-              <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '1.5rem' }}>
-                  <div style={{ 
-                    color: '#27AADF', 
-                    fontSize: '1rem', 
-                    marginBottom: '0.75rem',
-                    fontWeight: '500' 
+              <a href={article.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ flex: '0 0 auto', padding: '1.5rem', paddingBottom: 0, display: 'flex', flexDirection: 'column', height: 'calc(1.5em * 6)', justifyContent: 'flex-start' }}>
+                  {/* 4 lines for text: source + title (max 3 lines) */}
+                  <div style={{
+                    color: '#27AADF',
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                    lineHeight: '1.5',
+                    minHeight: '1.5em',
+                    maxHeight: '1.5em',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
                   }}>
                     {article.source}
                   </div>
-                  
-                  {/* News title */}
-                  <h3 style={{ 
-                    color: '#ffffff', // White text for readability
-                    fontSize: '1.3rem', 
-                    marginBottom: '1rem',
-                    lineHeight: '1.4',
-                    fontWeight: '300'
+                  <h3 style={{
+                    color: '#ffffff',
+                    fontSize: '1.3rem',
+                    fontWeight: '300',
+                    lineHeight: '1.3',
+                    minHeight: '6.5em', // 5 lines
+                    maxHeight: '6.5em',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    margin: 0,
+                    marginTop: '0.2em'
                   }}>
                     {article.title}
                   </h3>
-                  
-                  {/* Image section */}
-                  <div style={{ 
-                    position: 'relative', 
-                    height: '180px', 
-                    overflow: 'hidden',
-                    borderRadius: '4px',
-                    marginBottom: '1rem'
-                  }}>
-                    <img 
-                      src={article.image} 
-                      alt={article.title} 
-                      style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover' 
-                      }} 
-                    />
-                  </div>
-                  
-                  {/* Read More (subtle) */}
+                </div>
+                {/* Read More */}
+                <div style={{
+                  color: '#27AADF',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  minHeight: '1.5em',
+                  maxHeight: '1.5em',
+                  lineHeight: '1.5',
+                  margin: '0 1.5rem',
+                  marginBottom: 0,
+                  display: 'flex',
+                  alignItems: 'center'
+                }}>
+                  Read More →
+                </div>
+                {/* Image: 5 lines worth of height */}
+                <div style={{
+                  flex: '1 1 auto',
+                  minHeight: 'calc(1.5em * 8)',
+                  maxHeight: 'calc(1.5em * 8)',
+                  margin: '0 0 1.5rem 0',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: 'center',
+                  paddingLeft: '1.5rem',
+                  paddingRight: '1.5rem',
+                  paddingTop: '0.5rem'
+                }}>
                   <div style={{
-                    color: '#27AADF',
-                    fontSize: '0.9rem',
-                    fontWeight: '500'
+                    width: '100%',
+                    height: '100%',
+                    position: 'relative',
+                    borderRadius: '4px',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                    Read More →
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        display: 'block'
+                      }}
+                    />
                   </div>
                 </div>
               </a>

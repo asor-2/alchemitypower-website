@@ -743,7 +743,7 @@ function Markets() {
         
         {/* Rest of your content follows */}
         <div style={sectionStyle} className={styles.sectionContainer}>
-          <p style={highlightTextStyle} className={styles.highlightText}>
+          <p style={highlightTextStyle}>
             Enabling Chemical & Fuel Markets With A Single Platform Design
           </p>
           

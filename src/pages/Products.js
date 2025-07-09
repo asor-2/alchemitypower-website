@@ -11,13 +11,13 @@ import benchtop1 from '../components/images/benchtop1.png';
 import benchtop2 from '../components/images/benchtop2.png';
 import skid1 from '../components/images/skid1_new.png';
 import skid2 from '../components/images/skid2_new.png';
-import plant1 from '../components/images/plant1.png';
+import plant1 from '../components/images/plant1_new.png';
 import plant22 from '../components/images/plant22.jpg';
 import alchemityLogo from '../components/images/alchemity_logo_w_text.png';
 import extEval from '../components/images/ExtEval.png';
 import productVideo from '../components/images/producthero.mov';
 import placeholder from '../components/images/AI.png';
-import plantImage from '../components/images/30tpd.jpg';
+import plantImage from '../components/images/plantimage_new.png';
 import styles from './Products.module.css';
 import competitiveStyles from './CompetitiveAnalysis.module.css';
 import herotech from '../components/images/headeranim.mov';
@@ -32,7 +32,7 @@ import companim from '../components/images/companim.mov';
 import { FaArrowRight, FaShieldAlt, FaChartLine, FaIndustry, FaDollarSign } from 'react-icons/fa';
 import Modal from '../components/Modal';
 import skiddo from '../components/images/skiddo.png';
-import companal from '../components/images/companal.png';
+import companal from '../components/images/grid_transparent_bg_new.png';
 
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
@@ -1355,17 +1355,11 @@ function Products() {
 
         <motion.div ref={gtchemRef} variants={sectionVariants} initial="hidden" animate={gtchemInView ? "visible" : "hidden"}>
           <div className={styles.sectionContainer}>
-            <h2 style={{
-             fontSize: '2.5rem',
-             fontWeight: '400',
-              color: '#6FCFFB',
-              marginBottom: '2.5rem',
-              textAlign: 'center',
-            }} className={styles.sectionTitle}> Modular System Offering</h2>
+            <h2 className={styles.PlantInfoTitle}> Modular System Offering</h2>
             
-            <DescriptionText style={{ marginBottom: '0rem' }}>
+            <p className={styles.PlantInfoDescription}>
             Turn-key skid-mounted platform designed for co-located production.
-            </DescriptionText>
+            </p>
 
             <div className={styles.gtchemContainer}>
               <div style={{

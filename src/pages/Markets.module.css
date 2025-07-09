@@ -5,7 +5,7 @@
   max-width: 100%;
   overflow-x: hidden;
   min-height: 100vh;
-  background-color: #000000;
+  background: linear-gradient(125deg, #000000 10%, #244141) !important; /* UI CHANGE */ /* UI CHANGE */
 }
 
 /* Hero section styles */

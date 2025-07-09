@@ -98,7 +98,10 @@ function Contact() {
               borderRadius: '12px',
               padding: '2.5rem',
               border: '1px solid rgba(255, 255, 255, 0.08)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+              padding: window.innerWidth < 480 ? '1rem' : '2.5rem',
+                margin: window.innerWidth < 480 ? '0 auto' : undefined,
+                maxWidth: window.innerWidth < 480 ? '100%' : undefined,
             }}>
               {/* <h2 style={{ 
                 fontSize: '2.5rem',
@@ -114,7 +117,7 @@ function Contact() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1.5rem',
-                marginBottom: '2.5rem'
+                marginBottom: '2.5rem',
               }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                   <div style={{ color: '#25abe0', fontSize: '1.5rem', marginTop: '0.2rem' }}>📍</div>
@@ -180,9 +183,11 @@ function Contact() {
             <div className={styles.formWrapper} style={{
               backgroundColor: 'rgba(31, 42, 48, 0.7)',
               borderRadius: '12px',
-              padding: '2.5rem',
+              padding: window.innerWidth < 480 ? '1rem' : '2.5rem',
               border: '1px solid rgba(255, 255, 255, 0.08)',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+              margin: window.innerWidth < 480 ? '0 auto' : undefined,
+              maxWidth: window.innerWidth < 480 ? '100%' : undefined,
             }}>
               <h3 style={{ 
                 fontSize: '1.5rem',

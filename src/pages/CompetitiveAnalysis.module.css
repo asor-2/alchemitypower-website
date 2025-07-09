@@ -2,14 +2,14 @@
   max-width: 1000px;
   margin: 0 auto 1rem auto;
   padding: 2rem;
-  background: #000;
+  /* background: #000; */
 }
 
 .quadrantContainer {
   position: relative;
   width: 100%;
   height: 650px;
-  background: #000;
+  /* background: #000; */
   border-radius: 16px;
   margin-top: 10rem;
   overflow: visible;
@@ -20,7 +20,7 @@
   min-width: 120px;
   max-width: 180px;
   padding: 0.6rem 0.7rem;
-  background: #000;
+  /* background: #000; */
   color: #fff;
   border: 2px solid #FFFF00;
   border-radius: 10px;

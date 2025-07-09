@@ -4,7 +4,7 @@
     margin: 0 auto;
     /* font-family: Arial, sans-serif; */
     background: linear-gradient(-140deg, #000000 10%, #244141, #000000) !important;
-    
+    min-height: 90vh;
   }
   
   .title {
@@ -85,6 +85,9 @@
   }
   
   @media (max-width: 768px) {
+    .technologyPage {
+      padding: 1rem !important;
+    }
     .cardsContainer {
       grid-template-columns: 1fr;
       gap: 1.5rem;
@@ -93,6 +96,47 @@
   
     .responsiveSection {
       grid-template-columns: 1fr; /* Stack on mobile */
+    }
+    /* Ensure all direct children stack vertically */
+    .technologyPage > div {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 2rem !important;
+      max-width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    /* Fix header section stacking */
+    .technologyPage > div:first-child {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 2rem !important;
+      margin-top: -1.5rem !important;
+      margin-bottom: 2rem !important;
+      max-width: 100% !important;
+    }
+    /* Ensure images and videos are responsive */
+    img, video {
+      max-width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      margin: 0 auto !important;
+    }
+    /* Remove negative margins that cause overlap */
+    img[alt="Biomass to SAF"] {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    /* Responsive button container */
+    .learnMoreContainer,
+    .technologyPage button,
+    .technologyPage .learnMoreButton {
+      width: auto !important;
+      font-size: 1.2rem !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: flex !important;
+      justify-content: center !important;
     }
   }
 
