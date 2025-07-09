@@ -6,13 +6,24 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.profileImageWrapper {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff; /* or your preferred background */
+  /* margin: 0 auto 1rem auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .profileImage {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  /* margin-top: 2rem !important; */
+  height: 100%;
+  object-fit: cover;   /* <-- This will zoom/crop to fill the circle */
+  border-radius: 50%;
+  background: transparent;
 }
 
 .profileName {
@@ -156,7 +167,7 @@
   margin: 0 auto;
   position: relative;
   transition: all 0.3s ease;
-  margin-top: -1rem;
+  /* margin-top: -1rem; */
 }
 
 .imageWrapper:hover {
@@ -175,6 +186,15 @@
 /* Specific adjustments for founder images */
 .founderContainer[data-id="founder-2"] .founderImage {
   transform: scale(1.5) translateY(+6%) translateX(+1%);
+}
+
+@media (max-width: 769px){
+.founderContainer[data-id="founder-1"] .founderImage {
+  transform: scale(1.05) translateY(-10%) translateX(-1%);
+}
+.founderContainer[data-id="founder-3"] .founderImage {
+  transform: scale(1.05);
+}
 }
 
 /* Specific adjustments for advisor images */
@@ -202,7 +222,7 @@
 
 .founderTitle {
   font-size: 1.3rem;
-  color: #d0d0d0;
+  color: #bbd1da;
   margin-bottom: 0rem !important;
   font-weight: bold;
   text-align: center
@@ -222,10 +242,10 @@
 }
 
 .founderBlurb {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #d0d0d0;
   margin-bottom: -1.5rem;
-  font-style: italic;
+  /* font-style: italic; */
   line-height: 1.4;
   min-height: 40px;
   max-width: 400px;
@@ -317,6 +337,10 @@
   grid-template-columns: 1fr;
   gap: 3rem;
   justify-items: center;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.65rem;
+  box-sizing: border-box;
 }
 
 /* Tablet: inverted triangle pattern like valuePropositionContainer */

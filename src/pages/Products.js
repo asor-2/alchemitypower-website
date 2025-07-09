@@ -17,7 +17,7 @@ import alchemityLogo from '../components/images/alchemity_logo_w_text.png';
 import extEval from '../components/images/ExtEval.png';
 import productVideo from '../components/images/producthero.mov';
 import placeholder from '../components/images/AI.png';
-import plantImage from '../components/images/plantimage_new.png';
+import plantImage from '../components/images/plantimage_new_new.png';
 import styles from './Products.module.css';
 import competitiveStyles from './CompetitiveAnalysis.module.css';
 import herotech from '../components/images/headeranim.mov';
@@ -947,6 +947,7 @@ function Products() {
   const [gtchem2Popup, setGtchem2Popup] = useState(false);
   const [activeVideo, setActiveVideo] = useState(0);
   const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
   const [imageRef, imageInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -993,6 +994,7 @@ function Products() {
   useEffect(() => {
     const handleResize = () => {
       setIsTablet(window.innerWidth <= 1024);
+      setIsTablet(window.innerWidth <= 480);
     };
 
     window.addEventListener('resize', handleResize);
@@ -1368,8 +1370,8 @@ function Products() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginTop: '20px',
-                marginBottom: '20px'
+                marginTop: window.innerWidth <= 890 ? 0 : '20px',
+                marginBottom: window.innerWidth <= 890 ? 0 : '20px'
               }}>
                 {/* Toggle Buttons */}
                 <div style={{
@@ -1388,7 +1390,7 @@ function Products() {
                       border: '2px solid rgba(37, 171, 224, 0.5)',
                       borderRadius: '20px',
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
                     }}
                     onMouseOver={(e) => {
                       if (activeVideo !== 0) {
@@ -1439,7 +1441,8 @@ function Products() {
                   margin: '0 auto',
                   borderRadius: '20px',
                   overflow: 'hidden',
-                  backgroundColor: 'transparent'
+                  backgroundColor: 'transparent',
+                  marginTop: isTablet ? '5rem':'auto'
                 }}>
                   {/* First Video - Outside View */}
                   <div style={{
@@ -1490,29 +1493,15 @@ function Products() {
                     />
                   </div>
                 </div>
-                
-                {/* Caption */}
+                <div className={styles.gtchemButtonContainer}>
                 <div style={{
-                  marginTop: '1rem',
-                  fontSize: '1.1rem',
-                  color: 'rgba(255, 255, 255, 0.8)',
-                  textAlign: 'center',
-                  minHeight: '50px'
+                  display: 'flex',
+                  // gap: '2rem',
+                  justifyContent: 'center',
+                  width: '100%',
+                  marginTop: window.innerWidth<500? '-20rem':'auto',
+                  marginBottom: window.innerWidth<500? '-10rem':'auto'
                 }}>
-                  {/* {activeVideo === 0 
-                    ? "Exterior view of the modular reactor system" 
-                    : "Interior view showing the reactor core and components"} */}
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.gtchemButtonContainer}>
-              <div style={{
-                display: 'flex',
-                gap: '2rem',
-                justifyContent: 'center',
-                width: '100%'
-              }}>
                 <button 
                   onClick={() => setGtchem1Popup(true)}
                   style={{
@@ -1599,6 +1588,22 @@ function Products() {
                 >
                   Invest Now
                 </Link>
+                  </div>
+                </div>
+                {/* Caption */}
+                <div style={{
+                  marginTop: '1rem',
+                  fontSize: '1.1rem',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  textAlign: 'center',
+                  minHeight: '50px'
+                }}>
+                  {/* {activeVideo === 0 
+                    ? "Exterior view of the modular reactor system" 
+                    : "Interior view showing the reactor core and components"} */}
+
+                
+                </div>
               </div>
             </div>
           </div>
@@ -1638,7 +1643,7 @@ function Products() {
                 />
                 <ImageOverlay>
                   <Hotspot
-                    style={{ bottom: '45%', left: '32%' }}
+                    style={{ bottom: '35%', left: '30%' }}
                     whileHover={{ scale: 1.2 }}
                     className={styles.hotspot}
                   >
@@ -1648,7 +1653,7 @@ function Products() {
                     </HotspotTooltip>
                   </Hotspot>
                   <Hotspot
-                    style={{ bottom: '38%', left: '18%' }}
+                    style={{ bottom: '27%', left: '16%' }}
                     whileHover={{ scale: 1.2 }}
                     className={styles.hotspot}
                   >
@@ -1658,7 +1663,7 @@ function Products() {
                     </HotspotTooltip>
                   </Hotspot>
                   <Hotspot
-                    style={{ bottom: '52%', left: '20%' }}
+                    style={{ bottom: '32%', left: '23%' }}
                     whileHover={{ scale: 1.2 }}
                     className={styles.hotspot}
                   >
@@ -1668,7 +1673,7 @@ function Products() {
                     </HotspotTooltip>
                   </Hotspot>
                   <Hotspot
-                    style={{ top: '40%', left: '75%' }}
+                    style={{ top: '55%', left: '85%' }}
                     whileHover={{ scale: 1.2 }}
                     className={styles.hotspot}
                   >
@@ -1678,7 +1683,7 @@ function Products() {
                     </HotspotTooltip>
                   </Hotspot>
                   <Hotspot
-                    style={{ top: '70%', left: '40%' }}
+                    style={{ top: '75%', left: '55%' }}
                     whileHover={{ scale: 1.2 }}
                     className={styles.hotspot}
                   >

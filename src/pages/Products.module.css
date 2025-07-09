@@ -65,8 +65,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
-  margin-bottom: 5rem;
+  /* margin-top: 0.5rem; */
+  /* margin-bottom: 5rem; */
 }
 
 .gtchemButtonContainer > div {
@@ -616,3 +616,17 @@
     font-size: 2.2rem;
   }
 } 
+
+
+@media (max-width: 890px) {
+  .gtchemButtonContainer {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    gap: 1rem;
+  }
+  
+  /* Reduce image container height if needed */
+  .gtchemVideo {
+    height: auto !important;
+  }
+}

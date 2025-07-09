@@ -234,7 +234,7 @@
 }
 
 /* Media queries for responsive design */
-@media (max-width: 1024px) {
+@media (max-width: 1150px) {
   .navList {
     display: none;
   }
