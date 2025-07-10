@@ -4,13 +4,14 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import styles from './MarketApplications.module.css';
 import waste from './images/waste.png';
-import saf from './images/saf.png';
-import hydrogen from './images/hydrogen.png';
-import biogas from './images/biogas.png';
-import ethylene from './images/ethylene.png';
-import ethane from './images/ethane.png';
-import syngas from './images/syngas.png';
-import benzene from './images/benzene.png';
+import saf from './images/saf_new.png';
+import hydrogen from './images/hydrogen_new.png';
+import biogas from './images/biogas_new.png';
+import ethylene from './images/ethylene_new.png';
+import ethane from './images/ethane_new.png';
+import syngas from './images/syngas_new.png';
+import benzene from './images/benzene_new.png';
+import renewDiesel from './images/renew_diesel_new.png';
 import { FaArrowRight } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -45,7 +46,8 @@ function MarketApplications() {
     { src: biogas, title: 'RNG, Biogas' },
     { src: ethylene, title: 'Ethylene' },
     { src: ethane, title: 'Ethane' },
-    { src: benzene, title: 'Benzene' }
+    { src: benzene, title: 'Benzene' },
+    { src: renewDiesel, title: 'Renewable Diesel' }
   ];
 
   const containerVariants = {

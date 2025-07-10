@@ -10,13 +10,15 @@ import styles1 from './Technology.module.css';
 import marketsBg from '../components/images/market.avif';
 
 import waste from '../components/images/waste.png';
-import saf from '../components/images/saf.png';
-import hydrogen from '../components/images/hydrogen.png';
-import biogas from '../components/images/biogas.png';
-import ethylene from '../components/images/ethylene.png';
-import ethane from '../components/images/ethane.png';
-import syngas from '../components/images/syngas.png';
-import benzene from '../components/images/benzene.png';
+import saf from '../components/images/saf_new.png';
+import hydrogen from '../components/images/hydrogen_new.png';
+import biogas from '../components/images/biogas_new.png';
+import ethylene from '../components/images/ethylene_new.png';
+import ethane from '../components/images/ethane_new.png';
+import syngas from '../components/images/syngas_new.png';
+import benzene from '../components/images/benzene_new.png';
+import renewDiesel from '../components/images/renew_diesel_new.png';
+
 
 import marketsVideo from '../components/images/markets_video.mov';
 
@@ -618,6 +620,14 @@ function Markets() {
       marketSize: '$40B',
       futureMarketSize: '$71B by 2030',
       description: 'Placeholder.....'
+    },
+    { 
+      src: renewDiesel, 
+      title: 'Renewable Diesel', 
+      isFirstMarket: false,
+      // marketSize: '$40B',
+      // futureMarketSize: '$71B by 2030',
+      // description: 'Placeholder.....'
     }
   ];
 
@@ -649,6 +659,10 @@ function Markets() {
     { 
       src: ethane, 
       title: 'Ethane'
+    },
+    { 
+      src: renewDiesel, 
+      title: 'Renewable Diesel'
     }
   ];
 

@@ -14,7 +14,7 @@ import teamImage6 from '../components/images/about2.png';
 import teamImage4 from '../components/images/about3.png'; 
 import teamImage5 from '../components/images/interns_2.jpeg'; 
 import teamImage2 from '../components/images/interns_1.png'; 
-import { Activity, Globe, Zap, Users, Clock, Wind } from 'react-feather';
+import { Activity, Globe, Zap, Users, Clock, Wind, X } from 'react-feather';
 
 import SEO from '../components/SEO/SEO';
 import { seoData } from '../config/seoConfig';
@@ -315,8 +315,9 @@ function Careers() {
               <div 
                 key={index} 
                 style={{
-                  minWidth: '300px',
-                  height: '350px',
+                  // minWidth: '100px',
+                  width: window.innerWidth < 480 ? '200px' : '320px',
+                  height: window.innerWidth < 480 ? '200px' : '300px',
                   borderRadius: '8px',
                   overflow: 'hidden',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
@@ -335,6 +336,8 @@ function Careers() {
                     height: '100%', 
                     objectFit: 'cover', 
                     borderRadius: '8px',
+                    scale: window.innerWidth < 480 ? '1.9' : '1',
+                    transform: window.innerWidth < 480 ? 'translateY(25px)' : 'translateY(0px)',
                     transition: 'transform 0.3s ease'
                   }} 
                 />

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './VideoSection.module.css';
-import videoFile from './images/futuristic_homepage.mp4';
+import videoFile from './images/homepage-hero.mp4';
 import { FaCloud, FaDollarSign, FaShieldAlt, FaSeedling } from 'react-icons/fa';
 import { FaChevronDown } from 'react-icons/fa';
 
