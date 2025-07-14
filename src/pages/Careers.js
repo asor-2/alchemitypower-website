@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ContactForm from '../components/ContactForm';
 import styles from './Contact.module.css';
 import careersStyles from './Careers.module.css';
-import PageHero from '../components/PageHero';
+import PageHero from '../components/PageHero'; 
 import CareersHero from '../components/CareersHero';
 import careersVideo from '../components/images/careers.mov';
 import styled from 'styled-components';

@@ -17,7 +17,7 @@ import ethylene from '../components/images/ethylene_new.png';
 import ethane from '../components/images/ethane_new.png';
 import syngas from '../components/images/syngas_new.png';
 import benzene from '../components/images/benzene_new.png';
-import renewDiesel from '../components/images/renew_diesel_new.png';
+import renewDiesel from '../components/images/syngas_new.png';
 
 
 import marketsVideo from '../components/images/markets_video.mov';
@@ -590,6 +590,14 @@ function Markets() {
       description: 'Synthetic gas (syngas)—a mixture of hydrogen and carbon monoxide—is a critical feedstock for producing methanol (used in formaldehyde, acetic acid, and plastics), ammonia (for fertilizers), Fischer-Tropsch liquids (waxes, lubricants, fuels), and higher alcohols and acids in solvents and polymers. Traditional syngas methods like steam methane reforming and coal gasification are highly carbon-intensive, emitting 9-12 kg of CO₂ per kg of hydrogen.'
     },
     { 
+      src: renewDiesel, 
+      title: 'Renewable Diesel', 
+      isFirstMarket: false,
+      // marketSize: '$40B',
+      // futureMarketSize: '$71B by 2030',
+      // description: 'Placeholder.....'
+    },
+    { 
       src: biogas, 
       title: 'RNG, Biogas', 
       isFirstMarket: false,
@@ -621,14 +629,6 @@ function Markets() {
       futureMarketSize: '$71B by 2030',
       description: 'Placeholder.....'
     },
-    { 
-      src: renewDiesel, 
-      title: 'Renewable Diesel', 
-      isFirstMarket: false,
-      // marketSize: '$40B',
-      // futureMarketSize: '$71B by 2030',
-      // description: 'Placeholder.....'
-    }
   ];
 
   const heroImages = [
@@ -649,6 +649,10 @@ function Markets() {
       title: 'Syngas'
     },
     { 
+      src: renewDiesel, 
+      title: 'Renewable Diesel'
+    },
+    { 
       src: biogas, 
       title: 'RNG, Biogas'
     },
@@ -659,10 +663,6 @@ function Markets() {
     { 
       src: ethane, 
       title: 'Ethane'
-    },
-    { 
-      src: renewDiesel, 
-      title: 'Renewable Diesel'
     }
   ];
 

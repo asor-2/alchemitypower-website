@@ -215,7 +215,7 @@ function VideoSection() {
         <h2
           className={styles.sectionHeading}
           style={{
-            background: 'linear-gradient(90deg,rgb(119, 216, 255) 10%, #dbcea4 90%)',
+            background: 'linear-gradient(90deg,rgb(161, 228, 255) 10%,rgb(249, 232, 176) 90%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',

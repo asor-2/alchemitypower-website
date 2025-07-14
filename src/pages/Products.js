@@ -1098,50 +1098,61 @@ function Products() {
           width: '100%',
           boxSizing: 'border-box'
         }}>
-          <div style={{
-            display: 'flex',
-            flexDirection: (isMobile || isTablet) ? 'column' : 'row', // Row for desktop/tablet, column for mobile
-            alignItems: 'center', // To align image to the center on the left side
-            gap: (isMobile || isTablet) ? '1.5rem' : '3rem',
-            maxWidth: '1400px',
-            width: '100%',
-            margin: '0 auto',
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: 'stretch',
+              gap: isMobile ? '2rem' : '3rem',
+              width: '100%',
+              maxWidth: '1100px',
+              margin: '0 auto',
+              padding: isMobile ? '1rem 0.5rem' : '2rem 1.5rem',
+              boxSizing: 'border-box',
+            }}
+          >
             {/* Image Section */}
             <div style={{
-              width: (isMobile || isTablet) ? '100%' : '40%', // Full width on mobile, 40% on desktop
+              flex: isMobile ? '0 0 auto' : '1 1 0',
               display: 'flex',
-              justifyContent: 'center',
               alignItems: 'center',
-              flexShrink: 0,
-              
+              justifyContent: 'center',
+              width: isMobile ? '100%' : '50%',
+              minWidth: 0,
             }}>
-              <img 
-                src={gtchem12Video} 
-                alt="GTChem Skid" 
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  maxWidth: (isMobile || isTablet) ? '450px' : '700px',
-                  objectFit: 'contain',
-                  marginBottom: '1rem',
-                  // marginTop: (isMobile || isTablet) ? '1rem' : '25%', 
-                  borderRadius: '8px'
-                }} 
-              />
+             <img
+              src={gtchem12Video}
+              alt="GTChem Skid"
+              style={{
+                width: '100%',
+                height: isMobile ? 'auto' : '100%',
+                maxWidth: isMobile ? '450px' : '100%',
+                maxHeight: isMobile ? '300px' : '500px',
+                objectFit: 'contain',
+                margin: 0,
+                display: 'block',
+                scale: '1.4'
+              }}
+            />
             </div>
             
             {/* Text Section */}
-            <div style={{
-              width: isMobile ? '100%' : '60%', // Full width on mobile, 55% on desktop
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}>
+            <div
+              style={{
+                flex: isMobile ? '0 0 auto' : '1 1 0',
+                width: isMobile ? '100%' : '0%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                minWidth: 0,
+                marginRight: (isMobile || isTablet) ? 'auto': '-1.1rem'
+              }}
+            >
               <h3 style={{ 
                 color: '#25abe0', 
                 fontSize: '1.6rem', 
-                marginBottom: '1.5rem',
+                marginBottom: '0rem',
+                marginTop:  (isMobile || isTablet) ? '1.5rem' : '-1rem',
                 fontWeight: '600',
                 textAlign: (isMobile || isTablet) ? 'center' : 'left',
               }}>GTChem-1</h3>
@@ -1149,7 +1160,7 @@ function Products() {
               <p style={{ 
                 fontSize: '1.2rem', 
                 lineHeight: '1.6', 
-                marginBottom: '1rem',
+                marginBottom: '0rem',
                 color: '#ffffff',
                 textAlign: (isMobile || isTablet) ? 'center' : 'left',
               }}>
@@ -1159,7 +1170,7 @@ function Products() {
               <p style={{ 
                 fontSize: '1.3rem', 
                 lineHeight: '1.6', 
-                marginBottom: '2rem',
+                // marginBottom: '2rem',
                 color: '#ffffff',
                 textAlign: (isMobile || isTablet) ? 'center' : 'left',
               }}>
@@ -1326,7 +1337,7 @@ function Products() {
                   animate={valueInView ? "visible" : "hidden"}
                   style={{ width: '100%' }}
                 >
-                  <Card>
+                  <Card style={{ height: '270px' }}>
                     <div
                       style={{
                         fontSize: '1.9rem',

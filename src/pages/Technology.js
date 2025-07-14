@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PageHero from '../components/PageHero';
 import Modal from '../components/Modal';
-import rd from '../components/images/rd2.svg';
-import validated from '../components/images/validated2.svg';
-import scalable from '../components/images/scalable2.svg';
+import rd from '../components/images/rd.png';
+import validated from '../components/images/ExtEval.png';
+import scalable from '../components/images/scalable_new.png';
 import graph1 from '../components/images/graph1.png';
 import graph2 from '../components/images/graph2.png';
 import animationTech from '../components/images/techanim.mov';
@@ -464,6 +464,103 @@ const SectionText = styled.p`
   margin-bottom: 1.5rem;
 `;
 
+const TechCardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1150px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+  }
+
+  @media (max-width: 890px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0;
+    max-width: 650px;
+    margin: 0 auto 4rem auto;
+    width: 95%;
+    justify-items: center;
+  }
+
+  @media (min-width: 2560px) {
+    max-width: 2000px;
+    gap: 3rem;
+  }
+`;
+
+const TechCard = styled.div`
+  background-color: rgba(31, 42, 48, 0.7);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 5px double rgba(116, 186, 198, 0.6);
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(37, 171, 224, 0.7);
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #6FCFFB, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .tech-card-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: transparent;
+  }
+
+  p {
+    color: #ffffff;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+    font-weight: 500;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+  }
+`;
+
 
 function Technology() {
   const [showModal, setShowModal] = useState(false);
@@ -567,7 +664,7 @@ function Technology() {
             letterSpacing: '-0.03em',
             maxWidth: isTablet || isMobile ? '100%' : '1200px',
             margin: '0 auto 1rem',
-            textAlign: isTablet || isMobile ? 'center':'left'
+            textAlign: isTablet || isMobile ? 'center':'center'
           }}> <span>Our </span>
           <span style={{ 
             background: 'linear-gradient(110deg, #dbcea4, #50918d)',
@@ -586,13 +683,37 @@ function Technology() {
             maxWidth: '700px',
             margin: '0 auto 0.5rem',
             lineHeight: '1.6',
-            textAlign: isTablet || isMobile ? 'center':'left'
+            textAlign: isTablet || isMobile ? 'center':'center'
           }}>
             A team of innovators driven by science, impact, and a shared vision for clean chemistry
           </p>
         </div>
         
         {/* Right/Bottom: Video */}
+      </div>
+
+      {/* Divider */}
+      <div style={{
+        width: '100%',
+        maxWidth: '1200px',
+        margin: '1rem auto 3rem',
+        height: '1px',
+        background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
+      }}></div>
+
+      <div> 
+        <p style={{
+          color: '#FFEBCA',
+          textAlign: 'center',
+          marginBottom: '2.5rem',
+          fontWeight: '600',
+          fontSize: '2.5rem',
+          fontWeight: '400',
+          maxWidth: '1400px',
+          margin: '0 auto',
+        }}>
+          Inside Alchemity’s Modular Reactor
+        </p>
         <div style={{
           flex: isTablet || isMobile ? 'auto' : '1',
           display: 'flex',
@@ -601,20 +722,6 @@ function Technology() {
           order: isTablet || isMobile ? 1 : 0,
           width: '100%'
         }}>
-          {/* <video 
-            ref={heroVideoRef}
-            src={herotech} 
-            style={{
-              width: '100%',
-              maxWidth: '900px',
-              height: 'auto',
-              borderRadius: '8px'
-            }} 
-            muted 
-            playsInline
-            autoPlay
-            loop
-          /> */}
           <img
             src={technology_header}
             alt="Technology Header"
@@ -628,16 +735,25 @@ function Technology() {
             }}
           />
         </div>
+         <div
+          style={{
+            height: '2px',
+            width: '40%',
+            background: 'linear-gradient(to right, transparent, #FFEBCA, transparent)',
+            borderRadius: '2px',
+            margin: '1rem auto 3rem auto',
+            opacity: 0.6,
+            // paddingTop: '2rem',
+            transition: 'width 0.2s',
+
+          }}
+      />
+
       </div>
 
-      {/* Divider */}
-      <div style={{
-        width: '100%',
-        maxWidth: '1200px',
-        margin: '1rem auto 3rem',
-        height: '1px',
-        background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
-      }}></div>
+      
+
+       
       
       {/* <div style={{
         width: '100%',
@@ -667,250 +783,348 @@ function Technology() {
         }}>
           Proven Technology Platform
         </p>
-        <div className="tech-platform-container" style={{
-        display: 'flex',
-        alignItems: (isMobile || isTablet) ? 'center' : 'flex-start',
-        justifyContent: 'center',
-        gap: isMobile ? '2rem' : '4rem',
-        marginBottom: '3rem',
-        marginTop: '3rem',
-        maxWidth: isMobile ? '100vw' : '1400px',
-        width: '100%',
-        position: 'relative',
-        flexWrap: (isMobile || isTablet) ? 'wrap' : 'nowrap',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        boxSizing: 'border-box',
-      }}>
-        {/* R&D Circle */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+        <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'stretch',
+            gap: '2rem',
+            padding: '2rem 0.5rem',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            width: '100%',
+          }}
+        >
+          {[
+            {
+              title: "35 Years R&D + $20M",
+              image: rd,
+              text: "Alchemity holds exclusive license to 32 patents."
+            },
+            {
+              title: "Extensively Validated",
+              image: validated,
+              text: "In labs & via industrial investment committees."
+            }, 
+            {
+              title: "Scalable",
+              image: scalable,
+              text: "Demo system design completed & ready for fabrication."
+            }
+          ].map((card, index) => (
+            <motion.div
+              key={index}
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+                border: '5px double rgba(255, 235, 202, 0.7)', 
+                padding: '1rem 1rem 1rem 1rem',
+                borderRadius: '20px',
+                color: '#ffffff',
+                transition: 'all 0.3s ease',
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                height: '400px',
+                minWidth: 0,
+                flex: '1 1 300px',
+                maxWidth: '350px',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                position: 'relative',
+                overflow: 'hidden',
+                width: '100%',
+                
+              }}
+              whileHover={{
+                y: -5,
+                boxShadow: '0 0 20px rgba(37, 171, 224, 0.6)'
+              }}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <h3 style={{
+                fontSize: '1.5rem',
+                fontWeight: '600',
+                color: '#ffffff',
+                marginBottom: '1rem',
+                textAlign: 'center',
+                // minHeight: '4.4rem',
+                lineHeight: '1.2',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+              }}>
+                {card.title}
+              </h3>
+              <div style={{
+                width: '100%',
+                height: '250px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1rem',
+                backgroundColor: 'transparent',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    backgroundColor: 'transparent',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                  }}
+                />
+              </div>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '1.4rem',
+                lineHeight: '1.6',
+                textAlign: 'center',
+                margin: '0 0.2rem',
+                marginTop: isMobile ? '-1rem':'auto',
+                // fontWeight: '500',
+                flex: 1,
+                display: 'flex',
+                alignItems: 'flex-start'
+              }}>
+                {card.text}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* <div
+          style={{
+            display: 'flex',
+            flexDirection: isMobile || isTablet ? 'column' : 'row',
+            flexWrap: 'wrap',
             gap: '1.5rem',
+            padding: '0.5rem',
+            margin: '0rem auto 0',
+            maxWidth: '900px',
+            justifyContent: 'center',
+            alignItems: isMobile || isTablet ? 'center' : 'flex-start',
+            width: '100%',
           }}
         >
-          <div style={{
-            width: '18rem',
-            height: '18rem',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
-            border: '5px double rgba(255, 235, 202, 0.7)', 
-            backdropFilter: 'blur(15px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer',            
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 25px 50px rgba(255,255,255,0.12)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}>
-            <div style={{
-              fontSize: '2.5rem',
-              marginBottom: '1.25rem',
-              width: '60px',
-              height: '60px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'rgba(214, 200, 163, 0.1)',
-              borderRadius: '50%',
-              // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
-              // border: '1px solid rgba(37, 171, 224, 0.3)'
-            }}>
-              <img src={rd} alt="R&D" style={{
-                width: '32px',
-                height: '32px',
-                opacity: 0.9
-              }}/>
-            </div>
-            <span style={{
-              color: '#ffffff',
-              fontSize: '1.75rem',
-              fontWeight: '500',
-              textAlign: 'center',
-              lineHeight: '1.2',
-            }}>
-              35 <br/> Years R&D
-            </span>
-          </div>
-          
-          <div style={{
-            width: '200px',
-            textAlign: 'center',
-            color: 'rgba(255,255,255,0.8)',
-            fontSize: '1.3rem',
-            lineHeight: '1.4'
-          }}>
-            $20M+ investment in mixed-conducting ceramic membrane reactor
-          </div>
-        </motion.div>
+          {[
+            {
+              title: "35 Years R&D + $20M",
+              image: rd,
+              text: "Alchemity holds exclusive license to 32 patents."
+            },
+            {
+              title: "Extensively Validated",
+              image: validated,
+              text: "In labs & via industrial investment committees."
+            },
+            {
+              title: "Scalable",
+              image: scalable,
+              text: "Demo system design completed & ready for fabrication."
+            }
+          ].map((card, index) => (
+            <motion.div
+              key={index}
+              style={{
+                background: '#141414',
+                padding: '1.5rem 1.5rem 1rem 1.5rem',
+                borderRadius: '8px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '1.5rem',
+                transition: 'all 0.3s ease',
+                width: isMobile || isTablet ? '100%' : 'calc(33.333% - 1rem)',
+                minWidth: '280px',
+                maxWidth: '350px',
+                height: '100%',
+                boxSizing: 'border-box',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                margin: isMobile || isTablet ? '0 auto' : undefined,
+                '@media (max-width: 1024px)': {
+                  width: '100%',
+                  maxWidth: '500px'
+                }
+              }}
+              whileHover={{
+                y: -8,
+                boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
+              }}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <h3 style={{
+                color: '#25abe0',
+                fontSize: '1.7rem',
+                fontWeight: '600',
+                textAlign: 'center',
+                margin: 0,
+                minHeight: '4.4rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+              }}>{card.title}</h3>
+              <div style={{
+                width: '100%',
+                height: '250px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'transparent',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <img 
+                  src={card.image} 
+                  alt={card.title} 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    backgroundColor: 'transparent'
+                  }} 
+                />
+              </div>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '1.4rem',
+                lineHeight: '1.6',
+                textAlign: 'center',
+                margin: 0,
+                fontWeight: '500',
+                flex: 1,
+                display: 'flex',
+                alignItems: 'flex-start',
+                wordBreak: 'break-word'
+              }}>{card.text}</p>
+            </motion.div>
+          ))}
+        </div> */}
 
-        {/* Validation Circle */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+        {/* <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '1.5rem'
+            alignItems: (isMobile || isTablet) ? 'center' : 'flex-start',
+            flexWrap: 'wrap',
+            gap: isMobile ? '2rem' : '1.5rem',
+            padding: '0.5rem',
+            // margin: '-2rem auto 0',
+            maxWidth: isMobile ? '100vw' : '1400px',
+            width: '100%',
+            position: 'relative',
+            flexWrap: (isMobile || isTablet) ? 'wrap' : 'nowrap',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            boxSizing: 'border-box',
           }}
         >
-          <div style={{
-            width: '18rem',
-            height: '18rem',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
-            border: '5px double rgba(255, 235, 202, 0.7)', 
-            backdropFilter: 'blur(15px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 25px 50px rgba(255,255,255,0.12)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}>
-            <div style={{
-              fontSize: '2.5rem',
-              marginBottom: '1.25rem',
-              width: '60px',
-              height: '60px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'rgba(214, 200, 163, 0.1)',
-              borderRadius: '50%',
-              // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
-              // border: '1px solid rgba(37, 171, 224, 0.3)'
-            }}>
-              <img src={validated} alt="Validated" style={{
-                width: '32px',
-                height: '32px',
-                opacity: 0.9,
-                filter: 'invert(1)'
-              }}/>
-            </div>
-            <span style={{
-              color: '#ffffff',
-              fontSize: '1.75rem',
-              fontWeight: '500',
-              textAlign: 'center',
-              lineHeight: '1.2',
-            }}>
-              Extensively<br/>Validated
-            </span>
-          </div>
-          
-          <div style={{
-            width: '200px',
-            textAlign: 'center',
-            color: 'rgba(255,255,255,0.8)',
-            fontSize: '1.3rem',
-            lineHeight: '1.4'
-          }}>
-            In labs & via industrial investment committees
-          </div>
-        </motion.div>
-
-        {/* Scalable Circle */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '1.5rem'
-          }}
-        >
-          <div style={{
-            width: '18rem',
-            height: '18rem',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
-            border: '5px double rgba(255, 235, 202, 0.7)', 
-            backdropFilter: 'blur(15px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            transition: 'all 0.3s ease',
-            cursor: 'pointer'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 25px 50px rgba(255,255,255,0.12)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}>
-            <div style={{
-              fontSize: '2.5rem',
-              marginBottom: '1.25rem',
-              width: '60px',
-              height: '60px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: 'rgba(214, 200, 163, 0.1)',
-              borderRadius: '50%',
-              // boxShadow: '0 0 15px rgba(37, 171, 224, 0.4)',
-              // border: '1px solid rgba(37, 171, 224, 0.3)'
-            }}>
-              <img src={scalable} alt="Scalable" style={{
-                width: '32px',
-                height: '32px',
-                opacity: 0.9,
-              }}/>
-            </div>
-            <span style={{
-              color: '#ffffff',
-              fontSize: '1.75rem',
-              fontWeight: '500',
-              textAlign: 'center',
-              lineHeight: '1.2',
-            }}>
-              Scalable<br/>Platform
-            </span>
-          </div>
-          
-          <div style={{
-            width: '200px',
-            textAlign: 'center',
-            color: 'rgba(255,255,255,0.8)',
-            fontSize: '1.3rem',
-            lineHeight: '1.4'
-          }}>
-            Demo system design completed & ready for fabrication
-          </div>
-        </motion.div>
-      </div>
+          {[
+            {
+              title: "35 Years R&D + $20M",
+              image: rd,
+              text: "Alchemity holds exclusive license to 32 patents."
+            },
+            {
+              title: "Extensively Validated",
+              image: validated,
+              text: "In labs & via industrial investment committees."
+            },
+            {
+              title: "Scalable",
+              image: scalable,
+              text: "Demo system design completed & ready for fabrication."
+            }
+          ].map((card, index) => (
+            <motion.div
+              key={index}
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+                border: '5px double rgba(255, 235, 202, 0.7)',
+                padding: '1.5rem 1.5rem 1rem 1.5rem',
+                borderRadius: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '1.5rem',
+                transition: 'all 0.3s ease',
+                width: isMobile || isTablet ? '100%' : 'calc(33.333% - 1rem)',
+                minWidth: '280px',
+                maxWidth: '350px',
+                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                margin: isMobile || isTablet ? '0 auto' : undefined,
+              }}
+              whileHover={{
+                y: -8,
+                boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
+              }}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <h3 style={{
+                color: '#25abe0',
+                fontSize: '1.7rem',
+                fontWeight: '600',
+                textAlign: 'center',
+                margin: 0,
+                minHeight: '3.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+              }}>{card.title}</h3>
+              <div style={{
+                width: '100%',
+                height: '220px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'transparent',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <img 
+                  src={card.image} 
+                  alt={card.title} 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    backgroundColor: 'transparent'
+                  }} 
+                />
+              </div>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '1.3rem',
+                lineHeight: '1.6',
+                textAlign: 'center',
+                margin: 0,
+                fontWeight: '500',
+                flex: 1,
+                display: 'flex',
+                alignItems: 'flex-start',
+              }}>{card.text}</p>
+            </motion.div>
+          ))}
+        </div> */}
+        
+       
 
       {/* Mobile Responsive Styles */}
       <style jsx>{`
@@ -1028,60 +1242,6 @@ function Technology() {
         </div> */}
       </div>
       
-      {/* Process Section - Standardized */}
-      {/* <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto 4rem',
-        padding: '0 2rem'
-      }}>
-        <p style={{
-          color: '#ffffff',
-          textAlign: 'center',
-          marginBottom: '3rem',
-          fontWeight: '600',
-          fontSize: '2.5rem',
-          fontWeight: '400',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}>
-          Example: From Biomass to SAF without CO₂ emissions
-        </p>
-        
-        <p style={{
-          color: '#9cc9dd',
-          fontSize: '1.5rem',
-          lineHeight: '1.6',
-          textAlign: 'center',
-          maxWidth: '800px',
-          margin: '0 auto 2rem'
-        }}>
-          Our revolutionary process enables clean fuel production with zero carbon emissions.
-        </p>
-        
-        <div style={{
-          backgroundColor: 'rgba(26, 35, 43, 0.7)',
-          borderRadius: '16px',
-          padding: '0.5rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
-          marginBottom: '3rem'
-        }}>
-          <video 
-            ref={animationVideoRef}
-            src={animationTech} 
-            style={{
-              width: '100%',
-              maxWidth: '1150px',
-              height: 'auto',
-              borderRadius: '8px',
-              margin: '0 auto',
-              display: 'block'
-            }} 
-            muted 
-            playsInline
-            autoPlay
-          />
-        </div>
-      </div> */}
       
       {/* Platform Section */}
       {/* <div style={{
@@ -1274,7 +1434,8 @@ function Technology() {
               fontSize: '2.5rem',
               marginBottom: '1.2rem',
               fontWeight: '400',
-              textAlign: 'center'
+              textAlign: 'center',
+              color: '#FFEBCA',
             }}
           >
             From Biomass to SAF without CO₂ emissions
@@ -1294,18 +1455,18 @@ function Technology() {
             alt="Biomass to SAF"
             style={{
               width: '100%',
-              maxWidth: '900px',
+              maxWidth: '1100px',
               height: 'auto',
               borderRadius: '8px',
               margin: '0 auto 0.6rem auto',
-              marginTop: '-4rem', 
-              marginBottom: '-4rem', 
+              marginTop: '-5rem', 
+              marginBottom: '-8rem', 
               display: 'block'
             }}
             onClick={() => setActiveModal('biomass')}
           />
           
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
             <button
               onClick={() => setActiveModal('biomass')}
               style={{
@@ -1322,7 +1483,7 @@ function Technology() {
             >
               Enlarge Image
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Line Divider */}
@@ -1346,7 +1507,8 @@ function Technology() {
               fontSize: '2.5rem',
               marginBottom: '1.2rem',
               fontWeight: '400',
-              textAlign: 'center'
+              textAlign: 'center',
+              color: '#FFEBCA',
             }}
           >
             Multifunctional Gas to Chemicals Platform
@@ -1366,7 +1528,7 @@ function Technology() {
             alt="Gas to Chemicals"
             style={{
               width: '100%',
-              maxWidth: '900px',
+              maxWidth: '1100px',
               height: 'auto',
               borderRadius: '8px',
               margin: '0 auto 1.2rem auto',

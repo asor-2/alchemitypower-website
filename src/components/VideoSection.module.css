@@ -19,7 +19,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.25;
+  opacity: 0.6;
 }
 
 .contentOverlay {
