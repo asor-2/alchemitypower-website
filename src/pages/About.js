@@ -30,7 +30,7 @@ const founders = [
     id: 2,
     name: 'Rodger McKain, Ph.D.',
     title: 'CEO',
-    blurb: '30 years as Fortune 500 Executive',
+    blurb: '30 years as Fortune 500\nExecutive',
     bio: [
       'Rodger brings expertise in building large businesses and succesful exit strategies. He successfully led the growth of multi-billion dollar S&P 500 companies.',
       'Previous Roles:',
@@ -47,7 +47,7 @@ const founders = [
     id: 3,
     name: 'Emir Dogdibegovic, Ph.D.',
     title: 'CTO and CCO',
-    blurb: '15 years of Scaleup and Deployment of Clean Energy Technologies',
+    blurb: '15 years of Scaleup & Deployment of Clean Energy Technologies',
     bio: [
       'Emir brings the technical and product scaleup know-how and strategic business expertise in customer acquisition, project development and deployment, and revenue generation.',
       'Previous Roles:',
@@ -64,7 +64,7 @@ const founders = [
     id: 1,
     name: 'Eric Wachsman, Ph.D.',
     title: 'Executive Chair',
-    blurb: '30 years of Energy Research and Product Development/Innovation',
+    blurb: '30 years of Energy Research & Product Development/Innovation',
     bio: [
       'Eric brings the innovation (developed IP licensed to Alchemity) and startup scaleup expertise through multiple ventures.',
       'Current Roles',

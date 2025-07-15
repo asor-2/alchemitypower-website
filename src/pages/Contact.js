@@ -72,7 +72,7 @@ function Contact() {
             lineHeight: '1.6'
           }}>
             Interested to invest? Have questions about pre-ordering our 
-            system or a general inquiry about our technology, products or interested in learning more? 
+            system or a general inquiry? 
             Fill out the form below.
           </p>
           

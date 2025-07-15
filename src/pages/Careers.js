@@ -189,7 +189,6 @@ function Careers() {
             Why Work at Alchemity
           </h2>
           
-
           <div style={{
             display: 'flex',
             flexWrap: 'wrap',
@@ -197,10 +196,10 @@ function Careers() {
             gap: '2rem'
           }}>
             {[
-              { icon: <Wind color="#fff" size={32} />, title: 'Small team, real impact', desc: 'Your work directly shapes our technology and future.' },
-              { icon: <Globe color="#fff" size={32} />, title: 'Tech that matters', desc: 'Build solutions for real climate and energy challenges.' },
+              { icon: <Wind color="#fff" size={32} />, title: 'Flexible team, real impact', desc: 'Shape the future with a team that values outcomes over hours.' },
+              { icon: <Globe color="#fff" size={32} />, title: 'Tech that matters', desc: 'Build solutions for real climate challenges & decarbonize sectors.' },
               { icon: <Zap color="#fff" size={32} />, title: 'Backed by science', desc: 'Join a team with deep technical expertise and innovative vision.' },
-              { icon: <Clock color="#fff" size={32} />, title: 'Flexible culture', desc: 'Work with a collaborative team focused on outcomes, not hours.' }
+              // { icon: <Clock color="#fff" size={32} />, title: 'Flexible culture', desc: 'Work with a collaborative team focused on outcomes, not hours.' }
             ].map((item, index) => (
               <motion.div 
                 key={index} 
