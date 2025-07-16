@@ -7,7 +7,7 @@ import single1 from '../components/images/single1.png';
 import single2 from '../components/images/single2.png';
 import bundle1 from '../components/images/bundle1.png';
 import bundle2 from '../components/images/bundle2.png';
-import benchtop1 from '../components/images/benchtop1.png';
+import benchtop1 from '../components/images/benchtop1_new.png';
 import benchtop2 from '../components/images/benchtop2.png';
 import skid1 from '../components/images/skid1_new.png';
 import skid2 from '../components/images/skid2_new.png';
