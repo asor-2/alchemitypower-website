@@ -1,5 +1,5 @@
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '../config/emailConfig';
+import emailjs from "@emailjs/browser";
+import { EMAILJS_CONFIG } from "../config/emailConfig";
 
 export const sendEmail = async (templateId, templateParams) => {
   try {
@@ -7,11 +7,11 @@ export const sendEmail = async (templateId, templateParams) => {
       EMAILJS_CONFIG.SERVICE_ID,
       templateId,
       templateParams,
-      EMAILJS_CONFIG.PUBLIC_KEY
+      EMAILJS_CONFIG.PUBLIC_KEY,
     );
     return { success: true, data: response };
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
     return { success: false, error };
   }
-}; 
+};

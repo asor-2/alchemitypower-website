@@ -1,46 +1,46 @@
 /* Flip Card Container */
 .flipCard {
-    background-color: transparent;
-    width: 150px;
-    height: 150px;
-    perspective: 1000px; /* Perspective for the 3D effect */
-  }
-  
-  .flipCardInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .flipCard:hover .flipCardInner {
-    transform: rotateY(180deg); /* Flip the card on hover */
-  }
-  
-  .flipCardFront,
-  .flipCardBack {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Hide the back side when the front is visible */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .flipCardFront {
-    background-color: #fff; /* Front side background */
-  }
-  
-  .flipCardBack {
-    background-color: var(--primary-color); /* Back side background */
-    color: #fff;
-    transform: rotateY(180deg); /* Rotate the back side */
-    padding: 1rem;
-    text-align: center;
-  }
+  background-color: transparent;
+  width: 150px;
+  height: 150px;
+  perspective: 1000px; /* Perspective for the 3D effect */
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flipCard:hover .flipCardInner {
+  transform: rotateY(180deg); /* Flip the card on hover */
+}
+
+.flipCardFront,
+.flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back side when the front is visible */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flipCardFront {
+  background-color: #fff; /* Front side background */
+}
+
+.flipCardBack {
+  background-color: var(--primary-color); /* Back side background */
+  color: #fff;
+  transform: rotateY(180deg); /* Rotate the back side */
+  padding: 1rem;
+  text-align: center;
+}

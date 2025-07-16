@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import styles from './NewsHeroSection.module.css';
-import productVideo from './images/product.mov';
+import React from "react";
+import { motion } from "framer-motion";
+import styles from "./NewsHeroSection.module.css";
+import productVideo from "./images/product.mov";
 
 const NewsHeroSection = () => {
   return (
@@ -20,4 +20,4 @@ const NewsHeroSection = () => {
   );
 };
 
-export default NewsHeroSection; 
+export default NewsHeroSection;

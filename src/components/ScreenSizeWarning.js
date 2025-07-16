@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import alchemityLogo from './images/alchemity_logo_w_text.png';
+import React from "react";
+import styled from "styled-components";
+import alchemityLogo from "./images/alchemity_logo_w_text.png";
 
 const WarningContainer = styled.div`
   position: fixed;
@@ -64,10 +64,11 @@ const ScreenSizeWarning = () => {
     <WarningContainer>
       <Logo src={alchemityLogo} alt="Alchemity Logo" />
       <Message>
-        This website does not support viewing for smaller screens at this time. Please view the website on a larger device.
+        This website does not support viewing for smaller screens at this time.
+        Please view the website on a larger device.
       </Message>
     </WarningContainer>
   );
 };
 
-export default ScreenSizeWarning; 
+export default ScreenSizeWarning;

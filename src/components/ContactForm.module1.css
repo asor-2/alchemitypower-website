@@ -94,90 +94,95 @@
 
 /* Style for the select dropdown arrow (basic) */
 select {
-    appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right .7em top 50%;
-    background-size: .65em auto;
-    padding-right: 2.5em;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  background-size: 0.65em auto;
+  padding-right: 2.5em;
 }
 
 select option {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    padding: 10px;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  padding: 10px;
 }
 
 select:focus option:checked {
-    background-color: #ffffff !important;
-    color: #000000 !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 select option:hover {
-    background-color: #f0f0f0 !important;
-    color: #000000 !important;
+  background-color: #f0f0f0 !important;
+  color: #000000 !important;
 }
 
 select option:checked {
-    background-color: #ffffff !important;
-    color: #000000 !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 textarea {
-    min-height: 120px;
-    resize: vertical; /* Allow vertical resizing */
+  min-height: 120px;
+  resize: vertical; /* Allow vertical resizing */
 }
 
-input, select, textarea {
-    color: #000000 !important;
-    background-color: #ffffff !important;
-    border: 1px solid #ffffff;
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 4px;
+input,
+select,
+textarea {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #ffffff;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
 
 input[type="text"],
 input[type="email"],
 select,
 textarea {
-    color: #000000 !important;
-    background-color: #ffffff !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
 }
 
-input::placeholder, textarea::placeholder {
-    color: rgba(0, 0, 0, 0.7) !important;
+input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.7) !important;
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none !important;
-    border: 2px solid #25abe0 !important;
-    box-shadow: none !important;
-    color: #000000 !important;
-    background-color: #ffffff !important;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border: 2px solid #25abe0 !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
 }
 
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-    outline: none !important;
-    border: 2px solid #25abe0 !important;
-    box-shadow: none !important;
-    color: #000000 !important;
-    background-color: #ffffff !important;
+  outline: none !important;
+  border: 2px solid #25abe0 !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
 }
 
 .form input,
 .form select,
 .form textarea {
-    color: #000000 !important;
-    background-color: #ffffff !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
 }
 
 *:focus {
-    outline: none !important;
-    border-color: #25abe0 !important;
-    box-shadow: none !important;
+  outline: none !important;
+  border-color: #25abe0 !important;
+  box-shadow: none !important;
 }
 
 /* Hero section with video background */
@@ -205,7 +210,12 @@ input:focus, select:focus, textarea:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Dark overlay for better text visibility */
   z-index: 2;
 }
 
@@ -234,7 +244,7 @@ input:focus, select:focus, textarea:focus {
   .heroContainer {
     height: 40vh; /* Smaller height on mobile */
   }
-  
+
   .heroTitle {
     font-size: 2rem;
   }

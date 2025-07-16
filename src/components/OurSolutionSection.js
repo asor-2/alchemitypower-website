@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
-import styles from './OurSolutionSection.module.css';
-import staticskid from './images/staticskid_new.png';
-import { FiExternalLink } from 'react-icons/fi';
+import React, { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
+import styles from "./OurSolutionSection.module.css";
+import staticskid from "./images/staticskid_new.png";
+import { FiExternalLink } from "react-icons/fi";
 
 const OurSolutionSection = () => {
   const [ref, inView] = useInView({
@@ -18,9 +18,9 @@ const OurSolutionSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.15
-      }
-    }
+        delayChildren: 0.15,
+      },
+    },
   };
 
   const itemVariants = {
@@ -28,29 +28,22 @@ const OurSolutionSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
   };
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <motion.div 
+        <motion.div
           className={styles.contentWrapper}
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <motion.div 
-            className={styles.imageContainer}
-            variants={itemVariants}
-          >
-            <img 
-              src={staticskid} 
-              alt="Static Skid"
-              className={styles.video}
-            />
+          <motion.div className={styles.imageContainer} variants={itemVariants}>
+            <img src={staticskid} alt="Static Skid" className={styles.video} />
           </motion.div>
 
           <motion.div className={styles.textContent}>
@@ -58,28 +51,32 @@ const OurSolutionSection = () => {
               Our Technology: Engineered for Carbon Neutrality
             </motion.h2>
             <motion.p className={styles.highlightText} variants={itemVariants}>
-              Platform technology with simplified design, on-site modularity, higher efficiency and reduced capital risk.
+              Platform technology with simplified design, on-site modularity,
+              higher efficiency and reduced capital risk.
             </motion.p>
             <motion.p className={styles.text} variants={itemVariants}>
-              Paradigm shift – no premium for clean chemical & fuel production from biomass, biogas, landfill gas and waste gas. 
+              Paradigm shift – no premium for clean chemical & fuel production
+              from biomass, biogas, landfill gas and waste gas.
             </motion.p>
-            
-            <motion.div variants={itemVariants} style={{ marginTop: '1.5rem' }}>
-              <Link 
-                to="/technology" 
+
+            <motion.div variants={itemVariants} style={{ marginTop: "1.5rem" }}>
+              <Link
+                to="/technology"
                 className={styles.learnMoreLink}
                 style={{
-                  color: 'rgb(181, 226, 244)',
+                  color: "rgb(181, 226, 244)",
                   fontWeight: 500,
-                  fontSize: '1.5rem',
-                  textDecoration: '1px underline',
+                  fontSize: "1.5rem",
+                  textDecoration: "1px underline",
                   // borderBottom: '1px solid rgb(181, 226, 244)',
-                  paddingBottom: '2px',
-                  transition: 'all 0.2s ease'
+                  paddingBottom: "2px",
+                  transition: "all 0.2s ease",
                 }}
               >
                 More about our technology
-                <FiExternalLink style={{ fontSize: '1.2rem', marginLeft: '0.2rem' }} />
+                <FiExternalLink
+                  style={{ fontSize: "1.2rem", marginLeft: "0.2rem" }}
+                />
               </Link>
             </motion.div>
           </motion.div>

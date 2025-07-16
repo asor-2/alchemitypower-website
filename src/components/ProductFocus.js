@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
-import styles from './ProductFocus.module.css';
-import { FaIndustry, FaLeaf, FaShieldAlt, FaArrowRight } from 'react-icons/fa';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
+import styles from "./ProductFocus.module.css";
+import { FaIndustry, FaLeaf, FaShieldAlt, FaArrowRight } from "react-icons/fa";
 
 function ProductFocus() {
   const [activeTab, setActiveTab] = useState(0);
@@ -17,33 +17,36 @@ function ProductFocus() {
     {
       icon: <FaIndustry />,
       title: "Placeholder text",
-      description: "Simplified design reduces capital risk and extends life expectancy of plants due for decommissioning or repower.",
+      description:
+        "Simplified design reduces capital risk and extends life expectancy of plants due for decommissioning or repower.",
       benefits: [
         "Reduced capital investment",
         "Extended plant lifespan",
-        "Lower operational risk"
-      ]
+        "Lower operational risk",
+      ],
     },
     {
       icon: <FaLeaf />,
       title: "Eco-Friendly Solutions",
-      description: "Modular skid systems deliver 400% lower CO₂ emissions and 300% lower lifetime cost through optimized design and efficient operation.",
+      description:
+        "Modular skid systems deliver 400% lower CO₂ emissions and 300% lower lifetime cost through optimized design and efficient operation.",
       benefits: [
         "Modular construction",
         "Significant CO₂ reduction",
-        "Lower total cost of ownership"
-      ]
+        "Lower total cost of ownership",
+      ],
     },
     {
       icon: <FaShieldAlt />,
       title: "Domestic Energy Security",
-      description: "Alchemity's provides domestic jobs and energy security leveraging existing downstream processes.",
+      description:
+        "Alchemity's provides domestic jobs and energy security leveraging existing downstream processes.",
       benefits: [
         "Local job creation",
         "Enhanced energy independence",
-        "Optimized existing infrastructure"
-      ]
-    }
+        "Optimized existing infrastructure",
+      ],
+    },
   ];
 
   // Animation variants
@@ -52,9 +55,9 @@ function ProductFocus() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -62,8 +65,8 @@ function ProductFocus() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const contentVariants = {
@@ -71,13 +74,13 @@ function ProductFocus() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
+      transition: { duration: 0.5, ease: "easeOut" },
     },
     exit: {
       opacity: 0,
       x: 20,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   const buttonVariants = {
@@ -85,11 +88,11 @@ function ProductFocus() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" },
     },
     hover: {
-      scale: 1.05
-    }
+      scale: 1.05,
+    },
   };
 
   return (
@@ -104,7 +107,8 @@ function ProductFocus() {
           Value Proposition
         </motion.h2>
         <motion.p className={styles.subTitle} variants={itemVariants}>
-          Transforming industrial operations with solutions that reduce costs, lower emissions, and strengthen domestic energy security.
+          Transforming industrial operations with solutions that reduce costs,
+          lower emissions, and strengthen domestic energy security.
         </motion.p>
 
         {/* Tabs Navigation */}
@@ -112,7 +116,7 @@ function ProductFocus() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`${styles.tab} ${activeTab === index ? styles.activeTab : ''}`}
+              className={`${styles.tab} ${activeTab === index ? styles.activeTab : ""}`}
               onClick={() => setActiveTab(index)}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -161,8 +165,8 @@ function ProductFocus() {
           animate={inView ? "visible" : "hidden"}
           whileHover="hover"
         >
-          <Link 
-            to="/products" 
+          <Link
+            to="/products"
             className={styles.learnMoreButton}
             onClick={() => window.scrollTo(0, 0)}
           >

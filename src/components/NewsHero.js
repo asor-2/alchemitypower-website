@@ -1,27 +1,27 @@
-import React from 'react';
-import PageHero from './PageHero';
-import productVideo from './images/product.mov';
+import React from "react";
+import PageHero from "./PageHero";
+import productVideo from "./images/product.mov";
 
 // Styles
 const styles = {
   container: {
-    position: 'relative'
+    position: "relative",
   },
   videoStyle: {
-    position: 'absolute',
-    top: '-33%',
+    position: "absolute",
+    top: "-33%",
     right: 0,
-    width: '65%',
-    height: '160%',
-    objectFit: 'contain',
-    zIndex: 0
-  }
+    width: "65%",
+    height: "160%",
+    objectFit: "contain",
+    zIndex: 0,
+  },
 };
 
 function NewsHero() {
   return (
     <div style={styles.container}>
-      <PageHero 
+      <PageHero
         backgroundVideoUrl={productVideo}
         title="News"
         videoStyle={styles.videoStyle}
@@ -30,4 +30,4 @@ function NewsHero() {
   );
 }
 
-export default NewsHero; 
+export default NewsHero;

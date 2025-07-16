@@ -3,7 +3,9 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border: 1px solid #333333;
   display: flex;
   flex-direction: column;
@@ -91,7 +93,7 @@
 }
 
 .learnMoreButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -138,16 +140,16 @@
   .articleTitle {
     font-size: 1.5rem;
   }
-  
+
   .articleSummary {
     font-size: 1rem;
   }
-  
+
   .contentContainer {
     padding: 1.5rem;
   }
-  
+
   .imageContainer {
     height: 200px;
   }
-} 
+}

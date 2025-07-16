@@ -41,7 +41,7 @@
 }
 
 .sectionHeading::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -49,7 +49,9 @@
   width: 100px;
   height: 3px;
   background-color: var(--primary-color, #25abe0);
-  animation: glowPulse 3s infinite alternate, lineExpand 1.5s ease-out forwards;
+  animation:
+    glowPulse 3s infinite alternate,
+    lineExpand 1.5s ease-out forwards;
 }
 
 @keyframes lineExpand {
@@ -145,7 +147,8 @@
   transition: all 0.3s ease;
 }
 
-.keyPhrase:hover, .keyPhrase.active {
+.keyPhrase:hover,
+.keyPhrase.active {
   color: var(--primary-color, #25abe0);
   opacity: 1;
   transform: translateY(-2px);
@@ -163,14 +166,16 @@
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px rgba(37, 171, 224, 0.5),
-                 0 0 20px rgba(37, 171, 224, 0.3),
-                 0 0 30px rgba(37, 171, 224, 0.2);
+    text-shadow:
+      0 0 10px rgba(37, 171, 224, 0.5),
+      0 0 20px rgba(37, 171, 224, 0.3),
+      0 0 30px rgba(37, 171, 224, 0.2);
   }
   to {
-    text-shadow: 0 0 20px rgba(37, 171, 224, 0.6),
-                 0 0 30px rgba(37, 171, 224, 0.4),
-                 0 0 40px rgba(37, 171, 224, 0.3);
+    text-shadow:
+      0 0 20px rgba(37, 171, 224, 0.6),
+      0 0 30px rgba(37, 171, 224, 0.4),
+      0 0 40px rgba(37, 171, 224, 0.3);
   }
 }
 
@@ -258,7 +263,9 @@
   border-radius: 20px;
   text-align: center;
   border: 2px solid rgba(37, 171, 224, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(37, 171, 224, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(37, 171, 224, 0.2);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -275,9 +282,14 @@
   bottom: 0;
   border-radius: 18px;
   padding: 2px;
-  background: linear-gradient(135deg, transparent, rgba(37, 171, 224, 0.5), transparent);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(37, 171, 224, 0.5),
+    transparent
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -289,13 +301,20 @@
 .mission:hover::before,
 .vision:hover::before {
   opacity: 1;
-  background: linear-gradient(135deg, transparent, rgba(37, 171, 224, 0.8), transparent);
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(37, 171, 224, 0.8),
+    transparent
+  );
 }
 
 .mission:hover,
 .vision:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(37, 171, 224, 0.3);
+  box-shadow:
+    0 15px 60px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(37, 171, 224, 0.3);
   border-color: rgba(37, 171, 224, 0.5);
 }
 
@@ -309,7 +328,7 @@
 }
 
 .cardTitle::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   bottom: -10px;
@@ -336,7 +355,7 @@
 }
 
 .emphasisWord::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 3px;
@@ -351,16 +370,16 @@
     padding: 6rem 0;
     min-height: 450px;
   }
-  
+
   .sectionHeading {
     font-size: 2.8rem;
   }
-  
+
   .videoDescription {
     font-size: 1.5rem;
     margin: 1.5rem auto;
   }
-  
+
   .keyPhrase {
     font-size: 1.5rem;
   }
@@ -383,24 +402,24 @@
     padding: 4rem 0;
     min-height: 400px;
   }
-  
+
   .sectionHeading {
     font-size: 2.4rem;
   }
-  
+
   .videoDescription {
     font-size: 1.4rem;
     margin: 1.2rem auto;
   }
-  
+
   .keyPhrasesContainer {
     margin: 1rem auto 2rem;
   }
-  
+
   .keyPhrasesLine {
     gap: 0.3rem;
   }
-  
+
   .keyPhrase {
     font-size: 1.4rem;
   }
@@ -409,13 +428,14 @@
     font-size: 1.4rem;
     margin: 0 0.3rem;
   }
-  
+
   .missionVisionContainer {
     gap: 1.5rem;
     margin-top: 2rem;
   }
-  
-  .mission, .vision {
+
+  .mission,
+  .vision {
     padding: 1.5rem;
     max-width: 280px;
   }
@@ -434,24 +454,24 @@
     padding: 3rem 0;
     min-height: 350px;
   }
-  
+
   .sectionHeading {
     font-size: 2rem;
   }
-  
+
   .videoDescription {
     font-size: 1.2rem;
     margin: 1rem auto;
   }
-  
+
   .keyPhrasesContainer {
     margin: 0.8rem auto 1.5rem;
   }
-  
+
   .keyPhrasesLine {
     gap: 0.2rem;
   }
-  
+
   .keyPhrase {
     font-size: 1.2rem;
   }
@@ -460,13 +480,14 @@
     font-size: 1.2rem;
     margin: 0 0.2rem;
   }
-  
+
   .missionVisionContainer {
     gap: 1rem;
     margin-top: 1.5rem;
   }
-  
-  .mission, .vision {
+
+  .mission,
+  .vision {
     padding: 1.2rem;
     max-width: 240px;
   }
@@ -486,7 +507,7 @@
     align-items: center;
     gap: 2rem;
   }
-} 
+}
 
 /* Optimizing loading time for video section of the header */
 @media (max-width: 768px) {
@@ -494,7 +515,7 @@
     will-change: auto; /* Remove after load */
     transform: translate3d(0, 0, 0); /* Hardware acceleration */
   }
-  
+
   .sectionHeading {
     font-display: swap; /* Prevent invisible text */
   }

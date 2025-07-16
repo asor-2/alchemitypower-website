@@ -125,7 +125,7 @@
 }
 
 .linkedInButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -243,4 +243,4 @@
   .modalBody {
     font-size: 0.95rem;
   }
-} 
+}

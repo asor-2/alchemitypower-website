@@ -1,18 +1,18 @@
 // src/components/SEO/SEO.js
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const SEO = ({
-    title = '',
-    description = '',
-    keywords = '',
-    image = '',
-    url = '',
-    type = 'website'
+  title = "",
+  description = "",
+  keywords = "",
+  image = "",
+  url = "",
+  type = "website",
 }) => {
-  const siteTitle = 'Alchemity';
+  const siteTitle = "Alchemity";
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
-  const siteUrl = 'https://alchemity.com'; 
+  const siteUrl = "https://alchemity.com";
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
   const defaultImage = `${siteUrl}/images/alchemity-og-default.jpg`;
   const ogImage = image ? `${siteUrl}${image}` : defaultImage;

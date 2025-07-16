@@ -32,8 +32,8 @@
 }
 
 .contactInfo h2 {
-    color: #25abe0;
-    margin-bottom: 1rem;
+  color: #25abe0;
+  margin-bottom: 1rem;
 }
 
 .infoBlock {
@@ -53,14 +53,14 @@
 }
 
 .infoBlock a {
-    color: #25abe0;
-    word-break: break-all; /* Prevent long emails/links from overflowing */
-    font-weight: 500;
+  color: #25abe0;
+  word-break: break-all; /* Prevent long emails/links from overflowing */
+  font-weight: 500;
 }
 
 .socialLink {
-    font-weight: 500;
-    color: #25abe0;
+  font-weight: 500;
+  color: #25abe0;
 }
 
 .formWrapper {
@@ -69,10 +69,11 @@
 }
 
 /* Ensure ContactForm styles are scoped correctly if needed */
-.formWrapper > section { /* Target the section inside ContactForm */
-    margin-top: 0; /* Remove top margin if ContactForm section has it */
-    padding-top: 10px; /* Remove top padding if needed */
-    max-width: 100%; /* Allow it to fill wrapper */
+.formWrapper > section {
+  /* Target the section inside ContactForm */
+  margin-top: 0; /* Remove top margin if ContactForm section has it */
+  padding-top: 10px; /* Remove top padding if needed */
+  max-width: 100%; /* Allow it to fill wrapper */
 }
 
 /* Responsive styles for different screen sizes */
@@ -80,7 +81,7 @@
   .contactPage {
     padding: 1.5rem 0;
   }
-  
+
   .contentWrapper {
     width: 90%;
     padding: 0 3%;
@@ -92,7 +93,7 @@
   .contactPage {
     padding: 2rem 0;
   }
-  
+
   .contentWrapper {
     width: 85%;
     padding: 0 7.5%;
@@ -103,7 +104,7 @@
   .contactPage {
     padding: 2.5rem 0;
   }
-  
+
   .contentWrapper {
     width: 80%;
     padding: 0 10%;
@@ -114,7 +115,7 @@
   .contactPage {
     padding: 3rem 0;
   }
-  
+
   .contentWrapper {
     width: 70%;
     padding: 0 15%;
@@ -128,7 +129,7 @@
   padding: 2rem;
   color: #fff;
   border: 1px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -203,7 +204,7 @@
 }
 
 .linkedinButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -226,4 +227,4 @@
 
 .linkedinButton:hover::before {
   left: 100%;
-} 
+}

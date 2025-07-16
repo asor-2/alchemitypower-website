@@ -1,259 +1,263 @@
 .technologyPage {
-    padding: 2rem;
-    /* max-width: 1200px; */
-    margin: 0 auto;
-    /* font-family: Arial, sans-serif; */
-    background: linear-gradient(-140deg, #000000 10%, #244141, #000000) !important;
-    min-height: 90vh;
+  padding: 2rem;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  /* font-family: Arial, sans-serif; */
+  background: linear-gradient(
+    -140deg,
+    #000000 10%,
+    #244141,
+    #000000
+  ) !important;
+  min-height: 90vh;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.keyFeatures {
+  margin-top: 3rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureCard p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.innovations,
+.futureVision {
+  margin-top: 3rem;
+}
+
+.innovationList,
+.visionList {
+  list-style: disc;
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+.responsiveSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .technologyPage {
+    padding: 1rem !important;
   }
-  
-  .title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  .subtitle {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .description {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .keyFeatures {
-    margin-top: 3rem;
-  }
-  
-  .featuresGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-  
-  .featureCard {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .featureCard h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .featureCard p {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .innovations, .futureVision {
-    margin-top: 3rem;
-  }
-  
-  .innovationList, .visionList {
-    list-style: disc;
-    padding-left: 2rem;
-    font-size: 1.2rem;
-    line-height: 1.8;
-  }
-  
   .cardsContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2rem;
-    /* max-width: 1200px; */
-    margin: 0 auto;
-  }
-  
-  .responsiveSection {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 2rem;
-  }
-  
-  @media (max-width: 768px) {
-    .technologyPage {
-      padding: 1rem !important;
-    }
-    .cardsContainer {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      padding-right: 3.5rem;
-    }
-  
-    .responsiveSection {
-      grid-template-columns: 1fr; /* Stack on mobile */
-    }
-    /* Ensure all direct children stack vertically */
-    .technologyPage > div {
-      flex-direction: column !important;
-      align-items: stretch !important;
-      gap: 2rem !important;
-      max-width: 100% !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-    /* Fix header section stacking */
-    .technologyPage > div:first-child {
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 2rem !important;
-      margin-top: -1.5rem !important;
-      margin-bottom: 2rem !important;
-      max-width: 100% !important;
-    }
-    /* Ensure images and videos are responsive */
-    img, video {
-      max-width: 100% !important;
-      height: auto !important;
-      display: block !important;
-      margin: 0 auto !important;
-    }
-    /* Remove negative margins that cause overlap */
-    img[alt="Biomass to SAF"] {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-    }
-    /* Responsive button container */
-    .learnMoreContainer,
-    .technologyPage button,
-    .technologyPage .learnMoreButton {
-      width: auto !important;
-      font-size: 1.2rem !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      display: flex !important;
-      justify-content: center !important;
-    }
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-right: 3.5rem;
   }
 
-  .modalContainer {
-    position: relative;
-    max-width: 100%;
-    max-height: 90vh;
-    display: flex;
-    flex-direction: column;
+  .responsiveSection {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+  /* Ensure all direct children stack vertically */
+  .technologyPage > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 2rem !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /* Fix header section stacking */
+  .technologyPage > div:first-child {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    margin-top: -1.5rem !important;
+    margin-bottom: 2rem !important;
+    max-width: 100% !important;
+  }
+  /* Ensure images and videos are responsive */
+  img,
+  video {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+  /* Remove negative margins that cause overlap */
+  img[alt="Biomass to SAF"] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  /* Responsive button container */
+  .learnMoreContainer,
+  .technologyPage button,
+  .technologyPage .learnMoreButton {
+    width: auto !important;
+    font-size: 1.2rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+
+.modalContainer {
+  position: relative;
+  max-width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.responsiveModalContent {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 3000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.responsiveModalColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.responsiveBulletPoints {
+  margin-top: 2rem;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  padding-right: 2rem;
+}
+
+.bulletPoint {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  padding: 0 1rem;
+  /* padding-right: 2rem; */
+}
+
+/* Mobile specific styles*/
+@media (max-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-right: 4rem;
   }
 
   .responsiveModalContent {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 3000px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .responsiveModalColumn {
-    flex: 1;
-    display: flex;
     flex-direction: column;
-  }
-  
-  .responsiveBulletPoints {
-    margin-top: 2rem;
-    color: #ffffff;
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-    padding-right: 2rem;
-  }
-  
-  .bulletPoint {
-    margin-bottom: 1.5rem;
-    text-align: justify;
+    gap: 1rem;
     padding: 0 1rem;
-    /* padding-right: 2rem; */
-  }
-  
-
-  /* Mobile specific styles*/
-  @media (max-width: 768px) {
-
-    .cardsContainer {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      padding-right: 4rem;
-    }
-
-    .responsiveModalContent {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 0 1rem;
-    }
-    
-    .responsiveModalColumn {
-      width: 100% !important;
-    }
-    
-    .responsiveBulletPoints {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-top: 1rem;
-    }
-    
-    .bulletPoint {
-      margin-bottom: 1rem;
-    }
-
-    .responsiveModalContent {
-      max-height: 70vh; /* Limit height on mobile */
-      overflow-y: auto; /* Enable vertical scrolling */
-      padding: 0 1rem;
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    }
-    
-    /* Ensure modal header stays fixed */
-    :global(.modal-header) {
-      position: sticky;
-      top: 0;
-      background-color: #000000;
-      z-index: 10;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .responsiveModalContent::after {
-      content: '';
-      display: block;
-      padding-bottom: 2rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .responsiveBulletPoints {
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    
-    .bulletPoint {
-      margin-bottom: 0.8rem;
-    }
-
-    .responsiveModalContent {
-      max-height: 65vh;
-    }
   }
 
+  .responsiveModalColumn {
+    width: 100% !important;
+  }
 
+  .responsiveBulletPoints {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
 
-  /* Tablet specific styles */
+  .bulletPoint {
+    margin-bottom: 1rem;
+  }
+
+  .responsiveModalContent {
+    max-height: 70vh; /* Limit height on mobile */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 0 1rem;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  /* Ensure modal header stays fixed */
+  :global(.modal-header) {
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    z-index: 10;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .responsiveModalContent::after {
+    content: "";
+    display: block;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsiveBulletPoints {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .bulletPoint {
+    margin-bottom: 0.8rem;
+  }
+
+  .responsiveModalContent {
+    max-height: 65vh;
+  }
+}
+
+/* Tablet specific styles */
 @media (min-width: 769px) and (max-width: 1024px) {
   .responsiveModalContent {
     max-height: 75vh; /* Slightly larger than mobile but still scrollable */
@@ -261,40 +265,40 @@
     -webkit-overflow-scrolling: touch;
     padding: 0 1.5rem;
   }
-  
+
   .responsiveModalColumn {
     /* Adjust columns for better tablet layout */
     width: 100% !important;
   }
-  
+
   /* Better layout for tablets in landscape mode */
   @media (orientation: landscape) {
     .responsiveModalContent {
       flex-direction: row;
       gap: 1.5rem;
     }
-    
+
     .responsiveModalColumn[style*="width: 40%"] {
       width: 35% !important;
     }
-    
+
     .responsiveModalColumn[style*="width: 60%"] {
       width: 65% !important;
     }
   }
-  
+
   /* Better layout for tablets in portrait mode */
   @media (orientation: portrait) {
     .responsiveModalContent {
       flex-direction: column;
     }
   }
-  
+
   .responsiveBulletPoints {
     font-size: 17px;
     line-height: 1.7;
   }
-  
+
   /* Ensure header stays fixed on tablets too */
   :global(.modal-header) {
     position: sticky;
@@ -305,10 +309,10 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   /* Add padding at bottom for better scrolling experience */
   .responsiveModalContent::after {
-    content: '';
+    content: "";
     display: block;
     padding-bottom: 2rem;
   }

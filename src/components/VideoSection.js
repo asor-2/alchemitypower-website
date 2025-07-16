@@ -1,36 +1,36 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './VideoSection.module.css';
-import videoFile from './images/homepage-hero.mp4';
-import { FaCloud, FaDollarSign, FaShieldAlt, FaSeedling } from 'react-icons/fa';
-import { FaChevronDown } from 'react-icons/fa';
+import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styles from "./VideoSection.module.css";
+import videoFile from "./images/homepage-hero.mp4";
+import { FaCloud, FaDollarSign, FaShieldAlt, FaSeedling } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 function VideoSection() {
   const videoRef = useRef(null);
-  const [videoPoster, setVideoPoster] = useState('');
+  const [videoPoster, setVideoPoster] = useState("");
   const [activePhrase, setActivePhrase] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
+
   const keyPhrases = [
-    "One Platform", 
+    "One Platform",
     "Beyond Zero CO₂",
-    "Clean Chemicals", 
-    "Lower Cost", 
-    "Higher Efficiency"
+    "Clean Chemicals",
+    "Lower Cost",
+    "Higher Efficiency",
   ];
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    
+
     // Preload video immediately
     if (videoRef.current) {
       videoRef.current.load();
     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -39,24 +39,24 @@ function VideoSection() {
       video.playbackRate = 0.6;
       const handleLoadedData = () => {
         try {
-          const canvas = document.createElement('canvas');
+          const canvas = document.createElement("canvas");
           canvas.width = video.videoWidth;
           canvas.height = video.videoHeight;
-          
-          const ctx = canvas.getContext('2d');
+
+          const ctx = canvas.getContext("2d");
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          
-          const dataURL = canvas.toDataURL('image/jpeg');
+
+          const dataURL = canvas.toDataURL("image/jpeg");
           setVideoPoster(dataURL);
         } catch (err) {
-          console.error('Error generating video poster:', err);
+          console.error("Error generating video poster:", err);
         }
       };
-      
-      video.addEventListener('loadeddata', handleLoadedData);
-      
+
+      video.addEventListener("loadeddata", handleLoadedData);
+
       return () => {
-        video.removeEventListener('loadeddata', handleLoadedData);
+        video.removeEventListener("loadeddata", handleLoadedData);
       };
     }
   }, []);
@@ -65,14 +65,14 @@ function VideoSection() {
     let currentIndex = 0;
     const interval = setInterval(() => {
       setActivePhrase(currentIndex);
-      
+
       setTimeout(() => {
         setActivePhrase(null);
       }, 1000);
-      
+
       currentIndex = (currentIndex + 1) % keyPhrases.length;
     }, 2500);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -80,14 +80,14 @@ function VideoSection() {
     const video = videoRef.current;
     if (video) {
       const playPromise = video.play();
-      
+
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            console.log('✅ Video playback started successfully');
+            console.log("✅ Video playback started successfully");
           })
-          .catch(error => {
-            console.error('❌ Video playback was prevented:', error);
+          .catch((error) => {
+            console.error("❌ Video playback was prevented:", error);
           });
       }
     }
@@ -95,23 +95,27 @@ function VideoSection() {
 
   const emphasizeText = (text) => {
     if (!text) return null;
-    
-    const isMission = text.toLowerCase().includes("empower") || text.toLowerCase().includes("planet");
-    
+
+    const isMission =
+      text.toLowerCase().includes("empower") ||
+      text.toLowerCase().includes("planet");
+
     const missionKeywords = ["empower", "innovative", "sustainable", "growth"];
     const visionKeywords = ["lead", "clean", "sustainability", "profitability"];
-    
+
     let keywords = isMission ? missionKeywords : visionKeywords;
-    
-    return text.split(' ').map((word, index) => {
-      const lowerWord = word.toLowerCase().replace(/[.,!]/g, '');
-      const isKeyword = keywords.some(keyword => 
-        lowerWord.includes(keyword.toLowerCase())
+
+    return text.split(" ").map((word, index) => {
+      const lowerWord = word.toLowerCase().replace(/[.,!]/g, "");
+      const isKeyword = keywords.some((keyword) =>
+        lowerWord.includes(keyword.toLowerCase()),
       );
-      
-      return isKeyword ? 
-        <span key={index}>{word} </span> : 
-        <span key={index}>{word} </span>;
+
+      return isKeyword ? (
+        <span key={index}>{word} </span>
+      ) : (
+        <span key={index}>{word} </span>
+      );
     });
   };
 
@@ -120,87 +124,88 @@ function VideoSection() {
       icon: <FaCloud />,
       value: "400%",
       label: "Lower CO₂ Emission",
-      description: ""
+      description: "",
     },
     {
       icon: <FaDollarSign />,
       value: "300%",
       label: "Lower Lifetime Cost",
-      description: "Scales down cost effectively even to remote sites"
+      description: "Scales down cost effectively even to remote sites",
     },
     {
       icon: <FaShieldAlt />,
       value: "100%",
       label: "Energy Security",
-      description: "Provides domestic job and energy security"
+      description: "Provides domestic job and energy security",
     },
     {
       icon: <FaSeedling />,
       value: "All",
       label: "Site Types",
-      description: "Clean energy production in brown and green fields"
-    }
+      description: "Clean energy production in brown and green fields",
+    },
   ];
 
   const getButtonStyle = () => {
     const baseStyle = {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '0.8rem',
-      padding: '0.35rem 0.5rem',
-      backgroundColor: '#25abe4',
-      color: 'white',
-      fontWeight: '500',
-      textDecoration: 'none',
-      borderRadius: '50px',
-      boxShadow: '0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)',
-      transition: 'all 0.3s ease',
-      position: 'relative',
-      overflow: 'hidden',
-      border: '2px solid transparent',
-      cursor: 'pointer',
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "0.8rem",
+      padding: "0.35rem 0.5rem",
+      backgroundColor: "#25abe4",
+      color: "white",
+      fontWeight: "500",
+      textDecoration: "none",
+      borderRadius: "50px",
+      boxShadow:
+        "0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)",
+      transition: "all 0.3s ease",
+      position: "relative",
+      overflow: "hidden",
+      border: "2px solid transparent",
+      cursor: "pointer",
     };
 
     if (windowWidth <= 480) {
       return {
         ...baseStyle,
-        fontSize: '0.95rem',
-        width: '120px',
-        height: '32px',
+        fontSize: "0.95rem",
+        width: "120px",
+        height: "32px",
       };
     } else if (windowWidth <= 768) {
       return {
         ...baseStyle,
-        fontSize: '1.1rem',
-        width: '135px',
-        height: '36px',
+        fontSize: "1.1rem",
+        width: "135px",
+        height: "36px",
       };
     } else if (windowWidth <= 1150) {
       return {
         ...baseStyle,
-        fontSize: '1.2rem',
-        width: '160px',
-        height: '40px',
+        fontSize: "1.2rem",
+        width: "160px",
+        height: "40px",
       };
     }
 
     return {
       ...baseStyle,
-      fontSize: '1.2rem',
-      width: '190px',
-      height: '40px',
+      fontSize: "1.2rem",
+      width: "190px",
+      height: "40px",
     };
   };
 
   return (
     <section className={styles.videoSection}>
-      <video 
-        autoPlay 
-        muted 
-        loop 
+      <video
+        autoPlay
+        muted
+        loop
         playsInline
-        className={styles.styledVideo} 
+        className={styles.styledVideo}
         ref={videoRef}
         poster={videoPoster}
         preload="metadata"
@@ -208,75 +213,85 @@ function VideoSection() {
         <source src={videoFile} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      
+
       <div className={styles.videoOverlay}></div>
-      
+
       <div className={styles.contentOverlay}>
         <h2
           className={styles.sectionHeading}
           style={{
-            background: 'linear-gradient(90deg,rgb(161, 228, 255) 10%,rgb(249, 232, 176) 90%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            color: 'transparent'
+            background:
+              "linear-gradient(90deg,rgb(161, 228, 255) 10%,rgb(249, 232, 176) 90%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            color: "transparent",
           }}
         >
           Revolutionizing Clean Chemical Production
         </h2>
-        
+
         <p className={styles.videoDescription}>
-          Transforming Greenhouse Gasses and Waste Resources into Valuable Chemicals and Fuels with Modular Turn-Key Reactor System
+          Transforming Greenhouse Gasses and Waste Resources into Valuable
+          Chemicals and Fuels with Modular Turn-Key Reactor System
         </p>
 
-        <div style={{
-          display: 'flex',
-          gap: windowWidth <= 480 ? '1rem' : '2rem',
-          justifyContent: 'center',
-          width: '100%',
-          marginBottom: windowWidth <= 480 ? '1.5rem' : '2rem',
-          flexWrap: windowWidth <= 480 ? 'wrap' : 'nowrap'
-        }}>
-          <Link 
+        <div
+          style={{
+            display: "flex",
+            gap: windowWidth <= 480 ? "1rem" : "2rem",
+            justifyContent: "center",
+            width: "100%",
+            marginBottom: windowWidth <= 480 ? "1.5rem" : "2rem",
+            flexWrap: windowWidth <= 480 ? "wrap" : "nowrap",
+          }}
+        >
+          <Link
             to="/contact"
             style={getButtonStyle()}
             onMouseOver={(e) => {
-              e.target.style.backgroundColor = '#0077b5';
-              e.target.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 171, 224, 0.6)';
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.backgroundImage = 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)';
-              e.target.style.backgroundPosition = '200% center';
-              e.target.style.backgroundSize = '200% 100%';
-              e.target.style.animation = 'gradientMove 1.5s ease infinite';
+              e.target.style.backgroundColor = "#0077b5";
+              e.target.style.boxShadow =
+                "0 20px 40px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 171, 224, 0.6)";
+              e.target.style.transform = "translateY(-2px)";
+              e.target.style.backgroundImage =
+                "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)";
+              e.target.style.backgroundPosition = "200% center";
+              e.target.style.backgroundSize = "200% 100%";
+              e.target.style.animation = "gradientMove 1.5s ease infinite";
             }}
             onMouseOut={(e) => {
-              e.target.style.backgroundColor = '#25abe0';
-              e.target.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.backgroundImage = 'none';
-              e.target.style.animation = 'none';
+              e.target.style.backgroundColor = "#25abe0";
+              e.target.style.boxShadow =
+                "0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)";
+              e.target.style.transform = "translateY(0)";
+              e.target.style.backgroundImage = "none";
+              e.target.style.animation = "none";
             }}
           >
             Pre-Order Now
           </Link>
-          <Link 
+          <Link
             to="/contact"
             style={getButtonStyle()}
             onMouseOver={(e) => {
-              e.target.style.backgroundColor = '#0077b5';
-              e.target.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 171, 224, 0.6)';
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.backgroundImage = 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)';
-              e.target.style.backgroundPosition = '200% center';
-              e.target.style.backgroundSize = '200% 100%';
-              e.target.style.animation = 'gradientMove 1.5s ease infinite';
+              e.target.style.backgroundColor = "#0077b5";
+              e.target.style.boxShadow =
+                "0 20px 40px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 171, 224, 0.6)";
+              e.target.style.transform = "translateY(-2px)";
+              e.target.style.backgroundImage =
+                "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)";
+              e.target.style.backgroundPosition = "200% center";
+              e.target.style.backgroundSize = "200% 100%";
+              e.target.style.animation = "gradientMove 1.5s ease infinite";
             }}
             onMouseOut={(e) => {
-              e.target.style.backgroundColor = '#25abe0';
-              e.target.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.backgroundImage = 'none';
-              e.target.style.animation = 'none';
+              e.target.style.backgroundColor = "#25abe0";
+              e.target.style.boxShadow =
+                "0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(37, 171, 224, 0.5)";
+              e.target.style.transform = "translateY(0)";
+              e.target.style.backgroundImage = "none";
+              e.target.style.animation = "none";
             }}
           >
             Invest Now
@@ -287,17 +302,19 @@ function VideoSection() {
           <div className={styles.keyPhrasesLine}>
             {keyPhrases.map((phrase, index) => (
               <React.Fragment key={index}>
-                <span 
-                  className={`${styles.keyPhrase} ${activePhrase === index ? styles.active : ''}`}
+                <span
+                  className={`${styles.keyPhrase} ${activePhrase === index ? styles.active : ""}`}
                 >
                   {phrase}
                 </span>
-                {index < keyPhrases.length - 1 && <span className={styles.phraseDot}>.</span>}
+                {index < keyPhrases.length - 1 && (
+                  <span className={styles.phraseDot}>.</span>
+                )}
               </React.Fragment>
             ))}
           </div>
         </div>
-        
+
         {/* <div className={styles.missionVisionContainer}>
           <div className={styles.mission}>
             <h2 className={styles.cardTitle}>Our Mission</h2>
@@ -313,40 +330,41 @@ function VideoSection() {
             </p>
           </div>
         </div> */}
-        <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '2.5rem',
-        width: '100%',
-        position: 'relative',
-        zIndex: 10
-      }}>
-        <a
-          href="#problem-opportunity"
+        <div
           style={{
-            fontSize: '1.1rem',
-            color: '#ffffff',
-            fontWeight: 800,
-            marginTop: '0.2rem',
-            cursor: 'pointer',
-            opacity: 0.85,
-            transition: 'color 0.2s'
-          }}
-          aria-label="Scroll down to learn more"
-          onMouseOver={(e) => {
-            e.target.style.opacity = '1';
-            e.target.style.transform = 'translateY(0px)';
-          }}
-          onMouseOut={(e) => {
-            e.target.style.opacity = '0.85';
-            e.target.style.transform = 'translateY(0)';
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "2.5rem",
+            width: "100%",
+            position: "relative",
+            zIndex: 10,
           }}
         >
-          <FaChevronDown size={60} />
-          
-        </a>
-      </div>
+          <a
+            href="#problem-opportunity"
+            style={{
+              fontSize: "1.1rem",
+              color: "#ffffff",
+              fontWeight: 800,
+              marginTop: "0.2rem",
+              cursor: "pointer",
+              opacity: 0.85,
+              transition: "color 0.2s",
+            }}
+            aria-label="Scroll down to learn more"
+            onMouseOver={(e) => {
+              e.target.style.opacity = "1";
+              e.target.style.transform = "translateY(0px)";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.opacity = "0.85";
+              e.target.style.transform = "translateY(0)";
+            }}
+          >
+            <FaChevronDown size={60} />
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -21,7 +21,7 @@
 .profileImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* <-- This will zoom/crop to fill the circle */
+  object-fit: cover; /* <-- This will zoom/crop to fill the circle */
   border-radius: 50%;
   background: transparent;
 }
@@ -71,7 +71,7 @@
 }
 
 .detailsButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -120,7 +120,7 @@
 }
 
 .linkedInButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -188,22 +188,20 @@
   transform: scale(1.5) translateY(+6%) translateX(+1%);
 }
 
-@media (max-width: 769px){
-.founderContainer[data-id="founder-1"] .founderImage {
-  transform: scale(1.05) translateY(-10%) translateX(-1%);
-}
-.founderContainer[data-id="founder-3"] .founderImage {
-  transform: scale(1.05);
-}
+@media (max-width: 769px) {
+  .founderContainer[data-id="founder-1"] .founderImage {
+    transform: scale(1.05) translateY(-10%) translateX(-1%);
+  }
+  .founderContainer[data-id="founder-3"] .founderImage {
+    transform: scale(1.05);
+  }
 }
 
 /* Specific adjustments for advisor images */
 
-
 .advisorContainer[data-id="advisor-2"] .founderImage {
   transform: scale(1.3) translateY(+1%) translateX(+1.5%);
 }
-
 
 .founderInfo {
   display: flex;
@@ -217,7 +215,7 @@
   font-weight: bold;
   margin-bottom: 0rem !important;
   color: #ffffff;
-  text-align: center
+  text-align: center;
 }
 
 .founderTitle {
@@ -225,20 +223,20 @@
   color: #bbd1da;
   margin-bottom: 0rem !important;
   font-weight: bold;
-  text-align: center
+  text-align: center;
 }
 
 /* Add extra space for Eric and Rodger's cards */
 .founderContainer:nth-child(1) .founderTitle,
 .founderContainer:nth-child(3) .founderTitle {
   margin-bottom: 0.5rem;
-  text-align: center
+  text-align: center;
 }
 
 /* Advisor specific styles */
 .advisorTitle {
   margin-bottom: 0.5rem !important;
-  text-align: center
+  text-align: center;
 }
 
 .founderBlurb {
@@ -288,13 +286,15 @@
   align-items: center;
   justify-content: center;
   padding: 0.5rem 1rem;
-  background-color: #25abe0;  /* Blue color */
+  background-color: #25abe0; /* Blue color */
   color: white;
   border-radius: 4px;
   text-decoration: none;
   font-size: 0.9rem;
   margin-top: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .hoverInfo {
@@ -302,7 +302,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #25abe0;  /* Blue color */
+  background-color: #25abe0; /* Blue color */
   color: white;
   padding: 10px;
   text-align: center;
@@ -351,7 +351,7 @@
     gap: 3rem !important;
     justify-items: center !important;
   }
-  
+
   /* Center the third card like valuePropositionContainer does */
   .foundersWrapper > div:nth-child(3) {
     grid-column: 1 / 3 !important;
@@ -378,7 +378,7 @@
     margin: 0 auto !important;
     width: 100% !important;
   }
-  
+
   .foundersWrapper > div {
     width: 100% !important;
     max-width: 350px !important;

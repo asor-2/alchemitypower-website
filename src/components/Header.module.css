@@ -99,7 +99,7 @@
 }
 
 .contactButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -238,11 +238,11 @@
   .navList {
     display: none;
   }
-  
+
   .hamburgerBtn {
     display: flex;
   }
-  
+
   .logo {
     margin-left: 0;
   }
@@ -253,7 +253,7 @@
   .logoImage {
     height: 32px;
   }
-  
+
   .mobileMenu {
     width: 100%;
     max-width: none;
@@ -265,7 +265,7 @@
   .navList {
     gap: 3rem;
   }
-  
+
   .logoImage {
     height: 45px;
   }
@@ -276,19 +276,19 @@
   .header {
     height: 80px;
   }
-  
+
   .logoImage {
     height: 50px;
   }
-  
+
   .navList {
     gap: 4rem;
   }
-  
+
   .navLink {
     font-size: 1.2rem;
   }
-  
+
   .contactButton {
     padding: 0.3rem 1rem;
     min-height: 42px;

@@ -1,19 +1,19 @@
 .plantSection {
   padding: 4rem 0 3rem 0;
-  background-color:  transparent;
+  background-color: transparent;
   position: relative;
   overflow: hidden;
 }
 
 /* Subtle earthy texture - very light grain */
 .plantSection::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV/TilQqHewgopChOlkQFXHUKhShQqgVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi5uak6CIl/i8ptIjx4Lgf7+497t4BQqPCVDMwDqiaZaTiMTGbWxW7XxHAMPoQQVBipj6XTCbhOb7u4ePrXZRneZ/7c/QpeZMBPpE4znTDIt4gnt20dM77xGFWklTic+Jxgy5I/Mh12eU3zkWHBZ4ZNjKpeeIwsVjsYLmDWclQiaeJI4qqUb6QdVnhvMVZrdRY6578heG8vrLMdZrDiGMRS5AgQkEVJZRhIUqrRoqJFO3HPPxDjj9JLplcJTByLKACFZLjB/+D392apckJNykYA7pfbPtjFOjeBZp12/4+tu3mCeB/Bq60tr/aAGY/Sa+3tcgRENoGLq5bmrwHXO4Ag0+6ZEiO5KcpFArA+xl9Uw4YuAUCa25vnX2cPgBZ6mr5Bjg4BMaKlL3u8e5gZ2//nmn19wPYaHJ69PBLdQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+QIFQodGns5uvMAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA/ElEQVRo3u3ZQQqDMBBAUe3J3d5/0Z5JceMmMiYgKON7q0DCZyLEVK0BAAAAAMA0Y+XNkvRfnGj1/L2fW6W5xV7QQRB1EEQdBFEHQdRBEHUQRB0EUQdB1EEQdRBEHQRRB0HUQRB1EEQdBFEHQdRBEHUQRB0EUQdBFEHQdRBEHUQRB0EUQdB1EEQdRBEHURd55Dnxv8wrnV/bvJl/VxN6hORG/xA5BYLVLcWbAc5qnFxsPXgXzwnxg65tnrXa1nV5tP2Ue35wryzvZ8+/zUPO896bm/vZ77t72bK9tP9Ocn207fbtyKlQWYuaX8V8nQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAaM4btxoSEp5gF10AAAAASUVORK5CYII=');
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV/TilQqHewgopChOlkQFXHUKhShQqgVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi5uak6CIl/i8ptIjx4Lgf7+497t4BQqPCVDMwDqiaZaTiMTGbWxW7XxHAMPoQQVBipj6XTCbhOb7u4ePrXZRneZ/7c/QpeZMBPpE4znTDIt4gnt20dM77xGFWklTic+Jxgy5I/Mh12eU3zkWHBZ4ZNjKpeeIwsVjsYLmDWclQiaeJI4qqUb6QdVnhvMVZrdRY6578heG8vrLMdZrDiGMRS5AgQkEVJZRhIUqrRoqJFO3HPPxDjj9JLplcJTByLKACFZLjB/+D392apckJNykYA7pfbPtjFOjeBZp12/4+tu3mCeB/Bq60tr/aAGY/Sa+3tcgRENoGLq5bmrwHXO4Ag0+6ZEiO5KcpFArA+xl9Uw4YuAUCa25vnX2cPgBZ6mr5Bjg4BMaKlL3u8e5gZ2//nmn19wPYaHJ69PBLdQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+QIFQodGns5uvMAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA/ElEQVRo3u3ZQQqDMBBAUe3J3d5/0Z5JceMmMiYgKON7q0DCZyLEVK0BAAAAAMA0Y+XNkvRfnGj1/L2fW6W5xV7QQRB1EEQdBFEHQdRBEHUQRB0EUQdB1EEQdRBEHQRRB0HUQRB1EEQdBFEHQdRBEHUQRB0EUQdBFEHQdRBEHUQRB0EUQdB1EEQdRBEHURd55Dnxv8wrnV/bvJl/VxN6hORG/xA5BYLVLcWbAc5qnFxsPXgXzwnxg65tnrXa1nV5tP2Ue35wryzvZ8+/zUPO896bm/vZ77t72bK9tP9Ocn207fbtyKlQWYuaX8V8nQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAaM4btxoSEp5gF10AAAAASUVORK5CYII=");
   background-repeat: repeat;
   background-size: 50px 50px;
   opacity: 0.03;
@@ -242,7 +242,7 @@
 }
 
 .learnMoreButton::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -282,7 +282,7 @@
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .statsTitle {
     font-size: 2rem;
   }
@@ -292,11 +292,11 @@
   .statsGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .statsTitle {
     font-size: 1.8rem;
   }
-  
+
   .statCard {
     padding: 1.5rem;
   }
@@ -395,4 +395,4 @@
   .description {
     font-size: 1rem;
   }
-} 
+}

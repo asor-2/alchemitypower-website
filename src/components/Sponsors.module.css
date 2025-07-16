@@ -11,7 +11,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle at 2px 2px, #333333 1px, transparent 0);
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    #333333 1px,
+    transparent 0
+  );
   background-size: 30px 30px;
   opacity: 0.2;
   z-index: 0;
@@ -24,7 +28,7 @@
   position: relative;
   z-index: 1;
 }
-  
+
 .sponsorsTitle {
   text-align: center;
   font-size: 3rem;
@@ -43,7 +47,7 @@
 }
 
 .description {
-  color: #75BDD8;
+  color: #75bdd8;
   font-size: 1.6rem;
   text-align: center;
   margin: -2rem auto 3rem auto;
@@ -154,8 +158,8 @@
   .sponsorLogo {
     height: 80px;
   }
-  .sponsorCard:nth-child(6n+1) .sponsorLogo,
-  .sponsorCard:nth-child(6n+6) .sponsorLogo {
+  .sponsorCard:nth-child(6n + 1) .sponsorLogo,
+  .sponsorCard:nth-child(6n + 6) .sponsorLogo {
     height: 110px;
   }
   .carouselScroller {
@@ -167,8 +171,8 @@
   .sponsorLogo {
     height: 60px;
   }
-  .sponsorCard:nth-child(6n+1) .sponsorLogo,
-  .sponsorCard:nth-child(6n+6) .sponsorLogo {
+  .sponsorCard:nth-child(6n + 1) .sponsorLogo,
+  .sponsorCard:nth-child(6n + 6) .sponsorLogo {
     height: 90px;
   }
   .sponsorCard {
@@ -184,8 +188,8 @@
   .sponsorLogo {
     height: 45px;
   }
-  .sponsorCard:nth-child(6n+1) .sponsorLogo,
-  .sponsorCard:nth-child(6n+6) .sponsorLogo {
+  .sponsorCard:nth-child(6n + 1) .sponsorLogo,
+  .sponsorCard:nth-child(6n + 6) .sponsorLogo {
     height: 70px;
   }
   .sponsorCard {

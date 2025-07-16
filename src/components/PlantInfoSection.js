@@ -1,9 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
-import styles from './PlantInfoSection.module.css';
-import { FaRecycle, FaLeaf, FaIndustry, FaFlask, FaArrowRight, FaCloud, FaDollarSign, FaShieldAlt, FaSeedling } from 'react-icons/fa';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
+import styles from "./PlantInfoSection.module.css";
+import {
+  FaRecycle,
+  FaLeaf,
+  FaIndustry,
+  FaFlask,
+  FaArrowRight,
+  FaCloud,
+  FaDollarSign,
+  FaShieldAlt,
+  FaSeedling,
+} from "react-icons/fa";
 
 const PlantInfoSection = () => {
   const [statsRef, statsInView] = useInView({
@@ -21,9 +31,9 @@ const PlantInfoSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -31,8 +41,8 @@ const PlantInfoSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const buttonVariants = {
@@ -40,16 +50,16 @@ const PlantInfoSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.6, 
-        delay: 0.8, 
-        ease: "easeOut" 
-      }
+      transition: {
+        duration: 0.6,
+        delay: 0.8,
+        ease: "easeOut",
+      },
     },
     hover: {
       scale: 1.05,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   const stats = [
@@ -57,32 +67,36 @@ const PlantInfoSection = () => {
       icon: <FaCloud />,
       value: "> 400%",
       label: "Lower CO₂ Emission",
-      description: "Reduces emissions by at least 400% on today's grid. The process is carbon-negative with renewables."
+      description:
+        "Reduces emissions by at least 400% on today's grid. The process is carbon-negative with renewables.",
     },
     {
       icon: <FaDollarSign />,
       value: "300%",
       label: "Lower Lifetime Cost",
-      description: "Scales down cost effectively even to remote sites and consumes less energy to operate the entire system."
+      description:
+        "Scales down cost effectively even to remote sites and consumes less energy to operate the entire system.",
     },
     {
       icon: <FaShieldAlt />,
       value: "Security",
       label: "Energy and Domestic",
-      description: "Protects domestic workforce by extending the lifetime of plants undergoing repower or decomissioning."
+      description:
+        "Protects domestic workforce by extending the lifetime of plants undergoing repower or decomissioning.",
     },
     {
       icon: <FaSeedling />,
       value: "All Sites",
       label: "Brownfield/Greenfield",
-      description: "Clean chemical and drop-in fuels production, leveraging existing downstream processes."
-    }
+      description:
+        "Clean chemical and drop-in fuels production, leveraging existing downstream processes.",
+    },
   ];
 
   return (
     <section className={styles.plantSection}>
       <div className={styles.container}>
-        <motion.div 
+        <motion.div
           className={styles.headerContainer}
           variants={containerVariants}
           initial="hidden"
@@ -90,11 +104,12 @@ const PlantInfoSection = () => {
         >
           <h2 className={styles.statsTitle}>Serving the Community</h2>
           <p className={styles.statsSubtitle}>
-            Transforming waste into value to strengthen domestic energy security.
+            Transforming waste into value to strengthen domestic energy
+            security.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className={styles.statsContainer}
           ref={statsRef}
           variants={containerVariants}
@@ -103,14 +118,12 @@ const PlantInfoSection = () => {
         >
           <div className={styles.statsGrid}>
             {stats.map((stat, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className={styles.statCard}
                 variants={itemVariants}
               >
-                <div className={styles.statIconContainer}>
-                  {stat.icon}
-                </div>
+                <div className={styles.statIconContainer}>{stat.icon}</div>
                 <h3 className={styles.statValue}>{stat.value}</h3>
                 <h4 className={styles.statLabel}>{stat.label}</h4>
                 <p className={styles.statDescription}>{stat.description}</p>
@@ -126,8 +139,8 @@ const PlantInfoSection = () => {
           animate={statsInView ? "visible" : "hidden"}
           whileHover="hover"
         >
-          <Link 
-            to="/technology" 
+          <Link
+            to="/technology"
             className={styles.learnMoreButton}
             onClick={scrollToTop}
           >
@@ -140,4 +153,4 @@ const PlantInfoSection = () => {
   );
 };
 
-export default PlantInfoSection; 
+export default PlantInfoSection;

@@ -47,7 +47,7 @@
 
 .title {
   font-size: 3rem;
-  color: #FFEBCA;
+  color: #ffebca;
   margin-bottom: 1.2rem;
   text-align: center;
   font-weight: 600;
@@ -224,7 +224,4 @@
   .mediaContainer {
     max-width: 100%;
   }
-} 
-
-
-
+}

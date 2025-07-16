@@ -1,11 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import styles from './ProblemOpportunitySection.module.css';
-import problemVideo from './images/prob_and_opp.mov';
-import { Link } from 'react-router-dom';
-import { FiExternalLink } from 'react-icons/fi'; // Add this import at the top with others
-
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import styles from "./ProblemOpportunitySection.module.css";
+import problemVideo from "./images/prob_and_opp.mov";
+import { Link } from "react-router-dom";
+import { FiExternalLink } from "react-icons/fi"; // Add this import at the top with others
 
 const ProblemOpportunitySection = () => {
   const [ref, inView] = useInView({
@@ -19,9 +18,9 @@ const ProblemOpportunitySection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.15
-      }
-    }
+        delayChildren: 0.15,
+      },
+    },
   };
 
   const itemVariants = {
@@ -29,14 +28,14 @@ const ProblemOpportunitySection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
   };
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <motion.div 
+        <motion.div
           className={styles.contentWrapper}
           ref={ref}
           variants={containerVariants}
@@ -45,46 +44,51 @@ const ProblemOpportunitySection = () => {
         >
           <motion.div className={styles.textContent}>
             <motion.h2 className={styles.title} variants={itemVariants}>
-              TODAY: 1 kg of CO<sub>2</sub> is emitted for every $1 in chemical transactions
+              TODAY: 1 kg of CO<sub>2</sub> is emitted for every $1 in chemical
+              transactions
             </motion.h2>
             <motion.p className={styles.highlightText} variants={itemVariants}>
-              Massive production facilities & volumes are required to achieve economies of scale.
+              Massive production facilities & volumes are required to achieve
+              economies of scale.
             </motion.p>
             <motion.p className={styles.text} variants={itemVariants}>
-              Chemical industry is a $6 trillion market emitting 6 giga-tons of CO<sub>2</sub> annually.
+              Chemical industry is a $6 trillion market emitting 6 giga-tons of
+              CO<sub>2</sub> annually.
             </motion.p>
             <motion.p className={styles.text} variants={itemVariants}>
-              2 giga-tons tons of municipal solid waste is generated worldwide annually, projected to double by 2050.
+              2 giga-tons tons of municipal solid waste is generated worldwide
+              annually, projected to double by 2050.
             </motion.p>
-            <motion.p className={styles.text} variants={itemVariants}>
-            
-            </motion.p>
-            <motion.p className={styles.text} variants={itemVariants}>
-              
-            </motion.p>
-             <Link 
-                to="/about" 
-                className={styles.learnMoreLink}
-                style={{
-                  color: '#FFEBCA',
-                  fontWeight: 500,
-                  fontSize: '1.5rem',
-                  textDecoration: '1px underline',
-                  paddingBottom: '2px',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                Learn about our mission and vision 
-                <FiExternalLink style={{ fontSize: '1.2rem', marginLeft: '0.2rem' }} />
-              </Link>
+            <motion.p
+              className={styles.text}
+              variants={itemVariants}
+            ></motion.p>
+            <motion.p
+              className={styles.text}
+              variants={itemVariants}
+            ></motion.p>
+            <Link
+              to="/about"
+              className={styles.learnMoreLink}
+              style={{
+                color: "#FFEBCA",
+                fontWeight: 500,
+                fontSize: "1.5rem",
+                textDecoration: "1px underline",
+                paddingBottom: "2px",
+                transition: "all 0.2s ease",
+              }}
+            >
+              Learn about our mission and vision
+              <FiExternalLink
+                style={{ fontSize: "1.2rem", marginLeft: "0.2rem" }}
+              />
+            </Link>
           </motion.div>
 
-          <motion.div 
-            className={styles.imageContainer}
-            variants={itemVariants}
-          >
-            <video 
-              src={problemVideo} 
+          <motion.div className={styles.imageContainer} variants={itemVariants}>
+            <video
+              src={problemVideo}
               autoPlay
               loop
               muted
@@ -98,4 +102,4 @@ const ProblemOpportunitySection = () => {
   );
 };
 
-export default ProblemOpportunitySection; 
+export default ProblemOpportunitySection;

@@ -1,28 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styles from './ContactForm.module.css';
-import { initializeCSRFToken, validateCSRFToken } from '../utils/csrfUtils';
+import React, { useState, useEffect, useRef } from "react";
+import styles from "./ContactForm.module.css";
+import { initializeCSRFToken, validateCSRFToken } from "../utils/csrfUtils";
 
 function ContactForm({ isCareers = false }) {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    reason: '',
-    affiliation: '',
-    message: '',
-    linkedinLink: '',
-    resumeLink: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    reason: "",
+    affiliation: "",
+    message: "",
+    linkedinLink: "",
+    resumeLink: "",
   });
 
-  const [firstNameError, setFirstNameError] = useState('');
-  const [lastNameError, setLastNameError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [linkedinError, setLinkedinError] = useState('');
-  const [resumeLinkError, setResumeLinkError] = useState('');
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [linkedinError, setLinkedinError] = useState("");
+  const [resumeLinkError, setResumeLinkError] = useState("");
   const [wordCount, setWordCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
-  const [csrfToken, setCsrfToken] = useState('');
+  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const [csrfToken, setCsrfToken] = useState("");
   const MAX_WORDS = 250;
   const formRef = useRef(null);
   const turnstileRef = useRef(null);
@@ -40,7 +40,7 @@ function ContactForm({ isCareers = false }) {
       if (window.turnstile && turnstileRef.current && !rendered) {
         window.turnstile.render(turnstileRef.current, {
           sitekey: turnstileSiteKey,
-          theme: 'dark',
+          theme: "dark",
         });
         rendered = true;
       } else if (!rendered) {
@@ -52,77 +52,89 @@ function ContactForm({ isCareers = false }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    if (name === 'firstName') {
+
+    if (name === "firstName") {
       if (value.length > 0 && value.length <= 2) {
-        setFirstNameError('First name must be more than 2 characters.');
+        setFirstNameError("First name must be more than 2 characters.");
       } else {
-        setFirstNameError('');
+        setFirstNameError("");
       }
     }
-    if (name === 'lastName') {
+    if (name === "lastName") {
       if (value.length > 0 && value.length <= 2) {
-        setLastNameError('Last name must be more than 2 characters.');
+        setLastNameError("Last name must be more than 2 characters.");
       } else {
-        setLastNameError('');
+        setLastNameError("");
       }
     }
-    if (name === 'email' && !isCareers) {
+    if (name === "email" && !isCareers) {
       // List of common free email domains
       const freeEmailDomains = [
-        'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'aol.com',
-        'protonmail.com', 'icloud.com', 'zoho.com', 'yandex.com', 'gmx.com', 'mail.com'
+        "gmail.com",
+        "yahoo.com",
+        "outlook.com",
+        "hotmail.com",
+        "aol.com",
+        "protonmail.com",
+        "icloud.com",
+        "zoho.com",
+        "yandex.com",
+        "gmx.com",
+        "mail.com",
       ];
-      const emailDomain = value.split('@')[1]?.toLowerCase();
+      const emailDomain = value.split("@")[1]?.toLowerCase();
       if (emailDomain && freeEmailDomains.includes(emailDomain)) {
-        setEmailError('Please use your professional (work) email address.');
+        setEmailError("Please use your professional (work) email address.");
       } else {
-        setEmailError('');
+        setEmailError("");
       }
     }
-    if (name === 'linkedinLink' && isCareers) {
+    if (name === "linkedinLink" && isCareers) {
       let valid = false;
       try {
         const url = new URL(value);
-        valid = url.hostname.toLowerCase().includes('linkedin.com');
+        valid = url.hostname.toLowerCase().includes("linkedin.com");
       } catch {
         valid = false;
       }
       if (value && !valid) {
-        setLinkedinError('Please enter a valid LinkedIn profile link.');
+        setLinkedinError("Please enter a valid LinkedIn profile link.");
       } else {
-        setLinkedinError('');
+        setLinkedinError("");
       }
     }
-    if (name === 'resumeLink' && isCareers) {
+    if (name === "resumeLink" && isCareers) {
       let valid = false;
       try {
         const url = new URL(value);
-        valid = url.hostname.toLowerCase().includes('google.com');
+        valid = url.hostname.toLowerCase().includes("google.com");
       } catch {
         valid = false;
       }
       if (value && !valid) {
-        setResumeLinkError('Please enter a valid Google Drive link.');
+        setResumeLinkError("Please enter a valid Google Drive link.");
       } else {
-        setResumeLinkError('');
+        setResumeLinkError("");
       }
     }
-    if (name === 'message') {
-      const words = value.trim().split(/\s+/).filter(word => word.length > 0);
+    if (name === "message") {
+      const words = value
+        .trim()
+        .split(/\s+/)
+        .filter((word) => word.length > 0);
       const currentWordCount = words.length;
-      
+
       if (currentWordCount <= MAX_WORDS) {
         setWordCount(currentWordCount);
-        setFormData(prevState => ({
+        setFormData((prevState) => ({
           ...prevState,
-          [name]: value
+          [name]: value,
         }));
       }
     } else {
-      setFormData(prevState => ({
+      setFormData((prevState) => ({
         ...prevState,
-        [name]: value
+        [name]: value,
       }));
     }
   };
@@ -132,8 +144,9 @@ function ContactForm({ isCareers = false }) {
 
     if (wordCount > MAX_WORDS) {
       setSubmitStatus({
-        type: 'error',
-        message: 'Message exceeds the 250-word limit. Please shorten your message.'
+        type: "error",
+        message:
+          "Message exceeds the 250-word limit. Please shorten your message.",
       });
       return;
     }
@@ -142,60 +155,76 @@ function ContactForm({ isCareers = false }) {
     const formToken = e.target.csrfToken.value;
     if (!validateCSRFToken(formToken)) {
       setSubmitStatus({
-        type: 'error',
-        message: 'Invalid form submission. Please refresh the page and try again.'
+        type: "error",
+        message:
+          "Invalid form submission. Please refresh the page and try again.",
       });
       return;
     }
 
     // NEW: Check rate limit before proceeding
     try {
-      const rateCheckResponse = await fetch('/.netlify/functions/check-rate-limit', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
+      const rateCheckResponse = await fetch(
+        "/.netlify/functions/check-rate-limit",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
       const rateData = await rateCheckResponse.json();
       if (!rateData.allowed) {
         setSubmitStatus({
-          type: 'error',
-          message: rateData.message || 'Too many submissions. Please try again later.'
+          type: "error",
+          message:
+            rateData.message || "Too many submissions. Please try again later.",
         });
         return;
       }
     } catch (err) {
-      console.error('Rate limit check failed:', err);
+      console.error("Rate limit check failed:", err);
       // Continue with submission if rate limit check fails
     }
 
     // Get Turnstile token
-    const turnstileToken = document.querySelector('input[name="cf-turnstile-response"]')?.value;
+    const turnstileToken = document.querySelector(
+      'input[name="cf-turnstile-response"]',
+    )?.value;
     if (!turnstileToken) {
-      setSubmitStatus({ type: 'error', message: 'Please complete the Turnstile challenge.' });
+      setSubmitStatus({
+        type: "error",
+        message: "Please complete the Turnstile challenge.",
+      });
       return;
     }
 
     setIsSubmitting(true);
-    setSubmitStatus({ type: '', message: '' });
+    setSubmitStatus({ type: "", message: "" });
 
     // Verify Turnstile token with Netlify function
     try {
-      const res = await fetch('/.netlify/functions/verify-turnstile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/.netlify/functions/verify-turnstile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ turnstileToken }),
       });
       const data = await res.json();
       if (!data.success) {
         setIsSubmitting(false);
-        setSubmitStatus({ type: 'error', message: 'Turnstile verification failed. Please try again.' });
+        setSubmitStatus({
+          type: "error",
+          message: "Turnstile verification failed. Please try again.",
+        });
         return;
       }
     } catch (err) {
       setIsSubmitting(false);
-      setSubmitStatus({ type: 'error', message: 'Error verifying Turnstile. Please try again.' });
+      setSubmitStatus({
+        type: "error",
+        message: "Error verifying Turnstile. Please try again.",
+      });
       return;
     }
 
@@ -205,21 +234,25 @@ function ContactForm({ isCareers = false }) {
 
   return (
     <section className={styles.section}>
-      <form 
+      <form
         ref={formRef}
-        name={isCareers ? "careers-form" : "contact-form"} 
+        name={isCareers ? "careers-form" : "contact-form"}
         method="POST"
-        onSubmit={handleSubmit} 
-        className={styles.form} 
+        onSubmit={handleSubmit}
+        className={styles.form}
         data-netlify="true"
         netlify-honeypot="bot-field"
         action={isCareers ? "/careers-success" : "/contact-success"}
       >
         {/* Hidden CSRF token field */}
         <input type="hidden" name="csrfToken" value={csrfToken} />
-        
+
         {/* Required hidden input for Netlify form identification */}
-        <input type="hidden" name="form-name" value={isCareers ? "careers-form" : "contact-form"} />
+        <input
+          type="hidden"
+          name="form-name"
+          value={isCareers ? "careers-form" : "contact-form"}
+        />
 
         {/* Honeypot field to prevent spam */}
         <p className={styles.hidden}>
@@ -229,39 +262,63 @@ function ContactForm({ isCareers = false }) {
         </p>
 
         <div className={styles.fieldGroup}>
-          <label className={styles.label} htmlFor="firstName">Name*</label>
+          <label className={styles.label} htmlFor="firstName">
+            Name*
+          </label>
           <div className={styles.nameGroup}>
-            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-              <input 
-                type="text" 
-                id="firstName" 
-                name="firstName" 
-                placeholder="First Name" 
-                value={formData.firstName} 
-                onChange={handleChange} 
-                required 
-                style={{ color: '#000000' }}
+            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+                style={{ color: "#000000" }}
               />
               {firstNameError ? (
-                <div style={{ color: '#25abe0', fontSize: '0.9em', minHeight: '1.2em', marginTop: '0.2em' }}>{firstNameError}</div>
+                <div
+                  style={{
+                    color: "#25abe0",
+                    fontSize: "0.9em",
+                    minHeight: "1.2em",
+                    marginTop: "0.2em",
+                  }}
+                >
+                  {firstNameError}
+                </div>
               ) : (
-                <div style={{ minHeight: '1.2em', marginTop: '0.2em' }}>&nbsp;</div>
+                <div style={{ minHeight: "1.2em", marginTop: "0.2em" }}>
+                  &nbsp;
+                </div>
               )}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-              <input 
-                type="text" 
-                name="lastName" 
-                placeholder="Last Name" 
-                value={formData.lastName} 
-                onChange={handleChange} 
-                required 
-                style={{ color: '#000000' }}
+            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                style={{ color: "#000000" }}
               />
               {lastNameError ? (
-                <div style={{ color: '#25abe0', fontSize: '0.9em', minHeight: '1.2em', marginTop: '0.2em' }}>{lastNameError}</div>
+                <div
+                  style={{
+                    color: "#25abe0",
+                    fontSize: "0.9em",
+                    minHeight: "1.2em",
+                    marginTop: "0.2em",
+                  }}
+                >
+                  {lastNameError}
+                </div>
               ) : (
-                <div style={{ minHeight: '1.2em', marginTop: '0.2em' }}>&nbsp;</div>
+                <div style={{ minHeight: "1.2em", marginTop: "0.2em" }}>
+                  &nbsp;
+                </div>
               )}
             </div>
           </div>
@@ -269,61 +326,101 @@ function ContactForm({ isCareers = false }) {
 
         {/* Email Field Group */}
         <div className={styles.fieldGroup}>
-          <label className={styles.label} htmlFor="email">Email*</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="Enter your email address" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
-            style={{ color: '#000000' }}
+          <label className={styles.label} htmlFor="email">
+            Email*
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            style={{ color: "#000000" }}
           />
-          {!isCareers && (emailError ? (
-            <div style={{ color: '#25abe0', fontSize: '0.9em', minHeight: '1.2em', marginTop: '0.2em' }}>{emailError}</div>
-          ) : (
-            <div style={{ minHeight: '1.2em', marginTop: '0.2em' }}>&nbsp;</div>
-          ))}
+          {!isCareers &&
+            (emailError ? (
+              <div
+                style={{
+                  color: "#25abe0",
+                  fontSize: "0.9em",
+                  minHeight: "1.2em",
+                  marginTop: "0.2em",
+                }}
+              >
+                {emailError}
+              </div>
+            ) : (
+              <div style={{ minHeight: "1.2em", marginTop: "0.2em" }}>
+                &nbsp;
+              </div>
+            ))}
         </div>
 
         {/* LinkedIn and Resume Links - Only show for Careers form */}
         {isCareers && (
           <>
             <div className={styles.fieldGroup}>
-              <label className={styles.label} htmlFor="linkedinLink">LinkedIn Profile Link*</label>
-              <input 
-                type="url" 
-                id="linkedinLink" 
-                name="linkedinLink" 
-                placeholder="https://www.linkedin.com/in/your-profile" 
-                value={formData.linkedinLink} 
-                onChange={handleChange} 
-                required 
-                style={{ color: '#000000' }}
+              <label className={styles.label} htmlFor="linkedinLink">
+                LinkedIn Profile Link*
+              </label>
+              <input
+                type="url"
+                id="linkedinLink"
+                name="linkedinLink"
+                placeholder="https://www.linkedin.com/in/your-profile"
+                value={formData.linkedinLink}
+                onChange={handleChange}
+                required
+                style={{ color: "#000000" }}
               />
               {linkedinError ? (
-                <div style={{ color: '#25abe0', fontSize: '0.9em', minHeight: '1.2em', marginTop: '0.2em' }}>{linkedinError}</div>
+                <div
+                  style={{
+                    color: "#25abe0",
+                    fontSize: "0.9em",
+                    minHeight: "1.2em",
+                    marginTop: "0.2em",
+                  }}
+                >
+                  {linkedinError}
+                </div>
               ) : (
-                <div style={{ minHeight: '1.2em', marginTop: '0.2em' }}>&nbsp;</div>
+                <div style={{ minHeight: "1.2em", marginTop: "0.2em" }}>
+                  &nbsp;
+                </div>
               )}
             </div>
             <div className={styles.fieldGroup}>
-              <label className={styles.label} htmlFor="resumeLink">Google Drive Resume Link*</label>
-              <input 
-                type="url" 
-                id="resumeLink" 
-                name="resumeLink" 
-                placeholder="https://drive.google.com/your-resume-link" 
-                value={formData.resumeLink} 
-                onChange={handleChange} 
-                required 
-                style={{ color: '#000000' }}
+              <label className={styles.label} htmlFor="resumeLink">
+                Google Drive Resume Link*
+              </label>
+              <input
+                type="url"
+                id="resumeLink"
+                name="resumeLink"
+                placeholder="https://drive.google.com/your-resume-link"
+                value={formData.resumeLink}
+                onChange={handleChange}
+                required
+                style={{ color: "#000000" }}
               />
               {resumeLinkError ? (
-                <div style={{ color: '#25abe0', fontSize: '0.9em', minHeight: '1.2em', marginTop: '0.2em' }}>{resumeLinkError}</div>
+                <div
+                  style={{
+                    color: "#25abe0",
+                    fontSize: "0.9em",
+                    minHeight: "1.2em",
+                    marginTop: "0.2em",
+                  }}
+                >
+                  {resumeLinkError}
+                </div>
               ) : (
-                <div style={{ minHeight: '1.2em', marginTop: '0.2em' }}>&nbsp;</div>
+                <div style={{ minHeight: "1.2em", marginTop: "0.2em" }}>
+                  &nbsp;
+                </div>
               )}
             </div>
           </>
@@ -332,18 +429,22 @@ function ContactForm({ isCareers = false }) {
         {/* Reason for Inquiry Field Group - Only show for Contact form */}
         {!isCareers && (
           <div className={styles.fieldGroup}>
-            <label className={styles.label} htmlFor="reason">Reason for Inquiry*</label>
-            <select 
-              id="reason" 
-              name="reason" 
-              value={formData.reason} 
-              onChange={handleChange} 
-              required 
-              style={{ color: '#000000' }}
+            <label className={styles.label} htmlFor="reason">
+              Reason for Inquiry*
+            </label>
+            <select
+              id="reason"
+              name="reason"
+              value={formData.reason}
+              onChange={handleChange}
+              required
+              style={{ color: "#000000" }}
             >
               <option value="">Select a reason</option>
               <option value="Sales">Sales</option>
-              <option value="Partnership Opportunities">Partnership Opportunities</option>
+              <option value="Partnership Opportunities">
+                Partnership Opportunities
+              </option>
               <option value="Investment">Investment</option>
               <option value="Technical Support">Technical Support</option>
               <option value="General Information">General Information</option>
@@ -355,31 +456,35 @@ function ContactForm({ isCareers = false }) {
         {/* Affiliation Field Group - Only show for Contact form */}
         {!isCareers && (
           <div className={styles.fieldGroup}>
-            <label className={styles.label} htmlFor="affiliation">Affiliation*</label>
-            <input 
-              type="text" 
-              id="affiliation" 
-              name="affiliation" 
-              placeholder="Enter your affiliation" 
-              value={formData.affiliation} 
-              onChange={handleChange} 
-              required 
-              style={{ color: '#000000' }}
+            <label className={styles.label} htmlFor="affiliation">
+              Affiliation*
+            </label>
+            <input
+              type="text"
+              id="affiliation"
+              name="affiliation"
+              placeholder="Enter your affiliation"
+              value={formData.affiliation}
+              onChange={handleChange}
+              required
+              style={{ color: "#000000" }}
             />
           </div>
         )}
 
         {/* Message Field Group */}
-        <div className={styles.fieldGroup} style={{ marginBottom: '0.25rem' }}>
-          <label className={styles.label} htmlFor="message">Message*</label>
-          <textarea 
-            id="message" 
-            name="message" 
+        <div className={styles.fieldGroup} style={{ marginBottom: "0.25rem" }}>
+          <label className={styles.label} htmlFor="message">
+            Message*
+          </label>
+          <textarea
+            id="message"
+            name="message"
             placeholder="Type your message here (max 250 words)"
-            value={formData.message} 
-            onChange={handleChange} 
-            required 
-            style={{ color: '#000000', height: 'auto' }}
+            value={formData.message}
+            onChange={handleChange}
+            required
+            style={{ color: "#000000", height: "auto" }}
           />
           <div className={styles.wordCount}>
             {wordCount}/{MAX_WORDS} words
@@ -389,23 +494,25 @@ function ContactForm({ isCareers = false }) {
         {/* Turnstile widget - always render container */}
         <div
           ref={turnstileRef}
-          style={{ margin: '0 0 1rem 0', minHeight: '65px', display: 'block' }}
+          style={{ margin: "0 0 1rem 0", minHeight: "65px", display: "block" }}
         ></div>
 
         {/* Submit Button */}
         <div className={styles.buttonContainer}>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className={styles.submitButton}
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting...' : 'Submit'}
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </div>
 
         {/* Status Message */}
         {submitStatus.message && (
-          <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
+          <div
+            className={`${styles.statusMessage} ${styles[submitStatus.type]}`}
+          >
             {submitStatus.message}
           </div>
         )}
@@ -414,4 +521,4 @@ function ContactForm({ isCareers = false }) {
   );
 }
 
-export default ContactForm; 
+export default ContactForm;

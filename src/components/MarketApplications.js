@@ -1,19 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
-import styles from './MarketApplications.module.css';
-import waste from './images/waste.png';
-import saf from './images/saf_new.png';
-import hydrogen from './images/hydrogen_new.png';
-import biogas from './images/biogas_new.png';
-import ethylene from './images/ethylene_new.png';
-import ethane from './images/ethane_new.png';
-import syngas from './images/syngas_new.png';
-import benzene from './images/benzene_new.png';
-import renewDiesel from './images/syngas_new.png';
-import { FaArrowRight } from 'react-icons/fa';
-import styled from 'styled-components';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
+import styles from "./MarketApplications.module.css";
+import waste from "./images/waste.png";
+import saf from "./images/saf_new.png";
+import hydrogen from "./images/hydrogen_new.png";
+import biogas from "./images/biogas_new.png";
+import ethylene from "./images/ethylene_new.png";
+import ethane from "./images/ethane_new.png";
+import syngas from "./images/syngas_new.png";
+import benzene from "./images/benzene_new.png";
+import renewDiesel from "./images/renew_diesel_new.png";
+import { FaArrowRight } from "react-icons/fa";
+import styled from "styled-components";
 
 const MarketTitle = styled.h2`
   font-size: 40px;
@@ -40,14 +40,14 @@ function MarketApplications() {
   });
 
   const images = [
-    { src: saf, title: 'SAF' },
-    { src: hydrogen, title: 'Hydrogen' },
-    { src: syngas, title: 'Syngas' },
-    { src: renewDiesel, title: 'Renewable Diesel' },
-    { src: biogas, title: 'RNG, Biogas' },
-    { src: ethylene, title: 'Ethylene' },
-    { src: ethane, title: 'Ethane' },
-    { src: benzene, title: 'Benzene' }
+    { src: saf, title: "SAF" },
+    { src: hydrogen, title: "Hydrogen" },
+    { src: syngas, title: "Syngas" },
+    { src: renewDiesel, title: "Renewable Diesel" },
+    { src: biogas, title: "RNG, Biogas" },
+    { src: ethylene, title: "Ethylene" },
+    { src: ethane, title: "Ethane" },
+    { src: benzene, title: "Benzene" },
   ];
 
   const containerVariants = {
@@ -56,9 +56,9 @@ function MarketApplications() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -66,8 +66,8 @@ function MarketApplications() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const buttonVariants = {
@@ -75,21 +75,21 @@ function MarketApplications() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { 
-        duration: 0.6, 
-        delay: 0.8, 
-        ease: "easeOut" 
-      }
+      transition: {
+        duration: 0.6,
+        delay: 0.8,
+        ease: "easeOut",
+      },
     },
     hover: {
       scale: 1.05,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   return (
     <section className={styles.marketApplicationsSection} ref={ref}>
-      <motion.div 
+      <motion.div
         className={styles.container}
         variants={containerVariants}
         initial="hidden"
@@ -98,7 +98,8 @@ function MarketApplications() {
         <motion.div className={styles.textContainer} variants={itemVariants}>
           <MarketTitle>Enabled Markets</MarketTitle>
           <MarketDescription>
-            The Platform System enables multiple markets due to patented production flexibility.
+            The Platform System enables multiple markets due to patented
+            production flexibility.
           </MarketDescription>
         </motion.div>
 
@@ -112,7 +113,7 @@ function MarketApplications() {
                   className={styles.carouselImage}
                 />
                 <p className={styles.imageTitle}>{item.title}</p>
-                </div>
+              </div>
             ))}
             {images.map((item, index) => (
               <div key={`duplicate-${index}`} className={styles.imageContainer}>
@@ -123,7 +124,7 @@ function MarketApplications() {
                 />
                 <p className={styles.imageTitle}>{item.title}</p>
               </div>
-          ))}
+            ))}
           </div>
         </div>
 
@@ -134,10 +135,7 @@ function MarketApplications() {
           animate={inView ? "visible" : "hidden"}
           whileHover="hover"
         >
-          <Link 
-            to="/markets" 
-            className={styles.learnMoreButton}
-          >
+          <Link to="/markets" className={styles.learnMoreButton}>
             <span>Learn More About Markets</span>
             <FaArrowRight className={styles.arrowIcon} />
           </Link>

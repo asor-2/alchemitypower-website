@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import styles from './Footer.module.css'; 
-import { IoClose } from 'react-icons/io5';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import styles from "./Footer.module.css";
+import { IoClose } from "react-icons/io5";
 
 function Footer() {
   const [selectedPopup, setSelectedPopup] = useState(null);
@@ -53,7 +53,7 @@ We reserve the right to update these Terms at any time. Changes will be posted o
 
 10. Contact Us
 
-If you have any questions about these Terms, please contact us at: resources@alchemity.tech`
+If you have any questions about these Terms, please contact us at: resources@alchemity.tech`,
     },
     privacy: {
       title: "Privacy Policy",
@@ -119,8 +119,8 @@ We may update this Privacy Policy periodically. Changes will be posted here with
 
 9. Contact Us
 
-For questions about this Privacy Policy or your personal data, please contact us at: resources@alchemity.tech`
-    }
+For questions about this Privacy Policy or your personal data, please contact us at: resources@alchemity.tech`,
+    },
   };
 
   const handleLinkClick = (e, type) => {
@@ -129,40 +129,54 @@ For questions about this Privacy Policy or your personal data, please contact us
   };
 
   return (
-    <footer className={styles.footer} style={{ position: 'relative', paddingTop: '5px' }}>
-      <div style={{
-          position: 'absolute',
+    <footer
+      className={styles.footer}
+      style={{ position: "relative", paddingTop: "5px" }}
+    >
+      <div
+        style={{
+          position: "absolute",
           top: 0,
           left: 0,
           right: 0,
-          height: '5px',
-          background: 'linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.3), transparent)',
-          zIndex: 10, 
-          paddingBottom: '5px'
-        }}></div>
-      <div className={styles.companyName} style={{ marginTop: '25px' }}>
+          height: "5px",
+          background:
+            "linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.3), transparent)",
+          zIndex: 10,
+          paddingBottom: "5px",
+        }}
+      ></div>
+      <div className={styles.companyName} style={{ marginTop: "25px" }}>
         Alchemity
       </div>
       <div className={styles.copyright}>
-      Alchemity and the Alchemity logo are trademarks of Alchemity LLC. 
+        Alchemity and the Alchemity logo are trademarks of Alchemity LLC.
       </div>
       <div className={styles.links}>
-        <a href="#terms" onClick={(e) => handleLinkClick(e, 'terms')}>Terms & Conditions</a>
-        <a href="#privacy" onClick={(e) => handleLinkClick(e, 'privacy')}>Privacy Policy</a>
-        <a href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">
-            Follow us on LinkedIn
+        <a href="#terms" onClick={(e) => handleLinkClick(e, "terms")}>
+          Terms & Conditions
+        </a>
+        <a href="#privacy" onClick={(e) => handleLinkClick(e, "privacy")}>
+          Privacy Policy
+        </a>
+        <a
+          href="https://www.linkedin.com/company/alchemity/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Follow us on LinkedIn
         </a>
       </div>
 
       {selectedPopup && (
-        <motion.div 
+        <motion.div
           className={styles.popupOverlay}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setSelectedPopup(null)}
         >
-          <motion.div 
+          <motion.div
             className={styles.popupContent}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -171,10 +185,17 @@ For questions about this Privacy Policy or your personal data, please contact us
             onClick={(e) => e.stopPropagation()}
           >
             <div className={styles.popupHeader}>
-              <h3 style={{ color: '#25abe0', fontSize: '28px', marginBottom: '1.5rem', fontWeight: '600' }}>
+              <h3
+                style={{
+                  color: "#25abe0",
+                  fontSize: "28px",
+                  marginBottom: "1.5rem",
+                  fontWeight: "600",
+                }}
+              >
                 {popupContent[selectedPopup].title}
               </h3>
-              <button 
+              <button
                 className={styles.closeButton}
                 onClick={() => setSelectedPopup(null)}
                 aria-label="Close popup"
@@ -182,27 +203,34 @@ For questions about this Privacy Policy or your personal data, please contact us
                 <IoClose size={24} />
               </button>
             </div>
-            <div style={{ 
-              maxHeight: '70vh', 
-              overflowY: 'auto',
-              paddingRight: '1rem',
-              color: '#ffffff',
-              fontSize: '16px',
-              lineHeight: '1.8',
-              textAlign: 'left'
-            }}>
-              {popupContent[selectedPopup].content.split('\n\n').map((paragraph, index) => {
-                const isNumberedSection = /^\d+\./.test(paragraph);
-                return (
-                  <p key={index} style={{ 
-                    marginBottom: '1.5rem',
-                    fontWeight: isNumberedSection ? '800' : 'normal',
-                    color: isNumberedSection ? '#25abe0' : '#ffffff'
-                  }}>
-                    {paragraph}
-                  </p>
-                );
-              })}
+            <div
+              style={{
+                maxHeight: "70vh",
+                overflowY: "auto",
+                paddingRight: "1rem",
+                color: "#ffffff",
+                fontSize: "16px",
+                lineHeight: "1.8",
+                textAlign: "left",
+              }}
+            >
+              {popupContent[selectedPopup].content
+                .split("\n\n")
+                .map((paragraph, index) => {
+                  const isNumberedSection = /^\d+\./.test(paragraph);
+                  return (
+                    <p
+                      key={index}
+                      style={{
+                        marginBottom: "1.5rem",
+                        fontWeight: isNumberedSection ? "800" : "normal",
+                        color: isNumberedSection ? "#25abe0" : "#ffffff",
+                      }}
+                    >
+                      {paragraph}
+                    </p>
+                  );
+                })}
             </div>
           </motion.div>
         </motion.div>
@@ -211,4 +239,4 @@ For questions about this Privacy Policy or your personal data, please contact us
   );
 }
 
-export default Footer; 
+export default Footer;

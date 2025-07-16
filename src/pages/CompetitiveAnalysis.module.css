@@ -22,7 +22,7 @@
   padding: 0.6rem 0.7rem;
   /* background: #000; */
   color: #fff;
-  border: 2px solid #FFFF00;
+  border: 2px solid #ffff00;
   border-radius: 10px;
   font-size: 0.95rem;
   text-align: center;
@@ -37,11 +37,11 @@
   max-width: 320px;
   padding: 1rem 1.2rem;
   border: 2px solid #25abe0;
-  background: rgba(20,20,20,0.95);
+  background: rgba(20, 20, 20, 0.95);
   display: flex;
   align-items: center;
   gap: 1rem;
   font-size: 1rem;
   color: #fff;
-  box-shadow: 0 0 24px 2px rgba(37,171,224,0.25);
-} 
+  box-shadow: 0 0 24px 2px rgba(37, 171, 224, 0.25);
+}
