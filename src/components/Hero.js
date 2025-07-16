@@ -14,7 +14,7 @@ function Hero({ backgroundImageUrl }) {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const [activePhrase, setActivePhrase] = useState(null);
-
+     
   useEffect(() => {
     if (!backgroundImageUrl) {
       const video = videoRef.current;
