@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./Hero.module.css";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import heroVideo from "./images/homepage-hero.webp";
+import heroVideo from "./images/homepage-hero.mp4";
 
 function Hero({ backgroundImageUrl }) {
   const [ref, inView] = useInView({
