@@ -356,8 +356,8 @@ function About() {
               lineHeight: "1.6",
             }}
           >
-            A team of innovators driven by science, impact, and a shared vision
-            for clean chemistry
+            A team of driven by impact and a shared vision
+            for clean future
           </p>
 
           {/* LINE DIVIDER */}

@@ -696,8 +696,7 @@ function Technology() {
                 textAlign: isTablet || isMobile ? "center" : "center",
               }}
             >
-              A team of innovators driven by science, impact, and a shared
-              vision for clean chemistry
+              Enables flexible modular skid accepting various feedstock sources
             </p>
           </div>
 

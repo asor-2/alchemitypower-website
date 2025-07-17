@@ -1356,7 +1356,7 @@ function Products() {
                   textAlign: "center",
                 }}
               >
-                Larger Product Output, Lower Emissions, Higher Efficiency
+                Single modular skid for production of various fuels & chemicals
               </p>
             </div>
 

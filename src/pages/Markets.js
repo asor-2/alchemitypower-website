@@ -767,7 +767,7 @@ function Markets() {
                   lineHeight: "1.6",
                 }}
               >
-                Enabling Chemical & Fuel Markets With A Single Platform Design
+                Zero-emission fuels at or below fossil fuel cost parity 
               </p>
             </div>
           </div>
@@ -787,7 +787,7 @@ function Markets() {
           {/* Rest of your content follows */}
           <div style={sectionStyle} className={styles.sectionContainer}>
             <p style={highlightTextStyle}>
-              Enabling Chemical & Fuel Markets With A Single Platform Design
+               Enabling Chemical & Fuel Markets With A Single Platform Design.
             </p>
 
             <h2
