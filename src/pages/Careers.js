@@ -147,7 +147,7 @@ function Careers() {
               margin: "0 auto 1rem",
             }}
           >
-            <span>We're </span>
+            <span>Building a </span>
             <span
               style={{
                 background: "linear-gradient(130deg, #25abe0 15%, #50918d)",
@@ -157,7 +157,7 @@ function Careers() {
                 color: "transparent",
               }}
             >
-              Building a Cleaner Future
+              Cleaner Future
             </span>
             <span></span>
           </h1>
