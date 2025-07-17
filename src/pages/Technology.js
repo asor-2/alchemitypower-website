@@ -745,7 +745,7 @@ function Technology() {
               alt="Technology Header"
               style={{
                 width: "100%",
-                maxWidth: "700px",
+                maxWidth: "780px",
                 height: "auto",
                 borderRadius: "8px",
                 margin: "0 auto",
@@ -1484,7 +1484,7 @@ function Technology() {
                 marginBottom: "-8rem",
                 display: "block",
               }}
-              onClick={() => setActiveModal("biomass")}
+              // onClick={() => setActiveModal("biomass")}
             />
 
             {/* <div style={{ display: 'flex', justifyContent: 'center' }}>

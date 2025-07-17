@@ -501,9 +501,9 @@ function About() {
                 today, not in the distant future. Our game-changing reactor core
                 does not require complex manufacturing, nor precious metals and
                 leverages existing scaled manufacturing and supply chain.
-              </p>
+                <p style={{textAlign: 'center'}}><em>But technology alone is not enough.</em></p>
 
-              <p>But technology alone is not enough.</p>
+              </p>
 
               <h3
                 style={{

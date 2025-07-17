@@ -1342,7 +1342,7 @@ function Products() {
                     color: "transparent",
                   }}
                 >
-                  Products
+                  Product
                 </span>
               </h1>
 
