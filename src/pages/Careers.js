@@ -157,9 +157,9 @@ function Careers() {
                 color: "transparent",
               }}
             >
-              Building the Future
+              Building a Cleaner Future
             </span>
-            <span> of Clean Energy</span>
+            <span></span>
           </h1>
           <p
             style={{
