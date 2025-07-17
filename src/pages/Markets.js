@@ -17,7 +17,7 @@ import ethylene from "../components/images/ethylene_new.png";
 import ethane from "../components/images/ethane_new.png";
 import syngas from "../components/images/syngas_new.png";
 import benzene from "../components/images/benzene_new.png";
-import renewDiesel from "../components/images/renew_diesel_new.png";
+import renewDiesel from "../components/images/renewdiesel_new.png";
 
 import marketsVideo from "../components/images/markets_video.mov";
 
@@ -585,6 +585,14 @@ function Markets() {
         "Conventional Gas-to-Liquids (GTL) and Fischer-Tropsch technologies can produce fuels such as Sustainable Aviation Fuel (SAF) at scale but requires high capital and produces significant CO₂ without expensive capture systems. ",
     },
     {
+      src: renewDiesel,
+      title: "Renewable Diesel",
+      isFirstMarket: true,
+      marketSize: 'TO BE EDITED',
+      futureMarketSize: 'TO BE EDITED',
+      description: 'TO BE EDITED'
+    },
+    {
       src: hydrogen,
       title: "Hydrogen",
       isFirstMarket: true,
@@ -601,14 +609,6 @@ function Markets() {
       futureMarketSize: "$105B by 2030",
       description:
         "Synthetic gas (syngas)—a mixture of hydrogen and carbon monoxide—is a critical feedstock for producing methanol (used in formaldehyde, acetic acid, and plastics), ammonia (for fertilizers), Fischer-Tropsch liquids (waxes, lubricants, fuels), and higher alcohols and acids in solvents and polymers. Traditional syngas methods like steam methane reforming and coal gasification are highly carbon-intensive, emitting 9-12 kg of CO₂ per kg of hydrogen.",
-    },
-    {
-      src: renewDiesel,
-      title: "Renewable Diesel",
-      isFirstMarket: false,
-      // marketSize: '$40B',
-      // futureMarketSize: '$71B by 2030',
-      // description: 'Placeholder.....'
     },
     {
       src: biogas,
@@ -953,9 +953,12 @@ function Markets() {
                   ? "Our Platform Reactor System offers beyond zero-emission & a cost-effective alternative suitable for co-located greenfield sites (SAF at the point of use), or integration with existing infrastructure - ideal for brownfield applications."
                   : selectedMarket?.title === "Hydrogen"
                     ? "Our Platform Reactor System offers a cleaner alternative—producing hydrogen from biomethane via a non-oxidative process while converting carbon into valuable chemicals, strengthening U.S. energy and economic security."
+                    : selectedMarket?.title === "Renewable Diesel"
+                    ? "TO BE EDITED"
                     : selectedMarket?.title === "Syngas"
                       ? "Alchemity's Platform Reactor System offers a carbon-negative alternative, producing syngas in a single, non-oxidative step using waste biogas from biomass—delivering a cleaner, more sustainable solution."
-                      : "Placeholder text for additional market information"}
+                      : "Placeholder text for additional market information"
+                    }
               </div>
               <div
                 style={{

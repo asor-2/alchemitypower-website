@@ -11,7 +11,7 @@ import ethylene from "./images/ethylene_new.png";
 import ethane from "./images/ethane_new.png";
 import syngas from "./images/syngas_new.png";
 import benzene from "./images/benzene_new.png";
-import renewDiesel from "./images/renew_diesel_new.png";
+import renewDiesel from "./images/renewdiesel_new.png";
 import { FaArrowRight } from "react-icons/fa";
 import styled from "styled-components";
 
@@ -41,9 +41,9 @@ function MarketApplications() {
 
   const images = [
     { src: saf, title: "SAF" },
+     { src: renewDiesel, title: "Renewable Diesel" },
     { src: hydrogen, title: "Hydrogen" },
     { src: syngas, title: "Syngas" },
-    { src: renewDiesel, title: "Renewable Diesel" },
     { src: biogas, title: "RNG, Biogas" },
     { src: ethylene, title: "Ethylene" },
     { src: ethane, title: "Ethane" },
