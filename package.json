@@ -11,6 +11,7 @@
     "async-ratelimiter": "^1.6.1",
     "bootstrap": "^5.3.5",
     "framer-motion": "^12.9.2",
+    "ioredis": "^5.6.1",
     "lucide-react": "^0.503.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -29,9 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "optimize-images": "node scripts/compress-image.js"
-    
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
