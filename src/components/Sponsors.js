@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import styles from "./Sponsors.module.css";
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import styles from './Sponsors.module.css';
 
-import shell from "./images/shell.png";
-import mil from "./images/mil.png";
-import tedco from "./images/tedco.png";
-import umd from "./images/umd.png";
-import arpa from "./images/arpa.png";
-import meia from "./images/meia.png";
+import shell from './images/shell.png';
+import mil from './images/mil.png';
+import tedco from './images/tedco.png';
+import umd from './images/umd.png';
+import arpa from './images/arpa.png';
+import meia from './images/meia.png';
 
 function Sponsors() {
   const [ref, inView] = useInView({
@@ -19,7 +19,7 @@ function Sponsors() {
   const scrollerRef = useRef(null);
   const [scrollerWidth, setScrollerWidth] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  
   // Define sponsors only once
   //maryland energy innovation accelerator, Shell Game Changer, Tedco, ARPAE, MII, MEII
   const sponsors = [
@@ -30,15 +30,15 @@ function Sponsors() {
     { name: "Shell", logo: shell, id: 2 },
     { name: "TEDCO", logo: tedco, id: 5 },
   ];
-
+  
   // Create doubled array for seamless scrolling
   const allSponsors = [...sponsors, ...sponsors, ...sponsors];
-
+  
   // Manage scroller initialization after images load
   useEffect(() => {
     let loadedImages = 0;
     const totalImages = sponsors.length;
-
+    
     const handleImageLoad = () => {
       loadedImages += 1;
       if (loadedImages === totalImages && scrollerRef.current) {
@@ -47,28 +47,28 @@ function Sponsors() {
         setScrollerWidth(width);
       }
     };
-
+    
     // Preload images to get accurate dimensions
-    sponsors.forEach((sponsor) => {
+    sponsors.forEach(sponsor => {
       const img = new Image();
       img.src = sponsor.logo;
       img.onload = handleImageLoad;
     });
-
+    
     return () => {
       // Clean up any event listeners if needed
     };
   }, [sponsors]);
-
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
+        delayChildren: 0.3
+      }
+    }
   };
 
   const itemVariants = {
@@ -76,48 +76,56 @@ function Sponsors() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
   };
 
   return (
     <section className={styles.sponsorsSection} ref={ref}>
       <div className={styles.backgroundPattern}></div>
-
-      <motion.div
+      
+      <motion.div 
         className={styles.container}
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
       >
-        <motion.h2 className={styles.sponsorsTitle} variants={itemVariants}>
+        <motion.h2 
+          className={styles.sponsorsTitle}
+          variants={itemVariants}
+        >
           Our Sponsors
         </motion.h2>
-
-        <motion.p className={styles.description} variants={itemVariants}>
-          Revolutionizing beyond-net-zero chemicals & fuels production requires
-          a strong ecosystem.
+        
+        <motion.p 
+          className={styles.description}
+          variants={itemVariants}
+        >
+          Revolutionizing beyond-net-zero chemicals & fuels production requires a strong ecosystem.
         </motion.p>
-
-        <motion.div className={styles.sponsorsCarousel} variants={itemVariants}>
+        
+        <motion.div 
+          className={styles.sponsorsCarousel}
+          variants={itemVariants}
+        >
           <div className={styles.carouselContainer}>
-            <div
+            <div 
               ref={scrollerRef}
               className={styles.carouselScroller}
               style={{
-                "--sponsor-width": `${scrollerWidth}px`,
-                "--animation-status": isLoaded ? "running" : "paused",
+                '--sponsor-width': `${scrollerWidth}px`,
+                '--animation-status': isLoaded ? 'running' : 'paused'
               }}
             >
               {allSponsors.map((sponsor, index) => (
-                <div
+                <div 
                   key={`${sponsor.id}-${index}`}
                   className={styles.sponsorCard}
                 >
-                  <img
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    className={styles.sponsorLogo}
+                  <img 
+                    src={sponsor.logo} 
+                    alt={sponsor.name} 
+                    className={styles.sponsorLogo} 
                     loading={index < 5 ? "eager" : "lazy"}
                   />
                 </div>

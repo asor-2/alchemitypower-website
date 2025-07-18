@@ -845,7 +845,7 @@ function Markets() {
                           style={firstMarketsContentStyle}
                           className={styles.firstMarketsContentStyle}
                         >
-                          {images.slice(0, 3).map((item, index) => (
+                          {images.slice(0, 4).map((item, index) => (
                             <motion.div
                               key={index}
                               className={`market-image-container ${styles.firstMarketBoxStyle}`}
@@ -886,7 +886,7 @@ function Markets() {
                           style={secondMarketsGrid}
                           className={styles.secondMarketsGrid}
                         >
-                          {images.slice(3).map((item, index) => (
+                          {images.slice(4).map((item, index) => (
                             <motion.div
                               key={index + 3}
                               className="market-image-container"

@@ -21,6 +21,7 @@
   margin-left: 0; /* Remove any default margin */
   object-fit: contain;
   transition: all 0.3s ease;
+  max-width: 200px;
 }
 
 .logo:hover .logoImage {
@@ -248,10 +249,26 @@
   }
 }
 
+
+
 /* Tablet (768px) */
 @media (max-width: 768px) {
   .logoImage {
     height: 32px;
+    max-width: 120px;
+  }
+
+  .logo {
+    justify-content: flex-start;
+    margin-left: 0.5rem;
+    flex: 0 0 auto;
+    min-width: unset;
+    max-width: 150px;
+  }
+
+  .nav {
+    align-items: center;
+    justify-content: space-between;
   }
 
   .mobileMenu {

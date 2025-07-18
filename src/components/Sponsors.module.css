@@ -168,25 +168,25 @@
 }
 
 @media (max-width: 768px) {
-  .sponsorLogo {
-    height: 60px;
-  }
-  .sponsorCard:nth-child(6n + 1) .sponsorLogo,
-  .sponsorCard:nth-child(6n + 6) .sponsorLogo {
-    height: 90px;
-  }
   .sponsorCard {
+    height: 200px;
+    max-width: 200px;
+    min-width: 0;
     padding: 0 10px;
   }
-  .carouselScroller {
-    gap: 2rem;
-    animation-duration: 20s;
+  .sponsorLogo {
+    height: 60px;
+    width: auto;
+    max-width: 80px;
+    max-height: 60px;
+    object-fit: contain;
+    padding: 10px;
   }
 }
 
 @media (max-width: 576px) {
   .sponsorLogo {
-    height: 45px;
+    height: 60px;
   }
   .sponsorCard:nth-child(6n + 1) .sponsorLogo,
   .sponsorCard:nth-child(6n + 6) .sponsorLogo {
@@ -197,6 +197,6 @@
   }
   .carouselScroller {
     gap: 1rem;
-    animation-duration: 15s;
+    animation-duration: 30s;
   }
 }
