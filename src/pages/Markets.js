@@ -588,9 +588,9 @@ function Markets() {
       src: renewDiesel,
       title: "Renewable Diesel",
       isFirstMarket: true,
-      marketSize: 'TO BE EDITED',
-      futureMarketSize: 'TO BE EDITED',
-      description: 'TO BE EDITED'
+      marketSize: '$23B',
+      futureMarketSize: '$60B by 2030',
+      description: 'Conventional diesel production is highly carbon-intensive, relying on crude oil refining processes like distillation, cracking, and hydrotreating—each demanding large amounts of fossil-derived energy. These methods emit over 10 kg of CO₂ per gallon of diesel produced. The process also faces challenges such as high capital costs, regulatory pressure, and growing demand for low-emission alternatives.'
     },
     {
       src: hydrogen,
@@ -954,7 +954,7 @@ function Markets() {
                   : selectedMarket?.title === "Hydrogen"
                     ? "Our Platform Reactor System offers a cleaner alternative—producing hydrogen from biomethane via a non-oxidative process while converting carbon into valuable chemicals, strengthening U.S. energy and economic security."
                     : selectedMarket?.title === "Renewable Diesel"
-                    ? "TO BE EDITED"
+                    ? "Our Platform Reactor System offers cost-effective renewable diesel co-located with feedstock source (farms, wastewater treatment facilities, landfill waste sites) an delivered back locally to farms (to power farming equipment and gensets), trucking hubs, ports and distribution centers while decreasing overall emissions."
                     : selectedMarket?.title === "Syngas"
                       ? "Alchemity's Platform Reactor System offers a carbon-negative alternative, producing syngas in a single, non-oxidative step using waste biogas from biomass—delivering a cleaner, more sustainable solution."
                       : "Placeholder text for additional market information"
