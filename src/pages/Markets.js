@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import PageHero from "../components/PageHero";
-import MarketsHero from "../components/MarketsHero";
+// import { useInView } from "react-intersection-observer";
+// import PageHero from "../components/PageHero";
+// import MarketsHero from "../components/MarketsHero";
 import Modal from "../components/Modal";
 import styled from "styled-components";
 import styles from "./Markets.module.css";
-import styles1 from "./Technology.module.css";
-import marketsBg from "../components/images/market.avif";
+// import styles1 from "./Technology.module.css";
+// import marketsBg from "../components/images/market.avif";
 
-import waste from "../components/images/waste.png";
+// import waste from "../components/images/waste.png";
 import saf from "../components/images/saf_new.png";
 import hydrogen from "../components/images/hydrogen_new.png";
 import biogas from "../components/images/biogas_new.png";
@@ -19,7 +19,7 @@ import syngas from "../components/images/syngas_new.png";
 import benzene from "../components/images/benzene_new.png";
 import renewDiesel from "../components/images/renewdiesel_new.png";
 
-import marketsVideo from "../components/images/markets_video.mov";
+// import marketsVideo from "../components/images/markets_video.mov";
 
 import SEO from "../components/SEO/SEO";
 import { seoData } from "../config/seoConfig";

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import styles from "./MarketApplications.module.css";
-import waste from "./images/waste.png";
+// import waste from "./images/waste.png";
 import saf from "./images/saf_new.png";
 import hydrogen from "./images/hydrogen_new.png";
 import biogas from "./images/biogas_new.png";

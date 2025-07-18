@@ -1,96 +1,96 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PageHero from "../components/PageHero";
-import productsBg from "../components/images/plant3.png";
+// import PageHero from "../components/PageHero";
+// import productsBg from "../components/images/plant3.png";
 import styled from "styled-components";
-import single1 from "../components/images/single1.png";
+// import single1 from "../components/images/single1.png";
 import single2 from "../components/images/single2.png";
-import bundle1 from "../components/images/bundle1.png";
-import bundle2 from "../components/images/bundle2.png";   
+// import bundle1 from "../components/images/bundle1.png";
+// import bundle2 from "../components/images/bundle2.png";   
 import benchtop1 from "../components/images/trl5_new.png";
 import benchtop2 from "../components/images/benchtop2.png";
 import skid1 from "../components/images/skid1_new.png";
 import skid2 from "../components/images/skid2_new.png";
 import plant1 from "../components/images/plant1_new.png";
-import plant22 from "../components/images/plant22.jpg";
-import alchemityLogo from "../components/images/alchemity_logo_w_text.png";
+// import plant22 from "../components/images/plant22.jpg";
+// import alchemityLogo from "../components/images/alchemity_logo_w_text.png";
 import extEval from "../components/images/ExtEval.png";
-import productVideo from "../components/images/producthero.mov";
-import placeholder from "../components/images/AI.png";
+// import productVideo from "../components/images/producthero.mov";
+// import placeholder from "../components/images/AI.png";
 import plantImage from "../components/images/plantimage_new_new.png";
 import styles from "./Products.module.css";
 import competitiveStyles from "./CompetitiveAnalysis.module.css";
-import herotech from "../components/images/headeranim.mov";
+// import herotech from "../components/images/headeranim.mov";
 
 import gtchem11Video from "../components/images/gtchem11_static.png";
 import gtchem12Video from "../components/images/gtchem12_static.png";
-import gtchem21Image from "../components/images/gtchem21.png";
-import gtchem22Image from "../components/images/gtchem22.png";
+// import gtchem21Image from "../components/images/gtchem21.png";
+// import gtchem22Image from "../components/images/gtchem22.png";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import companim from "../components/images/companim.mov";
+// import companim from "../components/images/companim.mov";
 import {
-  FaArrowRight,
+  // FaArrowRight,
   FaShieldAlt,
   FaChartLine,
-  FaIndustry,
+  // FaIndustry,
   FaDollarSign,
 } from "react-icons/fa";
 import Modal from "../components/Modal";
-import skiddo from "../components/images/skiddo.png";
+// import skiddo from "../components/images/skiddo.png";
 import companal from "../components/images/grid_transparent_bg_new.png";
 
 import SEO from "../components/SEO/SEO";
 import { seoData } from "../config/seoConfig";
 
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  padding: 2rem 0.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+// const CardContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+//   gap: 2rem;
+//   padding: 2rem 0.5rem;
+//   max-width: 1200px;
+//   margin: 0 auto;
 
-  @media (max-width: 1150px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto 4rem auto;
-  }
+//   @media (max-width: 1150px) {
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 1.5rem;
+//     max-width: 800px;
+//     margin: 0 auto 4rem auto;
+//   }
 
-  @media (max-width: 890px) {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 0;
-    max-width: 650px;
-    margin: 0 auto 4rem auto;
-    width: 95%;
-    justify-items: center;
-  }
+//   @media (max-width: 890px) {
+//     grid-template-columns: 1fr;
+//     gap: 2.5rem;
+//     padding: 0;
+//     max-width: 650px;
+//     margin: 0 auto 4rem auto;
+//     width: 95%;
+//     justify-items: center;
+//   }
 
-  @media (min-width: 2560px) {
-    max-width: 2000px;
-    gap: 3rem;
-  }
-`;
+//   @media (min-width: 2560px) {
+//     max-width: 2000px;
+//     gap: 3rem;
+//   }
+// `;
 
-const SectionWrapper = styled.section`
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  background-color: ${(props) =>
-    props.bgColor || "transparent"}; /* Changed from '#000000' */
-  padding: 3rem 0; /* Changed from '4rem 0' */
-  overflow: hidden; /* Add this */
-  position: relative; /* Add this */
-  box-sizing: border-box; /* Add this */
-`;
+// const SectionWrapper = styled.section`
+//   margin-left: calc(-50vw + 50%);
+//   margin-right: calc(-50vw + 50%);
+//   background-color: ${(props) =>
+//     props.bgColor || "transparent"}; /* Changed from '#000000' */
+//   padding: 3rem 0; /* Changed from '4rem 0' */
+//   overflow: hidden; /* Add this */
+//   position: relative; /* Add this */
+//   box-sizing: border-box; /* Add this */
+// `;
 
-// Content container to maintain your original margins
-const ContentContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-`;
+// // Content container to maintain your original margins
+// const ContentContainer = styled.div`
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 1.5rem;
+// `;
 
 const Card = styled.div`
   background-color: rgba(31, 42, 48, 0.7);
@@ -188,15 +188,15 @@ const ClickToLearnMore = styled.p`
   margin-bottom: -1.5rem;
 `;
 
-const HoverDescription = styled.p`
-  color: #ffffff;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-`;
+// const HoverDescription = styled.p`
+//   color: #ffffff;
+//   font-size: 1.2rem;
+//   text-align: center;
+//   margin-bottom: 1.5rem;
+//   max-width: 800px;
+//   margin-left: auto;
+//   margin-right: auto;
+// `;
 
 const TimelineContainer = styled.div`
   position: relative;
@@ -355,57 +355,57 @@ const trlGradients = [
   "linear-gradient(135deg,rgb(32, 101, 147),rgb(26, 93, 144))", // TRL8/9
 ];
 
-const Popup = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  // transform: translate(-50%, -50%);
-  background: rgba(20, 20, 20, 0.95);
-  padding: 2rem;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 800px;
-  z-index: 1000;
-  display: ${(props) => (props.show ? "block" : "none")};
-  color: #ffffff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+// const Popup = styled.div`
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   // transform: translate(-50%, -50%);
+//   background: rgba(20, 20, 20, 0.95);
+//   padding: 2rem;
+//   border-radius: 8px;
+//   width: 80%;
+//   max-width: 800px;
+//   z-index: 1000;
+//   display: ${(props) => (props.show ? "block" : "none")};
+//   color: #ffffff;
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 
-  .image-container {
-    display: flex;
-    flex-direction: ${(props) =>
-      props.show && props.selectedItem?.title === "Plant" ? "column" : "row"};
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    align-items: center;
-  }
+//   .image-container {
+//     display: flex;
+//     flex-direction: ${(props) =>
+//       props.show && props.selectedItem?.title === "Plant" ? "column" : "row"};
+//     gap: 1rem;
+//     justify-content: center;
+//     margin-bottom: 0.5rem;
+//     align-items: center;
+//   }
 
-  img {
-    width: ${(props) =>
-      props.show &&
-      props.selectedItem?.images &&
-      props.selectedItem?.title !== "Plant"
-        ? "45%"
-        : "60%"};
-    height: auto;
-    max-height: 350px;
-    object-fit: contain;
-  }
+//   img {
+//     width: ${(props) =>
+//       props.show &&
+//       props.selectedItem?.images &&
+//       props.selectedItem?.title !== "Plant"
+//         ? "45%"
+//         : "60%"};
+//     height: auto;
+//     max-height: 350px;
+//     object-fit: contain;
+//   }
 
-  h3 {
-    color: #25abe0;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-  }
+//   h3 {
+//     color: #25abe0;
+//     text-align: center;
+//     margin-bottom: 0.5rem;
+//     font-size: 1.4rem;
+//   }
 
-  p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    text-align: center;
-    margin-bottom: 0;
-  }
-`;
+//   p {
+//     font-size: 1.2rem;
+//     line-height: 1.6;
+//     text-align: center;
+//     margin-bottom: 0;
+//   }
+// `;
 
 const Overlay = styled.div`
   position: fixed;

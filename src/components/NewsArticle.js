@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
+// import { FaArrowRight } from "react-icons/fa";
 import styles from "./NewsArticle.module.css";
 
 const NewsArticle = ({ title, image, link, source, index }) => {
