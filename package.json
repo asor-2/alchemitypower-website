@@ -28,15 +28,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "optimize-images": "node scripts/compress-image.js",
-    "lint": "eslint src/"
+    "optimize-images": "node scripts/compress-image.js"
+    
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+
   "browserslist": {
     "production": [
       ">0.2%",
