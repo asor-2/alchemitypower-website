@@ -2040,8 +2040,14 @@ function Products() {
                       src={selectedItem?.image}
                       alt={selectedItem?.title}
                       style={{
-                        width: "60%",
-                        maxHeight: "350px",
+                         width:
+      selectedItem?.title === "Benchtop System"
+        ? "80%"
+        : "60%",
+    maxHeight:
+      selectedItem?.title === "Benchtop System"
+        ? "500px"
+        : "350px",
                         objectFit: "contain",
                         borderRadius:
                           selectedItem?.title === "Plant" ||

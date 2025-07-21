@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../components/Modal";
 import ProfileCard from "../components/ProfileCard";
-import PageHero from "../components/PageHero";
-import AboutHero from "../components/AboutHero";
+// import PageHero from "../components/PageHero";
+// import AboutHero from "../components/AboutHero";
 import about1 from "../components/images/about1.png";
 import about2 from "../components/images/about2.png";
 import about3 from "../components/images/about3.png";
@@ -16,10 +16,10 @@ import advisor1 from "../components/images/advisor1.png";
 import advisor2 from "../components/images/advisor2.jpg";
 import advisor3 from "../components/images/advisor3.jpg";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import styles from "../components/PageHero.module.css";
+// import { useInView } from "react-intersection-observer";
+// import styles from "../components/PageHero.module.css";
 import styles1 from "../components/ProfileCard.module.css";
-import { PiAndroidLogoDuotone } from "react-icons/pi";
+// import { PiAndroidLogoDuotone } from "react-icons/pi";
 
 import SEO from "../components/SEO/SEO";
 import { seoData } from "../config/seoConfig";
