@@ -35,6 +35,8 @@ function ContactForm({ isCareers = false }) {
     let rendered = false;
     function checkTurnstile() {
       if (window.turnstile && turnstileRef.current && !rendered) {
+        // Defensive: clear container before rendering
+        turnstileRef.current.innerHTML = "";
         window.turnstile.render(turnstileRef.current, {
           sitekey: turnstileSiteKey,
           theme: "dark",
@@ -343,25 +345,8 @@ function ContactForm({ isCareers = false }) {
         {/* Turnstile widget - always render container */}
         <div
           ref={turnstileRef}
-          style={{
-            margin: "0 0 1rem 0",
-            minHeight: "65px",
-            display: "block",
-            maxWidth: window.innerWidth < 480 ? "300px" : "100%",
-            width: "100%",
-            boxSizing: "border-box",
-            marginLeft: window.innerWidth < 480 ? "auto" : undefined,
-            marginRight: window.innerWidth < 480 ? "auto" : undefined,
-          }}
+          style={{ margin: '0 0 1rem 0', minHeight: '65px', display: 'block' }}
         ></div>
-
-        {submitStatus.message && (
-          <div
-            className={`${styles.statusMessage} ${styles[submitStatus.type]}`}
-          >
-            {submitStatus.message}
-          </div>
-        )}
 
         <button
           type="submit"
@@ -370,6 +355,14 @@ function ContactForm({ isCareers = false }) {
         >
           {isSubmitting ? "Sending..." : "Submit"}
         </button>
+        {/* Status Message - moved below the button for consistency */}
+        {submitStatus.message && (
+          <div
+            className={`${styles.statusMessage} ${styles[submitStatus.type]}`}
+          >
+            {submitStatus.message}
+          </div>
+        )}
       </form>
     </section>
   );
