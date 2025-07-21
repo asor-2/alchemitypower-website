@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch"); // REMOVED: Use native fetch in Node 18+ on Netlify
 
 exports.handler = async function (event, context) {
   if (event.httpMethod !== "POST") {
