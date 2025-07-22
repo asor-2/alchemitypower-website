@@ -232,7 +232,7 @@ function VideoSection() {
         </h2>
 
         <p className={styles.videoDescription}>
-          Transforming Greenhouse Gasses and Waste Resources into Valuable
+          Transforming Greenhouse Gasses and Wasted Resources into Valuable
           Chemicals and Fuels with Modular Turn-Key Reactor System
         </p>
 
