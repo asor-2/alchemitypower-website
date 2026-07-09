@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import NewsHero from "../components/NewsHero";
 import NewsArticle from "../components/NewsArticle";
@@ -13,6 +14,9 @@ import newsImage6 from "../components/images/6.webp";
 import newsImage7 from "../components/images/7.jpg";
 import tedco from "../components/images/tedco.png";
 import mbia from "../components/images/mbia.png";
+import alchemityLogo from "../components/images/Alchemity logo - for dark background.png";
+import buildOurFuture from "../components/images/build our future.jpg";
+import cdlLogo from "../components/images/CDL logo.png";
 import styles from "./News.module.css";
 
 import SEO from "../components/SEO/SEO";
@@ -156,7 +160,34 @@ const activeTabStyle = {
   },
 };
 
+const logoImageStyle = {
+  objectFit: 'contain',
+  backgroundColor: '#000000',
+  padding: '1.5rem'
+};
+
 const newsArticles = [
+  {
+    title: "Alchemity Announces Seed Financing",
+    image: alchemityLogo,
+    link: "/news/seed-financing",
+    source: "Alchemity",
+    imageStyle: logoImageStyle
+  },
+  {
+    title: "Alchemity Receives Build Our Future Award from Governor Moore",
+    image: buildOurFuture,
+    link: "https://eng.umd.edu/news/story/alchemity-receives-build-our-future-award-from-governor-moore",
+    source: "University of Maryland",
+    imageStyle: logoImageStyle
+  },
+  {
+    title: "Alchemity Graduates from Creative Destruction Lab (CDL)",
+    image: cdlLogo,
+    link: "https://www.linkedin.com/posts/emir-dogdibegovic-ph-d-ba976b192_alchemity-is-one-of-the-9-ventures-graduating-ugcPost-7457563886024577024-yaef/",
+    source: "Creative Destruction Lab",
+    imageStyle: logoImageStyle
+  },
   {
     title: "Reactor Turns Methane to Hydrocarbons Without CO₂",
     image: newsImage1,
@@ -374,7 +405,20 @@ function News() {
 
           {/* News cards grid */}
           <div className={styles.articlesGrid}>
-            {newsArticles.map((article, index) => (
+            {newsArticles.map((article, index) => {
+              // Internal links (React Router) start with "/"; external links open in a new tab.
+              const isInternalLink =
+                typeof article.link === "string" &&
+                article.link.startsWith("/");
+              const Wrapper = isInternalLink ? Link : "a";
+              const wrapperProps = isInternalLink
+                ? { to: article.link }
+                : {
+                    href: article.link,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  };
+              return (
               <motion.div
                 key={index}
                 custom={index}
@@ -398,10 +442,8 @@ function News() {
                   justifyContent: "flex-start",
                 }}
               >
-                <a
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Wrapper
+                  {...wrapperProps}
                   style={{
                     textDecoration: "none",
                     height: "100%",
@@ -508,13 +550,15 @@ function News() {
                           height: "100%",
                           objectFit: "cover",
                           display: "block",
+                          ...(article.imageStyle || {}),
                         }}
                       />
                     </div>
                   </div>
-                </a>
+                </Wrapper>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

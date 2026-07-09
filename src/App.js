@@ -15,14 +15,15 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Page Components
-import Home from "./pages/Home";
-import Markets from "./pages/Markets";
-import Products from "./pages/Products";
-import Technology from "./pages/Technology";
-import About from "./pages/About";
-import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
-import News from "./pages/News";
+import Home from './pages/Home';
+import Markets from './pages/Markets';
+import Products from './pages/Products';
+import Technology from './pages/Technology';
+import About from './pages/About';
+import Careers from './pages/Careers';
+import Contact from './pages/Contact';
+import News from './pages/News';
+import SeedFinancing from './pages/SeedFinancing';
 
 // ScrollToTop component - scrolls to top on route change
 function ScrollToTop() {
@@ -59,26 +60,26 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Router>
-        <div className="App">
-          <ScrollToTop />
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/markets" element={<Markets />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/technology" element={<Technology />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/careers" element={<Careers />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/news" element={<News />} />
-            </Routes>
-          </main>
-          {/* <BackToTopButton /> */}
-          <Footer />
-        </div>
-      </Router>
+    <Router>
+      <div className="App">
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/markets" element={<Markets />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/technology" element={<Technology />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/news/seed-financing" element={<SeedFinancing />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
     </HelmetProvider>
   );
 }
