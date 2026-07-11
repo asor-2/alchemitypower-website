@@ -841,9 +841,9 @@ function About() {
               onClose={handleCloseModal}
               title={`${selectedPerson.name} - ${
                 selectedPerson.name.includes("Rodger")
-                  ? "CEO"
+                  ? "CFO"
                   : selectedPerson.name.includes("Emir")
-                    ? "CTO & CCO"
+                    ? "CEO"
                     : selectedPerson.title
               }`}
               linkedInUrl={selectedPerson.linkedInUrl}
