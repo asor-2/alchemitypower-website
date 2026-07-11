@@ -183,18 +183,16 @@
   transition: transform 0.3s ease;
 }
 
-/* Specific adjustments for founder images */
-.founderContainer[data-id="founder-2"] .founderImage {
+/* Specific adjustments for founder images.
+   A transform promotes the <img> to its own compositing layer, and Chrome only
+   anti-aliases the circular border-radius clip on a composited layer. Without it the
+   circle edge renders jagged (this is why Eric — which has a scale — looked smooth
+   while Emir and Rodger looked rough). Keep a centered scale on all three founder
+   photos: it fixes the anti-aliasing without shifting the image off the frame. */
+.founderContainer[data-id="founder-1"] .founderImage,
+.founderContainer[data-id="founder-2"] .founderImage,
+.founderContainer[data-id="founder-3"] .founderImage {
   transform: scale(1.05);
-}
-
-@media (max-width: 769px) {
-  .founderContainer[data-id="founder-1"] .founderImage {
-    transform: scale(1.05) translateY(-10%) translateX(-1%);
-  }
-  .founderContainer[data-id="founder-3"] .founderImage {
-    transform: scale(1.05);
-  }
 }
 
 /* Specific adjustments for advisor images */

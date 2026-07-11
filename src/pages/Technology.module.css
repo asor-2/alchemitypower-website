@@ -122,9 +122,12 @@
     margin-bottom: 2rem !important;
     max-width: 100% !important;
   }
-  /* Ensure images and videos are responsive */
-  img,
-  video {
+  /* Ensure images and videos are responsive.
+     Scoped to .technologyPage: a bare img/video selector in a CSS module is NOT
+     scoped and leaked into every page's bundle, breaking e.g. the circular
+     founder photos on the About page at mobile widths. */
+  .technologyPage img,
+  .technologyPage video {
     max-width: 100% !important;
     height: auto !important;
     display: block !important;
