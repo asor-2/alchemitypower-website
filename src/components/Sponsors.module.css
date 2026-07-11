@@ -114,9 +114,18 @@
   transition: all 0.3s ease;
   padding: 20px;
   border-radius: 4px;
-  filter: grayscale(100%) brightness(1.5) contrast(0.8);
+  filter: none;
   -webkit-user-drag: none;
   user-select: none;
+}
+
+/* Discovery Fund logo: sits in a white box so the black artwork reads on the dark section */
+.whiteBox {
+  background: #ffffff;
+  border-radius: 0;
+  height: 100px;
+  padding: 12px 16px;
+  box-sizing: border-box;
 }
 
 /* Specific styling for UMD logo */
@@ -129,17 +138,17 @@
 
 /* Specific styling for Shell logo */
 .sponsorCard[data-id="2"] .sponsorLogo {
-  filter: grayscale(100%) brightness(1.5) contrast(0.8);
+  filter: none;
 }
 
 /* Specific styling for ARPA-E logo */
 .sponsorCard[data-id="3"] .sponsorLogo {
-  filter: grayscale(100%) brightness(1.5) contrast(0.8);
+  filter: none;
 }
 
 /* Specific styling for MIL logo */
 .sponsorCard[data-id="4"] .sponsorLogo {
-  filter: grayscale(100%) brightness(1.5) contrast(0.9);
+  filter: none;
 }
 
 /* Specific styling for TEDCO logo */
@@ -150,7 +159,7 @@
 /* Specific styling for MEIA logo */
 .sponsorCard[data-id="6"] .sponsorLogo {
   height: 140px;
-  filter: grayscale(100%) brightness(1.5) contrast(0.8);
+  filter: none;
 }
 
 /* Responsive Adjustments */

@@ -4,11 +4,16 @@ import { useInView } from 'react-intersection-observer';
 import styles from './Sponsors.module.css';
 
 import shell from './images/shell.png';
-import mil from './images/mil.png';
-import tedco from './images/tedco.png';
-import umd from './images/umd.png';
 import arpa from './images/arpa.png';
-import meia from './images/meia.png';
+import cdl from './images/pink-black.jpg';
+import mdCommerce from './images/MD Commerce logo.jpeg';
+import blackbird from './images/Blackbird_Logo.jpg';
+import rec from './images/REC logo- higher quality.png';
+import districtAngels from './images/District angels - logo.jpg';
+import tedco from './images/tedco.png';
+import cbscf from './images/CBSCF logo.jpg';
+import mmf from './images/MMF - logo.png';
+import discoveryFund from './images/Discovery Fund logo.png';
 
 function Sponsors() {
   const [ref, inView] = useInView({
@@ -23,12 +28,17 @@ function Sponsors() {
   // Define sponsors only once
   //maryland energy innovation accelerator, Shell Game Changer, Tedco, ARPAE, MII, MEII
   const sponsors = [
-    { name: "ARPA-E", logo: arpa, id: 3 },
-    { name: "MIL", logo: mil, id: 4 },
-    { name: "University of Maryland", logo: umd, id: 1 },
-    { name: "MEIA", logo: meia, id: 6 },
-    { name: "Shell", logo: shell, id: 2 },
-    { name: "TEDCO", logo: tedco, id: 5 },
+    { name: "Shell Game Changer", logo: shell, id: 1 },
+    { name: "ARPA-E", logo: arpa, id: 2 },
+    { name: "Creative Destruction Lab", logo: cdl, id: 3 },
+    { name: "MD Department of Commerce", logo: mdCommerce, id: 4 },
+    { name: "Blackbird Laboratories", logo: blackbird, id: 5 },
+    { name: "Resilient Earth Capital", logo: rec, id: 6 },
+    { name: "District Angels", logo: districtAngels, id: 7 },
+    { name: "TEDCO", logo: tedco, id: 8 },
+    { name: "CBSCF", logo: cbscf, id: 9 },
+    { name: "MMF", logo: mmf, id: 10 },
+    { name: "Discovery Fund", logo: discoveryFund, id: 11, whiteBox: true },
   ];
   
   // Create doubled array for seamless scrolling
@@ -122,10 +132,10 @@ function Sponsors() {
                   key={`${sponsor.id}-${index}`}
                   className={styles.sponsorCard}
                 >
-                  <img 
-                    src={sponsor.logo} 
-                    alt={sponsor.name} 
-                    className={styles.sponsorLogo} 
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className={`${styles.sponsorLogo} ${sponsor.whiteBox ? styles.whiteBox : ''}`}
                     loading={index < 5 ? "eager" : "lazy"}
                   />
                 </div>

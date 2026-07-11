@@ -26,30 +26,14 @@ import { seoData } from "../config/seoConfig";
 
 const founders = [
   {
-    id: 2,
-    name: "Rodger McKain, Ph.D.",
-    title: "CEO",
-    blurb: "30 years as Fortune 500\nExecutive",
-    bio: [
-      "Rodger brings expertise in building large businesses and succesful exit strategies. He successfully led the growth of multi-billion dollar S&P 500 companies.",
-      "Previous Roles:",
-      "VP and Head at British Petroleum (Global Exploration, Gas to Chemicals/Liquids).",
-      "Interim CEO, LG Fuel Cell Systems, Inc.",
-      "VP Govt. Programs Rolls-Royce Fuel Cell Systems.",
-      "President SOFCO-EFS Holdings, LLC (Acquired by Rolls-Royce/LG).",
-      "Education: Case Western Reserve University - Physical Chemistry.",
-    ],
-    imageUrl: founder2,
-    linkedInUrl: "https://www.linkedin.com/in/rodger-mckain-5223168/",
-  },
-  {
     id: 3,
     name: "Emir Dogdibegovic, Ph.D.",
-    title: "CTO and CCO",
+    title: "CEO",
     blurb: "15 years of Scaleup & Deployment of Clean Energy Technologies",
     bio: [
       "Emir brings the technical and product scaleup know-how and strategic business expertise in customer acquisition, project development and deployment, and revenue generation.",
       "Previous Roles:",
+      "CTO & CCO, Alchemity.",
       "Director Strategy and Execution, Origis Energy.",
       "Senior Engineer & Senior Program Manager, Nexceris.",
       "Affiliate, Lawrence Berkeley National Laboratory.",
@@ -59,6 +43,24 @@ const founders = [
     imageUrl: founder3,
     linkedInUrl:
       "https://www.linkedin.com/in/emir-dogdibegovic-ph-d-ba976b192/",
+  },
+  {
+    id: 2,
+    name: "Rodger McKain, Ph.D.",
+    title: "CFO",
+    blurb: "30 years as Fortune 500\nExecutive",
+    bio: [
+      "Rodger brings expertise in building large businesses and succesful exit strategies. He successfully led the growth of multi-billion dollar S&P 500 companies.",
+      "Previous Roles:",
+      "CEO, Alchemity.",
+      "VP and Head at British Petroleum (Global Exploration, Gas to Chemicals/Liquids).",
+      "Interim CEO, LG Fuel Cell Systems, Inc.",
+      "VP Govt. Programs Rolls-Royce Fuel Cell Systems.",
+      "President SOFCO-EFS Holdings, LLC (Acquired by Rolls-Royce/LG).",
+      "Education: Case Western Reserve University - Physical Chemistry.",
+    ],
+    imageUrl: founder2,
+    linkedInUrl: "https://www.linkedin.com/in/rodger-mckain-5223168/",
   },
   {
     id: 1,
@@ -963,7 +965,9 @@ function About() {
                       (selectedPerson.bio[index - 1] === "Previous Roles:" ||
                         selectedPerson.bio[index - 2] === "Previous Roles:" ||
                         selectedPerson.bio[index - 3] === "Previous Roles:" ||
-                        selectedPerson.bio[index - 4] === "Previous Roles:") &&
+                        selectedPerson.bio[index - 4] === "Previous Roles:" ||
+                        selectedPerson.bio[index - 5] === "Previous Roles:" ||
+                        selectedPerson.bio[index - 6] === "Previous Roles:") &&
                       (selectedPerson.name.includes("Emir") ||
                         selectedPerson.name.includes("Rodger"))
                     ) {
