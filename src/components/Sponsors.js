@@ -5,14 +5,13 @@ import styles from './Sponsors.module.css';
 
 import shell from './images/shell.png';
 import arpa from './images/arpa.png';
-import cdl from './images/pink-black.jpg';
-import mdCommerce from './images/MD Commerce logo.jpeg';
-import blackbird from './images/Blackbird_Logo.jpg';
+import cdl from './images/pink-black.png';
+import mdCommerce from './images/maryland department of commerce 1.png';
+import blackbird from './images/UdjB0gJC7Sq6SzCNtP5aVs2Hjaj1699957670569_200x200.png';
 import rec from './images/REC logo- higher quality.png';
-import districtAngels from './images/District angels - logo.jpg';
+import districtAngels from './images/da-logo-mark.png';
 import tedco from './images/tedco.png';
-import cbscf from './images/CBSCF logo.jpg';
-import mmf from './images/MMF - logo.png';
+import mmf from './images/thumbnail-1-1024x332.png';
 import discoveryFund from './images/Discovery Fund logo.png';
 
 function Sponsors() {
@@ -30,15 +29,14 @@ function Sponsors() {
   const sponsors = [
     { name: "Shell Game Changer", logo: shell, id: 1 },
     { name: "ARPA-E", logo: arpa, id: 2 },
-    { name: "Creative Destruction Lab", logo: cdl, id: 3 },
-    { name: "MD Department of Commerce", logo: mdCommerce, id: 4 },
-    { name: "Blackbird Laboratories", logo: blackbird, id: 5 },
+    { name: "Creative Destruction Lab", logo: cdl, id: 3, lighten: true },
+    { name: "MD Department of Commerce", logo: mdCommerce, id: 4, lighten: true, height: "155px" },
+    { name: "Blackbird Laboratories", logo: blackbird, id: 5, lighten: true, big: true },
     { name: "Resilient Earth Capital", logo: rec, id: 6 },
     { name: "District Angels", logo: districtAngels, id: 7 },
     { name: "TEDCO", logo: tedco, id: 8 },
-    { name: "CBSCF", logo: cbscf, id: 9 },
-    { name: "MMF", logo: mmf, id: 10 },
-    { name: "Discovery Fund", logo: discoveryFund, id: 11, whiteBox: true },
+    { name: "MMF", logo: mmf, id: 10, lighten: true },
+    { name: "Discovery Fund", logo: discoveryFund, id: 11, lighten: true },
   ];
   
   // Create doubled array for seamless scrolling
@@ -135,7 +133,8 @@ function Sponsors() {
                   <img
                     src={sponsor.logo}
                     alt={sponsor.name}
-                    className={`${styles.sponsorLogo} ${sponsor.whiteBox ? styles.whiteBox : ''}`}
+                    className={`${styles.sponsorLogo} ${sponsor.lighten ? styles.lighten : ''} ${sponsor.big ? styles.bigger : ''}`}
+                    style={sponsor.height ? { height: sponsor.height } : undefined}
                     loading={index < 5 ? "eager" : "lazy"}
                   />
                 </div>

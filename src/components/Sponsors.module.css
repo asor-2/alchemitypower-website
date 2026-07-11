@@ -114,18 +114,20 @@
   transition: all 0.3s ease;
   padding: 20px;
   border-radius: 4px;
-  filter: none;
+  filter: grayscale(100%) brightness(1.5) contrast(0.8);
   -webkit-user-drag: none;
   user-select: none;
 }
 
-/* Discovery Fund logo: sits in a white box so the black artwork reads on the dark section */
-.whiteBox {
-  background: #ffffff;
-  border-radius: 0;
-  height: 100px;
-  padding: 12px 16px;
-  box-sizing: border-box;
+/* Discovery Fund logo: its artwork is pure black, which brightness() can't lift.
+   invert() lifts the black to a light gray so it reads on the dark section. */
+.lighten {
+  filter: grayscale(100%) invert(0.8);
+}
+
+/* Blackbird Laboratories: render its logo larger than the rest */
+.bigger {
+  height: 140px;
 }
 
 /* Specific styling for UMD logo */
