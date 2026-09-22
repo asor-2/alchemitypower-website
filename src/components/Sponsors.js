@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import styles from './Sponsors.module.css';
-
+import czeroIMAGE from './images/Czero transparent logo black-white.png';
+import breakthroughIMAGE from './images/BEF logo.png';
 import shell from './images/shell.png';
 import arpa from './images/arpa.png';
 import cdl from './images/pink-black.png';
@@ -27,16 +28,18 @@ function Sponsors() {
   // Define sponsors only once
   //maryland energy innovation accelerator, Shell Game Changer, Tedco, ARPAE, MII, MEII
   const sponsors = [
-    { name: "Shell Game Changer", logo: shell, id: 1 },
-    { name: "ARPA-E", logo: arpa, id: 2 },
-    { name: "Creative Destruction Lab", logo: cdl, id: 3, lighten: true },
-    { name: "MD Department of Commerce", logo: mdCommerce, id: 4, lighten: true, height: "155px" },
-    { name: "Blackbird Laboratories", logo: blackbird, id: 5, lighten: true, big: true },
-    { name: "Resilient Earth Capital", logo: rec, id: 6 },
-    { name: "District Angels", logo: districtAngels, id: 7 },
-    { name: "TEDCO", logo: tedco, id: 8 },
+    { name: "Breakthrough Energy", logo: breakthroughIMAGE, id: 1 },
+    { name: "Shell Game Changer", logo: shell, id: 2 },
+    { name: "ARPA-E", logo: arpa, id: 3 },
+    { name: "Creative Destruction Lab", logo: cdl, id: 4, lighten: true },
+    { name: "MD Department of Commerce", logo: mdCommerce, id: 5, lighten: true, height: "155px" },
+    { name: "Blackbird Laboratories", logo: blackbird, id: 6, lighten: true, big: true },
+    { name: "Resilient Earth Capital", logo: rec, id: 7 },
+    { name: "District Angels", logo: districtAngels, id: 8 },
+    { name: "TEDCO", logo: tedco, id: 9 },
     { name: "MMF", logo: mmf, id: 10, lighten: true },
     { name: "Discovery Fund", logo: discoveryFund, id: 11, lighten: true },
+    { name: "Czero", logo: czeroIMAGE, id: 12, lighten: true },
   ];
   
   // Create doubled array for seamless scrolling

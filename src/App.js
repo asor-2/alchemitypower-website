@@ -24,6 +24,7 @@ import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import News from './pages/News';
 import SeedFinancing from './pages/SeedFinancing';
+import BreakthroughFunding from './pages/Breakthrough_funding';
 
 // ScrollToTop component - scrolls to top on route change
 function ScrollToTop() {
@@ -75,6 +76,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/news" element={<News />} />
             <Route path="/news/seed-financing" element={<SeedFinancing />} />
+              <Route
+                path="/news/breakthrough-funding"
+                element={<BreakthroughFunding />}
+              />
           </Routes>
         </main>
         <Footer />

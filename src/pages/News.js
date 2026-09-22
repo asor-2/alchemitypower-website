@@ -5,6 +5,7 @@ import PageHero from "../components/PageHero";
 import NewsHero from "../components/NewsHero";
 import NewsArticle from "../components/NewsArticle";
 import productVideo from "../components/images/product.mov";
+import cdlLogo from "../components/images/CDL logo.png";
 import newsImage1 from "../components/images/1.jpeg";
 import newsImage2 from "../components/images/2.png";
 import newsImage3 from "../components/images/3.png";
@@ -16,7 +17,7 @@ import tedco from "../components/images/tedco.png";
 import mbia from "../components/images/mbia.png";
 import alchemityLogo from "../components/images/Alchemity logo - for dark background.png";
 import buildOurFuture from "../components/images/build our future.jpg";
-import cdlLogo from "../components/images/CDL logo.png";
+import breakthroughFellowImage from "../components/images/breakthrough-fellow-alchemity.jpeg";
 import styles from "./News.module.css";
 
 import SEO from "../components/SEO/SEO";
@@ -167,6 +168,14 @@ const logoImageStyle = {
 };
 
 const newsArticles = [
+  {
+    title: "Alchemity Selected As A Breakthrough Energy Fellow",
+    //fix the image
+    image: breakthroughFellowImage,
+    link: "/news/breakthrough-funding",
+    source: "Alchemity",
+    imageStyle: logoImageStyle
+  },
   {
     title: "Alchemity Announces Seed Financing",
     image: alchemityLogo,
