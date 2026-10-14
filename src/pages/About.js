@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Modal from "../components/Modal";
-import ProfileCard from "../components/ProfileCard";
-// import PageHero from "../components/PageHero";
-// import AboutHero from "../components/AboutHero";
-import about1 from "../components/images/about1.png";
-import about2 from "../components/images/about2.png";
-import about3 from "../components/images/about3.png";
-
-import aboutVideo from "../components/images/about_video.mov";
-
+import React, { useEffect, useRef, useState } from "react";
+import EnergyBackground from "../components/EnergyBackground";
+import SEO from "../components/SEO/SEO";
+import styles from "./About.module.css";
+import campusBuilding from "../components/images/about1.png";
+import labTeam from "../components/images/interns_1.png";
 import founder1 from "../components/images/founder1.jpg";
 import founder2 from "../components/images/founder2.jpg";
 import founder3 from "../components/images/founder3.jpg";
 import advisor1 from "../components/images/advisor1.png";
 import advisor2 from "../components/images/advisor2.jpg";
 import advisor3 from "../components/images/advisor3.jpg";
-import { motion } from "framer-motion";
-// import { useInView } from "react-intersection-observer";
-// import styles from "../components/PageHero.module.css";
-import styles1 from "../components/ProfileCard.module.css";
-// import { PiAndroidLogoDuotone } from "react-icons/pi";
-
-import SEO from "../components/SEO/SEO";
-import { seoData } from "../config/seoConfig";
 
 const founders = [
   {
@@ -122,902 +109,131 @@ const advisors = [
   },
 ];
 
-const gridStyle = {
-  display: "grid",
-  gap: "3rem",
-  maxWidth: "1200px",
-  margin: "1rem auto",
-  width: "100%",
-  justifyContent: "center",
-  justifyItems: "center",
-};
+function Arrow() {
+  return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" /></svg>;
+}
 
-const founderGridStyle = {
-  ...gridStyle,
-  // gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-  maxWidth: "1200px",
-  gap: "3rem",
-};
-
-const advisorGridStyle = {
-  ...gridStyle,
-  // gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-  maxWidth: "1200px",
-  gap: "3rem",
-};
-
-const buttonStyle = {
-  backgroundColor: "#0077b5",
-  color: "#fff",
-  border: "none",
-  padding: "0.5rem 1rem",
-  borderRadius: "4px",
-  cursor: "pointer",
-  marginTop: "1rem auto",
-  fontWeight: "500",
-};
-
-const titleStyle = {
-  fontSize: "2.5rem",
-  color: "#ffffff",
-  marginBottom: "3rem",
-  marginTop: "3rem",
-  textAlign: "center",
-  fontWeight: "400",
-  letterSpacing: "0.05em",
-};
-
-const linkedinButtonStyle = {
-  backgroundColor: "#25abe0",
-  color: "f",
-  padding: "0.5rem 1rem",
-  borderRadius: "4px",
-  textDecoration: "none",
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "0.5rem",
-  marginTop: "1rem",
-  transition: "background-color 0.3s ease",
-};
-
-const videoStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  zIndex: 0,
-};
-
-// Add animation variants after imports
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
-
-function About() {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedPerson, setSelectedPerson] = useState(null);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1023);
-  const [manifestoExpanded, setManifestoExpanded] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 1023);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const images = [about3, about1, about2];
-
-  const handleOpenModal = (person) => {
-    setSelectedPerson(person);
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedPerson(null);
-  };
-
-  const toggleManifesto = () => {
-    setManifestoExpanded(!manifestoExpanded);
-  };
-
-  const videoStyle = {
-    objectFit: "cover",
-    width: "100%",
-    height: "100%",
-  };
-  // Update the card styling for founders/team members
-  const profileCardStyle = {
-    backgroundColor: "rgba(31, 42, 48, 0.8)", // Darker card background
-    borderRadius: "12px",
-    padding: "1.5rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
-    border: "1px solid rgba(255, 255, 255, 0.08)",
-    transition: "all 0.3s ease",
-    height: "100%",
-    position: "relative",
-    overflow: "hidden",
-  };
-
-  // Add a subtle blue accent to the top of each card
-  const cardAccentStyle = {
-    position: "absolute",
-    top: 0,
-    left: "15%",
-    right: "15%",
-    height: "3px",
-    background:
-      "linear-gradient(to right, transparent, rgba(0, 119, 181, 0.5), transparent)",
-  };
-
+function PeopleSection({ id, label, description, people, onSelect }) {
   return (
-    <>
-      <SEO
-        title={seoData.about.title}
-        description={seoData.about.description}
-        keywords={seoData.about.keywords}
-        image={seoData.about.image}
-        url="/about"
-      />
-
-      {/* <style>
-        {
-          @keyframes slide {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-      </style> */}
-      {/* <div style={{ position: 'relative' }}>
-      {isLargeScreen ? (
-        <AboutHero />
-      ) : (
-        <PageHero 
-          title="About Us"
-          style={{ marginTop: '-300px', position: 'relative', zIndex: 2 }}
-          videoStyle={videoStyle}
-          backgroundVideoUrl={aboutVideo}
-          titleStyle={{
-            color: '#0177B5 !important',
-            fontWeight: '400',
-            lineHeight: '1.2'
-          }}
-        />
-      )}
-      </div> */}
-
-      <div
-        style={{
-          background: "linear-gradient(135deg, #000000, #1A3A4A, #000000)",
-          padding: "0 2rem", // Add horizontal padding on the outside
-          maxWidth: "100%",
-          boxSizing: "border-box",
-          minHeight: "90vh",
-        }}
-      >
-        <div
-          style={{
-            padding: "3.5rem 2rem 2rem",
-            textAlign: "center",
-            position: "relative",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "4rem",
-              fontWeight: "600",
-              marginBottom: "1rem",
-              letterSpacing: "-0.03em",
-              maxWidth: "1200px",
-              margin: "0 auto 1rem",
-              textAlign: "center",
-              justifyContent: "center",
-            }}
-          >
-            <span style={{ color: "#ffffff" }}>The </span>
-            <span
-              style={{
-                background:
-                  "linear-gradient(90deg, #25abe0, rgba(37, 171, 224, 0.7))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Founding Team
-            </span>
-          </h1>
-          <p
-            style={{
-              fontSize: "1.5rem",
-              color: "rgba(255, 255, 255, 0.8)",
-              maxWidth: "700px",
-              margin: "0 auto 0.5rem",
-              lineHeight: "1.6",
-            }}
-          >
-            A team of driven by impact and a shared vision
-            for clean future
-          </p>
-
-          {/* LINE DIVIDER */}
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "1200px",
-              margin: "1rem auto",
-              marginTop: "3rem",
-              // marginBottom: '0',
-              height: "1.5px",
-              background:
-                "linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)",
-            }}
-          ></div>
-        </div>
-
-        {/* Collapsible Manifesto Section */}
-        <div
-          style={{
-            backgroundColor: "rgba(31, 42, 48, 0.7)",
-            borderRadius: "12px",
-            padding: "3rem",
-            margin: "3rem auto",
-            maxWidth: "900px",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-            position: "relative",
-          }}
-        >
-          {/* Blue accent border at top */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: "10%",
-              right: "10%",
-              height: "3px",
-              background:
-                "linear-gradient(to right, transparent, #0077b5, transparent)",
-            }}
-          ></div>
-
-          <h2
-            style={{
-              fontSize: "28px",
-              color: "#24AADF",
-              textAlign: "center",
-              marginBottom: "1.5rem",
-              fontWeight: "400",
-              letterSpacing: "0.05em",
-            }}
-          >
-            THE ALCHEMITY MANIFESTO
-          </h2>
-
-          {/* Preview quote - always visible */}
-          <p
-            style={{
-              fontSize: "1.3rem",
-              color: "#ffffff",
-              lineHeight: "1.8",
-              marginBottom: "1.5rem",
-              fontStyle: "italic",
-              textAlign: "center",
-            }}
-          >
-            For over a century, industry has relied on systems built for
-            scale—not for sustainability. We believe clean fuels and
-            high-performance chemicals should not come at the cost of the
-            climate.
-          </p>
-
-          {/* Preview paragraph - always visible */}
-          <p
-            style={{
-              color: "rgba(255, 255, 255, 0.9)",
-              fontSize: "1.1rem",
-              lineHeight: "1.7",
-              marginBottom: manifestoExpanded ? "1.5rem" : "2rem",
-            }}
-          >
-            Our Purpose: The future of fuels and chemicals is circular,
-            efficient, and emissions-free. And we believe that scientific and
-            engineering breakthroughs—when paired with purpose—can unlock global
-            transformation.
-          </p>
-
-          {/* Expandable content */}
-          {manifestoExpanded && (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-                color: "rgba(255, 255, 255, 0.9)",
-                fontSize: "1.1rem",
-                lineHeight: "1.7",
-                animation: "fadeIn 0.5s ease",
-              }}
-            >
-              <h3
-                style={{
-                  color: "#0077b5",
-                  fontSize: "1.3rem",
-                  marginBottom: "0.5rem",
-                  fontWeight: "500",
-                }}
-              >
-                Our Core Beliefs and Values:
-              </h3>
-
-              <ul
-                style={{
-                  listStyleType: "disc",
-                  paddingLeft: "2rem",
-                  color: "rgba(255, 255, 255, 0.9)",
-                  fontSize: "1.1rem",
-                  lineHeight: "1.7",
-                  // marginBottom: '1.5rem'
-                }}
-              >
-                <li>
-                  Wasted resources and greenhouse gases are assets—not
-                  liabilities.
-                </li>
-                <li>
-                  Clean fuel & chemicals must be economically accessible, not
-                  aspirational.
-                </li>
-                <li>
-                  Industrial decarbonization requires local deployment, not
-                  centralized infrastructure.
-                </li>
-              </ul>
-
-              <p>
-                Alchemity exists to transform underutilized wasted resources and
-                greenhouse gases into carbon-neutral fuels and high-value
-                chemicals—using modular, turnkey reactor systems deployable
-                today, not in the distant future. Our game-changing reactor core
-                does not require complex manufacturing, nor precious metals and
-                leverages existing scaled manufacturing and supply chain.
-                <p style={{textAlign: 'center'}}><em>But technology alone is not enough.</em></p>
-
-              </p>
-
-              <h3
-                style={{
-                  color: "#0077b5",
-                  fontSize: "1.3rem",
-                  marginBottom: "0.5rem",
-                  fontWeight: "500",
-                }}
-              >
-                We are here to build a new industrial foundation. One that is:
-              </h3>
-
-              <ul
-                style={{
-                  listStyleType: "disc",
-                  paddingLeft: "2rem",
-                  color: "rgba(255, 255, 255, 0.9)",
-                  fontSize: "1.1rem",
-                  lineHeight: "1.7",
-                }}
-              >
-                <li>Modular, not monolithic.</li>
-                <li>Transparent, not extractive.</li>
-                <li>Resilient, not reliant.</li>
-              </ul>
-
-              <h3
-                style={{
-                  color: "#0077b5",
-                  fontSize: "1.3rem",
-                  marginBottom: "0.5rem",
-                  fontWeight: "500",
-                }}
-              >
-                We believe:
-              </h3>
-              <ul
-                style={{
-                  listStyleType: "disc",
-                  paddingLeft: "2rem",
-                  color: "rgba(255, 255, 255, 0.9)",
-                  fontSize: "1.1rem",
-                  lineHeight: "1.7",
-                  // marginBottom: '1.5rem'
-                }}
-              >
-                <li>
-                  Underutilized wasted resources should power transformation,
-                  not languish unused.
-                </li>
-                <li>
-                  Clean solutions must be scalable and cost-effective—real world
-                  impact is the benchmark.
-                </li>
-                <li>
-                  Modular systems unlock rapid deployment: compact skids,
-                  installed on-site, anywhere.
-                </li>
-                <li>
-                  Elegant integration over complex builds: our reactor unites
-                  catalysis and membrane separation in one step.
-                </li>
-                <li>
-                  Mission-led culture matters: we operate transparently,
-                  respectfully, and relentlessly—as engineers, scientists,
-                  entrepreneurs, and team members with purpose.
-                </li>
-              </ul>
-
-              <div
-                style={{
-                  color: "rgba(255, 255, 255, 0.9)",
-                  fontSize: "1.1rem",
-                  lineHeight: "1.7",
-                  marginBottom: "2rem",
-                }}
-              >
-                <h3
-                  style={{
-                    color: "#0077b5",
-                    fontSize: "1.3rem",
-                    marginBottom: "1rem",
-                    fontWeight: "500",
-                  }}
-                >
-                  Our Vision of the Future:
-                </h3>
-
-                <p style={{ marginBottom: "2rem" }}>
-                  We envision a world where distributed fuels and chemical hubs
-                  emerge across local communities—clean, carbon-neutral, and
-                  economically viable. Industrial and agricultural sites become
-                  sources of clean energy and chemicals, powering regional
-                  sustainability with local impact.
-                </p>
-
-                <h3
-                  style={{
-                    color: "#0077b5",
-                    fontSize: "1.3rem",
-                    marginBottom: "1rem",
-                    fontWeight: "500",
-                  }}
-                >
-                  Our Principles:
-                </h3>
-
-                <ul
-                  style={{
-                    listStyleType: "disc",
-                    paddingLeft: "2rem",
-                    marginBottom: "2rem",
-                  }}
-                >
-                  <li>
-                    Deliver functioning systems, not just prototypes: our
-                    modular reactors must perform at scale in real environments.
-                  </li>
-                  <li>
-                    Iterate and scale with urgency: rapid skid deployment means
-                    faster results, faster impact.
-                  </li>
-                  <li>
-                    Partner with alignment: we collaborate with customers, early
-                    adopters, system integrators, and engineering (EPC) firms
-                    who share our urgency and vision.
-                  </li>
-                  <li>
-                    Maintain ethical rigor: we prioritize sustainability, team
-                    welfare, and transparency in everything we build and
-                    deliver.
-                  </li>
-                  <li>
-                    Post-sale service: once we deliver, we serve our customers
-                    long-term.
-                  </li>
-                </ul>
-
-                <h3
-                  style={{
-                    color: "#0077b5",
-                    fontSize: "1.3rem",
-                    marginBottom: "1rem",
-                    fontWeight: "500",
-                  }}
-                >
-                  Call to Action:
-                </h3>
-
-                <p style={{ marginBottom: "2rem" }}>
-                  Let's deploy carbon neutral reactor systems today—creating
-                  impact where it matters. Together, we can build a cleaner fuel
-                  and chemical infrastructure—modular, circular, and net zero.
-                </p>
-
-                <div
-                  style={{
-                    textAlign: "center",
-                    marginTop: "3rem",
-                    fontStyle: "italic",
-                    borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                    paddingTop: "2rem",
-                  }}
-                >
-                  <p style={{ marginBottom: "0.5rem" }}>
-                    This is not just a company. It is a commitment.
-                  </p>
-                  <p style={{ marginBottom: "0.5rem" }}>
-                    To decarbonize industry. To create value from waste.
-                  </p>
-                  <p style={{ marginBottom: "1.5rem" }}>
-                    To create stronger communities, and a legacy worth
-                    defending.
-                  </p>
-
-                  <p style={{ fontSize: "1.2rem" }}>
-                    If you believe a better chemical future is possible, join
-                    us. Build it with us.
-                  </p>
-                </div>
-
-                <div
-                  style={{
-                    textAlign: "center",
-                    margin: "1rem 0 1rem",
-                    padding: "1rem 0",
-                    // borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                    // borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                    color: "#25abe0",
-                    fontStyle: "italic",
-                  }}
-                >
-                  Turning waste into value. Turning vision into reality.
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Learn More / Show Less button */}
-          <div style={{ textAlign: "center", marginTop: "1rem" }}>
-            <button
-              onClick={() => setManifestoExpanded(!manifestoExpanded)}
-              style={{
-                background: "transparent",
-                border: "1px solid #0077b5",
-                color: "#0077b5",
-                padding: "0.5rem 1.5rem",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                fontWeight: "500",
-                transition: "all 0.2s ease",
-              }}
-              onMouseOver={(e) => {
-                e.target.style.background = "rgba(0, 119, 181, 0.1)";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.background = "transparent";
-              }}
-            >
-              {manifestoExpanded ? "Show Less" : "Learn More"}
-            </button>
-          </div>
-        </div>
-
-        <div
-          style={{
-            padding: "var(--section-padding)",
-            backgroundColor: "transparent",
-            background: "transparent",
-          }}
-        >
-          <h2 style={{ ...titleStyle, marginTop: "-2rem" }}>FOUNDERS</h2>
-          <div style={founderGridStyle} className={styles1.foundersWrapper}>
-            {founders.map((founder, index) => (
-              <motion.div
-                key={founder.name}
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                style={{
-                  paddingLeft: window.innerWidth < 480 ? "0.5rem" : "1rem",
-                  paddingRight: window.innerWidth < 480 ? "0.25rem" : "1rem",
-                  paddingTop: "2rem",
-                  paddingBottom: "2rem",
-                  backgroundColor: "rgba(31, 42, 48, 0.65)", // More transparent
-                  backdropFilter: "blur(10px)", // Glass effect
-                  WebkitBackdropFilter: "blur(10px)", // For Safari
-                  borderRadius: "15px",
-                  boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
-                  border: "3px double rgba(116, 186, 198, 0.3)",
-                  transition: "all 0.3s ease",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: "2px",
-                    background:
-                      "linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.5), transparent)",
-                  }}
-                ></div>
-                <ProfileCard
-                  key={founder.name}
-                  {...founder}
-                  id={`founder-${index + 1}`}
-                  onClick={() => handleOpenModal(founder)}
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          <h2 style={{ ...titleStyle, marginTop: "4rem" }}>ADVISORS</h2>
-          <div style={advisorGridStyle} className={styles1.foundersWrapper}>
-            {advisors.map((advisor, index) => (
-              <motion.div
-                key={advisor.id}
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                style={{
-                  paddingLeft: window.innerWidth < 480 ? "0.5rem" : "1rem",
-                  paddingRight: window.innerWidth < 480 ? "0.25rem" : "1rem",
-                  paddingTop: "2rem",
-                  paddingBottom: "2rem",
-                  backgroundColor: "rgba(31, 42, 48, 0.65)", // More transparent
-                  backdropFilter: "blur(10px)", // Glass effect
-                  WebkitBackdropFilter: "blur(10px)", // For Safari
-                  borderRadius: "15px",
-                  boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
-                  border: "3px double rgba(116, 186, 198, 0.3)",
-                  transition: "all 0.3s ease",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: "3px",
-                    background:
-                      "linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.5), transparent)",
-                  }}
-                ></div>
-
-                <ProfileCard
-                  name={advisor.name}
-                  title={advisor.title}
-                  imageUrl={advisor.imageUrl}
-                  blurb={advisor.blurb}
-                  onClick={() => handleOpenModal(advisor)}
-                  isAdvisor={true}
-                  linkedInUrl={advisor.linkedInUrl}
-                  id={`advisor-${index + 1}`}
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          {selectedPerson && (
-            <Modal
-              show={showModal}
-              onClose={handleCloseModal}
-              title={`${selectedPerson.name} - ${
-                selectedPerson.name.includes("Rodger")
-                  ? "CFO"
-                  : selectedPerson.name.includes("Emir")
-                    ? "CEO"
-                    : selectedPerson.title
-              }`}
-              linkedInUrl={selectedPerson.linkedInUrl}
-              size={
-                selectedPerson.name.includes("Emir")
-                  ? "xlarge"
-                  : selectedPerson.name.includes("Matt") ||
-                      selectedPerson.name.includes("Glenn")
-                    ? "default"
-                    : "large"
-              }
-              showCloseButton={true}
-            >
-              <ul
-                style={{
-                  textAlign: "left",
-                  paddingLeft: "0",
-                  listStyle: "none",
-                  margin: "0",
-                  fontSize: "1.2rem",
-                }}
-              >
-                {selectedPerson.bio &&
-                  selectedPerson.bio.map((point, index) => {
-                    if (index === 0) {
-                      return (
-                        <li
-                          key={index}
-                          style={{ marginBottom: "1rem", fontSize: "1.2rem" }}
-                        >
-                          {point}
-                        </li>
-                      );
-                    } else if (
-                      index === 1 &&
-                      selectedPerson.title === "Advisor"
-                    ) {
-                      return (
-                        <>
-                          <h4
-                            key="current-role"
-                            style={{
-                              textAlign: "left",
-                              marginBottom: "0.5rem",
-                              fontSize: "1.4rem",
-                              color: "#25abe0",
-                            }}
-                          >
-                            {selectedPerson.name.includes("Matt")
-                              ? "Previous Roles"
-                              : "Current Role"}
-                          </h4>
-                          <li
-                            key={index}
-                            style={{ marginBottom: "1rem", fontSize: "1.2rem" }}
-                          >
-                            {point}
-                          </li>
-                        </>
-                      );
-                    } else if (
-                      point === "Previous Roles:" ||
-                      point === "Current Roles"
-                    ) {
-                      return (
-                        <h4
-                          key={index}
-                          style={{
-                            textAlign: "left",
-                            marginBottom:
-                              selectedPerson.name.includes("Eric") ||
-                              selectedPerson.name.includes("Rodger") ||
-                              selectedPerson.name.includes("Emir")
-                                ? "1rem"
-                                : "0.5rem",
-                            fontSize: "1.4rem",
-                            color: "#25abe0",
-                          }}
-                        >
-                          {point}
-                        </h4>
-                      );
-                    } else if (point.includes("Education:")) {
-                      return (
-                        <>
-                          <h4
-                            key={`edu-${index}`}
-                            style={{
-                              textAlign: "left",
-                              marginBottom: "0.5rem",
-                              fontSize: "1.4rem",
-                              color: "#25abe0",
-                            }}
-                          >
-                            Education
-                          </h4>
-                          <li
-                            key={index}
-                            style={{ marginBottom: "1rem", fontSize: "1.2rem" }}
-                          >
-                            {point.replace("Education:", "").trim()}
-                          </li>
-                        </>
-                      );
-                    } else if (selectedPerson.name.includes("Eric")) {
-                      return (
-                        <li
-                          key={index}
-                          style={{
-                            marginBottom: "0.5rem",
-                            lineHeight: "1",
-                            fontSize: "1.2rem",
-                          }}
-                        >
-                          {point}
-                        </li>
-                      );
-                    } else if (
-                      (selectedPerson.bio[index - 1] === "Previous Roles:" ||
-                        selectedPerson.bio[index - 2] === "Previous Roles:" ||
-                        selectedPerson.bio[index - 3] === "Previous Roles:" ||
-                        selectedPerson.bio[index - 4] === "Previous Roles:" ||
-                        selectedPerson.bio[index - 5] === "Previous Roles:" ||
-                        selectedPerson.bio[index - 6] === "Previous Roles:") &&
-                      (selectedPerson.name.includes("Emir") ||
-                        selectedPerson.name.includes("Rodger"))
-                    ) {
-                      return (
-                        <li
-                          key={index}
-                          style={{
-                            marginBottom: "0.5rem",
-                            lineHeight: "1",
-                            fontSize: "1.2rem",
-                          }}
-                        >
-                          {point}
-                        </li>
-                      );
-                    } else if (
-                      selectedPerson.bio[index - 1] === "Previous Roles:" ||
-                      selectedPerson.bio[index - 2] === "Previous Roles:" ||
-                      selectedPerson.bio[index - 3] === "Previous Roles:"
-                    ) {
-                      return (
-                        <li
-                          key={index}
-                          style={{
-                            marginBottom: "0.5rem",
-                            lineHeight: "1",
-                            fontSize: "1.2rem",
-                          }}
-                        >
-                          {point}
-                        </li>
-                      );
-                    } else {
-                      return (
-                        <li
-                          key={index}
-                          style={{ marginBottom: "1rem", fontSize: "1.2rem" }}
-                        >
-                          {point}
-                        </li>
-                      );
-                    }
-                  })}
-              </ul>
-            </Modal>
-          )}
-        </div>
+    <section id={id} className={styles.peopleSection} aria-labelledby={`${id}-title`}>
+      <div className={styles.sectionHeading}>
+        <h2 id={`${id}-title`}>{label}</h2>
+        <p>{description}</p>
       </div>
-    </>
+      <div className={styles.peopleGrid}>
+        {people.map(person => (
+          <article className={styles.person} key={person.id}>
+            <button type="button" className={styles.profileButton} onClick={() => onSelect(person)} aria-label={`Read biography of ${person.name}`} aria-haspopup="dialog">
+              <span className={styles.portrait}><img src={person.imageUrl} alt="" loading="lazy" /></span>
+              <span className={styles.personName}>{person.name}</span>
+              <span className={styles.personRole}>{person.title}</span>
+              <span className={styles.personBlurb}>{person.blurb}</span>
+              <span className={styles.profileLink}>View biography <Arrow /></span>
+            </button>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
-export default About;
+function Biography({ person, onClose }) {
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus();
+    };
+  }, []);
+
+  return (
+    <dialog ref={dialogRef} className={styles.dialog} aria-labelledby="biography-title" onCancel={event => { event.preventDefault(); onClose(); }} onClick={event => { if (event.target === event.currentTarget) { const box = event.currentTarget.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) onClose(); } }}>
+      <div className={styles.dialogBar}><button type="button" className={styles.closeButton} onClick={onClose} autoFocus>Close <span aria-hidden="true">×</span></button></div>
+      <div className={styles.dialogContent}>
+        <img className={styles.dialogPortrait} src={person.imageUrl} alt={person.name} />
+        <div className={styles.biography}>
+          <p className={styles.eyebrow}>{person.title}</p>
+          <h2 id="biography-title">{person.name}</h2>
+          {person.bio.map((paragraph, index) => /^(Previous Roles:?|Current Roles:?)$/.test(paragraph)
+            ? <h3 key={index}>{paragraph.replace(/:$/, "")}</h3>
+            : <p key={index}>{paragraph}</p>)}
+          <a className={styles.linkedin} href={person.linkedInUrl} target="_blank" rel="noopener noreferrer">Connect on LinkedIn <span className={styles.srOnly}>(opens in a new tab)</span><Arrow /></a>
+        </div>
+      </div>
+    </dialog>
+  );
+}
+
+const locationPhotos = [
+  { src: campusBuilding, alt: "Brick building on the University of Maryland campus", caption: "Our home base · College Park, Maryland" },
+  { src: labTeam, alt: "Six team members standing together in the lab", caption: "Inside the lab · The people behind the work" },
+];
+
+function LocationSection() {
+  const [activePhoto, setActivePhoto] = useState(0);
+  const touchStart = useRef(null);
+  const move = (direction) => setActivePhoto(current => (current + direction + locationPhotos.length) % locationPhotos.length);
+
+  return (
+    <section className={styles.locationSection} aria-labelledby="location-title">
+      <div className={styles.locationIntro}>
+        <p className={styles.eyebrow}>Our home base</p>
+        <h2 id="location-title">College Park,<br /><span>Maryland.</span></h2>
+        <p className={styles.locationDescription}>Based on the University of Maryland campus, we’re working on what comes next in on-site power.</p>
+        <div className={styles.locationMarker}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" stroke="currentColor" strokeWidth="1.5" /><circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5" /></svg>
+          <span>University of Maryland<br />College Park, MD</span>
+        </div>
+      </div>
+      <div className={styles.locationGallery} role="region" aria-roledescription="carousel" aria-label="Our campus and lab" onKeyDown={event => {
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") { event.preventDefault(); move(event.key === "ArrowLeft" ? -1 : 1); }
+      }}>
+        <div className={styles.locationFrame} tabIndex={0} aria-label="Location photographs. Use the left and right arrow keys to change photos." onTouchStart={event => {
+          touchStart.current = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+        }} onTouchCancel={() => { touchStart.current = null; }} onTouchEnd={event => {
+          const start = touchStart.current;
+          touchStart.current = null;
+          if (!start || !event.changedTouches.length) return;
+          const dx = event.changedTouches[0].clientX - start.x;
+          const dy = event.changedTouches[0].clientY - start.y;
+          if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) move(dx < 0 ? 1 : -1);
+        }}>
+          {locationPhotos.map((photo, index) => <img key={photo.src} className={`${styles.locationPhoto} ${index === activePhoto ? styles.locationPhotoActive : ""}`} src={photo.src} alt={photo.alt} aria-hidden={index !== activePhoto} draggable={false} loading="lazy" />)}
+        </div>
+        <div className={styles.locationFooter}>
+          <p className={styles.locationCaption} aria-live="polite" aria-atomic="true"><span className={styles.locationCount}>{String(activePhoto + 1).padStart(2, "0")} / {String(locationPhotos.length).padStart(2, "0")}</span>{locationPhotos[activePhoto].caption}</p>
+          <div className={styles.locationControls}>
+            <button type="button" onClick={() => move(-1)} aria-label="Previous location photo"><span className={styles.previousArrow}><Arrow /></span></button>
+            <button type="button" onClick={() => move(1)} aria-label="Next location photo"><Arrow /></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function About() {
+  const [selectedPerson, setSelectedPerson] = useState(null);
+  return (
+    <EnergyBackground className={styles.page}>
+      <SEO title="About AlchemityPower" description="Meet the founders and advisors behind AlchemityPower and our work to develop a new generation of on-site power." />
+      <div className={styles.container}>
+        <header className={styles.hero}>
+          <div><p className={styles.eyebrow}>About AlchemityPower</p><h1>New power.<br /><span>Built on experience.</span></h1></div>
+          <div className={styles.introduction}><p>We’re developing a new generation of on-site power for data centers and other critical applications.</p><p>Our team brings together energy research, engineering, and business experience to move that work forward.</p><nav className={styles.sectionLinks} aria-label="About page sections"><a href="#founders">Meet the founders <Arrow /></a><a href="#advisors">Our advisors <Arrow /></a></nav></div>
+        </header>
+        <div className={styles.purpose}><p className={styles.eyebrow}>Our purpose</p><p>Give growing industries more options for the power they depend on.</p></div>
+        <LocationSection />
+        <PeopleSection id="founders" label="Our Leadership" description="75 years of combined experience" people={founders} onSelect={setSelectedPerson} />
+        <PeopleSection id="advisors" label="Our advisors" description="Perspectives from energy operations, investment, and business growth." people={advisors} onSelect={setSelectedPerson} />
+      </div>
+      {selectedPerson && <Biography person={selectedPerson} onClose={() => setSelectedPerson(null)} />}
+    </EnergyBackground>
+  );
+}

@@ -1,307 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ContactForm from "../components/ContactForm1";
-import styles from "./Contact.module.css";
+import EnergyBackground from "../components/EnergyBackground";
 import SEO from "../components/SEO/SEO";
-import { seoData } from "../config/seoConfig";
+import styles from "./Contact.module.css";
 
-function Contact() {
-  const linkedInUrl = "https://www.linkedin.com/company/alchemity/";
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
-
-  // Handle window resize for responsive hero section
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+export default function Contact() {
   return (
-    <>
-      <SEO
-        title={seoData.contact.title}
-        description={seoData.contact.description}
-        keywords={seoData.contact.keywords}
-        image={seoData.contact.image}
-        url="/contact"
-      />
-      <div
-        style={{
-          background: "linear-gradient(-135deg, #000000, #1A3A4A)",
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-          marginRight: "calc(-50vw + 50%)",
-          minHeight: "100vh",
-          position: "relative",
-          overflow: "hidden",
-          paddingBottom: "4rem",
-        }}
-      >
-        {/* Bold, branded hero section */}
-        <div
-          style={{
-            padding: "3.5rem 2rem 2rem",
-            textAlign: "center",
-            position: "relative",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "4rem",
-              fontWeight: "600",
-              color: "#ffffff",
-              marginBottom: "1rem",
-              letterSpacing: "-0.03em",
-              maxWidth: "1200px",
-              margin: "0 auto 1rem",
-            }}
-          >
-            <span
-              style={{
-                background: "linear-gradient(150deg, #25abe0, #C0DBED)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Talk
-            </span>
-            <span> to Us</span>
-          </h1>
-          <p
-            style={{
-              fontSize: "1.5rem",
-              color: "rgba(255, 255, 255, 0.8)",
-              maxWidth: "700px",
-              margin: "0 auto 1.5rem",
-              lineHeight: "1.6",
-            }}
-          >
-            Interested to invest? Have questions about pre-ordering our system
-            or a general inquiry? Fill out the form below.
-          </p>
-
-          {/* LINE DIVIDER */}
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "1200px",
-              margin: "2.5rem auto",
-              height: "1.5px",
-              background:
-                "linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)",
-            }}
-          ></div>
-        </div>
-
-        <div
-          className={styles.contactPage}
-          style={{
-            backgroundColor: "transparent",
-            background: "transparent",
-            padding: "3rem 0 2rem",
-          }}
-        >
-          <div className={styles.contentWrapper} style={{ gap: "3rem" }}>
-            {/* Left column - completely redesigned */}
-            <div
-              className={styles.contactInfo}
-              style={{
-                // backgroundColor: 'rgba(31, 42, 48, 0.7)',
-                borderRadius: "12px",
-                padding: "2.5rem",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-                padding: window.innerWidth < 480 ? "1rem" : "2.5rem",
-                margin: window.innerWidth < 480 ? "0 auto" : undefined,
-                maxWidth: window.innerWidth < 480 ? "100%" : undefined,
-              }}
-            >
-              {/* <h2 style={{ 
-                fontSize: '2.5rem',
-                color: '#ffffff',
-                fontWeight: '300',
-                marginBottom: '2rem',
-                letterSpacing: '-0.02em'
-              }}>
-                Talk to Us
-              </h2> */}
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1.5rem",
-                  marginBottom: "2.5rem",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "1rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#25abe0",
-                      fontSize: "1.5rem",
-                      marginTop: "0.2rem",
-                    }}
-                  >
-                    📍
-                  </div>
-                  <div>
-                    <h3
-                      style={{
-                        color: "#25abe0",
-                        marginBottom: "0.5rem",
-                        fontSize: "1.5rem",
-                        fontWeight: "400",
-                      }}
-                    >
-                      Address
-                    </h3>
-                    <p
-                      style={{
-                        color: "rgba(255, 255, 255, 0.9)",
-                        lineHeight: "1.7",
-                        fontSize: "1.2rem",
-                      }}
-                    >
-                      4467 Technology Drive
-                      <br />
-                      Alchemity LLC, Suite 2116
-                      <br />
-                      College Park, MD 20742
-                    </p>
-                    <a
-                      href="https://maps.app.goo.gl/Z6SbocEcZ1GCuCvF7"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        color: "#25abe0",
-                        display: "inline-block",
-                        marginTop: "0.5rem",
-                        fontSize: "1.05rem",
-                        fontWeight: "450",
-                      }}
-                    >
-                      Get Directions →
-                    </a>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: "1rem",
-                    marginTop: "0.8rem",
-                  }}
-                >
-                  <div style={{ color: "#25abe0", fontSize: "1.5rem" }}>🔗</div>
-                  <div>
-                    <h3
-                      style={{
-                        color: "#25abe0",
-                        marginBottom: "0.5rem",
-                        fontSize: "1.5rem",
-                        fontWeight: "400",
-                      }}
-                    >
-                      Connect
-                    </h3>
-                    <p
-                      style={{
-                        color: "rgba(255, 255, 255, 0.9)",
-                        lineHeight: "1.7",
-                        marginBottom: "1rem",
-                        fontSize: "1.2rem",
-                      }}
-                    >
-                      Follow our journey in clean chemical innovation
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href={linkedInUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  backgroundColor: "#0077b5",
-                  color: "white",
-                  padding: "0.8rem",
-                  borderRadius: "12px",
-                  textDecoration: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.75rem",
-                  fontWeight: "500",
-                  transition: "all 0.3s ease",
-                  fontSize: "1.1rem",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-                  width: "70%",
-                  marginTop: "1rem",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                }}
-              >
-                <span>Connect with us on LinkedIn</span>
-              </a>
+    <EnergyBackground className={styles.page}>
+      <SEO title="Contact AlchemityPower" description="Get in touch about on-site power, investment, and partnership opportunities." url="/contact" />
+      <div className={styles.container}>
+        <header className={styles.hero}>
+          <p className={styles.eyebrow}>Contact AlchemityPower</p>
+          <h1>Let’s talk.</h1>
+          <p>Have a question about our work, an investment opportunity, or a potential partnership? We’d like to hear from you.</p>
+        </header>
+        <div className={styles.layout}>
+          <aside className={styles.details} aria-label="Contact details">
+            <div>
+              <h2>Find us</h2>
+              <address>4467 Technology Drive<br />Suite 2116<br />College Park, MD 20742</address>
+              <a href="https://maps.app.goo.gl/Z6SbocEcZ1GCuCvF7" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
             </div>
-
-            {/* Right column - redesigned form container */}
-            <div
-              className={styles.formWrapper}
-              style={{
-                backgroundColor: "rgba(31, 42, 48, 0.7)",
-                borderRadius: "12px",
-                padding: window.innerWidth < 480 ? "1rem" : "2.5rem",
-                border: "1px solid rgba(255, 255, 255, 0.08)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-                margin: window.innerWidth < 480 ? "0 auto" : undefined,
-                maxWidth: window.innerWidth < 480 ? "100%" : undefined,
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.5rem",
-                  color: "#ffffff",
-                  fontWeight: "400",
-                  marginBottom: "1.5rem",
-                  textAlign: "left",
-                }}
-              >
-                Send a Message
-              </h3>
-
-              <ContactForm isCareers={false} />
+            <div>
+              <h2>Stay connected</h2>
+              <p>Follow updates from Alchemity.</p>
+              <a href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span className={styles.srOnly}> (opens in a new tab)</span></a>
             </div>
-          </div>
+          </aside>
+          <section className={styles.formPanel} aria-labelledby="contact-form-title">
+            <h2 id="contact-form-title">Send us a message</h2>
+            <p className={styles.note}>All fields are required. Please use your work email.</p>
+            <ContactForm isCareers={false} appearance="minimal" />
+          </section>
         </div>
-
-        {/* Diagonal accent at bottom */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "5px",
-            background:
-              "linear-gradient(to-bottom, transparent, rgba(37, 171, 224, 0.3), transparent)",
-          }}
-        ></div>
       </div>
-    </>
+    </EnergyBackground>
   );
 }
-
-export default Contact;

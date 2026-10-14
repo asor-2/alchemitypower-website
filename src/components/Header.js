@@ -1,220 +1,97 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import logo from "./images/alchemity_logo_w_text.png";
 
-const contactButtonStyle = {
-  backgroundColor: "#0077b5",
-  color: "white",
-  padding: "0.5rem 1rem",
-  borderRadius: "4px",
-  textDecoration: "none",
-  transition: "background-color 0.3s ease",
-};
+const links = [
+  ["/markets", "Markets"], ["/products", "Product"],
+  ["/technology", "Technology"], ["/about", "About"],
+  ["/careers", "Careers"], ["/contact", "Contact Us"],
+];
 
-contactButtonStyle[":hover"] = {
-  backgroundColor: "#005a8c",
-};
-
-function Header() {
+export default function Header() {
+  const { pathname } = useLocation();
+  const home = pathname === "/";
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const headerRef = useRef(null);
+  const dialogRef = useRef(null);
+  const toggleRef = useRef(null);
 
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    // Prevent body scrolling when menu is open
-    if (!menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  };
-
-  // Close menu when clicking outside
-  const handleClickOutside = () => {
-    if (menuOpen) {
-      setMenuOpen(false);
-      document.body.style.overflow = "unset";
-    }
-  };
-
-  // Update window width when resizing
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      // Close mobile menu if screen becomes large
-      if (window.innerWidth >= 1024 && menuOpen) {
-        setMenuOpen(false);
-        document.body.style.overflow = "unset";
+    setMenuOpen(false);
+    setHidden(false);
+    let last = Math.max(0, window.scrollY), distance = 0, direction = 0, frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = Math.max(0, Math.min(window.scrollY, Math.max(0, document.documentElement.scrollHeight - window.innerHeight)));
+      const delta = y - last;
+      last = y;
+      setScrolled(y > 24);
+      if (y < 80) { setHidden(false); distance = 0; return; }
+      if (!delta) return;
+      const nextDirection = Math.sign(delta);
+      if (nextDirection !== direction) distance = 0;
+      direction = nextDirection;
+      distance += Math.abs(delta);
+      // Ignore small trackpad movements; never hide focused navigation.
+      if (distance >= (direction > 0 ? 28 : 12)) {
+        setHidden(direction > 0 && !headerRef.current?.querySelector(":focus-visible"));
+        distance = 0;
       }
     };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", schedule, { passive: true });
+    return () => { window.removeEventListener("scroll", schedule); cancelAnimationFrame(frame); };
+  }, [pathname]);
 
-    window.addEventListener("resize", handleResize);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    const media = window.matchMedia("(min-width: 1201px)");
+    const resize = () => { if (media.matches) setMenuOpen(false); };
+    media.addEventListener("change", resize);
     return () => {
-      window.removeEventListener("resize", handleResize);
-      // Reset body overflow when component unmounts
-      document.body.style.overflow = "unset";
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      media.removeEventListener("change", resize);
+      toggleRef.current?.focus({ preventScroll: true });
     };
   }, [menuOpen]);
 
-  // Check if mobile view
-  const isMobileView = windowWidth <= 1200;
+  const navLinks = () => links.map(([to, label]) => (
+    <li key={to}><NavLink to={to} className={styles.navLink} onClick={() => setMenuOpen(false)}>{label}</NavLink></li>
+  ));
 
-  return (
-    <header
-      className={`${styles.header} ${menuOpen ? styles.menuOpen : ""}`}
-      style={{ position: "sticky", top: 0, zIndex: 1000 }}
-    >
-      <nav className={styles.nav}>
-        <div>
-          <Link to="/" className={styles.logo}>
-            <img src={logo} alt="Alchemity Logo" className={styles.logoImage} />
-          </Link>
-        </div>
-
-        {isMobileView ? (
-          <>
-            <button
-              className={styles.hamburgerBtn}
-              onClick={toggleMenu}
-              aria-label="Toggle navigation menu"
-            >
-              <span className={styles.hamburgerBar}></span>
-              <span className={styles.hamburgerBar}></span>
-              <span className={styles.hamburgerBar}></span>
-            </button>
-
-            <div
-              className={`${styles.mobileMenu} ${menuOpen ? styles.menuOpen : ""}`}
-            >
-              <ul className={styles.mobileNavList}>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/markets"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    Markets
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/products"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    Product
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/technology"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    Technology
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/about"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    About
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/careers"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/news"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    News
-                  </Link>
-                </li>
-                <li className={styles.navItem}>
-                  <Link
-                    to="/contact"
-                    className={styles.navLink}
-                    onClick={toggleMenu}
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                {/* <li className={styles.navItem}>
-                  <Link to="/contact" className={`${styles.navLink} ${styles.contactButton}`} onClick={toggleMenu}>
-                    Contact Us
-                  </Link>
-                </li> */}
-              </ul>
-            </div>
-            <div
-              className={styles.menuOverlay}
-              onClick={handleClickOutside}
-            ></div>
-          </>
-        ) : (
-          <ul className={styles.navList}>
-            <li className={styles.navItem}>
-              <Link to="/markets" className={styles.navLink}>
-                Markets
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="/products" className={styles.navLink}>
-                Product
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="/technology" className={styles.navLink}>
-                Technology
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="/about" className={styles.navLink}>
-                About
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="/careers" className={styles.navLink}>
-                Careers
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link to="/news" className={styles.navLink}>
-                News
-              </Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link
-                to="/contact"
-                className={styles.navLink}
-                onClick={toggleMenu}
-              >
-                Contact Us
-              </Link>
-            </li>
-            {/* <li className={styles.navItem}>
-              <Link to="/contact" className={`${styles.navLink} ${styles.contactButton}`}>
-                Contact Us
-              </Link>
-            </li> */}
-          </ul>
-        )}
+  return <>
+    {!home && <div className={styles.spacer} aria-hidden="true" />}
+    <header ref={headerRef} className={styles.header}
+      data-hidden={hidden && !menuOpen} data-scrolled={scrolled} data-home={home}
+      onFocusCapture={() => setHidden(false)}>
+      <nav className={styles.nav} aria-label="Main navigation">
+        <Link to="/" className={styles.logo} aria-label="Alchemity Power home">
+          <img src={logo} alt="Alchemity Power" className={styles.logoImage} />
+        </Link>
+        <ul className={styles.navList}>{navLinks()}</ul>
+        <button ref={toggleRef} className={styles.menuButton} type="button"
+          aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="mobile-navigation"
+          onClick={() => setMenuOpen(true)}><span /><span /></button>
       </nav>
     </header>
-  );
+    <dialog ref={dialogRef} id="mobile-navigation" className={styles.mobileMenu}
+      aria-label="Navigation" onCancel={event => { event.preventDefault(); setMenuOpen(false); }}
+      onClick={event => { if (event.target === event.currentTarget) setMenuOpen(false); }}>
+      <div className={styles.menuPanel}>
+        <div className={styles.menuHeading}><span>Alchemity Power</span>
+          <button type="button" autoFocus onClick={() => setMenuOpen(false)} className={styles.closeButton}>Close <span aria-hidden="true">×</span></button>
+        </div>
+        <nav aria-label="Mobile navigation"><ul className={styles.mobileList}>{navLinks()}</ul></nav>
+      </div>
+    </dialog>
+  </>;
 }
-
-export default Header;

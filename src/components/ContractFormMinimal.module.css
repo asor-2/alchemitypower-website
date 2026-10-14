@@ -1,0 +1,159 @@
+.section {
+    margin: 0;
+    padding: 0;
+    color: #172d36;
+    background: transparent;
+    min-width: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.fieldGroup {
+    min-width: 0;
+    margin: 0;
+}
+
+.label {
+    display: block;
+    color: #172d36;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.nameGroup {
+    display: flex;
+    gap: 16px;
+}
+
+.nameGroup>div {
+    min-width: 0;
+}
+
+.form input:not([type="hidden"]),
+.form select,
+.form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #9aafb8;
+    border-radius: 3px;
+    color: #172d36 !important;
+    background-color: #e8edef;
+    padding: 12px 14px;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 48px;
+    box-shadow: none;
+}
+
+.form select {
+    appearance: auto;
+    background-image: none;
+    padding-right: 12px;
+}
+
+.form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+    color: #586e78 !important;
+    opacity: 1 !important;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    outline: 2px solid #225f7c !important;
+    outline-offset: 2px;
+    border: 1px solid #225f7c !important;
+    box-shadow: none !important;
+}
+
+.wordCount {
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: right;
+    color: #405963;
+    margin-top: 8px;
+}
+
+.form .submitButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px 28px;
+    border: 1px solid #225f7c;
+    border-radius: 3px;
+    background: #225f7c;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color 180ms ease;
+}
+
+.form .submitButton:hover {
+    background: #194960;
+    transform: none;
+    box-shadow: none;
+}
+
+.form .submitButton:focus-visible {
+    outline: 3px solid #225f7c !important;
+    outline-offset: 4px;
+}
+
+.form .submitButton:disabled {
+    background: #647b85;
+    cursor: wait;
+}
+
+.statusMessage {
+    padding: 16px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.error {
+    color: #842f27;
+    background: #f1dfda;
+}
+
+.success {
+    color: #265743;
+    background: #d8e8df;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .nameGroup {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form .submitButton {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form .submitButton {
+        transition: none;
+    }
+}

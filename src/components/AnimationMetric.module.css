@@ -1,0 +1,42 @@
+.card {
+    min-width: 0;
+    border-top: 1px solid #98b6c5;
+    padding-top: 24px;
+    text-align: left;
+}
+
+.card .number {
+    color: #087eaf;
+    font-family: Arial, sans-serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -.04em;
+    font-variant-numeric: tabular-nums;
+    margin: 0 0 16px;
+    text-shadow:
+        0 0 8px rgb(45 178 233 / 38%),
+        0 0 22px rgb(45 178 233 / 28%),
+        0 0 42px rgb(45 178 233 / 16%);
+    overflow-wrap: anywhere;
+}
+
+.suffix {
+    font-size: .48em;
+    letter-spacing: -.02em;
+    white-space: nowrap;
+}
+
+.card .caption {
+    color: #405963;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    .card .number {
+        font-size: 56px;
+    }
+}

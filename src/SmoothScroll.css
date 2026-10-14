@@ -1,0 +1,18 @@
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
+/* Space around the About and Careers section-link destinations. */
+#founders,
+#advisors,
+#career-opportunities {
+    scroll-margin-top: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}

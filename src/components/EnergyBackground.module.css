@@ -1,0 +1,91 @@
+.surface {
+    position: relative;
+    isolation: isolate;
+    background: #dfe6e8;
+}
+
+.atmosphere {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.grid {
+    position: absolute;
+    inset: -64px;
+    background-image: linear-gradient(rgb(34 95 124 / 9%) 1px, transparent 1px), linear-gradient(90deg, rgb(34 95 124 / 9%) 1px, transparent 1px);
+    background-size: 64px 64px;
+    animation: gridDrift 32s linear infinite;
+}
+
+.atmosphere {
+    -webkit-mask-image: linear-gradient(#000, rgb(0 0 0 / 24%) 650px, rgb(0 0 0 / 40%));
+    mask-image: linear-gradient(#000, rgb(0 0 0 / 24%) 650px, rgb(0 0 0 / 40%));
+}
+
+.glow {
+    position: absolute;
+    top: -220px;
+    right: -160px;
+    width: min(950px, 110vw);
+    height: 900px;
+    background: radial-gradient(ellipse, rgb(102 158 178 / 19%), transparent 65%);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.controls {
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
+    margin: auto;
+    padding: 0 20px 24px;
+    text-align: right;
+}
+
+.controls button {
+    background: transparent;
+    color: #405963;
+    border: 0;
+    border-bottom: 1px solid #8ba2ac;
+    border-radius: 0;
+    min-height: 44px;
+    padding: 8px 0;
+    font: 14px/1.5 "Helvetica Neue", Arial, sans-serif;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    color: #172d36;
+    background: transparent;
+}
+
+.controls button:focus-visible {
+    outline: 3px solid #225f7c;
+    outline-offset: 5px;
+}
+
+.paused .grid {
+    animation-play-state: paused;
+}
+
+@keyframes gridDrift {
+    to {
+        transform: translate(64px, 64px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .grid {
+        animation: none;
+    }
+
+    .controls {
+        display: none;
+    }
+}

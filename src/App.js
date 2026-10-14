@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import BackToTopButton from "./components/BackToTopButton";
+import "./SmoothScroll.css";
 
 import {
   BrowserRouter as Router,

@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
-import { IoClose } from "react-icons/io5";
 
-function Footer() {
-  const [selectedPopup, setSelectedPopup] = useState(null);
-
-  const popupContent = {
-    terms: {
-      title: "Terms & Conditions",
-      content: `1. Use of Site
+const popupContent = {
+  terms: {
+    title: "Terms & Conditions",
+    content: `1. Use of Site
 
 You may use this Site only for lawful purposes and in accordance with these Terms. You agree not to:
 
@@ -54,10 +50,10 @@ We reserve the right to update these Terms at any time. Changes will be posted o
 10. Contact Us
 
 If you have any questions about these Terms, please contact us at: resources@alchemity.tech`,
-    },
-    privacy: {
-      title: "Privacy Policy",
-      content: `At Alchemity ("Company") we value your privacy. This Privacy Policy explains how we collect, use, share, and protect your personal information when you visit or interact with our website www.Alchemity.com ("Site").
+  },
+  privacy: {
+    title: "Privacy Policy",
+    content: `At Alchemity ("Company") we value your privacy. This Privacy Policy explains how we collect, use, share, and protect your personal information when you visit or interact with our website www.Alchemity.com ("Site").
 
 1. Information We Collect
 
@@ -120,123 +116,150 @@ We may update this Privacy Policy periodically. Changes will be posted here with
 9. Contact Us
 
 For questions about this Privacy Policy or your personal data, please contact us at: resources@alchemity.tech`,
-    },
-  };
+  },
+};
 
-  const handleLinkClick = (e, type) => {
-    e.preventDefault();
-    setSelectedPopup(type);
-  };
 
-  return (
-    <footer
-      className={styles.footer}
-      style={{ position: "relative", paddingTop: "5px" }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "5px",
-          background:
-            "linear-gradient(90deg, transparent, rgba(37, 171, 224, 0.3), transparent)",
-          zIndex: 10,
-          paddingBottom: "5px",
-        }}
-      ></div>
-      <div className={styles.companyName} style={{ marginTop: "25px" }}>
-        Alchemity
-      </div>
-      <div className={styles.copyright}>
-        Alchemity and the Alchemity logo are trademarks of Alchemity LLC.
-      </div>
-      <div className={styles.links}>
-        <a href="#terms" onClick={(e) => handleLinkClick(e, "terms")}>
-          Terms & Conditions
-        </a>
-        <a href="#privacy" onClick={(e) => handleLinkClick(e, "privacy")}>
-          Privacy Policy
-        </a>
-        <a
-          href="https://www.linkedin.com/company/alchemity/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Follow us on LinkedIn
-        </a>
-      </div>
-
-      {selectedPopup && (
-        <motion.div
-          className={styles.popupOverlay}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setSelectedPopup(null)}
-        >
-          <motion.div
-            className={styles.popupContent}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.popupHeader}>
-              <h3
-                style={{
-                  color: "#25abe0",
-                  fontSize: "28px",
-                  marginBottom: "1.5rem",
-                  fontWeight: "600",
-                }}
-              >
-                {popupContent[selectedPopup].title}
-              </h3>
-              <button
-                className={styles.closeButton}
-                onClick={() => setSelectedPopup(null)}
-                aria-label="Close popup"
-              >
-                <IoClose size={24} />
-              </button>
-            </div>
-            <div
-              style={{
-                maxHeight: "70vh",
-                overflowY: "auto",
-                paddingRight: "1rem",
-                color: "#ffffff",
-                fontSize: "16px",
-                lineHeight: "1.8",
-                textAlign: "left",
-              }}
-            >
-              {popupContent[selectedPopup].content
-                .split("\n\n")
-                .map((paragraph, index) => {
-                  const isNumberedSection = /^\d+\./.test(paragraph);
-                  return (
-                    <p
-                      key={index}
-                      style={{
-                        marginBottom: "1.5rem",
-                        fontWeight: isNumberedSection ? "800" : "normal",
-                        color: isNumberedSection ? "#25abe0" : "#ffffff",
-                      }}
-                    >
-                      {paragraph}
-                    </p>
-                  );
-                })}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </footer>
-  );
+function LegalDialog({ content, onClose }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const dialog = ref.current;
+    const previousFocus = document.activeElement;
+    const overflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      dialog.close();
+      document.body.style.overflow = overflow;
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) previousFocus.focus();
+    };
+  }, []);
+  return <dialog ref={ref} className={styles.dialog} aria-labelledby="footer-legal-title" onCancel={event => { event.preventDefault(); onClose(); }}>
+    <div className={styles.dialogHeader}><h2 id="footer-legal-title">{content.title}</h2><button type="button" onClick={onClose} autoFocus>Close <span aria-hidden="true">×</span></button></div>
+    <div className={styles.legalBody}>{content.content.split("\n\n").map((paragraph, index) => /^\d+\./.test(paragraph) ? <h3 key={index}>{paragraph}</h3> : <p key={index}>{paragraph}</p>)}</div>
+  </dialog>;
+}
+function Arrow() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" strokeWidth="1.5" /></svg>; }
+function PhysicsGrid({ footerRef }) {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current, footer = footerRef.current;
+    const context = canvas.getContext("2d");
+    if (!context) return;
+    const motion = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    let width = 0, height = 0, columns = 0, rows = 0, nodes = [];
+    let frame = 0, previousTime = 0, visible = true;
+    const pointer = { x: -1000, y: -1000, active: false };
+    // Project a curved floor-to-wall surface with a rounded bend behind the content.
+    const columnCount = 29;
+    const rowCount = 15;
+    function draw() {
+      context.clearRect(0, 0, width, height);
+      const line = (from, to) => {
+        context.beginPath(); context.moveTo(from.x + from.dx, from.y + from.dy);
+        context.lineTo(to.x + to.dx, to.y + to.dy); context.stroke();
+      };
+      // White is the underlying mesh. Only a sparse set of edges has a blue halo.
+      context.lineWidth = 0.8; context.strokeStyle = "rgba(233,244,249,0.25)";
+      for (let row = 0; row < rows; row++) for (let col = 0; col < columns; col++) {
+        const i = row * columns + col;
+        if (col + 1 < columns) line(nodes[i], nodes[i + 1]);
+        if (row + 1 < rows) line(nodes[i], nodes[i + columns]);
+      }
+      context.save(); context.lineWidth = 1.2;
+      context.strokeStyle = "rgba(84,191,236,0.65)"; context.shadowColor = "#42b9ee"; context.shadowBlur = 8;
+      for (let row = 0; row < rows - 1; row++) for (let col = 0; col < columns - 1; col++) {
+        const i = row * columns + col;
+        if ((row * 17 + col * 11) % 29 === 4) { line(nodes[i], nodes[i + 1]); line(nodes[i + 1], nodes[i + columns + 1]); }
+      }
+      context.restore();
+    }
+    function tick(time) {
+      frame = 0;
+      if (!visible) return;
+      const dt = Math.min((time - (previousTime || time - 16)) / 1000, 0.033);
+      previousTime = time;
+      let moving = false;
+      nodes.forEach(node => {
+        const distance = Math.hypot(node.x - pointer.x, node.y - pointer.y);
+        const falloff = pointer.active ? Math.max(0, 1 - distance / 200) : 0;
+        const strength = falloff * falloff;
+        const targetX = (node.x - pointer.x) * strength * 0.12;
+        const targetY = -32 * strength;
+        node.vx += ((targetX - node.dx) * 90 - node.vx * 12) * dt;
+        node.vy += ((targetY - node.dy) * 90 - node.vy * 12) * dt;
+        node.dx += node.vx * dt; node.dy += node.vy * dt;
+        if (Math.abs(node.vx) + Math.abs(node.vy) + Math.abs(targetX - node.dx) + Math.abs(targetY - node.dy) > 0.08) moving = true;
+      });
+      draw();
+      if (moving && motion.matches) frame = window.requestAnimationFrame(tick);
+      else previousTime = 0;
+    }
+    function wake() { if (!frame && visible && motion.matches) frame = window.requestAnimationFrame(tick); }
+    function resize() {
+      const rect = footer.getBoundingClientRect(); width = rect.width; height = rect.height;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      columns = columnCount; rows = rowCount;
+      nodes = Array.from({ length: columns * rows }, (_, i) => {
+        const row = Math.floor(i / columns);
+        const depth = row / (rows - 1);
+        // Wall above the bend, widening floor below it; smooth at the join.
+        const bend = 0.48;
+        const floor = Math.max(0, (depth - bend) / (1 - bend));
+        const wall = Math.min(1, depth / bend);
+        const spread = 1.05 + 1.65 * floor * floor;
+        const projectedY = depth <= bend
+          ? -0.12 + 0.70 * (1 - Math.pow(1 - wall, 1.65))
+          : 0.58 + 0.58 * Math.pow(floor, 1.65);
+        return {
+          x: width / 2 + (i % columns / (columns - 1) - 0.5) * width * spread,
+          y: height * projectedY,
+          dx: 0, dy: 0, vx: 0, vy: 0,
+        };
+      });
+      draw(); wake();
+    }
+    function move(event) {
+      if (!motion.matches || event.pointerType === "touch") return;
+      const rect = footer.getBoundingClientRect();
+      pointer.x = event.clientX - rect.left; pointer.y = event.clientY - rect.top; pointer.active = true; wake();
+    }
+    function leave() { pointer.active = false; wake(); }
+    function preferenceChanged() {
+      pointer.active = false;
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0; previousTime = 0;
+      nodes.forEach(node => { node.dx = node.dy = node.vx = node.vy = 0; }); draw();
+    }
+    const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(footer);
+    const visibilityObserver = new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      if (visible) wake(); else { if (frame) window.cancelAnimationFrame(frame); frame = 0; previousTime = 0; pointer.active = false; }
+    }); visibilityObserver.observe(footer);
+    footer.addEventListener("pointermove", move, { passive: true }); footer.addEventListener("pointerleave", leave);
+    motion.addEventListener("change", preferenceChanged); resize();
+    return () => { if (frame) window.cancelAnimationFrame(frame); resizeObserver.disconnect(); visibilityObserver.disconnect(); footer.removeEventListener("pointermove", move); footer.removeEventListener("pointerleave", leave); motion.removeEventListener("change", preferenceChanged); };
+  }, [footerRef]);
+  return <canvas ref={canvasRef} className={styles.physicsGrid} aria-hidden="true" />;
 }
 
-export default Footer;
+export default function Footer() {
+  const [selectedPopup, setSelectedPopup] = useState(null);
+  const footerRef = useRef(null);
+  return <footer ref={footerRef} className={styles.footer}>
+    <div className={styles.atmosphere} aria-hidden="true"><PhysicsGrid footerRef={footerRef} /></div>
+    <div className={styles.container}>
+      <div className={styles.opening}><div><p className={styles.eyebrow}>Start a conversation</p><h2>Let’s talk power.</h2></div></div>
+      <div className={styles.columns}>
+        <div className={styles.brand}><Link to="/" className={styles.wordmark} aria-label="AlchemityPower home">Alchemity<span>Power</span></Link><p>College Park, Maryland</p><a className={styles.socialLink} href="https://www.linkedin.com/company/alchemity/" target="_blank" rel="noopener noreferrer">Alchemity on LinkedIn <Arrow /><span className={styles.srOnly}>(opens in a new tab)</span></a></div>
+        <nav aria-label="Footer explore"><h3>Explore</h3><Link to="/technology">Technology</Link><Link to="/products">Products</Link><Link to="/markets">Markets</Link></nav>
+        <nav aria-label="Footer company"><h3>Company</h3><Link to="/about">About us</Link><Link to="/careers">Careers</Link><Link to="/news">News</Link><Link to="/contact">Contact</Link></nav>
+      </div>
+      <div className={styles.bottom}><p>© {new Date().getFullYear()} Alchemity LLC.</p><div className={styles.legalLinks}><button type="button" aria-haspopup="dialog" onClick={() => setSelectedPopup("terms")}>Terms &amp; Conditions</button><button type="button" aria-haspopup="dialog" onClick={() => setSelectedPopup("privacy")}>Privacy Policy</button></div></div>
+      <p className={styles.trademark}>Alchemity and the Alchemity logo are trademarks of Alchemity LLC.</p>
+    </div>
+    {selectedPopup && <LegalDialog content={popupContent[selectedPopup]} onClose={() => setSelectedPopup(null)} />}
+  </footer>;
+}

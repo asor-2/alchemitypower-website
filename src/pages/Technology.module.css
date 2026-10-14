@@ -1,368 +1,1503 @@
-.technologyPage {
-  padding: 2rem;
-  /* max-width: 1200px; */
-  margin: 0 auto;
-  /* font-family: Arial, sans-serif; */
-  background: linear-gradient(
-    -140deg,
-    #000000 10%,
-    #244141,
-    #000000
-  ) !important;
-  min-height: 90vh;
+.page {
+  background: #dfe6e8;
+  color: #172d36;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  text-align: left;
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
 }
 
-.subtitle {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
+.page h1,
+.page h2,
+.page h3,
+.page p,
+.page figure {
+  margin: 0;
+  font-style: normal;
 }
 
-.description {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  text-align: center;
-  margin-bottom: 2rem;
+.container {
+  width: min(1200px, calc(100% - 96px));
+  margin-inline: auto;
+  margin-bottom: 3%;
 }
 
-.keyFeatures {
-  margin-top: 3rem;
+.page h1 {
+  font-size: clamp(44px, 6.2vw, 84px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -.045em;
+  color: #172d36;
 }
 
-.featuresGrid {
+.page h2 {
+  font-size: clamp(30px, 3.8vw, 50px);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  color: #172d36;
+}
+
+.page h3 {
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #172d36;
+}
+
+.page p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #405963;
+}
+
+.page .eyebrow {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: #225f7c;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: end;
+  padding-block: 80px 48px;
 }
 
-.featureCard {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.heroIntro nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 24px;
 }
 
-.featureCard h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+.page a {
+  color: #225f7c;
+  text-decoration: none;
 }
 
-.featureCard p {
-  font-size: 1rem;
-  color: #555;
+.heroIntro a,
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  font-size: 16px;
 }
 
-.innovations,
-.futureVision {
-  margin-top: 3rem;
+.page a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
-.innovationList,
-.visionList {
-  list-style: disc;
-  padding-left: 2rem;
-  font-size: 1.2rem;
-  line-height: 1.8;
+.page a:focus-visible,
+.page button:focus-visible {
+  outline: 3px solid #438ba7 !important;
+  outline-offset: 5px;
 }
 
-.cardsContainer {
+.technologyImage img,
+.imagePlaceholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.8;
+  object-fit: cover;
+  background: #cedade;
+}
+
+.imagePlaceholder {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding: 2rem;
-  /* max-width: 1200px; */
-  margin: 0 auto;
+  place-items: center;
+  border: 1px solid #b7c8ce;
 }
 
-.responsiveSection {
+.imagePlaceholder span {
+  font-size: 32px;
+  font-weight: 300;
+  color: #829faa;
+}
+
+.technologyImage figcaption {
+  font: 12px/1.5 ui-monospace, monospace;
+  color: #405963;
+  margin-top: 12px;
+}
+
+.explainer,
+.onsite {
+  padding-block: 88px;
+  scroll-margin-top: 100px;
+}
+
+.sectionHeading {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 44px;
+}
+
+.process {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #a9bec7;
+}
+
+.process li {
+  padding: 28px 32px 0 0;
+}
+
+.process li+li {
+  border-left: 1px solid #a9bec7;
+  padding-left: 32px;
+}
+
+.step,
+.criterionNumber {
+  font: 12px/1.6 ui-monospace, monospace;
+  color: #225f7c;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.process h3 {
+  margin-bottom: 16px;
+}
+
+.process p {
+  font-size: 17px;
+}
+
+.innovation {
+  padding-block: 80px;
+  background: #172d36;
+  scroll-margin-top: 100px;
+}
+
+.innovation h2,
+.innovation h3 {
+  color: #e6eef1;
+}
+
+.innovation p {
+  color: #c2d2da;
+}
+
+.innovation .eyebrow {
+  color: #a9cddd;
+}
+
+.innovationLayout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cellPanel {
+  background: #1d3642;
+  border: 1px solid #46616e;
+  padding: 24px 16px;
+}
+
+.cellDrawing {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cellLayer {
+  transition: transform 500ms cubic-bezier(.2, .7, .2, 1);
+}
+
+.cellLayer path {
+  transition: fill 500ms ease;
+}
+
+.cellPanel p {
+  text-align: center;
+  font: 12px/1.6 ui-monospace, monospace;
+}
+
+.selectors {
+  border-top: 1px solid #46616e;
+}
+
+.page .selectors button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 22px 12px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #46616e;
+  border-radius: 0;
+  color: #c2d2da;
+  font: inherit;
+  font-size: 19px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.selectors button span:first-child {
+  font: 12px/1.5 ui-monospace, monospace;
+}
+
+.selectors button span:last-child {
+  margin-left: auto;
+}
+
+.page .selectors button[aria-pressed="true"] {
+  background: #294b5b;
+  color: #eef3f5;
+}
+
+.page .selectors button:hover {
+  background: #244452;
+}
+
+.detail {
+  padding-top: 28px;
+  min-height: 300px;
+}
+
+.detail h3 {
+  margin-bottom: 16px;
+}
+
+.detail>div {
+  animation: detailIn 350ms ease both;
+}
+
+.detail .detailNote {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #a9c3ce;
+}
+
+@keyframes detailIn {
+  from {
+    opacity: .2;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.onsiteGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.onsiteGrid p+p {
+  margin-top: 20px;
+}
+
+.onsite .textLink {
+  margin-top: 24px;
+}
+
+.criteriaSection {
+  background: #cedade;
+  padding-block: 80px;
+  scroll-margin-top: 100px;
+}
+
+.criteriaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #a4bac4;
+  border-left: 1px solid #a4bac4;
+}
+
+.criteriaGrid article {
+  padding: 32px;
+  border-right: 1px solid #a4bac4;
+  border-bottom: 1px solid #a4bac4;
+  min-height: 240px;
+}
+
+.criterionNumber {
+  margin-bottom: 28px;
+}
+
+.criteriaGrid h3 {
+  margin-bottom: 16px;
+}
+
+.criteriaGrid p {
+  font-size: 17px;
+}
+
+.closing {
+  padding-block: 64px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 32px;
 }
 
-@media (max-width: 768px) {
-  .technologyPage {
-    padding: 1rem !important;
+.page .closing h2 {
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+.page .contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  padding: 16px 24px;
+  background: #225f7c;
+  color: #eef3f5;
+  white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: calc(100% - 64px);
   }
-  .cardsContainer {
+
+  .hero,
+  .sectionHeading,
+  .innovationLayout,
+  .onsiteGrid {
+    gap: 32px;
+  }
+
+  .criteriaGrid article {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .hero,
+  .sectionHeading,
+  .innovationLayout,
+  .onsiteGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding-right: 3.5rem;
+    gap: 28px;
   }
 
-  .responsiveSection {
-    grid-template-columns: 1fr; /* Stack on mobile */
+  .hero,
+  .explainer,
+  .innovation,
+  .onsite,
+  .criteriaSection {
+    padding-block: 48px;
   }
-  /* Ensure all direct children stack vertically */
-  .technologyPage > div {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 2rem !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+
+  .technologyImage img,
+  .imagePlaceholder {
+    aspect-ratio: 4 / 3;
   }
-  /* Fix header section stacking */
-  .technologyPage > div:first-child {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 2rem !important;
-    margin-top: -1.5rem !important;
-    margin-bottom: 2rem !important;
-    max-width: 100% !important;
-  }
-  /* Ensure images and videos are responsive.
-     Scoped to .technologyPage: a bare img/video selector in a CSS module is NOT
-     scoped and leaked into every page's bundle, breaking e.g. the circular
-     founder photos on the About page at mobile widths. */
-  .technologyPage img,
-  .technologyPage video {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-  }
-  /* Remove negative margins that cause overlap */
-  img[alt="Biomass to SAF"] {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  /* Responsive button container */
-  .learnMoreContainer,
-  .technologyPage button,
-  .technologyPage .learnMoreButton {
-    width: auto !important;
-    font-size: 1.2rem !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: flex !important;
-    justify-content: center !important;
-  }
-}
 
-.modalContainer {
-  position: relative;
-  max-width: 100%;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.responsiveModalContent {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 3000px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.responsiveModalColumn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.responsiveBulletPoints {
-  margin-top: 2rem;
-  color: #ffffff;
-  font-size: 18px;
-  line-height: 1.8;
-  margin-bottom: 0;
-  padding-left: 0;
-  list-style: none;
-  padding-right: 2rem;
-}
-
-.bulletPoint {
-  margin-bottom: 1.5rem;
-  text-align: justify;
-  padding: 0 1rem;
-  /* padding-right: 2rem; */
-}
-
-/* Mobile specific styles*/
-@media (max-width: 768px) {
-  .cardsContainer {
+  .process {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding-right: 4rem;
   }
 
-  .responsiveModalContent {
+  .process li,
+  .process li+li {
+    padding: 24px 0;
+    border-left: 0;
+    border-bottom: 1px solid #a9bec7;
+  }
+
+  .criteriaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .closing {
     flex-direction: column;
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-
-  .responsiveModalColumn {
-    width: 100% !important;
-  }
-
-  .responsiveBulletPoints {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-top: 1rem;
-  }
-
-  .bulletPoint {
-    margin-bottom: 1rem;
-  }
-
-  .responsiveModalContent {
-    max-height: 70vh; /* Limit height on mobile */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 0 1rem;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  }
-
-  /* Ensure modal header stays fixed */
-  :global(.modal-header) {
-    position: sticky;
-    top: 0;
-    background-color: #000000;
-    z-index: 10;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .responsiveModalContent::after {
-    content: "";
-    display: block;
-    padding-bottom: 2rem;
+    align-items: flex-start;
+    padding-block: 48px;
   }
 }
 
 @media (max-width: 480px) {
-  .responsiveBulletPoints {
-    font-size: 14px;
-    line-height: 1.4;
+  .criteriaGrid {
+    grid-template-columns: 1fr;
   }
 
-  .bulletPoint {
-    margin-bottom: 0.8rem;
-  }
-
-  .responsiveModalContent {
-    max-height: 65vh;
+  .criteriaGrid article {
+    min-height: 190px;
   }
 }
 
-/* Tablet specific styles */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .responsiveModalContent {
-    max-height: 75vh; /* Slightly larger than mobile but still scrollable */
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 1.5rem;
+@media (prefers-reduced-motion: reduce) {
+
+  .cellLayer,
+  .cellLayer path {
+    transition: none;
   }
 
-  .responsiveModalColumn {
-    /* Adjust columns for better tablet layout */
-    width: 100% !important;
-  }
-
-  /* Better layout for tablets in landscape mode */
-  @media (orientation: landscape) {
-    .responsiveModalContent {
-      flex-direction: row;
-      gap: 1.5rem;
-    }
-
-    .responsiveModalColumn[style*="width: 40%"] {
-      width: 35% !important;
-    }
-
-    .responsiveModalColumn[style*="width: 60%"] {
-      width: 65% !important;
-    }
-  }
-
-  /* Better layout for tablets in portrait mode */
-  @media (orientation: portrait) {
-    .responsiveModalContent {
-      flex-direction: column;
-    }
-  }
-
-  .responsiveBulletPoints {
-    font-size: 17px;
-    line-height: 1.7;
-  }
-
-  /* Ensure header stays fixed on tablets too */
-  :global(.modal-header) {
-    position: sticky;
-    top: 0;
-    background-color: #000000;
-    z-index: 10;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Add padding at bottom for better scrolling experience */
-  .responsiveModalContent::after {
-    content: "";
-    display: block;
-    padding-bottom: 2rem;
+  .detail>div {
+    animation: none;
   }
 }
 
-.heroSection {
+/* Information-led opening and technology rationale. */
+.problem {
+  border-top: 1px solid #a9bec7;
+  padding-block: 64px 0;
+  scroll-margin-top: 100px;
+}
+
+.problemGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.problemGrid article {
+  border-top: 2px solid #225f7c;
+  padding-top: 24px;
+}
+
+.problemGrid h3 {
+  margin-bottom: 16px;
+}
+
+.problemGrid p {
+  font-size: 17px;
+}
+
+.response {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 32px;
+  margin-top: 40px;
+  background: #cedade;
+}
+
+.response h3 {
+  margin-bottom: 16px;
+}
+
+.response .eyebrow {
+  margin: 0;
+}
+
+.knowledgeList {
+  border-top: 1px solid #46616e;
+}
+
+.knowledgeRow {
+  display: grid;
+  grid-template-columns: 48px 1fr 1.4fr;
+  gap: 32px;
+  padding-block: 36px;
+  border-bottom: 1px solid #46616e;
+}
+
+.knowledgeNumber {
+  color: #a9cddd;
+  font: 13px/1.7 ui-monospace, monospace;
+}
+
+.knowledgeRow h3 {
+  margin-bottom: 12px;
+}
+
+.knowledgeRow .knowledgeSubtitle {
+  font-size: 16px;
+  color: #a9cddd;
+}
+
+.knowledgeRow .knowledgeNote {
+  font-size: 14px;
+  color: #a9c3ce;
+  margin-top: 16px;
+}
+
+@media (max-width: 760px) {
+  .problem {
+    padding-top: 40px;
+  }
+
+  .problemGrid,
+  .response {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .response {
+    padding: 24px;
+  }
+
+  .knowledgeRow {
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+  }
+
+  .knowledgeRow>div:last-child {
+    grid-column: 2;
+  }
+}
+
+/* Editorial image spaces; photos remain optional while content is drafted. */
+.hero {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+.hero>div {
+  min-width: 0;
+}
+
+.heroIntro {
+  margin-top: 28px;
+}
+
+.page .hero h1 {
+  font-size: clamp(38px, 5vw, 70px);
+}
+
+.imageSlot {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #cedade;
+  border: 1px solid #b7c8ce;
+  overflow: hidden;
+}
+
+.imageSlot img {
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-@media (max-width: 1024px) {
-  .heroSection {
+.blankImage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.blankImage span {
+  color: #829faa;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.response {
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+.responseCopy .eyebrow {
+  margin-bottom: 16px;
+}
+
+.subtleImage {
+  background: #d8e2e6;
+}
+
+.subtleImage img {
+  object-fit: contain;
+  padding: 16px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    gap: 28px;
+  }
+
+  .response {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .hero,
+  .response {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .subtleImage {
+    max-width: 440px;
+  }
+}
+
+/* Unnumbered technology rows. */
+.knowledgeRow {
+  grid-template-columns: 1fr 1.4fr;
+}
+
+@media (max-width: 760px) {
+  .knowledgeRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .knowledgeRow>div:last-child {
+    grid-column: auto;
+  }
+}
+
+
+/* Roadmap: each date and its image are one group. */
+.roadmapSection {
+  padding-block: clamp(56px, 7vw, 96px);
+  background: #b5cbd6;
+  scroll-margin-top: 100px;
+}
+
+.roadmapSection>.container {
+  width: min(1520px, calc(100% - 64px));
+  margin-bottom: 0;
+}
+
+.roadmapHeading {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.roadmapTrack {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.roadmapStep {
+  position: relative;
+  min-width: 0;
+  padding-top: 40px;
+}
+
+.roadmapConnector {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: -28px;
+  height: 1px;
+  background: #7c9eae;
+}
+
+.roadmapStep:last-child .roadmapConnector {
+  right: 0;
+}
+
+.roadmapConnector::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #25abe0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.roadmapConnector>span {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  top: -5px;
+  width: 11px;
+  height: 11px;
+  background: #225f7c;
+  border: 2px solid #d4e7ee;
+  border-radius: 50%;
+  transition: box-shadow 300ms ease;
+}
+
+.roadmapCard {
+  position: relative;
+  padding: 20px;
+  height: 100%;
+  border: 1px solid rgb(34 95 124 / 26%);
+  border-radius: 5px;
+  background: rgb(226 238 244 / 20%);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.roadmapCard::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 24px;
+  width: 1px;
+  height: 29px;
+  background: #7c9eae;
+}
+
+.roadmapCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.roadmapYear {
+  color: #225f7c;
+  font-size: clamp(26px, 2.4vw, 36px);
+  letter-spacing: -.04em;
+  line-height: 1.2;
+}
+
+.trlBadge {
+  padding: 5px 8px;
+  border: 1px solid #93b0bf;
+  border-radius: 3px;
+  color: #225f7c;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.roadmapVisual {
+  width: 100%;
+  aspect-ratio: 4/3;
+  margin-bottom: 24px;
+  border: 1px solid rgb(34 95 124 / 20%);
+  transition: border-color 300ms ease;
+}
+
+.roadmapVisual .imageSlot {
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 4/3;
+  background: transparent;
+}
+
+.roadmapVisual .blankImage {
+  height: 100%;
+  min-height: 0;
+  background-image: linear-gradient(rgb(34 95 124 / 6%) 1px, transparent 1px), linear-gradient(90deg, rgb(34 95 124 / 6%) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.roadmapVisual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.page .roadmapCapacity {
+  font-size: clamp(36px, 3.6vw, 56px);
+  color: #225f7c;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgb(45 178 233 / 30%);
+}
+
+.roadmapCapacity>span {
+  font-size: .42em;
+  margin-left: 7px;
+}
+
+.roadmapCapacity>.capacityDigits {
+  font-size: inherit;
+  margin-left: 0;
+}
+
+.milestoneTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.page .milestoneTitle h3 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.milestoneInfo {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #719baa;
+  border-radius: 50%;
+  background: transparent;
+  color: #225f7c;
+  font: 600 18px Arial, sans-serif;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.milestoneInfo:hover {
+  background: #225f7c;
+  color: #edf5f8;
+}
+
+.milestoneInfo:focus-visible,
+.popupTop button:focus-visible {
+  outline: 2px solid #25abe0;
+  outline-offset: 4px;
+}
+
+.roadmapStep:focus-within .roadmapCard,
+.roadmapStep[data-active="true"] .roadmapCard {
+  border-color: #25abe0;
+  box-shadow: 0 0 24px rgb(37 171 224 / 15%);
+}
+
+.roadmapStep:focus-within .roadmapConnector::after,
+.roadmapStep[data-active="true"] .roadmapConnector::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) {
+
+  .roadmapStep:hover .roadmapCard,
+  .roadmapStep:hover .roadmapVisual {
+    border-color: #25abe0;
+  }
+
+  .roadmapStep:hover .roadmapConnector::after {
+    transform: scaleX(1);
+  }
+
+  .roadmapStep:hover .roadmapConnector>span {
+    box-shadow: 0 0 0 5px rgb(37 171 224 / 15%), 0 0 20px rgb(37 171 224 / 40%);
+  }
+}
+
+.roadmapFootnote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.page .roadmapFootnote p {
+  font-size: 13px;
+}
+
+.roadmapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+}
+
+.milestoneDialog {
+  width: min(520px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  margin: auto;
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid #8eafbf;
+  border-radius: 12px;
+  background: #dce7ec;
+  color: #172d36;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 24px 80px rgb(10 31 43 / 30%);
+}
+
+.milestoneDialog[open] {
+  animation: milestoneOpen 260ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.milestoneDialog::backdrop {
+  background: rgb(13 34 45 / 36%);
+  backdrop-filter: blur(6px);
+}
+
+.milestoneDialog[data-closing="true"] {
+  animation: milestoneClose 180ms ease-in both;
+}
+
+.popupTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: #225f7c;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.popupTop button {
+  height: 44px;
+  width: 44px;
+  border: 1px solid #a3bdca;
+  border-radius: 50%;
+  background: transparent;
+  color: #172d36;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.milestoneDialog h3 {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+
+.milestoneDialog p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.milestoneDialog .popupCapacity {
+  font-size: 38px;
+  color: #225f7c;
+}
+
+.popupDetail {
+  border-top: 1px solid #a3bdca;
+  padding-top: 20px;
+  margin-top: 24px;
+}
+
+.popupDetail h4 {
+  margin: 0 0 12px;
+  font-size: 17px;
+}
+
+@keyframes milestoneOpen {
+  from {
+    opacity: 0;
+    transform: scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes milestoneClose {
+  to {
+    opacity: 0;
+    transform: scale(.97);
+  }
+}
+
+@media (max-width: 1100px) {
+  .roadmapTrack {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .roadmapStep {
+    padding: 0 0 0 28px;
+  }
+
+  .roadmapConnector {
+    top: 0;
+    bottom: -32px;
+    left: 0;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .roadmapStep:last-child .roadmapConnector {
+    right: auto;
+    bottom: 0;
+  }
+
+  .roadmapConnector>span {
+    left: -5px;
+    top: 30px;
+  }
+
+  .roadmapCard::before {
+    top: 35px;
+    left: -28px;
+    width: 27px;
+    height: 1px;
+  }
+
+  .roadmapCard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 28px;
+  }
+
+  .roadmapCardTop {
+    grid-column: 1/-1;
+  }
+
+  .roadmapVisual {
+    margin: 0;
+  }
+
+  .roadmapCopy {
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .roadmapSection>.container {
+    width: calc(100% - 32px);
+  }
+
+  .roadmapCard {
+    display: block;
+    padding: 18px;
+  }
+
+  .roadmapVisual {
+    margin-bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .roadmapCard,
+  .roadmapConnector::after,
+  .roadmapConnector>span,
+  .roadmapVisual,
+  .milestoneInfo {
+    transition: none;
+  }
+
+  .milestoneDialog[open],
+  .milestoneDialog[data-closing="true"] {
+    animation: none;
+  }
+}
+
+
+/* Compact alternating milestones; the icon opens the full story. */
+.roadmapTrack {
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.roadmapStep {
+  display: grid;
+  grid-template-rows: 200px 48px 32px 200px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.roadmapYear {
+  grid-row: 2;
+  align-self: center;
+}
+
+.roadmapConnector,
+.roadmapStep:last-child .roadmapConnector {
+  grid-row: 3;
+  position: relative;
+  inset: auto;
+  width: auto;
+  height: 1px;
+  margin: 16px -20px 0;
+}
+
+.roadmapConnector>span {
+  left: calc(50% - 5px);
+  top: -5px;
+}
+
+.compactMilestone {
+  grid-row: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  position: relative;
+}
+
+.roadmapStep:nth-child(even) .compactMilestone {
+  grid-row: 1;
+}
+
+.compactMilestone::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  top: 0;
+  background: #7c9eae;
+}
+
+.roadmapStep:nth-child(even) .compactMilestone::before {
+  top: auto;
+  bottom: -8px;
+  height: 28px;
+}
+
+.roadmapIconButton {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  padding: 0;
+  border: 1px solid #729aaa;
+  border-radius: 12px;
+  background: rgb(227 240 246 / 35%);
+  color: #225f7c;
+  cursor: pointer;
+  transition: border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.iconPlus {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  border: 1px solid #729aaa;
+  border-radius: 50%;
+  background: #dceaf0;
+  width: 20px;
+  height: 20px;
+  font: 16px/18px Arial, sans-serif;
+}
+
+.roadmapIconButton:focus-visible {
+  outline: 2px solid #225f7c;
+  outline-offset: 5px;
+}
+
+.page .compactMilestone .roadmapCapacity {
+  font-size: clamp(30px, 3vw, 42px);
+  margin: 0;
+}
+
+.roadmapStep:focus-within .roadmapIconButton,
+.roadmapStep[data-active="true"] .roadmapIconButton {
+  border-color: #25abe0;
+  box-shadow: 0 0 0 4px rgb(37 171 224 / 12%), 0 0 24px rgb(37 171 224 / 25%);
+}
+
+@media (hover: hover) {
+  .roadmapStep:hover .roadmapIconButton {
+    border-color: #25abe0;
+    background: #d3e8f1;
+    box-shadow: 0 0 0 4px rgb(37 171 224 / 12%), 0 0 24px rgb(37 171 224 / 25%);
+  }
+}
+
+@media (max-width: 760px) {
+  .roadmapTrack {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .roadmapStep {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    grid-template-rows: auto;
+    padding: 20px 0 28px 24px;
+    text-align: left;
+    align-items: center;
+  }
+
+  .roadmapYear {
+    grid-row: 1;
+    font-size: 26px;
+  }
+
+  .roadmapConnector,
+  .roadmapStep:last-child .roadmapConnector {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: auto;
+    width: 1px;
+    height: auto;
+    margin: 0;
+  }
+
+  .roadmapConnector>span {
+    left: -5px;
+    top: 50%;
+  }
+
+  .compactMilestone,
+  .roadmapStep:nth-child(even) .compactMilestone {
+    grid-row: 1;
+    grid-column: 2;
+    padding-block: 10px;
+  }
+
+  .compactMilestone::before {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .techHeroSection {
-    padding: 1.5rem 1rem 3rem;
+@media (prefers-reduced-motion: reduce) {
+  .roadmapIconButton {
+    transition: none;
   }
 }
 
-@media (max-width: 480px) {
-  .techHeroSection {
-    padding: 1rem 0.5rem 2rem;
-  }
+
+/* Detailed milestone surface, with centered SVG controls and coordinated motion. */
+.milestoneDialog {
+  width: min(580px, calc(100% - 32px));
+  padding: clamp(24px, 5vw, 40px);
+  border: 1px solid rgb(213 234 244 / 85%);
+  border-radius: 20px;
+  background: radial-gradient(ellipse at 100% 0, rgb(145 202 226 / 30%), transparent 55%), #dfe9ee;
+  box-shadow: 0 32px 100px rgb(8 28 40 / 32%), inset 0 1px 0 rgb(255 255 255 / 60%);
+  transform-origin: 50% 55%;
 }
 
-.learnMoreContainer {
-  text-align: center;
-  margin-top: -0.5rem;
+.milestoneDialog[open] {
+  animation: popupArrive 360ms cubic-bezier(.16, 1, .3, 1) both;
 }
 
-.learnMoreButton {
-  display: inline-flex;
+.milestoneDialog[data-closing="true"] {
+  animation: popupLeave 220ms cubic-bezier(.4, 0, 1, 1) both;
+}
+
+.milestoneDialog::backdrop {
+  background: rgb(10 28 40 / 45%);
+  backdrop-filter: blur(8px);
+  animation: popupBackdropIn 300ms ease both;
+}
+
+.milestoneDialog[data-closing="true"]::backdrop {
+  animation: popupBackdropOut 220ms ease both;
+}
+
+.popupTop {
+  margin-bottom: 30px;
+}
+
+.popupChips {
+  display: flex;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 1rem 2rem;
-  background-color: #a3a381;
-  color: white;
-  font-size: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.popupYear {
+  color: #174b64;
+  font-size: 18px;
   font-weight: 600;
-  text-decoration: none;
-  border-radius: 50px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
+  letter-spacing: -.02em;
+}
+
+.popupTrl {
+  padding: 5px 9px;
+  border: 1px solid #a1bfce;
+  border-radius: 6px;
+  color: #35647a;
+  font-size: 12px;
+}
+
+.popupTop .popupClose {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  border: 1px solid rgb(79 125 148 / 26%);
+  border-radius: 12px;
+  background: rgb(243 248 251 / 50%);
+  color: #225f7c;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%);
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.popupClose svg {
+  display: block;
+  pointer-events: none;
+}
+
+.popupTop .popupClose:hover {
+  background: #c5deea;
+  border-color: #699ab1;
+  box-shadow: 0 3px 12px rgb(34 95 124 / 12%);
+}
+
+.popupTop .popupClose:active {
+  background: #b6d5e4;
+}
+
+.popupTop .popupClose:focus-visible {
+  outline: 2px solid #225f7c;
+  outline-offset: 4px;
+}
+
+.milestoneDialog .popupEyebrow {
+  color: #416c80;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.milestoneDialog h3 {
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -.035em;
+  margin-bottom: 26px;
+}
+
+.popupSpec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #aec8d5;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #c2dae5, #d4e5ec);
+}
+
+.milestoneDialog .popupSpecLabel {
+  font-size: 12px;
+  color: #405f70;
+  margin-bottom: 10px;
+}
+
+.milestoneDialog .popupCapacity {
+  font-size: clamp(42px, 7vw, 58px);
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin: 0;
+  color: #225f7c;
+}
+
+.popupCapacity span {
+  font-size: .42em;
+  margin-left: 8px;
+  letter-spacing: -.01em;
+}
+
+.popupSymbol {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  color: #225f7c;
+  border-radius: 16px;
+  background: rgb(233 244 250 / 45%);
+}
+
+.milestoneDialog .popupSummary {
+  color: #234657;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.popupDetail {
+  border-top: 1px solid #abc4d0;
+  padding-top: 22px;
+  margin-top: 24px;
+}
+
+.popupDetail h4 {
+  color: #225f7c;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.milestoneDialog .popupDetail p {
+  font-size: 15px;
+  color: #405963;
+  margin-bottom: 0;
+}
+
+@keyframes popupArrive {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.965);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popupLeave {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+  }
+}
+
+@keyframes popupBackdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupBackdropOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .popupSpec {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .popupSymbol {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .milestoneDialog[open],
+  .milestoneDialog[data-closing="true"],
+  .milestoneDialog::backdrop,
+  .milestoneDialog[data-closing="true"]::backdrop {
+    animation: none;
+  }
+
+  .popupTop .popupClose {
+    transition: none;
+  }
 }

@@ -1,1825 +1,254 @@
-import React, { useState, useRef, useEffect } from "react";
-import PageHero from "../components/PageHero";
-import Modal from "../components/Modal";
-import rd from "../components/images/rd.png";
-import validated from "../components/images/ExtEval.png";
-import scalable from "../components/images/scalable_new.png";
-import graph1 from "../components/images/graph1.png";
-import graph2 from "../components/images/graph2.png";
-import animationTech from "../components/images/techanim.mov";
-import herotech from "../components/images/headeranim.mov";
-import platform from "../components/images/platform.png";
-import styles from "../components/ProfileCard.module.css";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import reactionanima from "../components/images/reactionanima.mov";
-import styles1 from "./Technology.module.css";
-import biomass_image from "../components/images/biomass_image.png";
-import gas_to_chem_image from "../components/images/gas_to_chem_image.png";
-import technology_header from "../components/images/technology_header.png";
-
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import EnergyBackground from "../components/EnergyBackground";
 import SEO from "../components/SEO/SEO";
-import { seoData } from "../config/seoConfig";
+import styles from "./Technology.module.css";
 
-import styled from "styled-components";
-
-// Main colors
-const colors = {
-  background: "linear-gradient(135deg, #000000 0%, #223F3E 80%)", // Keep your required color
-  primary: "#25abe0", // Signature blue
-  secondary: "#CFDDD0", // Light mint
-  accent: "#FFEBCA", // Beige accent
-  text: "#ffffff",
-  textDark: "#203238",
+// ==================== EDIT PAGE CONTENT HERE ====================
+// Edit words inside quotes. Keep commas, brackets, and field names intact.
+// Sections below hold headings, descriptions, metrics, and image paths.
+// Empty image paths keep the image placeholders.
+const pageCopy = {
+  "popupTarget": "Planned milestone",
+  "popupCapacityLabel": "Target system capacity",
+  "ourApproach": "Our approach",
+  "progressStarts": "Progress starts",
+  "atTheCell": "at the cell.",
+  "ourTechnologyDevelopmentFocusesOnThree": "Our technology development focuses on three connected areas: how much power a cell produces, how it is built, and the temperature at which it operates.",
+  "trl": "· TRL",
+  "theDevelopmentRoadmap": "The development roadmap",
+  "datesCapacitiesAndTrlLevelsShown": "Dates, capacities, and TRL levels shown are development targets.",
+  "exploreThePlatform": "Explore the platform",
+  "technologyAlchemitypower": "Technology | AlchemityPower",
+  "exploreAlchemitypowersSolidOxideFuelCell": "Explore AlchemityPower’s solid oxide fuel cell development and approach to on-site power.",
+  "alchemitypowerTechnology": "AlchemityPower / Technology",
+  "statement": "Statement",
+  "forDataCentersAndOtherCritical": "For data centers and other critical facilities, access to electricity shapes where, when, and how they can grow. Grid connections, site constraints, and operating requirements all influence that decision.",
+  "theChallenge": "The challenge",
+  "sixCriteria": "Six criteria",
+  "roadmap": "Roadmap",
+  "powerPlanningIs": "Power planning is",
+  "businessPlanning": "business planning.",
+  "securingEnoughElectricityIsOnlyPart": "Securing enough electricity is only part of the challenge. A facility also needs a workable timeline, an appropriate site design, and an energy supply suited to its operations.",
+  "whenCanPowerArrive": "When can power arrive?",
+  "gridConnectionsAndInfrastructureUpgradesCan": "Grid connections and infrastructure upgrades can affect project schedules. Power availability needs to be considered alongside construction and expansion plans.",
+  "whatWillTheSiteAllow": "What will the site allow?",
+  "spaceFuelSupplyPermittingAndLocal": "Space, fuel supply, permitting, and local environmental requirements influence which generation options are practical.",
+  "whatMustKeepRunning": "What must keep running?",
+  "criticalFacilitiesNeedAnEnergyStrategy": "Critical facilities need an energy strategy that accounts for demand, maintenance, and interruptions to supply.",
+  "whyOnsitePower": "Why on-site power",
+  "anotherWayToPlanForGrowth": "Another way to plan for growth.",
+  "generatingElectricityAtTheSiteCan": "Generating electricity at the site can add an option alongside the grid. AlchemityPower is developing solid oxide fuel cell technology to support that approach, with a focus on modular power for data centers and other critical applications.",
+  "criteria": "Criteria",
+  "6CriteriaForChoosing": "6 criteria for choosing",
+  "anOnsitePowerProvider": "an on-site power provider.",
+  "criteriaIntroductionGoesHere": "Criteria introduction goes here."
 };
 
-const responsiveModalContentStyle = {
-  display: "flex",
-  gap: "2rem",
-  alignItems: "flex-start",
-  width: "100%",
-  maxWidth: "3000px",
-  margin: "0 auto",
-  padding: "0",
-  "@media (max-width: 768px)": {
-    flexDirection: "column",
-    gap: "1rem",
+// Add imported images or public-folder paths when ready.
+const pageImages = {
+  dataCenter: { src: "", alt: "" },
+  onsiteProduct: { src: "", alt: "" },
+};
+// Keep these six slots until the final criteria and descriptions are approved.
+const criteria = [
+  {
+    "id": 0,
+    "title": "Criterion heading",
+    "description": "Criterion description goes here."
   },
-};
-
-const responsiveModalColumnStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  "@media (max-width: 768px)": {
-    width: "100% !important", // Override any inline width
+  {
+    "id": 1,
+    "title": "Criterion heading",
+    "description": "Criterion description goes here."
   },
-};
-
-const responsiveTextStyle = {
-  fontSize: "18px",
-  lineHeight: "1.6",
-  "@media (max-width: 768px)": {
-    fontSize: "16px",
-    lineHeight: "1.4",
-    marginTop: "1rem",
+  {
+    "id": 2,
+    "title": "Criterion heading",
+    "description": "Criterion description goes here."
   },
-  "@media (max-width: 480px)": {
-    fontSize: "14px",
-    lineHeight: "1.3",
+  {
+    "id": 3,
+    "title": "Criterion heading",
+    "description": "Criterion description goes here."
   },
-};
-
-const sectionStyle = {
-  padding: "var(--section-padding)",
-  margin: "0 auto",
-  // backgroundColor: 'linear-gradient(to bottom, #000000, #244141) !important',
-  textAlign: "left",
-  "@media (max-width: 1024px)": {
-    paddingTop: "0",
-    marginTop: "-2rem",
+  {
+    "id": 4,
+    "title": "Criterion heading",
+    "description": "Criterion description goes here."
   },
-};
-
-const titleStyle = {
-  fontSize: "40px",
-  color: "#25abe0",
-  marginBottom: "3rem",
-  textAlign: "center",
-  fontWeight: "500",
-};
-
-const cardStyle = {
-  background: "#000000",
-  padding: "1.5rem 1.5rem 1rem 1.5rem",
-  borderRadius: "8px",
-  color: "#ffffff",
-  transition: "all 0.3s ease",
-  textAlign: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  height: "100%",
-
-  "&:hover": {
-    transform: "translateY(-5px)",
-    boxShadow: "0 0 20px rgba(37, 171, 224, 0.6)",
-  },
-};
-
-const cardTitleStyle = {
-  fontSize: "1.7rem",
-  fontWeight: "600",
-  color: "#25abe0",
-  marginBottom: "1rem",
-  textAlign: "center",
-  minHeight: "4.4rem",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "100%",
-};
-
-const imageContainerStyle = {
-  width: "100%",
-  height: "250px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginBottom: "1rem",
-  backgroundColor: "transparent",
-  overflow: "hidden",
-  position: "relative",
-};
-
-const imageStyle = {
-  width: "100%",
-  height: "100%",
-  objectFit: "contain",
-  backgroundColor: "transparent",
-  position: "absolute",
-  top: 0,
-  left: 0,
-};
-
-const rdImageStyle = {
-  ...imageStyle,
-  objectPosition: "center 30%",
-  objectFit: "cover",
-};
-
-const cardTextStyle = {
-  color: "#ffffff",
-  fontSize: "1.4rem",
-  lineHeight: "1.6",
-  textAlign: "center",
-  marginTop: "0",
-  fontWeight: "500",
-  flex: 1,
-  display: "flex",
-  alignItems: "flex-start",
-};
-
-const videoStyle = {
-  width: "100%",
-  maxWidth: "1200px",
-  margin: "0 auto",
-  display: "block",
-};
-
-const bulletPointsStyle = {
-  color: "#ffffff",
-  fontSize: "18px",
-  lineHeight: "1.8",
-  marginBottom: "0",
-  paddingLeft: "0",
-  listStyle: "none",
-};
-
-const bulletPointStyle = {
-  marginBottom: "1.5rem",
-};
-
-const learnMoreButtonStyle = {
-  backgroundColor: "#25abe0",
-  color: "white",
-  border: "none",
-  padding: "0.75rem 1.5rem",
-  borderRadius: "4px",
-  cursor: "pointer",
-  fontSize: "1rem",
-  fontWeight: "500",
-  transition: "background-color 0.3s ease",
-};
-
-const platformContainerStyle = {
-  display: "flex",
-  gap: "-5rem",
-  alignItems: "center",
-  marginBottom: "2rem",
-  justifyContent: "center",
-  maxWidth: "1400px",
-  margin: "0 auto",
-  paddingLeft: "4rem",
-};
-
-const membraneContainerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "2rem",
-  marginTop: "0",
-};
-
-const contentStyle = {
-  flex: 1,
-  marginTop: "2rem",
-  display: "flex",
-  justifyContent: "center",
-};
-
-const graphStyle = {
-  width: "100%",
-  height: "auto",
-  objectFit: "contain",
-  marginBottom: "1rem",
-  minHeight: "150px",
-  maxHeight: "250px",
-
-  "@media (max-width: 768px)": {
-    minHeight: "120px",
-    maxHeight: "200px",
-  },
-
-  "@media (min-width: 769px) and (max-width: 1024px)": {
-    minHeight: "130px",
-    maxHeight: "220px",
-  },
-
-  "@media (min-width: 1025px) and (max-width: 1440px)": {
-    minHeight: "140px",
-    maxHeight: "240px",
-  },
-
-  "@media (min-width: 2560px)": {
-    minHeight: "200px",
-    maxHeight: "350px",
-  },
-};
-
-const responsiveGraphStyle = {
-  width: "100%",
-  height: "auto",
-  objectFit: "contain",
-  marginBottom: "1rem",
-  marginTop: "0.625rem",
-  minHeight: "150px",
-  maxHeight: "250px",
-};
-
-const responsiveGraphContainerStyle = {
-  width: "100%",
-  height: "250px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginBottom: "1rem",
-  marginTop: "0.625rem",
-  "@media (max-width: 768px)": {
-    height: "200px",
-  },
-  "@media (min-width: 769px) and (max-width: 1024px)": {
-    height: "220px",
-  },
-  "@media (min-width: 1025px) and (max-width: 1440px)": {
-    height: "240px",
-  },
-  "@media (min-width: 2560px)": {
-    height: "350px",
-  },
-};
-
-const modalContentStyle = {
-  display: "flex",
-  gap: "3rem",
-  alignItems: "flex-start",
-  width: "100%",
-  maxWidth: "3000px",
-  margin: "0 auto",
-  padding: "0",
-};
-
-const modalColumnStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  width: "50%",
-};
-
-const modalTextStyle = {
-  color: "#ffffff",
-  fontSize: "18px",
-  lineHeight: "1.6",
-  marginTop: "1rem",
-  flex: 1,
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "flex-start",
-};
-
-const modalSubtitleStyle = {
-  color: "#25abe0",
-  fontSize: "24px",
-  fontWeight: "600",
-  marginBottom: "0.5rem",
-  textAlign: "center",
-};
-
-const modalTextStyle2 = {
-  ...modalTextStyle,
-  marginTop: "-0.5rem",
-};
-
-const descriptionTextStyle = {
-  color: "#ffffff",
-  fontSize: "1.2rem",
-  textAlign: "center",
-  margin: "-2rem auto 1rem auto",
-  maxWidth: "800px",
-  lineHeight: "1.6",
-};
-
-const gridStyle = {
-  display: "grid",
-  gap: "0.5rem",
-  maxWidth: "1400px",
-  margin: "1rem auto",
-};
-
-const founderGridStyle = {
-  ...gridStyle,
-  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-};
-
-const advisorGridStyle = {
-  ...gridStyle,
-  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-};
-
-const membraneImageStyle = {
-  width: "100%",
-  maxWidth: "400px",
-  height: "auto",
-  objectFit: "contain",
-  marginBottom: "2rem",
-};
-
-const reactorImageStyle = {
-  width: "50%",
-  height: "auto",
-  objectFit: "contain",
-  margin: "0 auto",
-  marginRight: "-2rem",
-};
-
-const buttonContainerStyle = {
-  display: "flex",
-  justifyContent: "center",
-  gap: "1rem",
-  marginTop: "2rem",
-};
-
-const buttonStyle = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "0.8rem",
-  padding: "1rem 2rem",
-  backgroundColor: "var(--primary-color)",
-  color: "white",
-  fontSize: "1.1rem",
-  fontWeight: "600",
-  textDecoration: "none",
-  borderRadius: "50px",
-  boxShadow: "0 8px 15px rgba(0, 0, 0, 0.3)",
-  transition: "all 0.3s ease",
-  position: "relative",
-  overflow: "hidden",
-  border: "2px solid transparent",
-  cursor: "pointer",
-  minWidth: "120px",
-};
-
-const buttonHoverStyle = {
-  backgroundColor: "var(--secondary-color)",
-  boxShadow: "0 15px 25px rgba(0, 0, 0, 0.4)",
-  transform: "translateY(-2px)",
-};
-
-// Add animation variants after imports
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }),
-};
-
-const responsiveTitleStyle = {
-  ...titleStyle,
-  color: "#ffffff",
-  fontWeight: "350",
-  fontSize: "2.8rem",
-  letterSpacing: "-0.02em",
-  lineHeight: "1.2",
-  "@media (max-width: 768px)": {
-    fontSize: "2.5rem",
-  },
-  "@media (max-width: 480px)": {
-    fontSize: "2.2rem",
-  },
-};
-
-const SplitSection = styled.div`
-  display: flex;
-  flex-direction: ${(props) => (props.reversed ? "row-reverse" : "row")};
-  width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  gap: 3rem;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
+  {
+    "id": 5,
+    "title": "Criterion heading",
+    "description": "Criterion description goes here."
   }
-`;
-
-const ContentSide = styled.div`
-  flex: 1;
-`;
-
-const VisualSide = styled.div`
-  flex: 1;
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 2.8rem;
-  color: #25abe0;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-`;
-
-const SectionText = styled.p`
-  font-size: 1.4rem;
-  line-height: 1.6;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-`;
-
-const TechCardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  padding: 2rem 0.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  @media (max-width: 1150px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto 4rem auto;
-  }
-
-  @media (max-width: 890px) {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 0;
-    max-width: 650px;
-    margin: 0 auto 4rem auto;
-    width: 95%;
-    justify-items: center;
-  }
-
-  @media (min-width: 2560px) {
-    max-width: 2000px;
-    gap: 3rem;
-  }
-`;
-
-const TechCard = styled.div`
-  background-color: rgba(31, 42, 48, 0.7);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  border: 5px double rgba(116, 186, 198, 0.6);
-  transition: all 0.3s ease;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba(37, 171, 224, 0.7);
-  }
-
-  h3 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    font-weight: 600;
-    background: linear-gradient(90deg, #6fcffb, #ffffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    text-align: center;
-    min-height: 3.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .tech-card-image-container {
-    width: 100%;
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 1rem;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: transparent;
-  }
-
-  p {
-    color: #ffffff;
-    font-size: 1.3rem;
-    line-height: 1.6;
-    text-align: center;
-    margin: 0;
-    font-weight: 500;
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-  }
-`;
-
-function Technology() {
-  const [showModal, setShowModal] = useState(false);
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
-  const heroVideoRef = useRef(null);
-  const animationVideoRef = useRef(null);
-  const [activeModal, setActiveModal] = useState(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      setIsTablet(window.innerWidth <= 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            video.currentTime = 0;
-            video.play();
-            video.addEventListener("timeupdate", () => {
-              if (video.currentTime >= video.duration - 0.1) {
-                video.pause();
-              }
-            });
-          } else {
-            video.pause();
-            video.currentTime = 0;
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
-
-    if (heroVideoRef.current) observer.observe(heroVideoRef.current);
-    if (animationVideoRef.current) observer.observe(animationVideoRef.current);
-
-    return () => {
-      if (heroVideoRef.current) observer.unobserve(heroVideoRef.current);
-      if (animationVideoRef.current)
-        observer.unobserve(animationVideoRef.current);
-    };
-  }, []);
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleOpenDetailsModal = () => {
-    setShowDetailsModal(true);
-  };
-
-  const handleCloseDetailsModal = () => {
-    setShowDetailsModal(false);
-  };
-
-  return (
-    <>
-      <SEO
-        title={seoData.products.title}
-        description={seoData.products.description}
-        keywords={seoData.products.keywords}
-        image={seoData.products.image}
-        url="/products"
-      />
-      <div className={styles1.technologyPage}>
-        {/* Custom Technology Header */}
-        <div
-          style={{
-            padding:
-              isTablet || isMobile ? "2rem 1rem 3rem" : "2.5rem 2rem 3rem",
-            display: "flex",
-            flexDirection: isTablet || isMobile ? "column" : "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "3rem",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            marginLeft: "auto", // <-- center horizontally
-            marginRight: "auto", // <-- center horizontally
-            marginTop: isTablet || isMobile ? "-1.5rem" : "-2.5rem",
-          }}
-        >
-          {/* Left/Top: Title */}
-          <div
-            style={{
-              flex: isTablet || isMobile ? "auto" : "1",
-              textAlign: "center",
-              order: 0,
-            }}
-          >
-            <h1
-              style={{
-                fontSize: "4rem",
-                fontWeight: "600",
-                color: "#ffffff",
-                marginBottom: "1rem",
-                letterSpacing: "-0.03em",
-                maxWidth: isTablet || isMobile ? "100%" : "1200px",
-                margin: "0 auto 1rem",
-                textAlign: isTablet || isMobile ? "center" : "center",
-              }}
-            >
-              {" "}
-              <span>Our </span>
-              <span
-                style={{
-                  background: "linear-gradient(110deg, #dbcea4, #50918d)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  color: "transparent",
-                  textAlign: isTablet || isMobile ? "center" : "left",
-                }}
-              >
-                Core Technology
-              </span>
-            </h1>
-            <p
-              style={{
-                fontSize: "1.5rem",
-                color: "rgba(255, 255, 255, 0.8)",
-                maxWidth: "700px",
-                margin: "0 auto 0.5rem",
-                lineHeight: "1.6",
-                textAlign: isTablet || isMobile ? "center" : "center",
-              }}
-            >
-              Enables flexible modular skid accepting various feedstock sources
-            </p>
-          </div>
-
-          {/* Right/Bottom: Video */}
-        </div>
-
-        {/* Divider */}
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "1200px",
-            margin: "1rem auto 3rem",
-            height: "1px",
-            background:
-              "linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)",
-          }}
-        ></div>
-
-        <div>
-          <p
-            style={{
-              color: "#FFEBCA",
-              textAlign: "center",
-              marginBottom: "2.5rem",
-              fontWeight: "600",
-              fontSize: "2.5rem",
-              fontWeight: "400",
-              maxWidth: "1400px",
-              margin: "0 auto",
-            }}
-          >
-            Inside Alchemity’s Modular Reactor
-          </p>
-          <div
-            style={{
-              flex: isTablet || isMobile ? "auto" : "1",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              order: isTablet || isMobile ? 1 : 0,
-              width: "100%",
-            }}
-          >
-            <img
-              src={technology_header}
-              alt="Technology Header"
-              style={{
-                width: "100%",
-                maxWidth: "780px",
-                height: "auto",
-                borderRadius: "8px",
-                margin: "0 auto",
-                display: "block",
-              }}
-            />
-          </div>
-          <div
-            style={{
-              height: "2px",
-              width: "40%",
-              background:
-                "linear-gradient(to right, transparent, #FFEBCA, transparent)",
-              borderRadius: "2px",
-              margin: "1rem auto 3rem auto",
-              opacity: 0.6,
-              // paddingTop: '2rem',
-              transition: "width 0.2s",
-            }}
-          />
-        </div>
-
-        {/* <div style={{
-        width: '100%',
-        maxWidth: '900px',
-        margin: '1rem auto',
-        // marginTop: '3rem',
-        // marginBottom: '0',
-        height: '1.5px',
-        background: 'linear-gradient(to right, transparent, rgba(37, 171, 224, 0.3), transparent)',
-      }}></div> */}
-
-        {/* Cards Section - Standardized */}
-        <div
-          style={{
-            maxWidth: "1400px",
-            margin: "0 auto 4rem",
-            padding: "0 2rem",
-          }}
-        >
-          <p
-            style={{
-              color: "#FFEBCA",
-              textAlign: "center",
-              marginBottom: "2.5rem",
-              fontWeight: "600",
-              fontSize: "2.5rem",
-              fontWeight: "400",
-              maxWidth: "1400px",
-              margin: "0 auto",
-            }}
-          >
-            Proven Technology Platform
-          </p>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignItems: "stretch",
-              gap: "2rem",
-              padding: "2rem 0.5rem",
-              maxWidth: "1200px",
-              margin: "0 auto",
-              width: "100%",
-            }}
-          >
-            {[
-              {
-                title: "35 Years R&D + $20M",
-                image: rd,
-                text: "Alchemity holds exclusive license to 32 patents.",
-              },
-              {
-                title: "Extensively Validated",
-                image: validated,
-                text: "In labs & via industrial investment committees.",
-              },
-              {
-                title: "Scalable",
-                image: scalable,
-                text: "Demo system design completed & ready for fabrication.",
-              },
-            ].map((card, index) => (
-              <motion.div
-                key={index}
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)",
-                  border: "5px double rgba(255, 235, 202, 0.7)",
-                  padding: "1rem 1rem 1rem 1rem",
-                  borderRadius: "20px",
-                  color: "#ffffff",
-                  transition: "all 0.3s ease",
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  height: "400px",
-                  minWidth: 0,
-                  flex: "1 1 300px",
-                  maxWidth: "350px",
-                  boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-                  position: "relative",
-                  overflow: "hidden",
-                  width: "100%",
-                }}
-                whileHover={{
-                  y: -5,
-                  boxShadow: "0 0 20px rgba(37, 171, 224, 0.6)",
-                }}
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "600",
-                    color: "#ffffff",
-                    marginBottom: "1rem",
-                    textAlign: "center",
-                    // minHeight: '4.4rem',
-                    lineHeight: "1.2",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "100%",
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <div
-                  style={{
-                    width: "100%",
-                    height: "250px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "1rem",
-                    backgroundColor: "transparent",
-                    overflow: "hidden",
-                    position: "relative",
-                  }}
-                >
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                      backgroundColor: "transparent",
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                    }}
-                  />
-                </div>
-                <p
-                  style={{
-                    color: "#ffffff",
-                    fontSize: "1.4rem",
-                    lineHeight: "1.6",
-                    textAlign: "center",
-                    margin: "0 0.2rem",
-                    marginTop: isMobile ? "-1rem" : "auto",
-                    // fontWeight: '500',
-                    flex: 1,
-                    display: "flex",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  {card.text}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* <div
-          style={{
-            display: 'flex',
-            flexDirection: isMobile || isTablet ? 'column' : 'row',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-            padding: '0.5rem',
-            margin: '0rem auto 0',
-            maxWidth: '900px',
-            justifyContent: 'center',
-            alignItems: isMobile || isTablet ? 'center' : 'flex-start',
-            width: '100%',
-          }}
-        >
-          {[
-            {
-              title: "35 Years R&D + $20M",
-              image: rd,
-              text: "Alchemity holds exclusive license to 32 patents."
-            },
-            {
-              title: "Extensively Validated",
-              image: validated,
-              text: "In labs & via industrial investment committees."
-            },
-            {
-              title: "Scalable",
-              image: scalable,
-              text: "Demo system design completed & ready for fabrication."
-            }
-          ].map((card, index) => (
-            <motion.div
-              key={index}
-              style={{
-                background: '#141414',
-                padding: '1.5rem 1.5rem 1rem 1.5rem',
-                borderRadius: '8px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '1.5rem',
-                transition: 'all 0.3s ease',
-                width: isMobile || isTablet ? '100%' : 'calc(33.333% - 1rem)',
-                minWidth: '280px',
-                maxWidth: '350px',
-                height: '100%',
-                boxSizing: 'border-box',
-                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-                margin: isMobile || isTablet ? '0 auto' : undefined,
-                '@media (max-width: 1024px)': {
-                  width: '100%',
-                  maxWidth: '500px'
-                }
-              }}
-              whileHover={{
-                y: -8,
-                boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
-              }}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <h3 style={{
-                color: '#25abe0',
-                fontSize: '1.7rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                margin: 0,
-                minHeight: '4.4rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-              }}>{card.title}</h3>
-              <div style={{
-                width: '100%',
-                height: '250px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'transparent',
-                overflow: 'hidden',
-                position: 'relative'
-              }}>
-                <img 
-                  src={card.image} 
-                  alt={card.title} 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    backgroundColor: 'transparent'
-                  }} 
-                />
-              </div>
-              <p style={{
-                color: '#ffffff',
-                fontSize: '1.4rem',
-                lineHeight: '1.6',
-                textAlign: 'center',
-                margin: 0,
-                fontWeight: '500',
-                flex: 1,
-                display: 'flex',
-                alignItems: 'flex-start',
-                wordBreak: 'break-word'
-              }}>{card.text}</p>
-            </motion.div>
-          ))}
-        </div> */}
-
-          {/* <div
-          style={{
-            display: 'flex',
-            alignItems: (isMobile || isTablet) ? 'center' : 'flex-start',
-            flexWrap: 'wrap',
-            gap: isMobile ? '2rem' : '1.5rem',
-            padding: '0.5rem',
-            // margin: '-2rem auto 0',
-            maxWidth: isMobile ? '100vw' : '1400px',
-            width: '100%',
-            position: 'relative',
-            flexWrap: (isMobile || isTablet) ? 'wrap' : 'nowrap',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            boxSizing: 'border-box',
-          }}
-        >
-          {[
-            {
-              title: "35 Years R&D + $20M",
-              image: rd,
-              text: "Alchemity holds exclusive license to 32 patents."
-            },
-            {
-              title: "Extensively Validated",
-              image: validated,
-              text: "In labs & via industrial investment committees."
-            },
-            {
-              title: "Scalable",
-              image: scalable,
-              text: "Demo system design completed & ready for fabrication."
-            }
-          ].map((card, index) => (
-            <motion.div
-              key={index}
-              style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
-                border: '5px double rgba(255, 235, 202, 0.7)',
-                padding: '1.5rem 1.5rem 1rem 1.5rem',
-                borderRadius: '12px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '1.5rem',
-                transition: 'all 0.3s ease',
-                width: isMobile || isTablet ? '100%' : 'calc(33.333% - 1rem)',
-                minWidth: '280px',
-                maxWidth: '350px',
-                boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
-                margin: isMobile || isTablet ? '0 auto' : undefined,
-              }}
-              whileHover={{
-                y: -8,
-                boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
-              }}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <h3 style={{
-                color: '#25abe0',
-                fontSize: '1.7rem',
-                fontWeight: '600',
-                textAlign: 'center',
-                margin: 0,
-                minHeight: '3.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-              }}>{card.title}</h3>
-              <div style={{
-                width: '100%',
-                height: '220px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'transparent',
-                overflow: 'hidden',
-                position: 'relative'
-              }}>
-                <img 
-                  src={card.image} 
-                  alt={card.title} 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    backgroundColor: 'transparent'
-                  }} 
-                />
-              </div>
-              <p style={{
-                color: '#ffffff',
-                fontSize: '1.3rem',
-                lineHeight: '1.6',
-                textAlign: 'center',
-                margin: 0,
-                fontWeight: '500',
-                flex: 1,
-                display: 'flex',
-                alignItems: 'flex-start',
-              }}>{card.text}</p>
-            </motion.div>
-          ))}
-        </div> */}
-
-          {/* Mobile Responsive Styles */}
-          <style jsx>{`
-            @media (max-width: 768px) {
-              .tech-platform-container {
-                flex-direction: column !important;
-                gap: 3rem !important;
-                align-items: center !important;
-              }
-            }
-          `}</style>
-
-          <div
-            style={{
-              height: "2px",
-              width: "40%",
-              background:
-                "linear-gradient(to right, transparent, #FFEBCA, transparent)",
-              borderRadius: "2px",
-              margin: "6rem auto 0.5rem auto",
-              opacity: 0.6,
-              // paddingTop: '2rem',
-              transition: "width 0.2s",
-            }}
-          />
-          {/* <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: '2rem'
-      }}>
-    {[
-      { title: "35 Years R&D", image: rd, text: "$20M+ investment in mixed-conducting ceramic membrane reactor." },
-      { title: "Extensively Validated", image: validated, text: "In labs & via industrial investment committees." },
-      { title: "Scalable", image: scalable, text: "Demo system design completed & ready for fabrication." }
-    ].map((card, index) => (
-      <motion.div
-        key={index}
-        custom={index}
-        variants={cardVariants}
-        initial="hidden"
-        animate="visible"
-        whileHover={{ 
-          y: -8,
-          boxShadow: '0 0 20px rgba(37, 171, 224, 0.7)'
-        }}
-        transition={{ duration: 0.3 }}
-        style={{
-          flex: '1 1 300px',
-          maxWidth: '350px',
-          background: 'linear-gradient(135deg, #0F2027, #355958 )',
-          borderRadius: '12px',
-          padding: '2rem',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
-          position: 'relative',
-          overflow: 'hidden',
-          transition: 'all 0.3s ease',
-          marginTop: '2rem'
-        }}
-      > */}
-          {/* Accent line at top */}
-          {/* <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '3px',
-        background: 'linear-gradient(90deg, #A3A380 0%, #D38B5D 100%)',
-        opacity: 0.85,
-        borderTopLeftRadius: '12px',
-        borderTopRightRadius: '12px',
-        transition: 'background 0.3s'
-      }}></div> */}
-
-          {/* Image integrated in card */}
-          {/* <div style={{
-        width: '100%',
-        height: '180px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: '1.5rem'
-      }}>
-        <img 
-          src={card.image} 
-          alt={card.title} 
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain'
-          }}
-        />
-      </div> */}
-
-          {/* Gradient heading
-          <h3 style={{ 
-            marginBottom: '1rem',
-            fontSize: '1.5rem',
-            fontWeight: '700',
-            color: '#FAFAFA',
-            letterSpacing: '-0.01em',
-            textAlign: 'center'
-          }}>{card.title}</h3>
-          
-          <p style={{
-            color: '#ECEFF1',
-            fontSize: '1.25rem',
-            lineHeight: '1.6',
-            marginBottom: '1.5rem',
-            textAlign: 'center',
-            fontWeight: 400
-          }}>{card.text}</p>
-        </motion.div>
-      ))}
-        </div> */}
-        </div>
-
-        {/* Platform Section */}
-        {/* <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto 4rem',
-        padding: '0 2rem'
-      }}>
-        <p style={{
-          color: '#ffffff',
-          textAlign: 'center',
-          marginBottom: '3rem',
-          fontWeight: '600',
-          fontSize: '2.5rem',
-          fontWeight: '400',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}>
-          Multifunctional <span style={{ fontStyle: 'italic' }}>Gas to Chemicals</span> Platform
-        </p>
-        
-        <p style={{
-          color: '#9cc9dd',
-          fontSize: '1.5rem',
-          lineHeight: '1.6',
-          textAlign: 'center',
-          maxWidth: '800px',
-          margin: '0 auto 2rem'
-        }}>
-          Leverages mixed-conducting ceramic membrane and low-cost catalyst. 
-        </p>
-        
-        <div style={{
-          backgroundColor: 'rgba(26, 35, 43, 0.7)',
-          borderRadius: '16px',
-          padding: '0.5rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)',
-          marginBottom: '2rem'
-        }}>
-          <video 
-            ref={animationVideoRef}
-            src={reactionanima} 
-            style={{
-              width: '100%',
-              maxWidth: '1150px',
-              height: 'auto',
-              borderRadius: '8px',
-              margin: '0 auto',
-              display: 'block'
-            }} 
-            muted 
-            playsInline
-            autoPlay
-          />
-        </div>
-        
-        <div style={{
-          position: 'relative',
-          height: isMobile ? '70px' : '100px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          maxWidth: '80%',
-          margin: isMobile ? '-2rem auto 0' : '-2.5rem auto 0'
-        }}>
-          <button 
-            className={styles1.learnMoreButton}
-            onClick={handleOpenDetailsModal}
-            style={{
-              padding: isMobile ? '0.6rem 1.2rem' : '1rem 2rem',
-              fontSize: isMobile ? '0.9rem' : '1.1rem',
-              minWidth: isMobile ? '100px' : '120px'
-            }}
-          >
-            Learn More
-          </button>
-        </div>
-
-        <div className={styles1.modalContainer}>
-        <Modal
-          show={showDetailsModal}
-          onClose={handleCloseDetailsModal}
-          title="Reactor Platform Basic Science"
-          size="xxlarge"
-          showCloseButton={true}
-        >
-          <div style={{ 
-            padding: '0.25rem 1rem 0.25rem 1rem', 
-            color: '#ffffff',
-            maxHeight: '70vh',
-            overflowY: 'auto',
-            width: '100%',
-            boxSizing: 'border-box'
-          }}>
-            <div style={{
-              display: 'flex',
-              flexDirection: (isMobile || isTablet) ? 'column' : 'row',
-              alignItems: 'center',
-              gap: '1rem',
-              maxWidth: '1400px',
-              margin: '0 auto',
-              width: '100%'
-            }}>
-              <div style={{
-                width: (isMobile || isTablet) ? '100%' : '40%',
-                display: 'flex',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}>
-                <img 
-                  src={platform} 
-                  alt="Platform" 
-                  style={{
-                    width: '100%',
-                    maxWidth: (isMobile || isTablet) ? '400px' : '500px',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    borderRadius: '8px'
-                  }} 
-                /> 
-              </div>
-              <div style={{
-                width: (isMobile || isTablet) ? '100%' : '60%',
-                textAlign: (isMobile || isTablet) ? 'center' : 'left',
-                // maxWidth: '1400px',
-                // width: '100%'
-              }}>
-                <div style={{
-                  color: '#ffffff',
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
-                  marginBottom: '1rem',
-                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
-                }}>
-                  Non-oxidative single-step conversion of biomethane, CO₂, and water from waste feedstocks to clean chemicals/fuels without CO₂ emissions. Schematics shows a ceramic membrane reactor (strontium cerate) filled with low-cost iron-silica catalyst inside a reactor vessel.
-                </div>
-                <div style={{
-                  color: '#ffffff',
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
-                  marginBottom: '1rem',
-                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
-                }}>
-                  In this example biomethane flows through the core and sweep gas (air) circulates outside. Hydrogen is extracted in the catalyst bed and transported through the membrane to the sweep side via Le Chatelier's Principle, where it reacts with oxygen to form water and heat—enabling autothermal, energy-efficient operation.
-                </div>
-                <div style={{
-                  color: '#ffffff',
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
-                  marginBottom: '1rem',
-                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
-                }}>
-                  Oxygen ions from air sweep diffuse inward to react with carbon, forming trace CO, which prevents coking and extends catalyst life and reactor durability.
-                </div>
-                <div style={{
-                  color: '#ffffff',
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
-                  marginBottom: '0.25rem',
-                  textAlign: (isMobile || isTablet) ? 'center' : 'left',
-                }}>
-                  Products include olefins and aromatics. System is tunable via temperature, pressure, recycles, and sweep gas to meet specific product demands.
-                </div>
-              </div>
-            </div>
-          </div>
-        </Modal>
-        </div>
-      </div> */}
-
-        {/* Line Divider */}
-
-        {/* Real-World Applications Section */}
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "4rem auto",
-            padding: "0 2rem",
-            boxSizing: "border-box",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "3.5rem",
-          }}
-        >
-          {/* Application Card 1 */}
-          <div style={{ width: "100%" }}>
-            <p
-              style={{
-                fontSize: "2.5rem",
-                marginBottom: "1.2rem",
-                fontWeight: "400",
-                textAlign: "center",
-                color: "#FFEBCA",
-              }}
-            >
-              From Wasted Resources to Sustainable Fuels <br/> without CO₂ emissions
-            </p>
-            <p
-              style={{
-                fontSize: "1.6rem",
-                marginBottom: "0",
-                opacity: 0.8,
-                textAlign: "center",
-              }}
-            >
-              Our revolutionary process enables clean fuel production with zero
-              carbon emissions.
-            </p>
-            <img
-              src={biomass_image}
-              alt="Biomass to SAF"
-              style={{
-                width: "100%",
-                maxWidth: "1100px",
-                height: "auto",
-                borderRadius: "8px",
-                margin: "0 auto 0.6rem auto",
-                marginTop: "-5rem",
-                marginBottom: "-8rem",
-                display: "block",
-              }}
-              // onClick={() => setActiveModal("biomass")}
-            />
-
-            {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <button
-              onClick={() => setActiveModal('biomass')}
-              style={{
-                background: 'linear-gradient(90deg, #A3A380)',
-                color: 'white',
-                border: 'none',
-                padding: '1rem 1.5rem',
-                borderRadius: '50px',
-                fontSize: '1.2rem',
-                cursor: 'pointer',
-                fontWeight: '500',
-                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)'
-              }}
-            >
-              Enlarge Image
-            </button>
-          </div> */}
-          </div>
-
-          {/* Line Divider */}
-          <div
-            style={{
-              height: "2px",
-              width: "40%",
-              background:
-                "linear-gradient(to right, transparent, #FFEBCA, transparent)",
-              borderRadius: "2px",
-              margin: "2rem auto -1rem auto",
-              opacity: 0.6,
-              // paddingTop: '2rem',
-              transition: "width 0.2s",
-            }}
-          />
-
-          {/* Application Card 2 */}
-          <div style={{ width: "100%" }}>
-            <p
-              style={{
-                fontSize: "2.5rem",
-                marginBottom: "1.2rem",
-                fontWeight: "400",
-                textAlign: "center",
-                color: "#FFEBCA",
-              }}
-            >
-              Multifunctional Gas to Chemicals Platform
-            </p>
-            <p
-              style={{
-                fontSize: "1.6rem",
-                marginBottom: "0",
-                opacity: 0.9,
-                textAlign: "center",
-              }}
-            >
-              Leverages mixed-conducting ceramic membrane and low-cost catalyst.
-            </p>
-            <img
-              src={gas_to_chem_image}
-              alt="Gas to Chemicals"
-              style={{
-                width: "100%",
-                maxWidth: "1100px",
-                height: "auto",
-                borderRadius: "8px",
-                margin: "0 auto 1.2rem auto",
-                display: "block",
-              }}
-              onClick={() => setActiveModal("gasToChemicals")}
-            />
-            {/* <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-            <button
-              onClick={() => setActiveModal('gasToChemicals')}
-              style={{
-                background: 'linear-gradient(110deg, #A3A380)',
-                color: 'white',
-                border: 'none',
-                padding: '0.65rem 1.3rem',
-                borderRadius: '50px',
-                fontSize: '1rem',
-                cursor: 'pointer',
-                fontWeight: '500',
-                boxShadow: '0 4px 12px rgba(5, 213, 170, 0.3)'
-              }}
-            >
-              Enlarge Image
-            </button>
-          </div> */}
-          </div>
-        </div>
-
-        {/* Modal Popups */}
-        {activeModal && (
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.85)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 1000,
-              padding: "2rem",
-            }}
-            onClick={() => setActiveModal(null)}
-          >
-            <div
-              style={{
-                position: "relative",
-                maxWidth: "90%",
-                maxHeight: "90%",
-                borderRadius: "12px",
-                overflow: "hidden",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {activeModal === "biomass" && (
-                <video
-                  ref={animationVideoRef}
-                  src={animationTech}
-                  style={{
-                    width: "100%",
-                    maxWidth: "1150px",
-                    height: "auto",
-                    borderRadius: "8px",
-                    margin: "0 auto",
-                    display: "block",
-                  }}
-                  muted
-                  playsInline
-                  autoPlay
-                />
-              )}
-
-              {activeModal === "gasToChemicals" && (
-                <video
-                  ref={animationVideoRef}
-                  src={reactionanima}
-                  style={{
-                    width: "100%",
-                    maxWidth: "1150px",
-                    height: "auto",
-                    borderRadius: "8px",
-                    margin: "0 auto",
-                    display: "block",
-                  }}
-                  muted
-                  playsInline
-                  autoPlay
-                />
-              )}
-
-              <button
-                onClick={() => setActiveModal(null)}
-                style={{
-                  position: "absolute",
-                  top: "1rem",
-                  right: "1rem",
-                  background: "rgba(0, 0, 0, 0.7)",
-                  color: "white",
-                  border: "none",
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  fontSize: "1.2rem",
-                }}
-              >
-                ×
-              </button>
-            </div>
-          </div>
-        )}
-        <div
-          style={{
-            position: "relative",
-            height: isMobile ? "70px" : "100px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            maxWidth: "80%",
-            margin: isMobile ? "-2rem auto 0" : "-2.5rem auto 0",
-          }}
-        >
-          <button
-            className={styles.detailsButton}
-            onClick={handleOpenDetailsModal}
-            style={{
-              background: "linear-gradient(110deg, #A3A380)",
-              color: "white",
-              border: "none",
-              padding: "1rem 1.5rem",
-              borderRadius: "50px",
-              fontSize: "1.2rem",
-              cursor: "pointer",
-              fontWeight: "500",
-              boxShadow: "0 4px 12px rgba(5, 213, 170, 0.3)",
-              marginTop: "-4rem",
-            }}
-          >
-            Learn More
-          </button>
-        </div>
-
-        <div className={styles1.modalContainer}>
-          <Modal
-            show={showDetailsModal}
-            onClose={handleCloseDetailsModal}
-            title="Reactor Platform Basic Science"
-            size="xxlarge"
-            showCloseButton={true}
-          >
-            <div
-              style={{
-                padding: "0.25rem 1rem 0.25rem 1rem",
-                color: "#ffffff",
-                maxHeight: "70vh",
-                overflowY: "auto",
-                width: "100%",
-                boxSizing: "border-box",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: isMobile || isTablet ? "column" : "row",
-                  alignItems: "center",
-                  gap: "1rem",
-                  maxWidth: "1400px",
-                  margin: "0 auto",
-                  width: "100%",
-                }}
-              >
-                <div
-                  style={{
-                    width: isMobile || isTablet ? "100%" : "40%",
-                    display: "flex",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <img
-                    src={platform}
-                    alt="Platform"
-                    style={{
-                      width: "100%",
-                      maxWidth: isMobile || isTablet ? "400px" : "500px",
-                      height: "auto",
-                      objectFit: "contain",
-                      borderRadius: "8px",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    width: isMobile || isTablet ? "100%" : "60%",
-                    textAlign: isMobile || isTablet ? "center" : "left",
-                    // maxWidth: '1400px',
-                    // width: '100%'
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "1.2rem",
-                      lineHeight: "1.5",
-                      marginBottom: "1rem",
-                      textAlign: isMobile || isTablet ? "center" : "left",
-                    }}
-                  >
-                    Non-oxidative single-step conversion of biomethane, CO₂, and
-                    water from waste feedstocks to clean chemicals/fuels without
-                    CO₂ emissions. Schematics shows a ceramic membrane reactor
-                    (strontium cerate) filled with low-cost iron-silica catalyst
-                    inside a reactor vessel.
-                  </div>
-                  <div
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "1.2rem",
-                      lineHeight: "1.5",
-                      marginBottom: "1rem",
-                      textAlign: isMobile || isTablet ? "center" : "left",
-                    }}
-                  >
-                    In this example biomethane flows through the core and sweep
-                    gas (air) circulates outside. Hydrogen is extracted in the
-                    catalyst bed and transported through the membrane to the
-                    sweep side via Le Chatelier's Principle, where it reacts
-                    with oxygen to form water and heat—enabling autothermal,
-                    energy-efficient operation.
-                  </div>
-                  <div
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "1.2rem",
-                      lineHeight: "1.5",
-                      marginBottom: "1rem",
-                      textAlign: isMobile || isTablet ? "center" : "left",
-                    }}
-                  >
-                    Oxygen ions from air sweep diffuse inward to react with
-                    carbon, forming trace CO, which prevents coking and extends
-                    catalyst life and reactor durability.
-                  </div>
-                  <div
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "1.2rem",
-                      lineHeight: "1.5",
-                      marginBottom: "0.25rem",
-                      textAlign: isMobile || isTablet ? "center" : "left",
-                    }}
-                  >
-                    Products include olefins and aromatics. System is tunable
-                    via temperature, pressure, recycles, and sweep gas to meet
-                    specific product demands.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Modal>
-        </div>
-      </div>
-    </>
-  );
+];
+const innovations = [
+  { title: "Blank", subtitle: "Subtitle", description: "statement", detail: "details?", layer: 0 },
+  { title: "Blank", subtitle: "Subtitle", description: "statement", detail: "specific details?", layer: 1 },
+  { title: "Blanke", subtitle: "Subtitle", description: "statement", detail: "details?", layer: 2 },
+];
+// Planned milestones from slide 10. Add approved photography to each image field.
+const roadmap = [
+  { year: "2027", trl: "5–6", capacity: "20", unit: "kW", title: "Stack validation", description: "Stack testing and module development.", image: { src: "", alt: "" } },
+  { year: "2028", trl: "7", capacity: "20", unit: "kW", title: "System field testing", description: "In-field testing of the integrated 20 kW system.", image: { src: "", alt: "" } },
+  { year: "2029", trl: "7+", capacity: "200", unit: "kW", title: "A repeatable building block", description: "First deployment at a customer site.", image: { src: "", alt: "" } },
+  { year: "2030+", trl: "8+", capacity: "2", unit: "MW+", title: "Commercial scale", description: "Manufacturing of 200 kW building blocks for 2 MW+ systems.", image: { src: "", alt: "" } },
+];
+const milestoneDetails = {
+  "2027": { label: "Validation testing on the stack", text: "The planned work centers on stack testing and module development." },
+  "2028": { label: "Test the integrated system", text: "The roadmap moves to in-field testing of a 20 kW system. Capacity remains at 20 kW while the focus shifts from stack development to system-level operation." },
+  "2029": { label: "Take the building block to our customers", text: "Deployment at a customer site is planned for the 200 kW building block. This is the next step toward repeatable larger systems." },
+  "2030+": { label: "Scaling up through repeated modules", text: "The plan pairs manufacturing of the 200 kW building block with 2 MW+ systems. Thus, allowing the energy production to be scaled even further." },
+};
+// ==================== PAGE LAYOUT: NO CONTENT EDITS BELOW ====================
+function ImageSlot({ image, label, subtle = false }) {
+  return <div className={`${styles.imageSlot} ${subtle ? styles.subtleImage : ""}`}>
+    {image.src ? <img src={image.src} alt={image.alt} loading="lazy" /> : <div className={styles.blankImage} role="img" aria-label={`${label} image placeholder`}><span aria-hidden="true">+</span></div>}
+  </div>;
 }
 
-export default Technology;
+function Arrow() { return <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" /></svg>; }
+function InnovationSection() {
+  return <section id="technology-approach" className={styles.innovation} aria-labelledby="innovation-heading"><div className={styles.container}>
+    <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{pageCopy.ourApproach}</p><h2 id="innovation-heading">{pageCopy.progressStarts}<br />{pageCopy.atTheCell}</h2></div><p>{pageCopy.ourTechnologyDevelopmentFocusesOnThree}</p></div>
+    <div className={styles.knowledgeList}>{innovations.map((item) => <article className={styles.knowledgeRow} key={item.title}><div><h3>{item.title}</h3><p className={styles.knowledgeSubtitle}>{item.subtitle}</p></div><div><p>{item.description}</p><p className={styles.knowledgeNote}>{item.detail}</p></div></article>)}</div>
+  </div></section>;
+}
+
+function RoadmapMetric({ value, unit }) {
+  const ref = useRef(null);
+  const [display, setDisplay] = useState(value);
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!("IntersectionObserver" in window)) return;
+    let frame = 0, armed = true;
+    const stop = () => { cancelAnimationFrame(frame); frame = 0; };
+    const observer = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting || !armed) return;
+      armed = false;
+      if (media.matches) { setDisplay(value); return; }
+      stop();
+      const start = performance.now();
+      setDisplay(0);
+      const tick = now => {
+        const progress = Math.min(1, (now - start) / 1600);
+        setDisplay(value * (1 - Math.pow(1 - progress, 3)));
+        if (progress < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    }, { threshold: 0.5 });
+    const reset = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) { armed = true; stop(); setDisplay(value); }
+    }, { rootMargin: "160px 0px" });
+    observer.observe(ref.current); reset.observe(ref.current);
+    const preference = () => { if (media.matches) { stop(); setDisplay(value); } };
+    media.addEventListener("change", preference);
+    return () => { stop(); observer.disconnect(); reset.disconnect(); media.removeEventListener("change", preference); };
+  }, [value]);
+  const format = number => value < 10 ? number.toFixed(1) : Math.round(number).toString();
+  return <p ref={ref} className={styles.roadmapCapacity} aria-label={`${value} ${unit}`}>
+    <span className={styles.capacityDigits} aria-hidden="true">{format(display)}</span><span aria-hidden="true">{unit}</span>
+  </p>;
+}
+
+function MilestoneDialog({ step, close }) {
+  const ref = useRef(null);
+  const [closing, setClosing] = useState(false);
+  const timer = useRef(null);
+  useEffect(() => {
+    const dialog = ref.current;
+    const focus = document.activeElement;
+    const overflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      clearTimeout(timer.current);
+      dialog.close();
+      document.body.style.overflow = overflow;
+      if (focus instanceof HTMLElement && focus.isConnected) focus.focus({ preventScroll: true });
+    };
+  }, []);
+  const dismiss = () => {
+    if (closing) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { close(); return; }
+    setClosing(true);
+    timer.current = setTimeout(close, 220);
+  };
+  return <dialog ref={ref} className={styles.milestoneDialog} data-closing={closing}
+    aria-labelledby="milestone-dialog-title" onCancel={event => { event.preventDefault(); dismiss(); }}
+    onClick={event => {
+      if (event.target === event.currentTarget) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dismiss();
+      }
+    }}>
+    <div className={styles.popupTop}>
+      <div className={styles.popupChips}><span className={styles.popupYear}>{step.year}</span><span className={styles.popupTrl}>TRL {step.trl}</span></div>
+      <button type="button" className={styles.popupClose} autoFocus onClick={dismiss} aria-label="Close milestone details">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <div className={styles.popupHeading}>
+      <p className={styles.popupEyebrow}>{pageCopy.popupTarget}</p>
+      <h3 id="milestone-dialog-title">{step.title}</h3>
+    </div>
+    <div className={styles.popupSpec}>
+      <div><p className={styles.popupSpecLabel}>{pageCopy.popupCapacityLabel}</p><p className={styles.popupCapacity}>{step.capacity}<span>{step.unit}</span></p></div>
+      <div className={styles.popupSymbol}><RoadmapIcon index={roadmap.findIndex(item => item.year === step.year)} /></div>
+    </div>
+    <p className={styles.popupSummary}>{step.description}</p>
+    <div className={styles.popupDetail}><h4>{milestoneDetails[step.year].label}</h4><p>{milestoneDetails[step.year].text}</p></div>
+
+  </dialog>;
+}
+function RoadmapIcon({ index }) {
+  return <svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {index === 0 ? <><path d="m8 16 16-8 16 8-16 8zM8 24l16 8 16-8M8 32l16 8 16-8" /></> :
+      index === 1 ? <><rect x="10" y="10" width="28" height="28" rx="2" /></> :
+        index === 2 ? <><rect x="7" y="7" width="14" height="14" rx="2" /><rect x="27" y="7" width="14" height="14" rx="2" /><rect x="7" y="27" width="14" height="14" rx="2" /><rect x="27" y="27" width="14" height="14" rx="2" /></> :
+          <><rect x="3" y="15" width="10" height="20" rx="1" /><rect x="13" y="15" width="10" height="20" rx="1" /><rect x="23" y="15" width="10" height="20" rx="1" /><rect x="33" y="15" width="10" height="20" rx="1" /><path d="M3 15l3-4h39l-2 4M43 35l2-4V11M13 15l3-4M23 15l3-4M33 15l3-4" /></>}
+  </svg>;
+}
+function RoadmapSection() {
+  const [selected, setSelected] = useState(null);
+  return <section id="technology-roadmap" className={styles.roadmapSection} aria-labelledby="roadmap-heading">
+    <div className={styles.container}>
+      <div className={styles.roadmapHeading}><h2 id="roadmap-heading">{pageCopy.theDevelopmentRoadmap}</h2></div>
+      <ol className={styles.roadmapTrack}>
+        {roadmap.map((step, index) => <li className={styles.roadmapStep} key={step.year} data-active={selected?.year === step.year}>
+          <div className={styles.roadmapYear}>{step.year}</div>
+          <div className={styles.roadmapConnector} aria-hidden="true"><span /></div>
+          <div className={styles.compactMilestone}>
+            <button type="button" className={styles.roadmapIconButton} aria-label={`Open ${step.year} milestone: ${step.title}`} aria-haspopup="dialog" onClick={() => setSelected(step)}>
+              <RoadmapIcon index={index} /><span className={styles.iconPlus} aria-hidden="true">+</span>
+            </button>
+            <RoadmapMetric value={Number(step.capacity)} unit={step.unit} />
+            <span className={styles.trlBadge}>TRL {step.trl}</span>
+          </div>
+        </li>)}
+      </ol>
+      <div className={styles.roadmapFootnote}><p>{pageCopy.datesCapacitiesAndTrlLevelsShown}</p><Link to="/products" className={styles.roadmapLink}>{pageCopy.exploreThePlatform}<Arrow /></Link></div>
+    </div>
+    {selected && <MilestoneDialog step={selected} close={() => setSelected(null)} />}
+  </section>;
+}
+export default function Technology() {
+  return <EnergyBackground className={styles.page}>
+    <SEO title={pageCopy.technologyAlchemitypower} description={pageCopy.exploreAlchemitypowersSolidOxideFuelCell} url="/technology" />
+    <div className={styles.container}>
+      <header className={styles.hero}><div><p className={styles.eyebrow}>{pageCopy.alchemitypowerTechnology}</p><h1>{pageCopy.statement}</h1><div className={styles.heroIntro}><p>{pageCopy.forDataCentersAndOtherCritical}</p><nav aria-label="Technology sections"><a href="#technology-problem">{pageCopy.theChallenge}<Arrow /></a><a href="#technology-approach">{pageCopy.ourApproach}<Arrow /></a><a href="#technology-criteria">{pageCopy.sixCriteria}<Arrow /></a><a href="#technology-roadmap">{pageCopy.roadmap}<Arrow /></a></nav></div></div><ImageSlot image={pageImages.dataCenter} label="Data center" /></header>
+      <section id="technology-problem" className={styles.problem} aria-labelledby="problem-heading"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{pageCopy.theChallenge}</p><h2 id="problem-heading">{pageCopy.powerPlanningIs}<br />{pageCopy.businessPlanning}</h2></div><p>{pageCopy.securingEnoughElectricityIsOnlyPart}</p></div>
+        <div className={styles.problemGrid}>
+          <article><h3>{pageCopy.whenCanPowerArrive}</h3><p>{pageCopy.gridConnectionsAndInfrastructureUpgradesCan}</p></article>
+          <article><h3>{pageCopy.whatWillTheSiteAllow}</h3><p>{pageCopy.spaceFuelSupplyPermittingAndLocal}</p></article>
+          <article><h3>{pageCopy.whatMustKeepRunning}</h3><p>{pageCopy.criticalFacilitiesNeedAnEnergyStrategy}</p></article>
+        </div>
+        <div className={styles.response}><div className={styles.responseCopy}><p className={styles.eyebrow}>{pageCopy.whyOnsitePower}</p><h3>{pageCopy.anotherWayToPlanForGrowth}</h3><p>{pageCopy.generatingElectricityAtTheSiteCan}</p></div><ImageSlot image={pageImages.onsiteProduct} label="On-site power product" subtle /></div>
+      </section>
+    </div>
+    <InnovationSection />
+    <section id="technology-criteria" className={styles.criteriaSection} aria-labelledby="criteria-heading"><div className={styles.container}><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{pageCopy.criteria}</p><h2 id="criteria-heading">{pageCopy["6CriteriaForChoosing"]}<br />{pageCopy.anOnsitePowerProvider}</h2></div><p>{pageCopy.criteriaIntroductionGoesHere}</p></div><div className={styles.criteriaGrid}>{criteria.map((criterion) => <article key={criterion.id}><h3>{criterion.title}</h3><p>{criterion.description}</p></article>)}</div></div></section>
+    <RoadmapSection />
+  </EnergyBackground>;
+}

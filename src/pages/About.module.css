@@ -1,0 +1,704 @@
+.page,
+.dialog {
+    color: #172d36;
+    background: #dfe6e8;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+}
+
+.page *,
+.dialog * {
+    box-sizing: border-box;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.dialog h2,
+.dialog h3 {
+    color: #172d36;
+}
+
+.page p {
+    margin: 0;
+}
+
+.container {
+    width: min(1120px, calc(100% - 96px));
+    margin-inline: auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    padding: 88px 0 64px;
+    align-items: end;
+}
+
+.page .eyebrow,
+.dialog .eyebrow {
+    color: #225f7c;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin: 0 0 24px;
+}
+
+.page h1 {
+    font-size: clamp(44px, 5.3vw, 74px);
+    line-height: 1.08;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    margin: 0;
+}
+
+.page h1 span {
+    color: #225f7c;
+}
+
+.introduction p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #405963;
+}
+
+.introduction p+p {
+    margin-top: 16px;
+}
+
+.sectionLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    margin-top: 28px;
+}
+
+.page .sectionLinks a,
+.dialog .linkedin {
+    color: #225f7c;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    padding-block: 8px;
+}
+
+.page a:hover,
+.dialog a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.purpose {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    border-top: 1px solid #b8c8ce;
+    border-bottom: 1px solid #b8c8ce;
+    padding-block: 32px;
+    align-items: baseline;
+}
+
+.purpose .eyebrow {
+    margin: 0;
+}
+
+.purpose>p:last-child {
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.45;
+    max-width: 650px;
+    letter-spacing: -0.02em;
+}
+
+.peopleSection {
+    padding-block: 72px;
+    scroll-margin-top: 32px;
+}
+
+.peopleSection[id="founders"] .sectionHeading p {
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.45;
+    color: #225f7c;
+}
+
+.peopleSection+.peopleSection {
+    border-top: 1px solid #b8c8ce;
+}
+
+.sectionHeading {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: baseline;
+    margin-bottom: 36px;
+}
+
+.page .sectionHeading h2 {
+    font-size: clamp(34px, 4vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    font-weight: 400;
+    margin: 0;
+}
+
+.sectionHeading p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: #405963;
+    max-width: 470px;
+}
+
+.peopleGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.person {
+    min-width: 0;
+}
+
+.page .profileButton {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: #172d36;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+.portrait {
+    display: block;
+    aspect-ratio: 4 / 4.5;
+    overflow: hidden;
+    background: #cedade;
+    margin-bottom: 24px;
+}
+
+.portrait img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 25%;
+    transition: transform 220ms ease;
+}
+
+.profileButton:hover .portrait img {
+    transform: scale(1.025);
+}
+
+.personName {
+    font-size: clamp(21px, 2.2vw, 26px);
+    line-height: 1.25;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.personRole {
+    color: #225f7c;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 7px;
+}
+
+.personBlurb {
+    color: #405963;
+    font-size: 17px;
+    line-height: 1.6;
+    margin-block: 18px 24px;
+}
+
+.profileLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #b8c8ce;
+    padding-top: 16px;
+    margin-top: auto;
+    color: #225f7c;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.profileButton:hover .profileLink {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.page :focus-visible,
+.dialog :focus-visible {
+    outline: 3px solid #225f7c;
+    outline-offset: 6px;
+}
+
+.dialog {
+    width: min(900px, calc(100% - 32px));
+    max-height: calc(100dvh - 48px);
+    margin: auto;
+    padding: 0;
+    border: 1px solid #b8c8ce;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.dialog::backdrop {
+    background: rgb(10 24 31 / 70%);
+}
+
+.dialogBar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 20px;
+    background: #dfe6e8;
+    z-index: 1;
+}
+
+.dialog .closeButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    min-height: 44px;
+    background: transparent;
+    border: 1px solid #9aaeb7;
+    border-radius: 3px;
+    color: #172d36;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.closeButton span {
+    font-size: 26px;
+    line-height: 1;
+}
+
+.dialog .closeButton:hover {
+    background: #cedade;
+}
+
+.dialogContent {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 36px;
+    padding: 12px 36px 40px;
+}
+
+.dialogPortrait {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.dialog .eyebrow {
+    margin-bottom: 8px;
+}
+
+.dialog h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin: 0 0 24px;
+}
+
+.dialog h3 {
+    font-size: 19px;
+    margin: 28px 0 12px;
+}
+
+.biography p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 16px;
+    color: #405963;
+}
+
+.dialog .linkedin {
+    margin-top: 12px;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .container {
+        width: calc(100% - 64px);
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-top: 64px;
+    }
+
+    .introduction {
+        max-width: 620px;
+    }
+
+    .peopleGrid {
+        gap: 22px;
+    }
+
+    .dialogContent {
+        grid-template-columns: 160px minmax(0, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: calc(100% - 40px);
+    }
+
+    .hero {
+        padding-block: 48px;
+    }
+
+    .purpose,
+    .sectionHeading {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .peopleSection {
+        padding-block: 48px;
+    }
+
+    .peopleGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .portrait {
+        aspect-ratio: 1;
+    }
+
+    .personName {
+        font-size: 26px;
+    }
+
+    .dialogContent {
+        grid-template-columns: 1fr;
+        padding: 8px 24px 28px;
+    }
+
+    .dialogPortrait {
+        width: 140px;
+    }
+
+    .dialog {
+        max-height: calc(100dvh - 24px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portrait img {
+        transition: none;
+    }
+
+    .profileButton:hover .portrait img {
+        transform: none;
+    }
+}
+
+/* Small editorial details give the layout structure without extra decoration. */
+.hero {
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: #225f7c;
+}
+
+.purpose {
+    background: rgb(206 218 222 / 68%);
+    padding-inline: 24px;
+    border-left: 3px solid #225f7c;
+}
+
+.profileLink svg {
+    transition: transform 180ms ease;
+}
+
+.profileButton:hover .profileLink svg,
+.profileButton:focus-visible .profileLink svg {
+    transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+    .hero::before {
+        top: 22px;
+    }
+
+    .purpose {
+        padding-inline: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profileLink svg {
+        transition: none;
+    }
+}
+
+/* A place, not a stock landscape: keep the campus and people in natural color. */
+.locationSection {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.65fr);
+    gap: 48px;
+    align-items: center;
+    padding-block: 80px 32px;
+}
+
+.locationIntro {
+    min-width: 0;
+}
+
+.page .locationIntro h2 {
+    font-size: clamp(36px, 3.7vw, 52px);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+    margin: 0 0 24px;
+}
+
+.locationIntro h2 span {
+    color: #225f7c;
+}
+
+.page .locationDescription {
+    color: #405963;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 340px;
+}
+
+.locationMarker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 22px;
+    border-top: 1px solid #b8c8ce;
+    color: #225f7c;
+    font: 13px/1.7 ui-monospace, SFMono-Regular, Consolas, monospace;
+    letter-spacing: 0.02em;
+}
+
+.locationMarker svg {
+    flex-shrink: 0;
+}
+
+.locationGallery {
+    min-width: 0;
+}
+
+.locationFrame {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #cedade;
+    touch-action: pan-y pinch-zoom;
+}
+
+.locationPhoto {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 400ms ease;
+}
+
+.locationPhotoActive {
+    opacity: 1;
+}
+
+.locationFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-top: 18px;
+}
+
+.page .locationCaption {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #405963;
+}
+
+.locationCount {
+    display: block;
+    margin-bottom: 4px;
+    color: #225f7c;
+    font: 12px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+    letter-spacing: 0.1em;
+}
+
+.locationControls {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.page .locationControls button {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid #9aafb8;
+    border-radius: 50%;
+    background: transparent;
+    color: #225f7c;
+    cursor: pointer;
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.page .locationControls button:hover {
+    background: #225f7c;
+    color: #dfe6e8;
+}
+
+.previousArrow {
+    display: flex;
+    transform: rotate(180deg);
+}
+
+@media (max-width: 900px) {
+    .locationSection {
+        gap: 28px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .locationSection {
+        grid-template-columns: 1fr;
+        padding-block: 48px 16px;
+        gap: 28px;
+    }
+
+    .page .locationDescription {
+        max-width: 520px;
+    }
+
+    .locationMarker {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .locationFooter {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .locationControls {
+        gap: 4px;
+    }
+
+    .page .locationControls button {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .locationPhoto,
+    .page .locationControls button {
+        transition: none;
+    }
+}
+
+/* Circular headshots, with a restrained blue-gray frame. */
+.page .portrait {
+    width: min(100%, 300px);
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    align-self: center;
+    border-radius: 50%;
+    border: 1px solid #9cb6c2;
+    padding: 6px;
+    overflow: hidden;
+    background: #d8e3e8;
+    margin: 4px 0 28px;
+    box-shadow: 0 6px 20px rgb(23 45 54 / 7%);
+    transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.page .portrait img {
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.page .profileButton:hover .portrait,
+.page .profileButton:focus-visible .portrait {
+    border-color: #225f7c;
+    box-shadow: 0 8px 24px rgb(34 95 124 / 14%);
+}
+
+.page .profileButton:hover .portrait img {
+    transform: none;
+}
+
+.dialog .dialogPortrait {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 1px solid #9cb6c2;
+    padding: 4px;
+    background: #d8e3e8;
+}
+
+@media (max-width: 640px) {
+    .page .portrait {
+        width: min(80%, 280px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page .portrait {
+        transition: none;
+    }
+}
